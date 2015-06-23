@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-27 16:22:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.whut.wxcs.resmanager.model.Attribute" table="ATTRIBUTE">
+        <id name="id" type="long">
+            <column name="ATTRIBUTE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="attribute_name" type="java.lang.String">
+            <column name="ATTRIBUTE_NAME" />
+        </property>
+        <property name="attribute_type" type="byte">
+            <column name="ATTRIBUTE_TYPE" />
+        </property>
+        <property name="attribute_description" type="java.lang.String">
+            <column name="ATTRIBUTE_DESCRIPTION" />
+        </property>
+    </class>
+</hibernate-mapping>

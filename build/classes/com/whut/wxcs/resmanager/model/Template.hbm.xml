@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-27 16:22:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.whut.wxcs.resmanager.model.Template" table="TEMPLATE">
+		<id name="templateId" type="long" access="field">
+			<column name="TEMPLATE_ID" />
+			<generator class="native" />
+		</id>
+		<property name="templateName" type="java.lang.String">
+			<column name="TEMPLATENAME" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="DESCRIPTION" />
+		</property>
+
+		<many-to-one name="catalogue"
+			class="com.whut.wxcs.resmanager.model.Catalogue">
+			<column name="CATALOGUE_ID" unique="true"></column>
+		</many-to-one>
+
+
+		<property name="creatTime" type="java.util.Date">
+			<column name="CREATTIME" />
+		</property>
+		 <set name="attributes" table="TATTRIBUTEVALUE" inverse="false" lazy="true" 
+			access="field"> <key> <column name="TEMPLATE_ID" /> </key> <one-to-many class="com.whut.wxcs.resmanager.model.TAttributeValue" 
+			/> </set> 
+	</class>
+</hibernate-mapping>

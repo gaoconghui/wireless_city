@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-27 16:22:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.whut.wxcs.resmanager.model.TemplateAttribute" table="TEMPLATEATTRIBUTE">
+        <id name="id" type="long">
+            <column name="TEMPLATE_ATTRIBUTE_ID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="attribute" class="com.whut.wxcs.resmanager.model.Attribute" fetch="join">
+            <column name="ATTRIBUTE_ID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
