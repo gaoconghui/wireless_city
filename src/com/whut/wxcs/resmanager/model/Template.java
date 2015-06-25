@@ -6,19 +6,19 @@ import java.util.Set;
 
 public class Template {
 
-	private long templateId;
+	private int id;
 	private String templateName;
 	private String description;
 	private Catalogue catalogue;
 	private Date creatTime;
-	private Set<TAttributeValue> attributes = new HashSet<TAttributeValue>();
+	private Set<Attribute> attributes = new HashSet<Attribute>();
 
-	public long getTemplateId() {
-		return templateId;
+	public int getId() {
+		return id;
 	}
 
-	public void setTemplateId(long templateId) {
-		this.templateId = templateId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTemplateName() {
@@ -53,11 +53,11 @@ public class Template {
 		this.creatTime = creatTime;
 	}
 
-	public Set<TAttributeValue> getAttributes() {
+	public Set<Attribute> getAttributes() {
 		return attributes;
 	}
 
-	public void setAttributes(Set<TAttributeValue> attributes) {
+	public void setAttributes(Set<Attribute> attributes) {
 		this.attributes = attributes;
 	}
 

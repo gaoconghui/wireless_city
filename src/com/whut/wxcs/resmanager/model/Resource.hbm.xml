@@ -8,12 +8,12 @@
 			<column name="RESOURCE_ID" />
 			<generator class="native" />
 		</id>
-		<set name="attributes" table="RATTRIBUTEVALUE" inverse="false"
+		<set name="attributes" table="RESOURCE_ATTRIBUTE" inverse="false"
 			lazy="true" access="field">
 			<key>
 				<column name="RESOURCE_ID" />
 			</key>
-			<one-to-many class="com.whut.wxcs.resmanager.model.RAttributeValue" />
+			<one-to-many class="com.whut.wxcs.resmanager.model.ResourceAttribute" />
 		</set>
 		
 		<many-to-one name="catalogue"
@@ -31,8 +31,8 @@
 		<property name="description" type="java.lang.String">
 			<column name="DESCRIPTION" />
 		</property>
-		<property name="creat_time" type="java.sql.Date">
-			<column name="CREAT_TIME" />
+		<property name="create_time" type="java.sql.Date">
+			<column name="CREATE_TIME" />
 		</property>
 		<property name="rating" type="java.lang.Float">
 			<column name="RATING" />

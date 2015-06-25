@@ -1,9 +1,11 @@
 package com.whut.wxcs.resmanager.model;
 
-public class TemplateAttribute {
+public class ResourceAttribute {
 
 	private long id;
+	private Resource resource;
 	private Attribute attribute;
+	private String value;
 
 	public long getId() {
 		return id;
@@ -11,6 +13,14 @@ public class TemplateAttribute {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Resource getResource() {
+		return resource;
+	}
+
+	public void setResource(Resource resource) {
+		this.resource = resource;
 	}
 
 	public Attribute getAttribute() {
@@ -21,9 +31,12 @@ public class TemplateAttribute {
 		this.attribute = attribute;
 	}
 
-	@Override
-	public String toString() {
-		return "TemplateAttribute [id=" + id + ", attribute=" + attribute + "]";
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }

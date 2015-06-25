@@ -3,10 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-5-27 23:00:39 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-	<class name="com.whut.wxcs.resmanager.model.RAttributeValue"
-		table="RATTRIBUTEVALUE">
-		<id name="RAttributeValueId" type="long">
-			<column name="RATTRIBUTEVALUE_ID" />
+	<class name="com.whut.wxcs.resmanager.model.ResourceAttribute"
+		table="RESOURCE_ATTRIBUTE">
+		<id name="id" type="long">
+			<column name="RESOURCE_ATTRIBUTE_ID" />
 			<generator class="native" />
 		</id>
 		<many-to-one name="resource" class="com.whut.wxcs.resmanager.model.Resource"
@@ -19,8 +19,8 @@
 			<column name="ATTRIBUTE_ID" />
 		</many-to-one>
 		
-		<property name="attributeValue" type="java.lang.String">
-			<column name="ATTRIBUTEVALUE" />
+		<property name="value" type="java.lang.String">
+			<column name="VALUE" />
 		</property>
 	</class>
 </hibernate-mapping>

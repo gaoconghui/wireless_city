@@ -58,7 +58,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 			if (ValidateUtil.isVaild(child)) {
 				model.setId(child.get(0).getId() + 1);
 			} else {
-				model.setId(model.getParent().getId() * 100);
+				model.setId(model.getParent().getId() * 100+1);
 			}
 		}
 

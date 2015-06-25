@@ -8,14 +8,17 @@
             <column name="ATTRIBUTE_ID" />
             <generator class="native" />
         </id>
-        <property name="attribute_name" type="java.lang.String">
+        <property name="name" type="java.lang.String">
             <column name="ATTRIBUTE_NAME" />
         </property>
-        <property name="attribute_type" type="byte">
+        <property name="type" type="byte">
             <column name="ATTRIBUTE_TYPE" />
         </property>
-        <property name="attribute_description" type="java.lang.String">
+        <property name="descritpion" type="java.lang.String">
             <column name="ATTRIBUTE_DESCRIPTION" />
+        </property>
+        <property name="value" type="java.lang.String">
+            <column name="ATTRIBUTE_VALUE" />
         </property>
     </class>
 </hibernate-mapping>
