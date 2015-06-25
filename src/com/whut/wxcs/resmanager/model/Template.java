@@ -13,12 +13,21 @@ public class Template {
 	private Date creatTime;
 	private Set<TAttributeValue> attributes = new HashSet<TAttributeValue>();
 
-	public long getTemplateId() {
+	public void addAttribute(TAttributeValue attribute) {
+		attributes.add(attribute);
+	}
+
+	public void removeAttribute(TAttributeValue attribute) {
+		if (attributes.contains(attribute))
+			attributes.remove(attribute);
+	}
+
+	public long getId() {
 		return templateId;
 	}
 
-	public void setTemplateId(long templateId) {
-		this.templateId = templateId;
+	public void setId(long id) {
+		this.templateId = id;
 	}
 
 	public String getTemplateName() {
@@ -29,20 +38,20 @@ public class Template {
 		this.templateName = templateName;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public Catalogue getCatalogue() {
 		return catalogue;
 	}
 
 	public void setCatalogue(Catalogue catalogue) {
 		this.catalogue = catalogue;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Date getCreatTime() {
@@ -53,12 +62,11 @@ public class Template {
 		this.creatTime = creatTime;
 	}
 
-	public Set<TAttributeValue> getAttributes() {
-		return attributes;
-	}
-
-	public void setAttributes(Set<TAttributeValue> attributes) {
-		this.attributes = attributes;
+	@Override
+	public String toString() {
+		return "template [id=" + templateId + ", templateName=" + templateName
+				+ ", description=" + description + ", catalogue=" + catalogue
+				+ ", creatTime=" + creatTime + "]";
 	}
 
 }
