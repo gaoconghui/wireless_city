@@ -1,0 +1,107 @@
+package com.whut.wxcs.resmanager.service.impl;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.whut.wxcs.resmanager.dao.BaseDao;
+import com.whut.wxcs.resmanager.dao.impl.CatalogueDaoImpl;
+import com.whut.wxcs.resmanager.model.Catalogue;
+import com.whut.wxcs.resmanager.service.CatalogueService;
+import com.whut.wxcs.resmanager.util.ValidateUtil;
+
+@Service("catalogueService")
+public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
+		CatalogueService {
+
+	@Resource(name = "catalogueDao")
+	@Override
+	public void setBaseDao(BaseDao<Catalogue> baseDao) {
+		super.setBaseDao(baseDao);
+	}
+
+	public BaseDao<Catalogue> getBaseDao() {
+		return baseDao;
+	}
+
+	@Resource(name = "catalogueDao")
+	private CatalogueDaoImpl catalogueDao;
+
+	@Override
+	public List<Catalogue> getRootCatalogue() {
+		String hql = "from Catalogue c where c.parent.id = 1 order by id asc";
+		return catalogueDao.findEntityByHql(hql);
+	}
+
+	@Override
+	public List<Catalogue> getAllCatalogue() {
+		String hql = "from Catalogue ";
+		return catalogueDao.findEntityByHql(hql);
+	}
+
+	@Override
+	public void saveCatalogue(Catalogue model) {
+		int flag = 0;
+		if(model.getId() != 0){
+			long oldId = catalogueDao.getEntity(model.getId()).getParent().getId();
+			if(oldId == model.getParent().getId()) flag = 1;
+		}
+		
+		if(flag == 0){
+			String hql = "from Catalogue c where c.parent.id = ? order by id desc";
+			List<Catalogue> child = catalogueDao.findEntityByHql(hql, model
+					.getParent().getId());
+			if (ValidateUtil.isVaild(child)) {
+				model.setId(child.get(0).getId() + 1);
+			} else {
+				model.setId(model.getParent().getId() * 100);
+			}
+		}
+
+		catalogueDao.saveOrUpdateEntity(model);
+	}
+
+	@Override
+	public Catalogue getRootCatalogueWithAllChild() {
+		String hql = "from Catalogue c where c.id = 1";
+		Catalogue root = (Catalogue) catalogueDao.ubiqueResult(hql);
+		getAllChild(root);
+		return root;
+	}
+
+	private void getAllChild(Catalogue c) {
+		if (ValidateUtil.isVaild(c.getChild())) {
+			for (Catalogue catalogue : c.getChild()) {
+				getAllChild(catalogue);
+			}
+		}
+	}
+
+	@Override
+	public void deleteCatalogueWithChild(long id) {
+		Catalogue catalogue = catalogueDao.getEntity(id);
+		deleteCicleCatalogue(catalogue);
+	}
+
+	private void deleteCicleCatalogue(Catalogue catalogue) {
+		if (ValidateUtil.isVaild(catalogue.getChild())) {
+			for (Catalogue c : catalogue.getChild()) {
+				deleteCicleCatalogue(c);
+			}
+		}
+		catalogueDao.deleteEntity(catalogue);
+
+	}
+
+	@Override
+	public Catalogue getCatalogueById(long id) {
+		Catalogue catalogue = catalogueDao.getEntity(id);
+		catalogue.getParent();
+		return catalogue;
+	}
+
+}
