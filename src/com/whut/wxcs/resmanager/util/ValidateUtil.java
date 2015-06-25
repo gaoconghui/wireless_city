@@ -7,7 +7,7 @@ import java.util.Collection;
  * @author apple
  *
  */
-public class VaildateUtil {
+public class ValidateUtil {
 
 	/**
 	 * 检验是否有效
