@@ -66,12 +66,12 @@ public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public T loadEntity(Integer id) {
+	public T loadEntity(long id) {
 		return (T) sessionFactory.getCurrentSession().load(clazz, id);
 	}
 
 	@Override
-	public T getEntity(Integer id) {
+	public T getEntity(long id) {
 		return (T) sessionFactory.getCurrentSession().get(clazz, id);
 	}
 

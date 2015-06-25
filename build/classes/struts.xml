@@ -30,6 +30,11 @@
 				<param name="actionName">CatalogueAction_toCatalogueManagerPage</param>
 			</result>
 		</action>
+		
+		<action name="TemplateAction_*" class="templateAction" method="{1}">
+			<result name="toNewTemplatePage">admin/addtemplate.jsp</result>
+			<result name="toTemplateDetailPage">admin/templatedetail.jsp</result>
+		</action>
 
 	</package>
 </struts>

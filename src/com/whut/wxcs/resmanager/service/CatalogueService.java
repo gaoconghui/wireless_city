@@ -3,6 +3,7 @@ package com.whut.wxcs.resmanager.service;
 import java.util.List;
 
 import com.whut.wxcs.resmanager.model.Catalogue;
+import com.whut.wxcs.resmanager.model.Template;
 
 
 public interface CatalogueService extends BaseService<Catalogue>{
@@ -36,6 +37,11 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 * 获取单个类目
 	 */
 	public Catalogue getCatalogueById(long id);
+
+	/*
+	 * 保存模板及其属性
+	 */
+	public void saveTemplate(Template model);
 
 
 

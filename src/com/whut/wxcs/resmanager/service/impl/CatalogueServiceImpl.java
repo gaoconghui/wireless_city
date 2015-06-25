@@ -1,8 +1,6 @@
 package com.whut.wxcs.resmanager.service.impl;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -10,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.dao.impl.CatalogueDaoImpl;
+import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
+import com.whut.wxcs.resmanager.model.Template;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
 
@@ -29,7 +29,11 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	}
 
 	@Resource(name = "catalogueDao")
-	private CatalogueDaoImpl catalogueDao;
+	private BaseDao<Catalogue> catalogueDao;
+	@Resource(name = "templateDao")
+	private BaseDao<Template> templateDao;
+	@Resource(name = "attributeDao")
+	private BaseDao<Attribute> attributeDao;
 
 	@Override
 	public List<Catalogue> getRootCatalogue() {
@@ -102,6 +106,18 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		Catalogue catalogue = catalogueDao.getEntity(id);
 		catalogue.getParent();
 		return catalogue;
+	}
+
+	@Override
+	public void saveTemplate(Template model) {
+		System.out.println(model.getTemplateName());
+		System.out.println(model.getAttributes());
+		if(ValidateUtil.isVaild(model.getAttributes())){
+			for(Attribute attribute : model.getAttributes()){
+				attributeDao.saveOrUpdateEntity(attribute);
+			}
+		}
+		templateDao.saveOrUpdateEntity(model);
 	}
 
 }

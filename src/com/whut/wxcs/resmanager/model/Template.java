@@ -6,18 +6,18 @@ import java.util.Set;
 
 public class Template {
 
-	private int id;
+	private long id;
 	private String templateName;
 	private String description;
 	private Catalogue catalogue;
 	private Date creatTime;
 	private Set<Attribute> attributes = new HashSet<Attribute>();
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
