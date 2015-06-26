@@ -6,8 +6,13 @@
 	<class name="com.whut.wxcs.resmanager.model.Template" table="TEMPLATE">
 		<id name="id" type="long" access="field">
 			<column name="TEMPLATE_ID" />
-			<generator class="native" />
+			<generator class="foreign">
+				<param name="property">catalogue</param>
+			</generator>
 		</id>
+		<one-to-one name="catalogue"></one-to-one>
+		
+		
 		<property name="templateName" type="java.lang.String">
 			<column name="TEMPLATENAME" />
 		</property>
@@ -15,14 +20,10 @@
 			<column name="DESCRIPTION" />
 		</property>
 
-		<many-to-one name="catalogue"
-			class="com.whut.wxcs.resmanager.model.Catalogue">
-			<column name="CATALOGUE_ID" unique="true"></column>
-		</many-to-one>
 
 
-		<property name="creatTime" type="java.util.Date">
-			<column name="CREATTIME" />
+		<property name="createTime" type="java.util.Date">
+			<column name="CREATETIME" />
 		</property>
 		<set name="attributes" table="TEMPLATEATTRIBUTE" inverse="false"
 			lazy="true" access="field">
@@ -32,5 +33,6 @@
 			<many-to-many class="com.whut.wxcs.resmanager.model.Attribute"
 				column="ATTRIBUTE_ID" />
 		</set>
+		
 	</class>
 </hibernate-mapping>

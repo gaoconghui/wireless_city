@@ -8,13 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="operatortop.jsp"></jsp:include>
 	<center>
 		<h1>addtemplate page1</h1>
 		<br> <br>
 		<s:form action="TemplateAction_newTemplate">
 			<s:hidden name="cid"></s:hidden>
 
-			<td>属性名</td>
+			<td>模板名</td>
 			<br>
 			<td><s:textfield name="templateName"></s:textfield></td>
 			<br>
@@ -28,7 +29,7 @@
 			<table>
 				<tr>
 					<td>属性名称</td>
-					<td><s:textfield name="attr[0].templateName"></s:textfield></td>
+					<td><s:textfield name="attr[0].name"></s:textfield></td>
 				</tr>
 				<tr>
 					<td>属性描述</td>
@@ -50,7 +51,7 @@
 			<table>
 				<tr>
 					<td>属性名称</td>
-					<td><s:textfield name="attr[1].templateName"></s:textfield></td>
+					<td><s:textfield name="attr[1].name"></s:textfield></td>
 				</tr>
 				<tr>
 					<td>属性描述</td>
@@ -67,7 +68,6 @@
 					<td><s:textfield name="attr[1].value"></s:textfield></td>
 				</tr>
 			</table>
-
 			<s:submit></s:submit>
 		</s:form>
 		<br>

@@ -8,12 +8,6 @@
             <column name="PROVIDER_ID" />
             <generator class="native" />
         </id>
-        <set name="resources" table="RESOURCE" inverse="false" lazy="true" access="field">
-            <key>
-                <column name="PROVIDER_ID" />
-            </key>
-            <one-to-many class="com.whut.wxcs.resmanager.model.Resource" />
-        </set>
         <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
@@ -70,6 +64,9 @@
         </property>
         <property name="loginPwd" type="java.lang.String">
             <column name="LOGINPWD" />
+        </property>
+        <property name="checkState" type="integer">
+            <column name="CHECK_STATE" />
         </property>
     </class>
 </hibernate-mapping>

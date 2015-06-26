@@ -8,11 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<center>
 		<h1>catalogueHome</h1>
 		<br>
 		<s:a href="CatalogueAction_toCatalogueManagerPage">类目管理</s:a>
-		 模板管理 资源管理<br>
+		 模板管理 资源管理
 
 	</center>
 

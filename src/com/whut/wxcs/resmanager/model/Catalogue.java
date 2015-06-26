@@ -10,6 +10,8 @@ public class Catalogue {
 	private String name;
 	private String description;
 	private Template template;
+	// 模板状态，0是没有模板 1是有模板
+	private int templateState;
 
 	public long getId() {
 		return id;
@@ -57,6 +59,14 @@ public class Catalogue {
 
 	public void setTemplate(Template template) {
 		this.template = template;
+	}
+
+	public int getTemplateState() {
+		return templateState;
+	}
+
+	public void setTemplateState(int templateState) {
+		this.templateState = templateState;
 	}
 
 }

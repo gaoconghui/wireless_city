@@ -14,7 +14,7 @@
         <property name="type" type="byte">
             <column name="ATTRIBUTE_TYPE" />
         </property>
-        <property name="descritpion" type="java.lang.String">
+        <property name="description" type="java.lang.String">
             <column name="ATTRIBUTE_DESCRIPTION" />
         </property>
         <property name="value" type="java.lang.String">

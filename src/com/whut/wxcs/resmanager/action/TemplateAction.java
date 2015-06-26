@@ -1,5 +1,8 @@
 package com.whut.wxcs.resmanager.action;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 import java.util.List;
 
@@ -25,6 +28,12 @@ public class TemplateAction extends BaseAction<Template> {
 	private long cid;
 
 	List<Attribute> attr;
+
+	InputStream inputStream;
+
+	public InputStream getInputStream() {
+		return inputStream;
+	}
 
 	public List<Attribute> getAttr() {
 		return attr;
@@ -53,28 +62,39 @@ public class TemplateAction extends BaseAction<Template> {
 	 * 新建一个模板
 	 */
 	public String newTemplate() {
-		System.out.println(attr.size());
 		System.out.println(model.getDescription());
 		System.out.println(cid);
-		
+
 		Catalogue catalogue = new Catalogue();
 		catalogue.setId(cid);
-		
+
 		model.setCatalogue(catalogue);
 		model.setAttributes(new HashSet<Attribute>(attr));
-		
+
 		catalogueService.saveTemplate(model);
-		System.out.println(model.getId());
-		
+
 		return "newTemplate";
 	}
-	
+
 	/*
 	 * 跳转到模板详情页面
 	 */
-	public String toTemplateDetailPage(){
-		
+	public String toTemplateDetailPage() {
+		model = catalogueService.getTemplateWithAll(model.getId());
 		return "toTemplateDetailPage";
+	}
+
+	/*
+	 * AJAX
+	 */
+	public String updateTemplateUseAJAX() {
+		catalogueService.updateTemplate(model);
+		try {
+			catalogueService.updateTemplate(model);
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+		}
+		return "ajax-success";
 	}
 
 }

@@ -6,13 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="scripts/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+	
+	
+</script>
 </head>
 <body>
+	<jsp:include page="operatortop.jsp"></jsp:include>
+
 	<center>
 		<h1>catalogue page1</h1>
 		<br>
 		<s:form action="CatalogueAction_dddCatalogue">
-		<s:hidden name="id"></s:hidden>
+			<s:hidden name="id"></s:hidden>
 			<table>
 				<tr>
 					<td>父节点</td>
@@ -29,6 +36,7 @@
 				</tr>
 				<tr>
 					<td><s:submit></s:submit></td>
+					<td><s:a cssClass="update">修改</s:a></td>
 				</tr>
 			</table>
 		</s:form>

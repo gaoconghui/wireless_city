@@ -21,6 +21,12 @@
 		
 		<default-interceptor-ref name="CityIntercptor"></default-interceptor-ref>
 		
+		<global-results>
+			<result type="stream" name="ajax-success">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</global-results>
 		
 		<action name="CatalogueAction_*" class="catalogueAction" method="{1}">
 			<result name="toDesignCataloguePage">admin/designcatalogue.jsp</result>
@@ -34,6 +40,9 @@
 		<action name="TemplateAction_*" class="templateAction" method="{1}">
 			<result name="toNewTemplatePage">admin/addtemplate.jsp</result>
 			<result name="toTemplateDetailPage">admin/templatedetail.jsp</result>
+			<result name="newTemplate">admin/templatedetail.jsp</result>
+			<result name="updateTemplate">admin/templatedetail.jsp</result>
+			
 		</action>
 
 	</package>

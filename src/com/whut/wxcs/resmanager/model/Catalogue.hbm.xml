@@ -25,10 +25,12 @@
 		<property name="description" type="java.lang.String">
 			<column name="DESCRIPTION" />
 		</property>
+		<property name="templateState" type="integer">
+			<column name="TEMPLATE_STATE" />
+		</property>
 
 
-		<one-to-one name="template" class="com.whut.wxcs.resmanager.model.Template"
-			property-ref="catalogue"></one-to-one>
+		<one-to-one name="template"></one-to-one>
 
 	</class>
 </hibernate-mapping>

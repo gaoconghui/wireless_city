@@ -43,6 +43,21 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 */
 	public void saveTemplate(Template model);
 
+	/*
+	 * 查询返回一个template以及属性
+	 */
+	public Template getTemplate(long id);
+
+	/*
+	 * 查找返回一个template以及其属性和catalogue
+	 */
+	public Template getTemplateWithAll(long id);
+
+	/*
+	 * 修改template
+	 */
+	public void updateTemplate(Template model);
+
 
 
 }

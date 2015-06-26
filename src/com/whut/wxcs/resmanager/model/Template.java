@@ -10,7 +10,7 @@ public class Template {
 	private String templateName;
 	private String description;
 	private Catalogue catalogue;
-	private Date creatTime;
+	private Date createTime;
 	private Set<Attribute> attributes = new HashSet<Attribute>();
 
 	public long getId() {
@@ -45,12 +45,12 @@ public class Template {
 		this.catalogue = catalogue;
 	}
 
-	public Date getCreatTime() {
-		return creatTime;
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreatTime(Date creatTime) {
-		this.creatTime = creatTime;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	public Set<Attribute> getAttributes() {

@@ -7,19 +7,11 @@ public class Attribute {
 
 	// 属性类型（1-文本型、2-小数型、3-整型、4-时间型、5-枚举型
 	private byte type;
-	private String descritpion;
+	private String description;
 	private String value;
 
 	public long getId() {
 		return id;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
 	}
 
 	public void setId(long id) {
@@ -42,12 +34,20 @@ public class Attribute {
 		this.type = type;
 	}
 
-	public String getDescritpion() {
-		return descritpion;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescritpion(String descritpion) {
-		this.descritpion = descritpion;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }
