@@ -16,3 +16,5 @@ src/com/whut/wxcs/resmanager/model/Template.java
 src/com/whut/wxcs/resmanager/model/Catalogue.java
 
 src/com/whut/wxcs/resmanager/model/Catalogue.hbm.xml
+
+build/classes/com/whut/wxcs/resmanager/model/Template.class

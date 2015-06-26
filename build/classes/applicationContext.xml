@@ -61,11 +61,8 @@
 
 	<!-- aop 配置 -->
 	<aop:config>
-<<<<<<< HEAD
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..service*.*.*(..))"/>
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..dao*.*.*(..))"/>
-=======
+
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..service*.*.*(..))" />
->>>>>>> User&Provider_COPY
+
 	</aop:config>
 </beans>
