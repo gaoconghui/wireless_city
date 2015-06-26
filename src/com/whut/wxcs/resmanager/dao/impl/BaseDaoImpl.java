@@ -11,27 +11,28 @@ import org.hibernate.SessionFactory;
 import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.util.ReflectionUtils;
 
+
 /**
  * BaseDao 实现类
- * 
  * @author apple
  *
  * @param <T>
  */
 
+
 @SuppressWarnings("unchecked")
-public abstract class BaseDaoImpl<T> implements BaseDao<T> {
-
-	@Resource(name = "sessionFactory")
-	SessionFactory sessionFactory;
-
+public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
+	
+	@Resource(name="sessionFactory")
+	 SessionFactory sessionFactory ;
+	
 	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();
 	}
-
+	
 	Class<T> clazz;
-
-	public BaseDaoImpl() {
+	
+	public BaseDaoImpl(){
 		clazz = ReflectionUtils.getSuperGenericType(getClass());
 	}
 
@@ -58,7 +59,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public void batchEntityByHql(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for (int i = 0; i < objects.length; i++) {
+		for(int i = 0 ; i < objects.length ; i++){
 			query.setParameter(i, objects[i]);
 		}
 		query.executeUpdate();
@@ -77,17 +78,17 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public List<T> findEntityByHql(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for (int i = 0; i < objects.length; i++) {
+		for(int i = 0 ; i < objects.length ; i++){
 			query.setParameter(i, objects[i]);
 		}
 		return query.list();
-
+		
 	}
-
+	
 	@Override
 	public Object ubiqueResult(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for (int i = 0; i < objects.length; i++) {
+		for(int i = 0 ; i < objects.length ; i++){
 			query.setParameter(i, objects[i]);
 		}
 		return query.uniqueResult();

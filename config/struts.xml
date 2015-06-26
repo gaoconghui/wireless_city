@@ -4,9 +4,12 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+	<!-- 主题 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<!-- 开发模式 -->
 	<constant name="struts.devMode" value="true"></constant>
 
-
+	<package name="default" namespace="/" extends="struts-default">
 
 		<interceptors>
 			<interceptor-stack name="CityIntercptor">
@@ -33,6 +36,7 @@
 				<param name="actionName">CatalogueAction_toCatalogueManagerPage</param>
 			</result>
 		</action>
+		
 		<action name="TemplateAction_*" class="templateAction" method="{1}">
 			<result name="toNewTemplatePage">admin/addtemplate.jsp</result>
 			<result name="toTemplateDetailPage">admin/templatedetail.jsp</result>
@@ -41,32 +45,5 @@
 			
 		</action>
 
-	<package name="regPage" extends="struts-default">
-		<action name="RegAction_*" class="regAction" method="{1}">
-			<result name="regPage">/reg.jsp</result>
-			<result name="input">/reg.jsp</result>
-			<result name="success">/success.jsp</result>
-			<result name="loginPage">/login/login.jsp</result>
-		</action>
-		<action name="LoginAction_*" class="loginAction" method="{1}">
-			<result name="success">/login/loginsuccess.jsp</result>
-			<result name="input">/login/login.jsp</result>
-			<result name="exit">/login/loginsuccess.jsp</result>
-		</action>
-		<action name="ProviderAction_*" class="providerAction" method="{1}">
-			<result name="provider_regPage">/login/provider_reg.jsp</result>
-			<result name="input">/login/provider_reg.jsp</result>
-			<result name="reg">/login/provider_reg_success.jsp</result>
-			<result name="provider_loginPage">/login/provider_login.jsp</result>
-			<result name="login_fail">/login/provider_login.jsp</result>
-			<result name="loginSuccess">/login/provider_reg_success.jsp</result>
-		</action>
-		<action name="UserAction_*" class="userAction" method="{1}">
-			<result name="user_info"></result>
-
-		</action>
-		
-
 	</package>
-
 </struts>
