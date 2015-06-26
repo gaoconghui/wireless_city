@@ -52,4 +52,10 @@ public class ProviderServiceImpl extends BaseServiceImpl<Provider> implements
 		return findEntityByHql(hql, 1);
 	}
 
+	@Override
+	public List<Provider> getUncheckedProviders() {
+		String hql = "from Provider p WHERE p.checkState =? ";
+		return findEntityByHql(hql, 2);
+	}
+
 }

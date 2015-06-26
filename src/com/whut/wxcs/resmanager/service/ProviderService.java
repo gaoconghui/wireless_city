@@ -16,4 +16,6 @@ public interface ProviderService extends BaseService<Provider> {
 
 	public List<Provider> getCheckedProviders();
 
+	public List<Provider> getUncheckedProviders();
+
 }

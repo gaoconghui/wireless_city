@@ -5,7 +5,7 @@
 
 <struts>
 	<!-- 主题 -->
-<!-- 	<constant name="struts.ui.theme" value="simple"></constant> -->
+	<!-- <constant name="struts.ui.theme" value="simple"></constant> -->
 	<!-- 开发模式 -->
 	<constant name="struts.devMode" value="true"></constant>
 
@@ -66,7 +66,8 @@
 			<result name="provider_loginPage">/login/provider_login.jsp</result>
 			<result name="login_fail">/login/provider_login.jsp</result>
 			<result name="loginSuccess">/login/provider_reg_success.jsp</result>
-		    <result name="provider_manager">/manager.jsp</result>
+			<result name="provider_manager">/manager.jsp</result>
+			<result name="pass_check" type="redirectAction">ProviderAction_manager</result>
 		</action>
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<result name="user_info"></result>

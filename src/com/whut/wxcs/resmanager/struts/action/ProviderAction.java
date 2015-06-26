@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import com.whut.wxcs.resmanager.util.ValidateUtil;
 @Controller
 @Scope("prototype")
 public class ProviderAction extends BaseAction<Provider> implements
-		SessionAware {
+		SessionAware, RequestAware {
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +28,19 @@ public class ProviderAction extends BaseAction<Provider> implements
 	private Provider provider = new Provider();
 	private String confirmPwd;
 	private Map<String, Object> session;
+	private Map<String, Object> request;
+	/**
+	 * 判断获取的的服务商审核状态 1--审核的服务商 2-未审核的服务商
+	 */
+	private int state;
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	public int getState() {
+		return state;
+	}
 
 	public void setConfirmPwd(String confirmPwd) {
 		this.confirmPwd = confirmPwd;
@@ -87,11 +101,11 @@ public class ProviderAction extends BaseAction<Provider> implements
 			addActionError("账户名密码错误");
 			return "login_fail";
 		}
-		if (provider.getCheckState() == 0) {
+		if (provider.getCheckState() == 2) {
 			addActionError("账户正在审核");
 			return "login_fail";
 		}
-		if (provider.getCheckState() == 2) {
+		if (provider.getCheckState() == 0) {
 			addActionError("审核未通过");
 			return "login_fail";
 		}
@@ -106,7 +120,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 	public String reg() {
 		provider.setRegisterTime(new Date());
 		provider.setLoginPwd(DataUtils.MD5(provider.getLoginPwd()));
-		provider.setCheckState(0);
+		provider.setCheckState(2);
 		providerService.saveEntity(provider);
 		return "reg";
 	}
@@ -125,10 +139,38 @@ public class ProviderAction extends BaseAction<Provider> implements
 		return "provider_loginPage";
 	}
 
+	/**
+	 * 服务商审核通过页面
+	 */
 	public String manager() {
-		List<Provider> providers = providerService.getCheckedProviders();
-		session.put("providers", providers);
+		List<Provider> providers;
+		if (state == 1) {
+			providers = providerService.getCheckedProviders();
+			session.put("providers", providers);
+			System.out.println(providers.size());
+		}
+		if (state == 2) {
+			providers = providerService.getUncheckedProviders();
+			System.out.println(providers.size());
+			session.put("providers", providers);
+		}
 		return "provider_manager";
+	}
+
+	/**
+	 * 使服务商账号通过审核
+	 */
+	public String passCheck() {
+		System.out.println(provider.getId());
+		provider = providerService.getEntity(provider.getId());
+		provider.setCheckState(1);
+		providerService.saveOrUpdateEntity(provider);
+		return "pass_check";
+	}
+
+	@Override
+	public void setRequest(Map<String, Object> request) {
+		this.request = request;
 	}
 
 }
