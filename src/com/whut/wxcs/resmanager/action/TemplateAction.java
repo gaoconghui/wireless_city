@@ -85,15 +85,13 @@ public class TemplateAction extends BaseAction<Template> {
 	}
 
 	/*
-	 * AJAX
+	 * AJAX更新模板的名字和描述
 	 */
 	public String updateTemplateUseAJAX() {
-		catalogueService.updateTemplate(model);
 		try {
 			catalogueService.updateTemplate(model);
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-		}
+		} catch (UnsupportedEncodingException e) {}
 		return "ajax-success";
 	}
 

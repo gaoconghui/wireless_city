@@ -2,6 +2,7 @@ package com.whut.wxcs.resmanager.service;
 
 import java.util.List;
 
+import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Template;
 
@@ -57,6 +58,16 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 * 修改template
 	 */
 	public void updateTemplate(Template model);
+
+	/*
+	 * 更新Attribute
+	 */
+	public void updateAttribute(Attribute model);
+
+	/*
+	 * 删除Attribute
+	 */
+	public void deleteAttribute(Attribute model);
 
 
 

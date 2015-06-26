@@ -114,12 +114,12 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		Catalogue catalogue = catalogueDao.getEntity(model.getCatalogue().getId());
 		model.setCatalogue(catalogue);
 		if (catalogue.getTemplateState() == 0) {
+			templateDao.saveOrUpdateEntity(model);
 			if (ValidateUtil.isVaild(model.getAttributes())) {
 				for (Attribute attribute : model.getAttributes()) {
 					attributeDao.saveOrUpdateEntity(attribute);
 				}
 			}
-			templateDao.saveOrUpdateEntity(model);
 			catalogue.setTemplateState(1);
 		}else{
 			
@@ -143,10 +143,20 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 
 	@Override
 	public void updateTemplate(Template model) {
-		Template oldTemplate = templateDao.getEntity(model.getId());
-		oldTemplate.setTemplateName(model.getTemplateName());
-		oldTemplate.setDescription(model.getDescription());
-		templateDao.updateEntity(oldTemplate);
+		String hql = "UPDATE Template t SET t.description = ? ,t.templateName = ? WHERE t.id = ?";
+		templateDao.batchEntityByHql(hql, model.getDescription(),model.getTemplateName(),model.getId());
+		
+	}
+
+	@Override
+	public void updateAttribute(Attribute model) {
+		String hql = "UPDATE Attribute a SET a.description = ? ,a.name = ?,a.type = ? , a.value = ? WHERE a.id = ?";
+		templateDao.batchEntityByHql(hql, model.getDescription(),model.getName(),model.getType(),model.getValue(),model.getId());
+	}
+
+	@Override
+	public void deleteAttribute(Attribute model) {
+		attributeDao.deleteEntity(model);
 	}
 
 }
