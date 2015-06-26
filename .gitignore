@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 
 build/classes/com/whut/wxcs/resmanager/bean/test/testUserService.class
 
 *.class
 
 *.class
+=======
+.classpath
+build/classes/db.properties
+config/db.properties
+>>>>>>> User&Provider_COPY
+
+src/com/whut/wxcs/resmanager/model/Template.java
+
+src/com/whut/wxcs/resmanager/model/Catalogue.java
+
+src/com/whut/wxcs/resmanager/model/Catalogue.hbm.xml

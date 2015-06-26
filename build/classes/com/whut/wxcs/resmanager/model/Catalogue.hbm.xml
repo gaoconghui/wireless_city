@@ -6,14 +6,14 @@
 	<class name="com.whut.wxcs.resmanager.model.Catalogue" table="CATALOGUE">
 		<id name="id" type="long">
 			<column name="CATALOGUE_ID" />
-			<generator class="assigned" />
+			<generator class="native" />
 		</id>
 		<many-to-one name="parent"
 			class="com.whut.wxcs.resmanager.model.Catalogue" fetch="join">
 			<column name="PARENT_ID" />
 		</many-to-one>
 		<set name="child" table="CATALOGUE" inverse="false" lazy="true"
-			access="field" order-by="id">
+			access="field">
 			<key>
 				<column name="PARENT_ID" />
 			</key>

@@ -9,7 +9,7 @@
 
 	<context:property-placeholder location="classpath:db.properties" />
 	<context:component-scan
-		base-package="com.whut.wxcs.resmanager.dao.impl,com.whut.wxcs.resmanager.service.impl,com.whut.wxcs.resmanager.action"></context:component-scan>
+		base-package="com.whut.wxcs.resmanager.dao.impl,com.whut.wxcs.resmanager.service.impl,com.whut.wxcs.resmanager.struts.action"></context:component-scan>
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="user" value="${jdbc.user}"></property>
@@ -23,13 +23,14 @@
 		<property name="acquireIncrement" value="${jdbc.increase}"></property>
 	</bean>
 
-	 <bean id="sessionFactory"
+	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="mappingLocations" value="classpath:com/whut/wxcs/resmanager/model/*.hbm.xml" />
+		<property name="mappingLocations"
+			value="classpath:com/whut/wxcs/resmanager/model/*.hbm.xml" />
 		<property name="configLocations" value="classpath:hibernate.cfg.xml" />
-	</bean> 
-	
+	</bean>
+
 
 	<!-- 配置hibernate事务管理器，用来在service 层面上实现事务管理，达到平台无关性 -->
 	<bean id="txManager"
@@ -39,25 +40,32 @@
 
 	<!-- 事务通知 -->
 	<tx:advice id="txAdvice" transaction-manager="txManager">
-	<tx:attributes>
-	 	<!-- 写操作 isolation:隔离等级  propagation：传播行为-->
-		<tx:method name="save*" isolation="DEFAULT" propagation="REQUIRED"/>
-		<tx:method name="update*" isolation="DEFAULT" propagation="REQUIRED"/>
-		<tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED"/>
-		<tx:method name="batch*" isolation="DEFAULT" propagation="REQUIRED"/>
-		
-		<!-- 写操作 -->
-		<tx:method name="get*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
-		<tx:method name="find*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
-		<tx:method name="load*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
-		
-		<tx:method name="*" />
-	</tx:attributes>
+		<tx:attributes>
+			<!-- 写操作 isolation:隔离等级 propagation：传播行为 -->
+			<tx:method name="save*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="update*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="batch*" isolation="DEFAULT" propagation="REQUIRED" />
+
+			<!-- 写操作 -->
+			<tx:method name="get*" isolation="DEFAULT" propagation="REQUIRED"
+				read-only="true" />
+			<tx:method name="find*" isolation="DEFAULT" propagation="REQUIRED"
+				read-only="true" />
+			<tx:method name="load*" isolation="DEFAULT" propagation="REQUIRED"
+				read-only="true" />
+
+			<tx:method name="*" />
+		</tx:attributes>
 	</tx:advice>
 
 	<!-- aop 配置 -->
 	<aop:config>
+<<<<<<< HEAD
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..service*.*.*(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..dao*.*.*(..))"/>
+=======
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..service*.*.*(..))" />
+>>>>>>> User&Provider_COPY
 	</aop:config>
 </beans>

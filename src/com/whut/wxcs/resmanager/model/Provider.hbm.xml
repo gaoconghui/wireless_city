@@ -3,6 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-5-27 16:22:44 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
+
     <class name="com.whut.wxcs.resmanager.model.Provider" table="PROVIDER">
         <id name="id" type="long">
             <column name="PROVIDER_ID" />
@@ -35,9 +36,7 @@
         <property name="address" type="java.lang.String">
             <column name="ADDRESS" />
         </property>
-        <property name="registerTime" type="java.sql.Date">
-            <column name="REGISTERTIME" />
-        </property>
+       <property name="registerTime" type="java.util.Date" update="false">
         <property name="qq" type="java.lang.String">
             <column name="QQ" />
         </property>
@@ -69,4 +68,5 @@
             <column name="CHECK_STATE" />
         </property>
     </class>
+
 </hibernate-mapping>

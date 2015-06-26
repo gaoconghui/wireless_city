@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<<<<<<< HEAD:WebContent/operatorhome.jsp
+	<center>
+		<h1>catalogueHome</h1>
+		<br>
+		<s:a href="CatalogueAction_toCatalogueManagerPage">类目管理</s:a>
+		 模板管理 资源管理<br>
+
+	</center>
+
+=======
+	<h1>Success</h1>
+>>>>>>> User&Provider_COPY:WebContent/login/provider_reg_success.jsp
+</body>
+</html>

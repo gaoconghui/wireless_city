@@ -7,10 +7,9 @@ import javax.annotation.Resource;
 import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.service.BaseService;
 
-
 public abstract class BaseServiceImpl<T> implements BaseService<T> {
 
-	BaseDao<T> baseDao;
+	private BaseDao<T> baseDao;
 
 	@Resource
 	public void setBaseDao(BaseDao<T> baseDao) {
@@ -43,12 +42,12 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Override
-	public T loadEntity(Integer id) {
+	public T loadEntity(long id) {
 		return baseDao.loadEntity(id);
 	}
 
 	@Override
-	public T getEntity(Integer id) {
+	public T getEntity(long id) {
 		return baseDao.getEntity(id);
 	}
 
@@ -56,7 +55,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	public List<T> findEntityByHql(String hql, Object... objects) {
 		return baseDao.findEntityByHql(hql, objects);
 	}
-	
+
 	@Override
 	public Object ubiqueResult(String hql, Object... objects) {
 		return baseDao.ubiqueResult(hql, objects);
