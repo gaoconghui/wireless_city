@@ -10,4 +10,9 @@ public interface UserService extends BaseService<User> {
 
 	public boolean isLogin(User user);
 
+	public User findUserByName(String name);
+
+	public User getUserById(long param_id);
+    
+	
 }

@@ -51,4 +51,16 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements
 		}
 		return true;
 	}
+
+	@Override
+	public User findUserByName(String name) {
+		String hql = "from User u WHERE name = ?";
+		List<User> users = findEntityByHql(hql, name);
+		return users.get(0);
+	}
+
+	@Override
+	public User getUserById(long param_id) {
+		return getEntity(param_id);
+	}
 }

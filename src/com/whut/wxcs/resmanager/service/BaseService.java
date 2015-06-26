@@ -14,9 +14,9 @@ public interface BaseService<T> {
 
 	public void batchEntityByHql(String hql, Object... objects);
 
-	public T loadEntity(Integer id);
+	public T loadEntity(long id);
 
-	public T getEntity(Integer id);
+	public T getEntity(long id);
 
 	public List<T> findEntityByHql(String hql, Object... objects);
 

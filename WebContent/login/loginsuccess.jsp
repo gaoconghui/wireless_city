@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,8 +8,20 @@
 <title>无线城市的主页</title>
 </head>
 <body>
-   <center>
-      <h1>登陆成功</h1>
-   </center>
+	<center>
+		<s:if test="#session.user!=empty">
+			<table>
+				<tr>
+					<td><a
+						href="UserAction_info?param_id=<s:property value="#session.user.id" />"><s:property
+								value="#session.user.name" /></a></td>
+					<td><a href="LoginAction_exit">注销登陆</a></td>
+				</tr>
+			</table>
+		</s:if>
+		<s:else>
+			<a href="RegAction_toLoginPage">请重新登录</a>
+		</s:else>
+	</center>
 </body>
 </html>

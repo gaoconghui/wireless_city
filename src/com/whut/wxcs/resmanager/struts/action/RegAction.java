@@ -46,6 +46,9 @@ public class RegAction extends BaseAction<User> {
 		if (!ValidateUtil.isVaild(user.getPhoneNumber())) {
 			addFieldError("phoneNumber", "号码不能为空");
 		}
+		if (!ValidateUtil.isVaild(user.getEmail())) {
+			addFieldError("email", "邮箱账号不能位空");
+		}
 		if (hasErrors()) {
 			return;
 		}
@@ -61,6 +64,10 @@ public class RegAction extends BaseAction<User> {
 			addFieldError("name", "昵称已经存在");
 			return;
 		}
+		/*
+		 * if (!ValidateUtil.emailValid(user.getEmail())) {
+		 * addFieldError("email", "请输入正确的邮箱"); return; }
+		 */
 	}
 
 	/**
