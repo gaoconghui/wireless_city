@@ -25,13 +25,12 @@
 		<property name="createTime" type="java.util.Date">
 			<column name="CREATETIME" />
 		</property>
-		<set name="attributes" table="TEMPLATEATTRIBUTE" inverse="false"
+		<set name="attributes" inverse="false"
 			lazy="true" access="field">
 			<key>
 				<column name="TEMPLATE_ID" />
 			</key>
-			<many-to-many class="com.whut.wxcs.resmanager.model.Attribute"
-				column="ATTRIBUTE_ID" />
+			<one-to-many class="com.whut.wxcs.resmanager.model.Attribute" />
 		</set>
 		
 	</class>
