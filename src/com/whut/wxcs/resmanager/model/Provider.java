@@ -1,12 +1,8 @@
 package com.whut.wxcs.resmanager.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Provider {
-
-	private Set<Resource> resources = new HashSet<Resource>();
 
 	private long id;
 	private String name;
@@ -15,6 +11,8 @@ public class Provider {
 	private String profile;
 	private String logo;
 	private String enail;
+	//服务商审核状态:0-未通过  1-审核通过  2-正在审核中
+	private int checkState;
 	private String fax;
 	private String postcode;
 	private String address;
@@ -28,15 +26,6 @@ public class Provider {
 	private String certificationType;
 	private String loginName;
 	private String loginPwd;
-
-	public void addResource(Resource resource) {
-		resources.add(resource);
-	}
-
-	public void removeResource(Resource resource) {
-		if (resources.contains(resource))
-			resources.remove(resource);
-	}
 
 	public long getId() {
 		return id;
@@ -92,6 +81,14 @@ public class Provider {
 
 	public void setEnail(String enail) {
 		this.enail = enail;
+	}
+
+	public int getCheckState() {
+		return checkState;
+	}
+
+	public void setCheckState(int checkState) {
+		this.checkState = checkState;
 	}
 
 	public String getFax() {
@@ -196,19 +193,6 @@ public class Provider {
 
 	public void setLoginPwd(String loginPwd) {
 		this.loginPwd = loginPwd;
-	}
-
-	@Override
-	public String toString() {
-		return "Providers [id=" + id + ", name=" + name + ", industry="
-				+ industry + ", scale=" + scale + ", profile=" + profile
-				+ ", logo=" + logo + ", enail=" + enail + ", fax=" + fax
-				+ ", postcode=" + postcode + ", address=" + address
-				+ ", registerTime=" + registerTime + ", qq=" + qq
-				+ ", telephone=" + telephone + ", cellphone=" + cellphone
-				+ ", contects=" + contects + ", url=" + url + ", grade="
-				+ grade + ", certificationType=" + certificationType
-				+ ", loginName=" + loginName + ", loginPwd=" + loginPwd + "]";
 	}
 
 }

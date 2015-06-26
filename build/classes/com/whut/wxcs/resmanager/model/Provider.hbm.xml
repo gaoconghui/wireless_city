@@ -63,6 +63,9 @@
 		<property name="grade" type="int">
 			<column name="GRADE" />
 		</property>
+		<property name="checkState" type="int">
+		    <column name="CHECKSTATE"></column>
+		</property>
 		<property name="certificationType" type="java.lang.String">
 			<column name="CERTIFICATIONTYPE" />
 		</property>
