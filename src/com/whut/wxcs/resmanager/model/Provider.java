@@ -1,10 +1,6 @@
 package com.whut.wxcs.resmanager.model;
 
-<<<<<<< HEAD
 import java.sql.Date;
-=======
-import java.util.Date;
->>>>>>> User&Provider
 
 public class Provider {
 
@@ -15,8 +11,6 @@ public class Provider {
 	private String profile;
 	private String logo;
 	private String enail;
-	//服务商审核状态:0-未通过  1-审核通过  2-正在审核中
-	private int checkState;
 	private String fax;
 	private String postcode;
 	private String address;
@@ -31,12 +25,9 @@ public class Provider {
 	private String loginName;
 	private String loginPwd;
 
-<<<<<<< HEAD
 	// 审核状态 0:未通过 1：通过 2：审核中
 	private int checkState;
 
-=======
->>>>>>> User&Provider
 	public long getId() {
 		return id;
 	}
@@ -91,14 +82,6 @@ public class Provider {
 
 	public void setEnail(String enail) {
 		this.enail = enail;
-	}
-
-	public int getCheckState() {
-		return checkState;
-	}
-
-	public void setCheckState(int checkState) {
-		this.checkState = checkState;
 	}
 
 	public String getFax() {
@@ -205,7 +188,6 @@ public class Provider {
 		this.loginPwd = loginPwd;
 	}
 
-<<<<<<< HEAD
 	public int getCheckState() {
 		return checkState;
 	}
@@ -214,6 +196,4 @@ public class Provider {
 		this.checkState = checkState;
 	}
 
-=======
->>>>>>> User&Provider
 }
