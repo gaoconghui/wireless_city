@@ -20,5 +20,8 @@
         <property name="value" type="java.lang.String">
             <column name="ATTRIBUTE_VALUE" />
         </property>
+        <many-to-one name="template" class="com.whut.wxcs.resmanager.model.Template">
+        	<column name="TEMPLATE_ID"></column>
+        </many-to-one>
     </class>
 </hibernate-mapping>

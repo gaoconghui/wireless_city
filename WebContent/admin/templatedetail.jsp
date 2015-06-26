@@ -8,6 +8,15 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="scripts/jquery-2.1.3.min.js"></script>
 <script type="text/javascript">
+	/*
+		TemplateAction_updateTemplateUseAJAX:更新模板。 传入参数：id 	templateName	description
+		TemplateAction_saveAttributeUseAJAX:更新模板。 传入参数：tid(模板id 或者是类目id ) 	
+															   name		type	description		value（只有type是枚举型时才有value，用逗号隔开）
+		TemplateAction_updateAttributeUseAJAX:更新模板。 传入参数：id(属性id) 	name	type	description		value（只有type是枚举型时才有value，用逗号隔开）
+	
+		传回的值均是1：成功 非1：失败（一般不会失败 = = ）
+		*/
+
 	$(function() {
 		//更新模板名字 描述。url地址就是TemplateAction_updateTemplateUseAJAX，参数通过JS从输入的文本框内获取。
 		//1是成功 非1是失败

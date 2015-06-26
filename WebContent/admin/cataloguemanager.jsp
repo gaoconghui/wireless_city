@@ -42,14 +42,11 @@
 							href='CatalogueAction_toDesginCataloguePage?parentid=%{id}'>增加子目录</s:a></td>
 					<td><s:a href='CatalogueAction_deleteCatalogue?id=%{id}'>删除</s:a></td>
 					<td><s:a href='CatalogueAction_updateCatalogue?id=%{id}'>修改</s:a></td>
-					<td>
-					<s:if test="templateState == 0">
-						<s:a href='TemplateAction_toNewTemplatePage?cid=%{id}'>增加</s:a>
-					</s:if>
-					<s:else>
-						<s:a href='TemplateAction_toTemplateDetailPage?id=%{id}'>查看</s:a>
-					</s:else>
-					</td>
+					<td><s:if test="templateState == 0">
+							<s:a href='TemplateAction_toNewTemplatePage?cid=%{id}'>增加</s:a>
+						</s:if> <s:else>
+							<s:a href='TemplateAction_toTemplateDetailPage?id=%{id}'>查看</s:a>
+						</s:else></td>
 				</tr>
 				<s:iterator value="child" var="c3">
 					<!-- 二级类目 -->
@@ -64,6 +61,11 @@
 								href='CatalogueAction_toDesginCataloguePage?parentid=%{id}'>增加子目录</s:a></td>
 						<td><s:a href='CatalogueAction_deleteCatalogue?id=%{id}'>删除</s:a></td>
 						<td><s:a href='CatalogueAction_updateCatalogue?id=%{id}'>修改</s:a></td>
+						<td><s:if test="templateState == 0">
+								<s:a href='TemplateAction_toNewTemplatePage?cid=%{id}'>增加</s:a>
+							</s:if> <s:else>
+								<s:a href='TemplateAction_toTemplateDetailPage?id=%{id}'>查看</s:a>
+							</s:else></td>
 					</tr>
 					<s:iterator value="child" var="c4">
 						<!-- 三级类目 -->
@@ -78,6 +80,11 @@
 									href='CatalogueAction_toDesginCataloguePage?parentid=%{id}'>增加子目录</s:a></td>
 							<td><s:a href='CatalogueAction_deleteCatalogue?id=%{id}'>删除</s:a></td>
 							<td><s:a href='CatalogueAction_updateCatalogue?id=%{id}'>修改</s:a></td>
+							<td><s:if test="templateState == 0">
+									<s:a href='TemplateAction_toNewTemplatePage?cid=%{id}'>增加</s:a>
+								</s:if> <s:else>
+									<s:a href='TemplateAction_toTemplateDetailPage?id=%{id}'>查看</s:a>
+								</s:else></td>
 						</tr>
 						<s:iterator value="child" var="c4">
 							<!-- 四级类目 -->
@@ -92,6 +99,11 @@
 										href='CatalogueAction_toDesginCataloguePage?parentid=%{id}'>增加子目录</s:a></td>
 								<td><s:a href='CatalogueAction_deleteCatalogue?id=%{id}'>删除</s:a></td>
 								<td><s:a href='CatalogueAction_updateCatalogue?id=%{id}'>修改</s:a></td>
+								<td><s:if test="templateState == 0">
+										<s:a href='TemplateAction_toNewTemplatePage?cid=%{id}'>增加</s:a>
+									</s:if> <s:else>
+										<s:a href='TemplateAction_toTemplateDetailPage?id=%{id}'>查看</s:a>
+									</s:else></td>
 							</tr>
 							<s:iterator value="child" var="c4">
 								<!-- 五级类目 -->
@@ -105,6 +117,11 @@
 									<td></td>
 									<td><s:a href='CatalogueAction_deleteCatalogue?id=%{id}'>删除</s:a></td>
 									<td><s:a href='CatalogueAction_updateCatalogue?id=%{id}'>修改</s:a></td>
+									<td><s:if test="templateState == 0">
+											<s:a href='TemplateAction_toNewTemplatePage?cid=%{id}'>增加</s:a>
+										</s:if> <s:else>
+											<s:a href='TemplateAction_toTemplateDetailPage?id=%{id}'>查看</s:a>
+										</s:else></td>
 								</tr>
 							</s:iterator>
 						</s:iterator>

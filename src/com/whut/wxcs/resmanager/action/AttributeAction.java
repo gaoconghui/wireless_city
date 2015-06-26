@@ -11,10 +11,12 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.opensymphony.xwork2.Validateable;
 import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Template;
 import com.whut.wxcs.resmanager.service.CatalogueService;
+import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Controller
 @Scope("prototype")
@@ -25,16 +27,22 @@ public class AttributeAction extends BaseAction<Attribute> {
 	@Resource
 	private CatalogueService catalogueService;
 
+	private InputStream inputStream;
 
-	List<Attribute> attr;
+	//template 的id
+	private int tid;
 
-	InputStream inputStream;
+	public void setTid(int tid) {
+		this.tid = tid;
+	}
+
+	public int getTid() {
+		return tid;
+	}
 
 	public InputStream getInputStream() {
 		return inputStream;
 	}
-
-
 
 	/*
 	 * AJAX更新Attribute,要传入id 以及要修改的内容
@@ -43,10 +51,11 @@ public class AttributeAction extends BaseAction<Attribute> {
 		try {
 			catalogueService.updateAttribute(model);
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {}
+		} catch (UnsupportedEncodingException e) {
+		}
 		return "ajax-success";
 	}
-	
+
 	/*
 	 * AJAX删除Attribute,要传入id 以及要修改的内容
 	 */
@@ -54,7 +63,29 @@ public class AttributeAction extends BaseAction<Attribute> {
 		try {
 			catalogueService.deleteAttribute(model);
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {}
+		} catch (UnsupportedEncodingException e) {
+		}
+		return "ajax-success";
+	}
+
+	/*
+	 * AJAX添加Attribute,传入template的id（即catalogue的id）,传入attribute
+	 * 的name和description
+	 */
+	public String saveAttributeUseAJAX() {
+		try {
+			if(getTid() != 0 ){
+				Template template = new Template();
+				template.setId(getTid());
+				model.setTemplate(template);
+				catalogueService.saveSingleAttribute(model);
+				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			}else{
+				//0 : 没有指定tid 错误
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			}
+		} catch (UnsupportedEncodingException e) {
+		}
 		return "ajax-success";
 	}
 

@@ -50,10 +50,14 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	public void saveCatalogue(Catalogue model) {
 		int flag = 0;
 		if (model.getId() != 0) {
-			long oldId = catalogueDao.getEntity(model.getId()).getParent()
-					.getId();
-			if (oldId == model.getParent().getId())
-				flag = 1;
+			Catalogue catalogue = catalogueDao.getEntity(model.getId());
+			if (catalogue.getParent().getId() == model.getParent().getId()) {
+				
+				String hql = "UPDATE Catalogue c SET c.name = ? , c.description = ? WHERE c.id = ?";
+				catalogueDao.batchEntityByHql(hql, model.getName(),model.getDescription(),model.getId());
+				
+				return;
+			}
 		}
 
 		if (flag == 0) {
@@ -67,7 +71,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 			}
 		}
 
-		catalogueDao.saveOrUpdateEntity(model);
+		catalogueDao.saveEntity(model);
 	}
 
 	@Override
@@ -111,7 +115,8 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 
 	@Override
 	public void saveTemplate(Template model) {
-		Catalogue catalogue = catalogueDao.getEntity(model.getCatalogue().getId());
+		Catalogue catalogue = catalogueDao.getEntity(model.getCatalogue()
+				.getId());
 		model.setCatalogue(catalogue);
 		if (catalogue.getTemplateState() == 0) {
 			templateDao.saveOrUpdateEntity(model);
@@ -121,8 +126,8 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 				}
 			}
 			catalogue.setTemplateState(1);
-		}else{
-			
+		} else {
+
 		}
 	}
 
@@ -144,19 +149,27 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	@Override
 	public void updateTemplate(Template model) {
 		String hql = "UPDATE Template t SET t.description = ? ,t.templateName = ? WHERE t.id = ?";
-		templateDao.batchEntityByHql(hql, model.getDescription(),model.getTemplateName(),model.getId());
-		
+		templateDao.batchEntityByHql(hql, model.getDescription(),
+				model.getTemplateName(), model.getId());
+
 	}
 
 	@Override
 	public void updateAttribute(Attribute model) {
 		String hql = "UPDATE Attribute a SET a.description = ? ,a.name = ?,a.type = ? , a.value = ? WHERE a.id = ?";
-		templateDao.batchEntityByHql(hql, model.getDescription(),model.getName(),model.getType(),model.getValue(),model.getId());
+		templateDao.batchEntityByHql(hql, model.getDescription(),
+				model.getName(), model.getType(), model.getValue(),
+				model.getId());
 	}
 
 	@Override
 	public void deleteAttribute(Attribute model) {
 		attributeDao.deleteEntity(model);
+	}
+
+	@Override
+	public void saveSingleAttribute(Attribute model) {
+		attributeDao.saveEntity(model);
 	}
 
 }

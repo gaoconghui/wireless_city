@@ -69,6 +69,11 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 */
 	public void deleteAttribute(Attribute model);
 
+	/*
+	 * 添加单个Attribute
+	 */
+	public void saveSingleAttribute(Attribute model);
+
 
 
 }

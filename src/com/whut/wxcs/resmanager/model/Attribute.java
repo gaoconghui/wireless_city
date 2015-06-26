@@ -10,6 +10,9 @@ public class Attribute {
 	private String description;
 	private String value;
 
+	// 单向1:n 在新建属性时性能不好，因此使用双向1:n
+	private Template template;
+
 	public long getId() {
 		return id;
 	}
@@ -48,6 +51,14 @@ public class Attribute {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	public Template getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(Template template) {
+		this.template = template;
 	}
 
 }

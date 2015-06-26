@@ -11,7 +11,7 @@
 <center>
 	<h1>helloworld</h1>
 	<br>
-	<s:a href="operatorhome.jsp">运营商主页</s:a>
+	<s:a href="admin/operatortop.jsp">运营商主页</s:a>
 	<s:include value="header.jsp"></s:include>
 </center>
 
