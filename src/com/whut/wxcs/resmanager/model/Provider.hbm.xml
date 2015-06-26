@@ -4,68 +4,69 @@
 <!-- Generated 2015-5-27 16:22:44 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
 
-	<class name="com.whut.wxcs.resmanager.model.Provider" table="PROVIDER">
-		<id name="id" type="long">
-			<column name="PROVIDER_ID" />
-			<generator class="native" />
-		</id>
-		<property name="name" type="java.lang.String">
-			<column name="NAME" />
-		</property>
-		<property name="industry" type="java.lang.String">
-			<column name="INDUSTRY" />
-		</property>
-		<property name="scale" type="java.lang.String">
-			<column name="SCALE" />
-		</property>
-		<property name="profile" type="java.lang.String">
-			<column name="PROFILE" />
-		</property>
-		<property name="logo" type="java.lang.String">
-			<column name="LOGO" />
-		</property>
-		<property name="enail" type="java.lang.String">
-			<column name="ENAIL" />
-		</property>
-		<property name="fax" type="java.lang.String">
-			<column name="FAX" />
-		</property>
-		<property name="postcode" type="java.lang.String">
-			<column name="POSTCODE" />
-		</property>
-		<property name="address" type="java.lang.String">
-			<column name="ADDRESS" />
-		</property>
-		<property name="registerTime" type="java.util.Date" update="false"></property>
-		<property name="qq" type="java.lang.String">
-			<column name="QQ" />
-		</property>
-		<property name="telephone" type="java.lang.String">
-			<column name="TELEPHONE" />
-		</property>
-		<property name="cellphone" type="java.lang.String">
-			<column name="CELLPHONE" />
-		</property>
-		<property name="contects" type="java.lang.String">
-			<column name="CONTECTS" />
-		</property>
-		<property name="url" type="java.lang.String">
-			<column name="URL" />
-		</property>
-		<property name="grade" type="int">
-			<column name="GRADE" />
-		</property>
-		<property name="certificationType" type="java.lang.String">
-			<column name="CERTIFICATIONTYPE" />
-		</property>
-		<property name="loginName" type="java.lang.String">
-			<column name="LOGINNAME" />
-		</property>
-		<property name="loginPwd" type="java.lang.String">
-			<column name="LOGINPWD" />
-		</property>
-		<property name="checkState" type="integer">
-			<column name="CHECK_STATE" />
-		</property>
-	</class>
+    <class name="com.whut.wxcs.resmanager.model.Provider" table="PROVIDER">
+        <id name="id" type="long">
+            <column name="PROVIDER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="industry" type="java.lang.String">
+            <column name="INDUSTRY" />
+        </property>
+        <property name="scale" type="java.lang.String">
+            <column name="SCALE" />
+        </property>
+        <property name="profile" type="java.lang.String">
+            <column name="PROFILE" />
+        </property>
+        <property name="logo" type="java.lang.String">
+            <column name="LOGO" />
+        </property>
+        <property name="enail" type="java.lang.String">
+            <column name="ENAIL" />
+        </property>
+        <property name="fax" type="java.lang.String">
+            <column name="FAX" />
+        </property>
+        <property name="postcode" type="java.lang.String">
+            <column name="POSTCODE" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+       <property name="registerTime" type="java.util.Date" update="false">
+        <property name="qq" type="java.lang.String">
+            <column name="QQ" />
+        </property>
+        <property name="telephone" type="java.lang.String">
+            <column name="TELEPHONE" />
+        </property>
+        <property name="cellphone" type="java.lang.String">
+            <column name="CELLPHONE" />
+        </property>
+        <property name="contects" type="java.lang.String">
+            <column name="CONTECTS" />
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="URL" />
+        </property>
+        <property name="grade" type="int">
+            <column name="GRADE" />
+        </property>
+        <property name="certificationType" type="java.lang.String">
+            <column name="CERTIFICATIONTYPE" />
+        </property>
+        <property name="loginName" type="java.lang.String">
+            <column name="LOGINNAME" />
+        </property>
+        <property name="loginPwd" type="java.lang.String">
+            <column name="LOGINPWD" />
+        </property>
+        <property name="checkState" type="integer">
+            <column name="CHECK_STATE" />
+        </property>
+    </class>
+
 </hibernate-mapping>

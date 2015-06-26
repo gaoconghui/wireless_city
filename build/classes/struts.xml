@@ -7,7 +7,7 @@
 	<constant name="struts.devMode" value="true"></constant>
 
 
-
+<<<<<<< HEAD
 		<interceptors>
 			<interceptor-stack name="CityIntercptor">
 				<interceptor-ref name="defaultStack">
@@ -63,10 +63,7 @@
 		</action>
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<result name="user_info"></result>
-
 		</action>
-		
-
 	</package>
 
 </struts>

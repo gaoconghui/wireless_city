@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2015-5-27 16:22:44 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-
+<<<<<<< HEAD
     <class name="com.whut.wxcs.resmanager.model.Provider" table="PROVIDER">
         <id name="id" type="long">
             <column name="PROVIDER_ID" />
@@ -36,7 +36,9 @@
         <property name="address" type="java.lang.String">
             <column name="ADDRESS" />
         </property>
-       <property name="registerTime" type="java.util.Date" update="false">
+        <property name="registerTime" type="java.sql.Date">
+            <column name="REGISTERTIME" />
+        </property>
         <property name="qq" type="java.lang.String">
             <column name="QQ" />
         </property>
@@ -68,5 +70,76 @@
             <column name="CHECK_STATE" />
         </property>
     </class>
-
+=======
+	<class name="com.whut.wxcs.resmanager.model.Provider" table="PROVIDER">
+		<id name="id" type="long">
+			<column name="PROVIDER_ID" />
+			<generator class="native" />
+		</id>
+		<set name="resources" table="RESOURCE" inverse="false" lazy="true"
+			access="field">
+			<key>
+				<column name="PROVIDER_ID" />
+			</key>
+			<one-to-many class="com.whut.wxcs.resmanager.model.Resource" />
+		</set>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<property name="industry" type="java.lang.String">
+			<column name="INDUSTRY" />
+		</property>
+		<property name="scale" type="java.lang.String">
+			<column name="SCALE" />
+		</property>
+		<property name="profile" type="java.lang.String">
+			<column name="PROFILE" />
+		</property>
+		<property name="logo" type="java.lang.String">
+			<column name="LOGO" />
+		</property>
+		<property name="enail" type="java.lang.String">
+			<column name="ENAIL" />
+		</property>
+		<property name="fax" type="java.lang.String">
+			<column name="FAX" />
+		</property>
+		<property name="postcode" type="java.lang.String">
+			<column name="POSTCODE" />
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="ADDRESS" />
+		</property>
+		<property name="registerTime" type="java.util.Date" update="false">
+			<column name="REGISTERTIME" />
+		</property>
+		<property name="qq" type="java.lang.String">
+			<column name="QQ" />
+		</property>
+		<property name="telephone" type="java.lang.String">
+			<column name="TELEPHONE" />
+		</property>
+		<property name="cellphone" type="java.lang.String">
+			<column name="CELLPHONE" />
+		</property>
+		<property name="contects" type="java.lang.String">
+			<column name="CONTECTS" />
+		</property>
+		<property name="url" type="java.lang.String">
+			<column name="URL" />
+		</property>
+		<property name="grade" type="int">
+			<column name="GRADE" />
+		</property>
+		<property name="certificationType" type="java.lang.String">
+			<column name="CERTIFICATIONTYPE" />
+		</property>
+		<property name="loginName" type="java.lang.String">
+			<column name="LOGINNAME" />
+		</property>
+		<property name="loginPwd" type="java.lang.String">
+			<column name="LOGINPWD" />
+		</property>
+	</class>
+>>>>>>> User&Provider_COPY
 </hibernate-mapping>
