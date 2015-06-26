@@ -43,12 +43,12 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Override
-	public T loadEntity(Integer id) {
+	public T loadEntity(long id) {
 		return baseDao.loadEntity(id);
 	}
 
 	@Override
-	public T getEntity(Integer id) {
+	public T getEntity(long id) {
 		return baseDao.getEntity(id);
 	}
 
