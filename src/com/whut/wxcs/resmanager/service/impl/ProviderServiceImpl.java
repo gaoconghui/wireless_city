@@ -33,9 +33,9 @@ public class ProviderServiceImpl extends BaseServiceImpl<Provider> implements
 		String hql = "from Provider p WHERE p.loginName=? AND p.loginPwd=?";
 		List<Provider> providers = findEntityByHql(hql,
 				provider.getLoginName(), DataUtils.MD5(provider.getLoginPwd()));
-        if(providers==null||providers.size()==0){
-        	 return null;
-        }
+		if (providers == null || providers.size() == 0) {
+			return null;
+		}
 		return providers.get(0);
 	}
 
@@ -44,6 +44,12 @@ public class ProviderServiceImpl extends BaseServiceImpl<Provider> implements
 		String hql = "from Provider p WHERE  p.loginName=? ";
 		List<Provider> providers = findEntityByHql(hql, loginName);
 		return providers.get(0);
+	}
+
+	@Override
+	public List<Provider> getCheckedProviders() {
+		String hql = "from Provider p WHERE p.checkState =? ";
+		return findEntityByHql(hql, 1);
 	}
 
 }

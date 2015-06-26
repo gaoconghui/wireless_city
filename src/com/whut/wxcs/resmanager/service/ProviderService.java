@@ -1,5 +1,7 @@
 package com.whut.wxcs.resmanager.service;
 
+import java.util.List;
+
 import com.whut.wxcs.resmanager.model.Provider;
 
 public interface ProviderService extends BaseService<Provider> {
@@ -11,5 +13,7 @@ public interface ProviderService extends BaseService<Provider> {
 	public Provider isLogin(Provider provider);
 
 	public Provider getProviderByloginName(String loginName);
+
+	public List<Provider> getCheckedProviders();
 
 }

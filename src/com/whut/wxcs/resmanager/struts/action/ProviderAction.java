@@ -1,6 +1,7 @@
 package com.whut.wxcs.resmanager.struts.action;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -122,6 +123,12 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 */
 	public String toLoginPage() {
 		return "provider_loginPage";
+	}
+
+	public String manager() {
+		List<Provider> providers = providerService.getCheckedProviders();
+		session.put("providers", providers);
+		return "provider_manager";
 	}
 
 }
