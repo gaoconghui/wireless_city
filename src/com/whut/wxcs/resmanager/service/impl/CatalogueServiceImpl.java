@@ -1,6 +1,8 @@
 package com.whut.wxcs.resmanager.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -48,30 +50,40 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 
 	@Override
 	public void saveCatalogue(Catalogue model) {
-		int flag = 0;
-		if (model.getId() != 0) {
-			Catalogue catalogue = catalogueDao.getEntity(model.getId());
-			if (catalogue.getParent().getId() == model.getParent().getId()) {
-				
-				String hql = "UPDATE Catalogue c SET c.name = ? , c.description = ? WHERE c.id = ?";
-				catalogueDao.batchEntityByHql(hql, model.getName(),model.getDescription(),model.getId());
-				
-				return;
-			}
+
+		String hql = "from Catalogue c where c.parent.id = ? order by id desc";
+		List<Catalogue> child = catalogueDao.findEntityByHql(hql, model
+				.getParent().getId());
+		if (ValidateUtil.isVaild(child)) {
+			model.setId(child.get(0).getId() + 1);
+		} else {
+			model.setId(model.getParent().getId() * 100 + 1);
 		}
 
-		if (flag == 0) {
-			String hql = "from Catalogue c where c.parent.id = ? order by id desc";
-			List<Catalogue> child = catalogueDao.findEntityByHql(hql, model
-					.getParent().getId());
-			if (ValidateUtil.isVaild(child)) {
-				model.setId(child.get(0).getId() + 1);
-			} else {
-				model.setId(model.getParent().getId() * 100 + 1);
-			}
-		}
-
+		// 保存类目
 		catalogueDao.saveEntity(model);
+		// 新建模板
+		this.newTemplate(model);
+	}
+
+	/*
+	 * 通过类目新建一个模板，同时加入父类目的模板的属性
+	 */
+	private void newTemplate(Catalogue model) {
+		Template template = new Template();
+
+		Template parentTemplate = templateDao.getEntity(model.getParent()
+				.getId());
+		Set<Attribute> attributes = parentTemplate.getAttributes();
+		System.out.println(attributes.size());
+		if (ValidateUtil.isVaild(attributes)) {
+			Set<Attribute> newAttributes = new HashSet<Attribute>(attributes);
+			template.setAttributes(newAttributes);
+		}
+		String templateName = model.getName() + "模板";
+		template.setTemplateName(templateName);
+		template.setCatalogue(model);
+		templateDao.saveEntity(template);
 	}
 
 	@Override
@@ -114,24 +126,6 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	}
 
 	@Override
-	public void saveTemplate(Template model) {
-		Catalogue catalogue = catalogueDao.getEntity(model.getCatalogue()
-				.getId());
-		model.setCatalogue(catalogue);
-		if (catalogue.getTemplateState() == 0) {
-			templateDao.saveOrUpdateEntity(model);
-			if (ValidateUtil.isVaild(model.getAttributes())) {
-				for (Attribute attribute : model.getAttributes()) {
-					attributeDao.saveOrUpdateEntity(attribute);
-				}
-			}
-			catalogue.setTemplateState(1);
-		} else {
-
-		}
-	}
-
-	@Override
 	public Template getTemplate(long id) {
 		Template template = templateDao.getEntity(id);
 		template.getAttributes().size();
@@ -163,13 +157,32 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	}
 
 	@Override
-	public void deleteAttribute(Attribute model) {
-		attributeDao.deleteEntity(model);
+	public void deleteAttribute(long tid, long aid) {
+		String sql = "DELETE FROM TEMPLATE_ATTRIBUTE WHERE TEMPLATE_ID LIKE ? AND ATTRIBUTE_ID = ?";
+		attributeDao.batchEntityBySql(sql, tid + "%", aid);
 	}
 
 	@Override
-	public void saveSingleAttribute(Attribute model) {
-		attributeDao.saveEntity(model);
+	public void saveSingleAttribute(Attribute attribute, long tid) {
+		attributeDao.saveEntity(attribute);
+		Catalogue catalogue = catalogueDao.getEntity(tid);
+		setAttributeToTemplateAndChild(catalogue, attribute.getId());
+	}
+
+	// 给单个Template 附加 attribute
+	private void setAttributeToTemplate(long tid, long aid) {
+		String sql = "INSERT INTO TEMPLATE_ATTRIBUTE VALUES(?,?)";
+		attributeDao.batchEntityBySql(sql, tid, aid);
+	}
+
+	// 循环给所有的子节点添加属性
+	private void setAttributeToTemplateAndChild(Catalogue catalogue, long aid) {
+		if (ValidateUtil.isVaild(catalogue.getChild())) {
+			for (Catalogue c : catalogue.getChild()) {
+				setAttributeToTemplateAndChild(c, aid);
+			}
+		}
+		setAttributeToTemplate(catalogue.getId(), aid);
 	}
 
 	@Override

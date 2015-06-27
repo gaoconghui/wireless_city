@@ -58,23 +58,6 @@ public class TemplateAction extends BaseAction<Template> {
 		return "toNewTemplatePage";
 	}
 
-	/*
-	 * 新建一个模板
-	 */
-	public String newTemplate() {
-		System.out.println(model.getDescription());
-		System.out.println(cid);
-
-		Catalogue catalogue = new Catalogue();
-		catalogue.setId(cid);
-
-		model.setCatalogue(catalogue);
-		model.setAttributes(new HashSet<Attribute>(attr));
-
-		catalogueService.saveTemplate(model);
-
-		return "newTemplate";
-	}
 
 	/*
 	 * 跳转到模板详情页面

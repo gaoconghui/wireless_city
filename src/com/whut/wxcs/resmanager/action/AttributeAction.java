@@ -61,7 +61,7 @@ public class AttributeAction extends BaseAction<Attribute> {
 	 */
 	public String deleteAttributeUseAJAX() {
 		try {
-			catalogueService.deleteAttribute(model);
+			catalogueService.deleteAttribute(getTid(), model.getId());
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 		}
@@ -70,15 +70,12 @@ public class AttributeAction extends BaseAction<Attribute> {
 
 	/*
 	 * AJAX添加Attribute,传入template的id（即catalogue的id）,传入attribute
-	 * 的name和description
+	 * 的name和description, 同时使attribute 与当前模板以及其子节点全部关联
 	 */
 	public String saveAttributeUseAJAX() {
 		try {
 			if(getTid() != 0 ){
-				Template template = new Template();
-				template.setId(getTid());
-				model.setTemplate(template);
-				catalogueService.saveSingleAttribute(model);
+				catalogueService.saveSingleAttribute(model, getTid());
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 			}else{
 				//0 : 没有指定tid 错误

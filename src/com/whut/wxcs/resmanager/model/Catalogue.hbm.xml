@@ -25,9 +25,6 @@
 		<property name="description" type="java.lang.String">
 			<column name="DESCRIPTION" />
 		</property>
-		<property name="templateState" type="integer">
-			<column name="TEMPLATE_STATE" />
-		</property>
 
 
 		<one-to-one name="template"></one-to-one>
