@@ -36,7 +36,6 @@
 				</tr>
 				<tr>
 					<td><s:submit></s:submit></td>
-					<td><s:a cssClass="update">修改</s:a></td>
 				</tr>
 			</table>
 		</s:form>

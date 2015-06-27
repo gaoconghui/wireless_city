@@ -21,7 +21,7 @@ import com.whut.wxcs.resmanager.util.ReflectionUtils;
 
 
 @SuppressWarnings("unchecked")
-public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
+public   class BaseDaoImpl<T> implements BaseDao<T> {
 	
 	@Resource(name="sessionFactory")
 	 SessionFactory sessionFactory ;
@@ -92,6 +92,24 @@ public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
 			query.setParameter(i, objects[i]);
 		}
 		return query.uniqueResult();
+	}
+
+	@Override
+	public void batchEntityBySql(String sql, Object... objects) {
+		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		for(int i = 0 ; i < objects.length ; i++){
+			query.setParameter(i, objects[i]);
+		}
+		query.executeUpdate();
+	}
+
+	@Override
+	public List<T> findEntityBySql(String sql, Object... objects) {
+		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		for(int i = 0 ; i < objects.length ; i++){
+			query.setParameter(i, objects[i]);
+		}
+		return query.list();
 	}
 
 }

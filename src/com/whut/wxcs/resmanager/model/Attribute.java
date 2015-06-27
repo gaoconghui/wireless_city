@@ -10,6 +10,7 @@ public class Attribute {
 	private String description;
 	private String value;
 
+
 	public long getId() {
 		return id;
 	}
@@ -49,5 +50,6 @@ public class Attribute {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
 
 }

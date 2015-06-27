@@ -7,7 +7,7 @@ import java.util.Set;
 public class Template {
 
 	private long id;
-	private String templateName;
+	private String templateName ;
 	private String description;
 	private Catalogue catalogue;
 	private Date createTime;
