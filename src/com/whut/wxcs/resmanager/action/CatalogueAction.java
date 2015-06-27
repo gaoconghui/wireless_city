@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.google.gson.Gson;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 
@@ -103,13 +104,19 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 	/*
 	 * AJAX 通过 id 获取子类目
 	 */
-	public String updateTemplateUseAJAX() {
+	public String getChildUseAJAX() {
+		
 		try {
-			catalogueService.getChildCatalogueByParentId(model.getId());
-			/*
-			 * 返回json
-			 */
-			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			rootCatalogues = catalogueService.getChildCatalogueByParentId(1);
+			for(Catalogue c :rootCatalogues){
+				c.setChild(null);
+				c.setTemplate(null);
+				c.setParent(null);
+			}
+			Gson gson = new Gson();
+			String str = gson.toJson(rootCatalogues);
+			System.out.println(str);
+			inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 		}
 		return "ajax-success";

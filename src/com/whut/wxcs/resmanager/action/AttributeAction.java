@@ -78,7 +78,6 @@ public class AttributeAction extends BaseAction<Attribute> {
 				catalogueService.saveSingleAttribute(model, getTid());
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 			}else{
-				//0 : 没有指定tid 错误
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
 			}
 		} catch (UnsupportedEncodingException e) {

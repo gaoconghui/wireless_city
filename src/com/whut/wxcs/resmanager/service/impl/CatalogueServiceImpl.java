@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.whut.wxcs.resmanager.dao.BaseDao;
+import com.whut.wxcs.resmanager.dao.impl.CatalogueDaoImpl;
 import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Template;
@@ -104,8 +105,15 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 
 	@Override
 	public void deleteCatalogueWithChild(long id) {
+		// 删除类目和子类目
 		Catalogue catalogue = catalogueDao.getEntity(id);
 		deleteCicleCatalogue(catalogue);
+		// 删除属性
+		String sql = "DELETE FROM TEMPLATE_ATTRIBUTE WHERE TEMPLATE_ID LIKE ?";
+		attributeDao.batchEntityBySql(sql, id + "%");
+		// 删除模板
+		sql = "DELETE FROM TEMPLATE WHERE TEMPLATE_ID LIKE ?";
+		templateDao.batchEntityBySql(sql, id + "%");
 	}
 
 	private void deleteCicleCatalogue(Catalogue catalogue) {
@@ -115,7 +123,6 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 			}
 		}
 		catalogueDao.deleteEntity(catalogue);
-
 	}
 
 	@Override

@@ -5,11 +5,11 @@
 
 <struts>
 	<!-- 主题 -->
- 	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
 	<!-- 开发模式 -->
 	<constant name="struts.devMode" value="true"></constant>
 
-	<package name="default" extends="struts-default" namespace="/admin">
+	<package name="admin" extends="struts-default" namespace="/admin">
 		<interceptors>
 			<interceptor-stack name="CityIntercptor">
 				<interceptor-ref name="defaultStack">
@@ -28,7 +28,7 @@
 			</result>
 		</global-results>
 
-		<action name="CatalogueAction_*" class="catalogueAction" 
+		<action name="CatalogueAction_*" class="catalogueAction"
 			method="{1}">
 			<result name="toDesignCataloguePage">designcatalogue.jsp</result>
 			<result name="toCatalogueManagerPage">cataloguemanager.jsp</result>

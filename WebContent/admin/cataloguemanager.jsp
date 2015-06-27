@@ -95,8 +95,6 @@
 									<td></td>
 									<td><s:property value="name" /></td>
 									<td></td>
-									<td><s:a
-											href='CatalogueAction_toDesginCataloguePage?parentid=%{id}'>增加子目录</s:a></td>
 									<td><s:a href='CatalogueAction_deleteCatalogue?id=%{id}'>删除</s:a></td>
 									<td><s:a
 											href='TemplateAction_toTemplateDetailPage?id=%{id}'>查看</s:a></td>
