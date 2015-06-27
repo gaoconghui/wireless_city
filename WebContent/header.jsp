@@ -13,7 +13,6 @@
 			<td><a href="RegAction_toLoginPage">用户登录</a></td>
 			<td><a href="ProviderAction_toRegPage">服务商注册</a></td>
 			<td><a href="ProviderAction_toLoginPage">服务商登陆</a></td>
-			<td><a href="ProviderAction_manager">服务商管理</a></td>
 		</tr>
 	</table>
 </body>

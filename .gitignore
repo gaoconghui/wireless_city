@@ -4,3 +4,9 @@ build/classes/com/whut/wxcs/resmanager/bean/test/testUserService.class
 *.class
 
 *.class
+
+*.class
+
+build/classes/db.properties
+
+build/classes/struts-deafult00-xml.xml

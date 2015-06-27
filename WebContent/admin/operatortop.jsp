@@ -12,9 +12,8 @@
 	<center>
 		<h1>catalogueHome</h1>
 		<br>
-		<s:a href="CatalogueAction_toCatalogueManagerPage">类目管理</s:a>
-		 模板管理 资源管理 服务商管理
-
+		<a href="CatalogueAction_toCatalogueManagerPage">类目管理</a>
+		 模板管理 资源管理 <a href="ProviderAction_manager">服务商管理</a>
 	</center>
 
 </body>

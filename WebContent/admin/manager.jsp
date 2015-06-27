@@ -9,8 +9,12 @@
 </head>
 <body>
 	<center>
-		<s:include value="manager_header.jsp"></s:include>
-
+		<table>
+			<tr>
+				<td><a href="ProviderAction_manager?state=1">审核通过</a></td>
+				<td><a href="ProviderAction_manager?state=2">待审核</a></td>
+			</tr>
+		</table>
 		<s:if test="%{#session.providers!=null}">
 			<table cellpadding="10" cellspacing="0">
 				<tr>
