@@ -30,6 +30,11 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	public Catalogue getRootCatalogueWithAllChild();
 
 	/*
+	 * 通过id 获取所有的子节点
+	 */
+	public List<Catalogue> getChildCatalogueByParentId(long id);
+	
+	/*
 	 * 删除类目及child节点
 	 */
 	public void deleteCatalogueWithChild(long id);
@@ -38,6 +43,7 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 * 获取单个类目
 	 */
 	public Catalogue getCatalogueById(long id);
+	
 
 	/*
 	 * 保存模板及其属性
@@ -74,6 +80,6 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 */
 	public void saveSingleAttribute(Attribute model);
 
-
+	
 
 }

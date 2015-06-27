@@ -172,4 +172,10 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		attributeDao.saveEntity(model);
 	}
 
+	@Override
+	public List<Catalogue> getChildCatalogueByParentId(long id) {
+		String hql = "from Catalogue c where c.parent.id = ? order by id asc";
+		return catalogueDao.findEntityByHql(hql, id);
+	}
+
 }
