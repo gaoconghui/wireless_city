@@ -19,7 +19,7 @@
 			<td><a href="CatalogueAction_toAddResourcePage">增加资源</a></td>
 		</tr>
 	</table>
-	<table cellspacing="0" cellpadding="5" border="1">
+	<table cellspacing="0" cellpadding="10" border="1">
 		<tr>
 			<td>一级目录</td>
 			<td><s:iterator var="s" value="rootCatalogues">
