@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -100,15 +101,14 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		return "toDesignCataloguePage";
 	}
 
-	
 	/*
 	 * AJAX 通过 id 获取子类目
 	 */
 	public String getChildUseAJAX() {
-		
+
 		try {
 			rootCatalogues = catalogueService.getChildCatalogueByParentId(1);
-			for(Catalogue c :rootCatalogues){
+			for (Catalogue c : rootCatalogues) {
 				c.setChild(null);
 				c.setTemplate(null);
 				c.setParent(null);
@@ -120,6 +120,22 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		} catch (UnsupportedEncodingException e) {
 		}
 		return "ajax-success";
+	}
+
+	/**
+	 * 跳转到增加资源的页面
+	 */
+	public String toAddResourcePage() {
+		root = catalogueService.getRootCatalogueWithAllChild();
+		Set<Catalogue> catalogues = root.getChild();
+		for (Catalogue c : catalogues) {
+			System.out.println(c.getName());
+			Set<Catalogue> catalogues2 = c.getChild();
+			for (Catalogue c2 : catalogues2) {
+				System.out.println(c2.getName());
+			}
+		}
+		return "add_resource";
 	}
 
 }

@@ -6,12 +6,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Provider;
+import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ProviderService;
 import com.whut.wxcs.resmanager.util.DataUtils;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
@@ -19,16 +20,27 @@ import com.whut.wxcs.resmanager.util.ValidateUtil;
 @Controller
 @Scope("prototype")
 public class ProviderAction extends BaseAction<Provider> implements
-		SessionAware, RequestAware {
+		SessionAware{
 
 	private static final long serialVersionUID = 1L;
 
 	@Resource
 	private ProviderService providerService;
+	@Resource
+	private CatalogueService catalogueService;
 	private Provider provider = new Provider();
 	private String confirmPwd;
 	private Map<String, Object> session;
-	private Map<String, Object> request;
+	private Catalogue catalogue;
+
+	public void setCatalogue(Catalogue catalogue) {
+		this.catalogue = catalogue;
+	}
+
+	public Catalogue getCatalogue() {
+		return catalogue;
+	}
+
 	/**
 	 * 判断获取的的服务商审核状态 1--审核的服务商 2-未审核的服务商
 	 */
@@ -168,9 +180,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 		return "pass_check";
 	}
 
-	@Override
-	public void setRequest(Map<String, Object> request) {
-		this.request = request;
-	}
+
+
 
 }

@@ -8,11 +8,21 @@
 <title>服务商登陆页面</title>
 </head>
 <body>
-	<s:form action="ProviderAction_login">
-		<s:actionerror />
-		<s:textfield label="登陆账号" name="loginName"></s:textfield>
-		<s:textfield label="密码" name="loginPwd"></s:textfield>
-		<s:submit></s:submit>
-	</s:form>
+	<center>
+		<s:form action="ProviderAction_login">
+			<table>
+				<tr>
+					<td>登陆账号</td>
+					<td><s:actionerror /> <s:textfield label="登陆账号"
+							name="loginName"></s:textfield></td>
+				</tr>
+				<tr>
+					<td>密码</td>
+					<td><s:textfield label="密码" name="loginPwd"></s:textfield></td>
+				</tr>
+			</table>
+			<s:submit></s:submit>
+		</s:form>
+	</center>
 </body>
 </html>
