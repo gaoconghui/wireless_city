@@ -19,11 +19,11 @@
 			.tzht .t_right .r_location span{display:blcok;float:left;}
 			.tzht .t_right .r_location .r_t_action{width:108px;height:24px;float:left;margin:12px 0 0 10px;}
 			.tzht .t_right .r_location .r_t_action .ra{width:24px;height:24px;margin-right:2px;background:url("images/ht/ht_icon.png") no-repeat;display:block;float:left;cursor:pointer;}
-			.tzht .t_right .r_location .r_t_action a:hover{background-color:#2f3437;}
+			.tzht .t_right .r_location .r_t_action .ra:hover{background-color:#2f3437;}
 			
-			.tzht .t_right .r_location .r_t_action .r_t_a2{background-position:-379px -47px;background-color:#27a9e3;}
+			.tzht .t_right .r_location .r_t_action .r_t_a2{background-position:-379px -47px;background-color:#1e90ff;}
 			
-			.tzht .t_right .r_location .r_t_action .r_t_a4{background-position:-417px -48px;background-color:#ff912f;}
+			.tzht .t_right .r_location .r_t_action .r_t_a4{background-position:-417px -48px;background-color:#bd2d30;}
 			/*end r_location*/
 
 			.tzht .t_right .r_table{background:#fff;margin:0 1%;border:1px solid #ccc;margin-top:20px;padding-bottom:10px;}
@@ -45,7 +45,7 @@
 		#yp_dialog .dialog_title{width:250px;height:40px;background:#282828;color:#fff;text-indent:4px;line-height:40px;font-size:14px;position:relative;}
 		#yp_dialog .dialog_title span{line-height:20px;width:20px;height:20px;position:absolute;top:10px;right:10px;cursor:pointer;}
 		#yp_dialog .dialog_content{width:250px;height:110px;}
-		#yp_dialog .dialog_content a{background:#28b779;display:block;height:30px;width:50px;margin:40px 0 0 47px;float:left;color:#fff;line-height:30px;font-size:14px;text-align:center;border-radius:3px;}
+		#yp_dialog .dialog_content a{background:#1e90ff;display:block;height:30px;width:50px;margin:40px 0 0 47px;float:left;color:#fff;line-height:30px;font-size:14px;text-align:center;border-radius:3px;}
 		/*yp_dialog end*/
 		
 		/* add_module begin */
@@ -55,7 +55,7 @@
 		.add_module .a_d_main p input{font-size:12px;padding-left:4px;width:198px;}
 		.add_module .a_d_main textarea{padding-left:4px;margin-left:47px;resize:none;overflow-y:hidden;width:200px;height:100px;}
 		.add_module .a_d_footer{width:100%;height:30px;padding:10px 0;}
-		.add_module .a_d_footer span{float:left;width:50px;height:30px;line-height:30px;cursor:pointer;font-size:14px;background:#28b779;display:block;margin-left:67px;color:#fff;text-align:center;}
+		.add_module .a_d_footer span{float:left;width:50px;height:30px;line-height:30px;cursor:pointer;font-size:14px;background:#1e90ff;display:block;margin-left:67px;color:#fff;text-align:center;}
 		/* end add_module */
 		</style>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
@@ -73,8 +73,8 @@
 			<div class="r_location" id="location">
 				<i></i><span>您当前所在位置：<a href="#" id="choose">服务类目管理</a>&gt;<a href="javascript:void(0)">无线城市</a></span>
 				<div class="r_t_action">
-					<span class="r_t_a2 ra" id="update_btn"></span>
-					<span class="r_t_a4 ra" id="delete_btn"></span>
+					<span class="r_t_a2 ra" id="update_btn" title="修改"></span>
+					<span class="r_t_a4 ra" id="delete_btn" title="删除"></span>
 				</div>	
 			</div>
 			<!-- end r_location -->
@@ -95,7 +95,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#28b779;" class="add_btn"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#1e90ff;" class="add_btn" title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -117,7 +117,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#28b779;" class="add_btn" ><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#1e90ff;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -139,7 +139,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#28b779;" class="add_btn"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#1e90ff;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -161,7 +161,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#28b779;" class="add_btn"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#1e90ff;" class="add_btn" title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -183,7 +183,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#28b779;" class="add_btn"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#1e90ff;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -301,7 +301,7 @@
 			$(window).scroll(function(){
 				if($(window).scrollTop()>=56)
 				{
-					$("#location").css({"position":"fixed","top":"0","left":"200"});
+					$("#location").css({"height":"54px","position":"fixed","top":"0","left":"200"});
 				}else
 				{
 					$("#location").css({"position":"static"});

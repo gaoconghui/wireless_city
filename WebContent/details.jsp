@@ -177,7 +177,7 @@
 			</div>
 			<div class="hd_details">
 				<div class="d_title">
-					<a name="attribute"></a>
+					<a name="attribute" href="javascript:void(0)"></a>
 					<ul>
 						<li><a href="javascript:void(0)" class="sel" >商品参数</a></li>
 						<li><a href="#pic">商品图片</a></li>

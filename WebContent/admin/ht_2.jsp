@@ -24,7 +24,12 @@
 			.tzht .t_right .r_table .r_title{width:100%;height:40px;background:#eee;border-bottom:1px solid #ccc;}
 			.tzht .t_right .r_table .r_title i{width:16px;height:14px;background:url("images/ht/ht_icon.png") no-repeat -386px -15px;display:block;float:left;margin:13px 0 0 10px;}
 			.tzht .t_right .r_table .r_title span{border-left:1px solid #ccc;height:40px;line-height:40px;padding-left:5px;color:#000;}
-
+			
+			.tzht .t_right .r_table .r_title .s_input{width:219px;height:30px;margin-top:8px;float:right;}
+			.tzht .t_right .r_table .r_title .s_input input:first-child{width:130px;height:22px;border:2px solid #28b779;border-right:0;line-height:22px;color:#666;padding-left:4px;display:block;float:left;}
+			.tzht .t_right .r_table .r_title .s_input .i_btn{width:60px;height:26px;background:#28b779;color:#fff;line-height:26px;text-align:center;font-size:14px; border:0;float:left;cursor:pointer;}
+			.tzht .t_right .r_table .r_title .s_input .i_btn:hover{background:#28B79E;}
+			
 			.tzht .t_right .r_table .r_label{width:100%;}
 			.tzht .t_right .r_table .r_label .l_select{width:30%; float:left;}
 			.tzht .t_right .r_table .r_label .l_select p{line-height:40px; height:40px;margin-top:10px;margin-left:20px;}
@@ -32,25 +37,26 @@
 			.tzht .t_right .r_table .r_label .l_select p .field select{width:60%; height:40px;}
 		
 			.tzht .t_right .r_table .r_label .l_show{width:66%;float:left;margin:10px 0 0 20px;}
-			.tzht .t_right .r_table .r_label .l_show .s_title{height:40px;background:#e5e5e5;line-height:40px;border:1px solid #28b779;}
-			.tzht .t_right .r_table .r_label .l_show .s_title:first-child{background:#28b779;font-size:14px;}
+			.tzht .t_right .r_table .r_label .l_show .s_title{height:40px;background:#e5e5e5;line-height:40px;border:1px solid #1e90ff;}
+			.tzht .t_right .r_table .r_label .l_show .s_title:first-child{background:#1e90ff;font-size:14px;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span{display:block;width:25%;float:left;text-indent:4px;}
 			.tzht .t_right .r_table .r_label .l_show .s_title .span:before{content:"";border-left:1px dotted #ddd;height:40px;display:block;float:left;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span a{margin-top:8px;width:24px;height:24px;margin-right:2px;background:url("images/ht/ht_icon.png") no-repeat;display:block;float:left;}
-			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a2{background-position:-379px -47px;background-color:#27a9e3;}
+			.tzht .t_right .r_table .r_label .l_show .s_title span a:hover{background-color:#2f3437;}
+			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a2{background-position:-379px -47px;background-color:#1e90ff;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a3{background-position:-21px -20px;background-color:#6297bc;}
-			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a4{background-position:-417px -48px;background-color:#ff912f;}
-			.tzht .t_right .r_table .r_label .l_show .s_content{display:none;padding-top:10px;border:1px solid #28b779;border-top:0px;}
+			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a4{background-position:-417px -48px;background-color:#bd2d30;}
+			.tzht .t_right .r_table .r_label .l_show .s_content{display:none;padding-top:10px;border:1px solid #1e90ff;border-top:0px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_name{width:25%;float:left;padding-bottom:10px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_desc{width:70%;float:right;padding-bottom:10px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content span{display:block;margin:0 4px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content span.normal{font-weight:500;color:#666;text-indent:30px;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute{border-top:1px dotted #28b779;margin:0 10px;padding:10px 20px;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p{width:193px;background:#28b779;color:#fff;float:left;margin:0px 10px 10px 10px;}
+			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute{border-top:1px dotted #1e90ff;margin:0 10px;padding:10px 20px;}
+			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p{width:193px;background:#1e90ff;color:#fff;float:left;margin:0px 10px 10px 10px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p span{line-height:20px;padding-bottom:5px;display:block;float:left;width:115px;font-weight:300;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p span:nth-child(odd){width:61px;text-align:right;font-weight:700;}
 		
-			.tzht .t_right .r_table .r_label .l_show .s_add{border:1px solid #28b779;border-top:0;padding:10px 20px;}
+			.tzht .t_right .r_table .r_label .l_show .s_add{border:1px solid #1e90ff;border-top:0;padding:10px 20px;}
 			.tzht .t_right .r_table .r_label .l_show .s_add .empty_pic{float:left;border:1px solid #ccc;}
 			.tzht .t_right .r_table .r_label .l_show .s_add .add_resource{background:url("images/ht/add_resource.png") no-repeat;float:right;margin-right:20px;width:100px;height:100px;cursor:pointer;}
 			.tzht .t_right .r_table .r_label .l_show .s_add .add_resource:hover{background-color:#ddd;}
@@ -63,7 +69,7 @@
 			.add_module .a_d_main p input{font-size:12px;padding-left:4px;width:161px;}
 			.add_module .a_d_main textarea{padding-left:4px;margin-left:47px;resize:none;overflow-y:hidden;width:200px;height:100px;}
 			.add_module .a_d_footer{width:100%;height:30px;padding:10px 0;}
-			.add_module .a_d_footer span{float:left;width:50px;height:30px;line-height:30px;cursor:pointer;font-size:14px;background:#28b779;display:block;margin-left:67px;color:#fff;text-align:center;}
+			.add_module .a_d_footer span{float:left;width:50px;height:30px;line-height:30px;cursor:pointer;font-size:14px;background:#1e90ff;display:block;margin-left:67px;color:#fff;text-align:center;}
 			.add_module .a_d_footer .span{margin-left:34px;}
 			.add_module .a_d_main p select{width:168px;}
 		
@@ -111,7 +117,13 @@
 			</div>
 			<!-- end r_location -->
 			<div class="r_table">
-				<div class="r_title"><i></i><span>服务资源管理</span></div>
+				<div class="r_title">
+					<i></i><span>资源模板管理</span>
+					<div class="s_input">
+						<input type="text" placeholder="找服务资源" />
+						<div class="i_btn">搜索</div>
+					</div>
+				</div>
 				<div class="r_label">
 					<div class="l_select">
 						<p>
@@ -166,7 +178,7 @@
 						</div>
 						<div class="s_add" id="s_add">
 							<div class="empty_pic"><img alt="空空如也图片" src="" width="300" height="100" /></div>
-							<div class="add_resource" id="add_resource"></div>
+							<div class="add_resource" id="add_resource"  title="添加模板"></div>
 							<div class="clear"></div>
 						</div>
 						<%-- 
@@ -453,8 +465,8 @@
 						var html="<div class='s_title' style='display:none;'>"+
 						"	<span>衣服</span>"+
 						"	<span class='span'>"+
-						"		<a class='r_t_a2' href='javascript:void(0)'></a>"+
-						"		<a class='r_t_a4' href='javascript:void(0)'></a>"+
+						"		<a class='r_t_a2' href='javascript:void(0)' title='修改'></a>"+
+						"		<a class='r_t_a4' href='javascript:void(0)' title='删除'></a>"+
 						"	</span>"+
 						"	<span class='span'>2天前</span>"+
 						"	<span class='span'><a class='r_t_a3' href='javascript:void(0)'></a></span>"+

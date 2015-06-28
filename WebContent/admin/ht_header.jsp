@@ -8,10 +8,17 @@
 		<meta name="description" content="">
 		<style type="text/css">
 			/*t_left start*/
+			/*
+			蓝：#1e90ff
+			橙：#ff912f
+			红：#bd2d30
+			绿：#28b779
+			蒙版：#2f3437
+			*/
 			.tzht .t_left{width:200px;height:800px;position:fixed;top:0;left:0;background:#282828;z-index:2;}
-			.tzht .t_left .l_img{width:100%;height:108px;background:url("images/ht/logo.png") no-repeat center;border-bottom:1px solid #000;}
+			.tzht .t_left .l_img{width:100%;height:55px;background:url("images/ht/logo1.png") no-repeat center;border-bottom:1px solid #000;}
 			.tzht .t_left .l_content{width:100%;border-bottom:1px solid #414141;}
-			.tzht .t_left .l_content ul li{line-height:52px;border-bottom:1px solid #000;border-top:1px solid #414141;}
+			.tzht .t_left .l_content ul li{line-height:50px;border-bottom:1px solid #000;border-top:1px solid #414141;}
 			.tzht .t_left .l_content ul li a{display:block;padding-left:30px;}
 			.tzht .t_left .l_content ul li a:hover span{text-decoration:underline;}
 			.tzht .t_left .l_content ul li a i{background:url("images/ht/ht_icon.png") no-repeat;width:16px;height:16px;display:block;float:left;margin-top:20px;}
@@ -50,6 +57,7 @@
 			.tzht .t_header .h_info{height:56px;position:absolute;top:0;right:10px;float:left;}
 			.tzht .t_header .h_info .h_mess{line-height:56px;color:#fff;float:left;}
 			.tzht .t_header .h_info .h_exit{cursor:pointer;width:65px;height:30px;background:#28b779;margin:13px 5px 0 10px;float:left;}
+			.tzht .t_header .h_info .h_exit:hover{background:#bd2d30;}
 			.tzht .t_header .h_info .h_exit a{display:block;line-height:30px;padding-left:10px;color:#fff;}
 			.tzht .t_header .h_info .h_exit a span{float:left;cursor:pointer;}
 			.tzht .t_header .h_info .h_exit a i{width:14px;height:13px;display:block;background:url("images/ht/ht_icon.png") no-repeat 0 -51px;;margin:9px 8px;float:left;}
@@ -92,7 +100,8 @@
 			$("#choices").find("li").each(function(){
 				var b=$(this).find("span").text();
 				if(b==a){
-					$(this).css({"background":"#28b779"});
+					$(this).css({"backgroundColor":"#000"});
+					$(this).find("span").css({"color":"#1e90ff"});
 				}
 			});
 		});
