@@ -9,13 +9,10 @@
 <body>
 	<table>
 		<tr>
-			<td><a href="<%=request.getContextPath()%>/RegAction_toRegPage">用户注册</a></td>
-			<td><a
-				href="<%=request.getContextPath()%>/RegAction_toLoginPage">用户登录</a></td>
-			<td><a
-				href="<%=request.getContextPath()%>/ProviderAction_toRegPage">服务商注册</a></td>
-			<td><a
-				href="<%=request.getContextPath()%>/ProviderAction_toLoginPage">服务商登陆</a></td>
+			<td><a href="RegAction_toRegPage">用户注册</a></td>
+			<td><a href="RegAction_toLoginPage">用户登录</a></td>
+			<td><a href="ProviderAction_toRegPage">服务商注册</a></td>
+			<td><a href="ProviderAction_toLoginPage">服务商登陆</a></td>
 		</tr>
 	</table>
 </body>

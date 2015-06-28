@@ -36,9 +36,19 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 
 	private List<Catalogue> rootCatalogues;
 
+	private List<Catalogue> childCatalogues;
+
 	private long parentid;
 
 	private Catalogue root;
+
+	public void setChildCatalogues(List<Catalogue> childCatalogues) {
+		this.childCatalogues = childCatalogues;
+	}
+
+	public List<Catalogue> getChildCatalogues() {
+		return childCatalogues;
+	}
 
 	public void setParentid(long parentid) {
 		this.parentid = parentid;
@@ -123,19 +133,20 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 	}
 
 	/**
-	 * 跳转到增加资源的页面
+	 * 跳转到增加资源的页面 通过JS 来选择类目
 	 */
 	public String toAddResourcePage() {
-		root = catalogueService.getRootCatalogueWithAllChild();
-		Set<Catalogue> catalogues = root.getChild();
-		for (Catalogue c : catalogues) {
-			System.out.println(c.getName());
-			Set<Catalogue> catalogues2 = c.getChild();
-			for (Catalogue c2 : catalogues2) {
-				System.out.println(c2.getName());
-			}
-		}
+		rootCatalogues = catalogueService.getRootCatalogue();
 		return "add_resource";
 	}
 
+	/**
+	 * 获得子目录
+	 */
+	public String chooseChild() {
+		System.out.println(parentid);
+		childCatalogues = catalogueService
+				.getChildCatalogueByParentId(parentid);
+		return "add_resource";
+	}
 }

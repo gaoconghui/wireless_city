@@ -8,8 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
 	<h3>
 		Welcome
 		<s:property value="#session.provider.name" />
@@ -18,16 +16,29 @@
 	<s:debug></s:debug>
 	<table>
 		<tr>
-			<td><a href="<%=request.getContextPath() %>/CatalogueAction_toAddResourcePage">增加资源</a></td>
+			<td><a href="CatalogueAction_toAddResourcePage">增加资源</a></td>
 		</tr>
 	</table>
-    <table>
-         <tr>
-            <td>一级目录</td>
-            <td><s:iterator var="s" value="catalogue.child">
-                 
-            </s:iterator></td>
-         </tr>
-    </table>
+	<table cellspacing="0" cellpadding="5" border="1">
+		<tr>
+			<td>一级目录</td>
+			<td><s:iterator var="s" value="rootCatalogues">
+					<a
+						href="CatalogueAction_chooseChild?parentid='<s:property value="id" />'"><s:property
+							value="name" /></a>
+				</s:iterator></td>
+		</tr>
+		<s:if test="childCatalogues!=null">
+			<tr>
+				<td>二级目录</td>
+				<td><s:iterator var="c" value="childCatalogues">
+						<a
+							href="CatalogueAction_chooseChild?parentid='<s:property value="id" />'"><s:property
+								value="name" /></a>
+					</s:iterator></td>
+			</tr>
+		</s:if>
+	</table>
+
 </body>
 </html>

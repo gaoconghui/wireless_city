@@ -13,7 +13,8 @@
 		<h1>注册页面</h1>
 
 		<s:include value="header.jsp"></s:include>
-		<s:form action="RegAction_doReg" method="post">
+		<s:form action="RegAction_doReg"
+			method="post">
 			<s:fielderror>
 				<s:param name="name"></s:param>
 			</s:fielderror>

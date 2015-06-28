@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
 	<s:form action="ProviderAction_reg">
 		<s:fielderror>
 			<s:param name="name"></s:param>

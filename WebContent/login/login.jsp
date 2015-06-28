@@ -12,7 +12,7 @@
 	<center>
 		<s:debug></s:debug>
 		<h1>欢迎来到武汉无线城市页面</h1>
-		<s:form action="LoginAction_login" method="post">
+		<s:form action="<%=request.getContextPath() %>/LoginAction_login" method="post">
 			<s:textfield name="name" label="用户名"></s:textfield>
 			<s:actionerror />
 			<s:textfield name="loginPwd" label="密码"></s:textfield>

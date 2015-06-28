@@ -13,7 +13,8 @@
 	<center>
 		<h1>catalogue manager page</h1>
 		<br>
-		<s:a href="CatalogueAction_toDesginCataloguePage">增加类目</s:a>
+		<s:a
+			href="<%=request.getContextPath()%>/CatalogueAction_toDesginCataloguePage">增加类目</s:a>
 		<br>
 		<table>
 			<tr>
