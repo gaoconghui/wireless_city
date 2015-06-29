@@ -88,7 +88,7 @@
 			.add_services  .a_s_main .a_s_pic .p_upload{width:50px;height:30px;background:#0181ec;color:#fff;line-height:30px;text-align:center;cursor:pointer;border-radius:3px;-webkit-border-radius:3px;}
 			.add_services  .a_s_main .a_s_pic .p_preview{height:100px;margin-top:10px;}
 			.add_services  .a_s_main .a_s_pic .p_preview img{margin-left:20px;}
-			.add_services  .a_s_main .a_s_desc textarea{width:700px;height:40px;margin-left:20px;border:1px soid #ccc;}
+			.add_services  .a_s_main .a_s_desc textarea{resize:none;width:700px;height:40px;margin-left:20px;border:1px soid #ccc;}
 			.add_services  .a_s_main .a_s_desc div{font-size:14px;margin-bottom:10px;}
 			.add_services  .next_step,.pre_step{width:50px;height:30px;background:#0181ec;color:#fff;line-height:30px;text-align:center;cursor:pointer;border-radius:3px;-webkit-border-radius:3px;margin:40px 0px 0px 425px;}
 			.add_services  .a_s_main .a_s_attribute p{margin-top:10px;float:left;margin-left:40px;}

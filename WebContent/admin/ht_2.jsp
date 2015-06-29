@@ -7,7 +7,7 @@
 		<title>无线城市-后台-资源模板管理</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
-		<link type="text/css" href="css/reset.css" rel="stylesheet">
+		<!-- <link type="text/css" href="css/reset.css" rel="stylesheet"> -->
 		<!--css,js-->
 		<style type="text/css">
 			.tzht{width:100%,background:#282828;font-weight:700;}
@@ -15,14 +15,14 @@
 			.tzht .t_right{background:#f3f4f5;margin-left:200px;padding-bottom:20px;border-bottom:1px solid #ccc;}
 			/*start r_location*/
 			.tzht .t_right .r_location{width:100%;height:51px;background:#e5e5e5;line-height:51px;border-bottom:1px solid #ccc;}
-			.tzht .t_right .r_location i{width:14px;height:18px;background:url("images/ht/ht_icon.png") no-repeat -16px -51px;margin:16px 20px 0 20px;float:left;}
+			.tzht .t_right .r_location i{width:14px;height:18px;background:url("../images/ht/ht_icon.png") no-repeat -16px -51px;margin:16px 20px 0 20px;float:left;}
 			.tzht .t_right .r_location span{display:blcok;float:left;}
 			/*end r_location*/
 
 			.tzht .t_right .r_table{background:#fff;margin:0 1%;border:1px solid #ccc;margin-top:20px;padding-bottom:10px;}
 
 			.tzht .t_right .r_table .r_title{width:100%;height:40px;background:#eee;border-bottom:1px solid #ccc;}
-			.tzht .t_right .r_table .r_title i{width:16px;height:14px;background:url("images/ht/ht_icon.png") no-repeat -386px -15px;display:block;float:left;margin:13px 0 0 10px;}
+			.tzht .t_right .r_table .r_title i{width:16px;height:14px;background:url("../images/ht/ht_icon.png") no-repeat -386px -15px;display:block;float:left;margin:13px 0 0 10px;}
 			.tzht .t_right .r_table .r_title span{border-left:1px solid #ccc;height:40px;line-height:40px;padding-left:5px;color:#000;}
 			
 			.tzht .t_right .r_table .r_title .s_input{width:219px;height:30px;margin-top:8px;float:right;}
@@ -41,7 +41,7 @@
 			.tzht .t_right .r_table .r_label .l_show .s_title:first-child{background:#1e90ff;font-size:14px;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span{display:block;width:25%;float:left;text-indent:4px;}
 			.tzht .t_right .r_table .r_label .l_show .s_title .span:before{content:"";border-left:1px dotted #ddd;height:40px;display:block;float:left;}
-			.tzht .t_right .r_table .r_label .l_show .s_title span a{margin-top:8px;width:24px;height:24px;margin-right:2px;background:url("images/ht/ht_icon.png") no-repeat;display:block;float:left;}
+			.tzht .t_right .r_table .r_label .l_show .s_title span a{margin-top:8px;width:24px;height:24px;margin-right:2px;background:url("../images/ht/ht_icon.png") no-repeat;display:block;float:left;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span a:hover{background-color:#2f3437;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a2{background-position:-379px -47px;background-color:#1e90ff;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a3{background-position:-21px -20px;background-color:#6297bc;}
@@ -58,8 +58,8 @@
 		
 			.tzht .t_right .r_table .r_label .l_show .s_add{border:1px solid #1e90ff;border-top:0;padding:10px 20px;}
 			.tzht .t_right .r_table .r_label .l_show .s_add .empty_pic{float:left;border:1px solid #ccc;}
-			.tzht .t_right .r_table .r_label .l_show .s_add .add_resource{background:url("images/ht/add_resource.png") no-repeat;float:right;margin-right:20px;width:100px;height:100px;cursor:pointer;}
-			.tzht .t_right .r_table .r_label .l_show .s_add .add_resource:hover{background-color:#ddd;}
+			.tzht .t_right .r_table .r_label .l_show .s_add .add_resource{background:url("../images/ht/add_resource.png") no-repeat;float:right;margin-right:20px;width:100px;height:100px;cursor:pointer;}
+			.tzht .t_right .r_table .r_label .l_show .s_add .add_resource:hover{background-color:#28b779;}
 		/*end t_right*/
 		
 		/* add_module begin */
@@ -76,7 +76,7 @@
 			.add_module_attribute{display:none;width:886px;height:355px;position:fixed;z-index:11;}
 			.add_module_attribute .add_module{float:left;background:#fff;position:static;display:block;}
 			.add_module_attribute .add_delete{float:left;margin:137px 20px;}
-			.add_module_attribute .add_delete div{background:url(images/ht/arrow_btn.png) no-repeat;width:39px;height:38px;margin-bottom:20px;}
+			.add_module_attribute .add_delete div{background:url(../images/ht/arrow_btn.png) no-repeat;width:39px;height:38px;margin-bottom:20px;}
 			.add_module_attribute .add_delete .next_btn{background-position:-45px -1px;}
 			.add_module_attribute .add_delete .back_btn{background-position:-136px -1px;}
 			.add_module_attribute .attribute_show{height:353px;float:left;border:1px solid #282828;text-align:center;}
@@ -100,8 +100,8 @@
 		#yp_dialog .dialog_content a{background:#3083eb;display:block;height:30px;width:50px;margin:40px 0 0 47px;float:left;color:#fff;line-height:30px;font-size:14px;text-align:center;border-radius:3px;}
 		/*yp_dialog end*/
 		</style>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script>
+		<%-- <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/yjutil.js"></script> --%>
 	</head>
 <body>
 	<div class="tzht">

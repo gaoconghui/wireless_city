@@ -7,7 +7,7 @@
 		<title>无线城市-后台-服务类目管理</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
-		<link type="text/css" href="css/reset.css" rel="stylesheet">
+		<!-- <link type="text/css" href="css/reset.css" rel="stylesheet"> -->
 		<!--css,js-->
 		<style type="text/css">
 			.tzht{width:100%,background:#282828;font-weight:700;}
@@ -15,10 +15,10 @@
 			.tzht .t_right{background:#f3f4f5;margin-left:200px;}
 			/*start r_location*/
 			.tzht .t_right .r_location{width:100%;height:51px;background:#e5e5e5;line-height:51px;border-bottom:1px solid #ccc;}
-			.tzht .t_right .r_location i{width:14px;height:18px;background:url("images/ht/ht_icon.png") no-repeat -16px -51px;margin:16px 20px 0 20px;float:left;}
+			.tzht .t_right .r_location i{width:14px;height:18px;background:url("../images/ht/ht_icon.png") no-repeat -16px -51px;margin:16px 20px 0 20px;float:left;}
 			.tzht .t_right .r_location span{display:blcok;float:left;}
 			.tzht .t_right .r_location .r_t_action{width:108px;height:24px;float:left;margin:12px 0 0 10px;}
-			.tzht .t_right .r_location .r_t_action .ra{width:24px;height:24px;margin-right:2px;background:url("images/ht/ht_icon.png") no-repeat;display:block;float:left;cursor:pointer;}
+			.tzht .t_right .r_location .r_t_action .ra{width:24px;height:24px;margin-right:2px;background:url("../images/ht/ht_icon.png") no-repeat;display:block;float:left;cursor:pointer;}
 			.tzht .t_right .r_location .r_t_action .ra:hover{background-color:#2f3437;}
 			
 			.tzht .t_right .r_location .r_t_action .r_t_a2{background-position:-379px -47px;background-color:#1e90ff;}
@@ -29,7 +29,7 @@
 			.tzht .t_right .r_table{background:#fff;margin:0 1%;border:1px solid #ccc;margin-top:20px;padding-bottom:10px;}
 
 			.tzht .t_right .r_table .r_title{width:100%;height:40px;background:#eee;border-bottom:1px solid #ccc;}
-			.tzht .t_right .r_table .r_title i{width:16px;height:14px;background:url("images/ht/ht_icon.png") no-repeat -386px -15px;display:block;float:left;margin:13px 0 0 10px;}
+			.tzht .t_right .r_table .r_title i{width:16px;height:14px;background:url("../images/ht/ht_icon.png") no-repeat -386px -15px;display:block;float:left;margin:13px 0 0 10px;}
 			.tzht .t_right .r_table .r_title span{border-left:1px solid #ccc;height:40px;line-height:40px;padding-left:5px;color:#000;}
 
 			.tzht .t_right .r_table .r_label{width:100%;}
@@ -37,7 +37,7 @@
 			.tzht .t_right .r_table .r_label ul li:hover{background:#2f3437;}
 			.tzht .t_right .r_table .r_label ul li a{color:#fff;line-height:40px;padding:0px 20px;display:block;white-space:nowrap; height:40px;}
 
-			.tzht .t_right .r_table .r_label ul li a i{width:15px;height:14px;display:block;background:url("images/ht/ht_icon.png") no-repeat -33px -52px;float:left;margin-top:13px;}
+			.tzht .t_right .r_table .r_label ul li a i{width:15px;height:14px;display:block;background:url("../images/ht/ht_icon.png") no-repeat -33px -52px;float:left;margin-top:13px;}
 		/*end t_right*/
 		
 		/*yp_dialog begin*/
@@ -58,8 +58,8 @@
 		.add_module .a_d_footer span{float:left;width:50px;height:30px;line-height:30px;cursor:pointer;font-size:14px;background:#1e90ff;display:block;margin-left:67px;color:#fff;text-align:center;}
 		/* end add_module */
 		</style>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script>
+		<%-- <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/yjutil.js"></script> --%>
 	</head>
 <body>
 	<div class="tzht">
@@ -95,7 +95,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#1e90ff;" class="add_btn" title="添加"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#28b779;" class="add_btn" title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -117,7 +117,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#1e90ff;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#28b779;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -139,7 +139,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#1e90ff;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#28b779;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -161,7 +161,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#1e90ff;" class="add_btn" title="添加"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#28b779;" class="add_btn" title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -183,7 +183,7 @@
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
 						<li><a href="#"><span>二类目</span></a></li>
-						<li style="background:#1e90ff;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
+						<li style="background:#28b779;" class="add_btn"  title="添加"><a href="javascript:void(0)"><i></i></a></li>
 						<div class="clear"></div>
 					</ul>
 				</div>

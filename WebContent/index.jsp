@@ -65,13 +65,16 @@
 			
 		/*center end*/
 		/*login begin*/
-			.login{z-index:11;width:574px;height:278px;position:fixed;background:#fff;box-shadow:0 3px 7px 2px rgba(0,0,0,.4);-webkit-box-shadow:0 3px 7px 2px rgba(0,0,0,.4);-webkit-border-radius:3px;border-radius:3px;top:50%;left:50%;margin-left:-287px;margin-top:-139px;display:none;}
+			.login{z-index:11;width:574px;height:308px;position:fixed;background:#fff;box-shadow:0 3px 7px 2px rgba(0,0,0,.4);-webkit-box-shadow:0 3px 7px 2px rgba(0,0,0,.4);-webkit-border-radius:3px;border-radius:3px;top:50%;left:50%;margin-left:-287px;margin-top:-154px;display:none;}
 			.login .l_header{width:550px;height:40px;padding-left:24px;border-bottom:1px solid #dedede;background:#fbfbfb;}
 			.login .l_header h2{font-size:14px;width:520px;height:40px;line-height:40px;color:#666;float:left;}
 			.login .l_header span{width:20px;height:20px;display:block;background:url(images/wireless_icon.png) no-repeat -50px -2px;float:left;margin-top:10px;cursor:pointer;}
 			.login .l_header span:hover{background-position:-71px -2px;}
 			.login .l_left{width:270px;height:190px;float:left;margin:17px 20px 0px 30px;}
-			.login .l_left .l_message{width:258px;height:20px; line-height:20px;border:1px solid #b61d1d;text-align:center;color:#b61d1d;}
+			.login .l_left .l_message{width:258px;height:20px; line-height:20px;border:1px solid #b61d1d;text-align:center;color:#b61d1d;margin-bottom:10px;}
+			
+			.login .l_left .l_select label{height:30px;line-height:20px;width:76px;display:block;float:left;}
+			
 			.login .l_left .l_input{width:260px;margin-top:10px;}
 			.login .l_left .l_input .input{margin-bottom:10px;width:255px;height:30px;border:1px solid #ccc;line-height:30px;padding-left:4px;display:block;}
 			.login .l_left .l_input .l_sel{width:250px;height:30px;display:block;line-height:30px;}
@@ -99,7 +102,7 @@
 	<div class="title_fixed">
 		<div class="s_right" id="s_right">
 			<div class="r_login">登录</div>
-			<div class="r_register"><a href="wireless_register.html">注册</a></div>
+			<div class="r_register"><a href="register.jsp">注册</a></div>
 		</div>
 	</div>
 	<div class="header">
@@ -1025,6 +1028,10 @@
 		</div>
 		<div class="l_left">
 			<div class="l_message">欢迎使用无线城市</div>
+			<div class="l_select">
+				<label><input type="radio" name="usertype" value="消费者">消费者</label>
+				<label><input type="radio" name="usertype" value="服务商">服务商</label>
+			</div>
 			<div class="l_input">
 				<input id="username" class="input" type="text" placeholder="账号" name="usermame" class="l_username"/>
 				<input class="input" type="password" placeholder="密码" name="password" class="l_password"/>
