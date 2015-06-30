@@ -97,14 +97,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="js/placeholder.js"></script>
 	</head>
 <body>
-<<<<<<< HEAD
-<center>
-	<h1>helloworld</h1>
-	<br>
-	<s:a href="admin/operatortop.jsp">运营商主页</s:a>
-	<s:include value="header.jsp"></s:include>
-</center>
-=======
 	<!-- header begin-->
 	<div class="title_fixed">
 		<div class="f_s">
@@ -249,7 +241,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
->>>>>>> origin/jsp
 
 						</div>
 					</div>
