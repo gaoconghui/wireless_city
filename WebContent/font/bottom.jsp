@@ -1,13 +1,33 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>无线城市-页面底部</title>
 		<meta name="keywords" content="关键词,关键词">
 		<meta name="description" content="">
 		<style type="text/css">
 		/*bottom begin*/
+		/* 
+			#a69f99  灰
+			#1fac75 绿
+			#f44f28 黄
+			#b61d1d 红
+			#c81623 深红
+			#242424 黑
+			
+			#157ad4
+			
+			#2075D3
+			
+			#1d7ad9 蓝
+			#3586f2
+		 */
 			.bottom{width:100%;background:#39393f;color:#c9cad6;margin-top:40px;}
 			.bottom .about_us{width:1200px;margin:0px auto;}
 			.bottom .about_us ul{padding-left:10px;width:800px; float:left;margin:20px 0px;}

@@ -1,8 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>无线城市-提供商管理页</title>
 		<meta name="keywords" content="关键词,关键词">
@@ -13,8 +18,8 @@
 			/*header beign*/
 			::selection {color: #fff;background: #f99750;}
 			body{background:#f1f1f1;cursor:default;color:#444;}
-			.title_fixed{width:100%;height:40px;}
-			.title_fixed .s_right{float:right;width:400px;font-size:16px;line-height:40px;}
+			.title_fixed{width:100%;height:26px;background:#fafafa;}
+			.title_fixed .s_right{float:right;width:400px;font-size:12px;line-height:26px;}
 			.title_fixed .s_right .r_login,.r_register{width:50px;height:43px;float:right;cursor:pointer;}
 			.title_fixed .s_right .r_login,.r_register a{color:#444;}
 		/*header end*/

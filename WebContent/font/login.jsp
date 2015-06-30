@@ -1,7 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>无线城市-登陆页</title>
 		<meta name="keywords" content="关键词,关键词">
@@ -14,7 +19,7 @@
 			input{border:0;}
 			img{display:block;}
 			.login_wrapper .w_center{width:100%;position:relative;}
-			.login_wrapper .w_center .w_login{border:1px solid #505055;width:400px;position:absolute;top:120px;right:100px;background:#fdfdfd;box-shadow:-5px 5px 1em #000;}
+			.login_wrapper .w_center .w_login{border:1px solid #555;width:400px;position:absolute;top:120px;right:100px;background:#fdfdfd;box-shadow:-0px 05px 4em #000;}
 			.login_wrapper .w_center .w_login .login_header{width:400px;height:85px;}
 			.login_wrapper .w_center .w_login .login_header .header_pic{background:url(images/login.png) no-repeat;width:25px;height:25px;margin:30px 22px;float:left;}
 			.login_wrapper .w_center .w_login .login_header .header_text{font-family:Viner Hand ITC;float:left;height:85px;line-height:85px;font-size:22px;font-weight:bold;}

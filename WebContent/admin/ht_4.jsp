@@ -1,8 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>无线城市-后台-服务资源管理</title>
 		<meta name="keywords" content="">
@@ -15,7 +20,7 @@
 			.tzht .t_right{background:#f3f4f5;margin-left:200px;padding-bottom:20px;border-bottom:1px solid #ccc;}
 			/*start r_location*/
 			.tzht .t_right .r_location{width:100%;height:51px;background:#e5e5e5;line-height:51px;border-bottom:1px solid #ccc;}
-			.tzht .t_right .r_location i{width:14px;height:18px;background:url("../images/ht/ht_icon.png") no-repeat -16px -51px;margin:16px 20px 0 20px;float:left;}
+			.tzht .t_right .r_location i{width:14px;height:18px;background:url("images/ht/ht_icon.png") no-repeat -16px -51px;margin:16px 20px 0 20px;float:left;}
 			.tzht .t_right .r_location span{display:blcok;float:left;}
 			
 			/*end r_location*/
@@ -23,10 +28,10 @@
 			.tzht .t_right .r_table{background:#fff;margin:0 1%;border:1px solid #ccc;margin-top:20px;padding-bottom:10px;}
 
 			.tzht .t_right .r_table .r_title{width:100%;height:40px;background:#eee;border-bottom:1px solid #ccc;}
-			.tzht .t_right .r_table .r_title i{width:16px;height:14px;background:url("../images/ht/ht_icon.png") no-repeat -386px -15px;display:block;float:left;margin:13px 0 0 10px;}
+			.tzht .t_right .r_table .r_title i{width:16px;height:14px;background:url("images/ht/ht_icon.png") no-repeat -386px -15px;display:block;float:left;margin:13px 0 0 10px;}
 			.tzht .t_right .r_table .r_title .span{height:40px;line-height:40px;padding-left:5px;color:#000;display:block;float:left;}
 			.tzht .t_right .r_table .r_title .r_t_action{height:24px;float:left;margin:8px 0 0 10px;}
-			.tzht .t_right .r_table .r_title .r_t_action .ra{margin:2px;width:20px;height:20px;background:url("../images/ht/ht_icon.png") no-repeat;display:block;float:left;cursor:pointer;}
+			.tzht .t_right .r_table .r_title .r_t_action .ra{margin:2px;width:20px;height:20px;background:url("images/ht/ht_icon.png") no-repeat;display:block;float:left;cursor:pointer;}
 			
 			
 			.tzht .t_right .r_table .r_title .r_t_action .ra:hover{background-color:#2f3437;}
@@ -44,7 +49,7 @@
 			.tzht .t_right .r_table .r_label .l_tr:first-child{border:0;height:40px;line-height:40px;background:#1e90ff;font-size:14px;color:#fff;}
 			.tzht .t_right .r_table .r_label .l_tr span{width:19%;display:block;float:left;text-indent:4px;}
 			.tzht .t_right .r_table .r_label .l_tr .span:before{content:"";border-left:1px dotted #ddd;display:block;float:left;height:40px;}
-			.tzht .t_right .r_table .r_label .l_tr span a{background:url("../images/ht/ht_icon.png") no-repeat;width:20px;height:20px;margin:5px;float:left;}
+			.tzht .t_right .r_table .r_label .l_tr span a{background:url("images/ht/ht_icon.png") no-repeat;width:20px;height:20px;margin:5px;float:left;}
 			.tzht .t_right .r_table .r_label .l_tr span a.delete{background-position:-419px -50px;background-color:#bd2d30;}
 			.tzht .t_right .r_table .r_label .l_tr span a.info{background-position:-112px -21px;background-color:#28b779;}
 			.tzht .t_right .r_table .r_label .l_tr span a.submit{background-position:-68px -23px;background-color:#1e90ff;}

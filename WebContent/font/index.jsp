@@ -17,50 +17,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<style type="text/css">
 		/*header beign*/
 			::selection {color: #fff;background: #f99750;}
-			body{background:#fafafa;cursor:default;}
-			.title_fixed{width:100%;height:34px;line-height:34px;background:#fafafa;}
-			.title_fixed .f_s{width:1200px;margin:0 auto;}
-			.title_fixed .s_right{float:right;width:400px;font-size:12px;color:#444;}
-			.title_fixed .s_right .r_login,.r_register{width:40px;height:34px;float:right;cursor:pointer;}
+			body{background:#fafafa;cursor:default;color:#444;}
+			.title_fixed{width:100%;height:26px;background:#fafafa;}
+			.title_fixed .s_right{float:right;width:400px;font-size:12px;line-height:26px;}
+			.title_fixed .s_right .r_login,.r_register{width:50px;height:43px;float:right;cursor:pointer;}
 			.title_fixed .s_right .r_login,.r_register a{color:#444;}
-			.header{width:100%;background:#fff;}
+			.header{width:100%;background:#fff;border-bottom:2px solid #b61d1d;}
 			.header .h_fir{width:1200px;height:80px;margin:0px auto;}
-			.header .h_fir .f_logo{color:#188eee; font-weight:700;font-size:36px; text-align: center;font-family:Viner Hand ITC,hakuyoxingshu7000,Kunstler Script;width:141px;height:50px;margin:-31px 100px 0px 25px;float:left;}
-			.header .h_fir .f_logo span{color:#ff8c00}
-			.header .h_fir .f_search{width:508px;float:right;}
-			.header .h_fir .f_search .s_input{width:500px;height:42px;margin-top:18px;}
-			.header .h_fir .f_search .s_input input:first-child{width:400px;border:2px solid #188eee;height:40px;border-right:0;line-height:40px;color:#666;padding-left:10px;display:block;float:left;}
-			.header .h_fir .f_search .s_input .i_btn{width:80px;height:44px;background:#188eee;color:#fff;line-height:44px;text-align:center;font-size:16px; border:0;float:left;cursor:pointer;}
-			.header .h_fir .f_search .s_input .i_btn:hover{background:#1369c0;}
-			.header .h_sec{width:100%;color:#333;font-size:16px;line-height:46px;border-bottom:2px solid #1369c0;}
-			.header .h_sec .s_wrapper{width:1200px;height:46px;margin:0 auto;}
+			.header .h_fir .f_logo{width:188px;height:50px;margin:10px 100px 0px 25px; background:url(images/logo.png) no-repeat;float:left;}
+			.header .h_fir .f_search{width:600px;height:60px;float:left;}
+			.header .h_fir .f_search .s_hot{width:500px;height:20px;line-height:20px;color:#666;}
+			.header .h_fir .f_search .s_hot a{margin-left:10px;color:#666;}
+			.header .h_fir .f_search .s_hot a:hover{color:#b61d1d;}
+			.header .h_fir .f_search .s_input{width:500px;height:42px;margin-top:8px;}
+			.header .h_fir .f_search .s_input input:first-child{width:400px;height:40px;border:2px solid #b61d1d;border-right:0;line-height:40px;color:#666;padding-left:10px;display:block;float:left;}
+			.header .h_fir .f_search .s_input .i_btn{width:80px;height:44px;background:#b61d1d;color:#fff;line-height:40px;text-align:center;font-size:16px; border:0;float:left;cursor:pointer;}
+			.header .h_fir .f_search .s_input .i_btn:hover{background:#c81623;}
+			.header .h_fir .f_contact{float:left;width:250px;height:70px;line-height:70px; }
+			.header .h_fir .f_contact .c_fir{width:250px;height:70px; color:#b61d1d;font-size:18px;font-weight:400;}
+			.header .h_fir .f_contact .c_fir .f_icon{width:20px;height:20px;background:url(images/wireless_icon.png) no-repeat -24px -1px; display:block;margin:25px 5px 0px 5px;float:left;}
+			.header .h_fir .f_contact .c_fir .f_text{float:left;}
+			.header .h_sec{width:100%;color:#333;font-size:16px;line-height:43px;}
+			.header .h_sec .s_wrapper{width:1200px;height:43px;margin:0 auto;}
 			.header .h_sec .s_wrapper .s_left{float:left;width:800px;}
-			.header .h_sec .s_wrapper .s_left ul li{padding:0px 15px;height:46px;float:left;text-align:center;cursor:pointer;}
-			.header .h_sec .s_wrapper .s_left ul .lidemo{background :#1369c0;color:#fff;}
+			.header .h_sec .s_wrapper .s_left ul li{padding:0px 15px;height:43px;float:left;text-align:center;cursor:pointer;}
+			.header .h_sec .s_wrapper .s_left ul .lidemo{background:#b61d1d;color:#fff;}
 		/*header end*/
 		
 		/*center begin*/
-			.banner{width:100%;height:600px;margin:0px auto;}
+			.banner{width:100%;height:454px;margin:0px auto;}
 			.banner .b_content{width:1200px;height:0px;position:relative;margin:0 auto;z-index:2;}
-			.banner .b_content .c_info{width:200px;position:absolute;top:-48px;left:0px;color:#fff;font-size:14px;border-left:1px solid #3586f2;border-bottom:1px solid #3487f2;z-index:4;}
-			.banner .b_content .c_info .left_nav li:first-child{font-size:16px;line-height:47px;font-weight:700;font-weight:700;}
-			.banner .b_content .c_info .left_nav li{line-height:40px;background:#3586f2;border-top:1px solid #5aa1fe;border-bottom:1px solid #3487f2;}
-			.banner .b_content .c_info .left_nav li:nth-child(even){background:#2075D3;}
-			.banner .b_content .c_info .left_nav li:hover{background:#fff;color:#256dda;}
-			.banner .b_content .c_info .left_nav li:first-child:hover{background:#3586f2;color:#fff;}
+			.banner .b_content .c_info{width:200px;position:absolute;top:-45px;left:0px;color:#fff;font-size:14px;border-left:1px solid #c81623;border-bottom:1px solid #c81623;z-index:4;}
+			.banner .b_content .c_info .left_nav li:first-child{font-size:16px;line-height:45px;background:#b61d1d;padding-left:25px;}
+			.banner .b_content .c_info .left_nav li{line-height:40px;font-weight:700;background:#c81623;}
+			.banner .b_content .c_info .left_nav .lihover{background:#fafafa;color:#b61d1d;}
 			.banner .b_content .c_info .left_nav li:after{content:"";display:block;clear:both;}
-			.banner .b_content .c_info .left_nav li .i_icon{float:left;display:block;width:20px;height:20px;background:url(images/index_refactor.png) -68px -90px no-repeat;margin:12px 0px 0px 10px}
+			.banner .b_content .c_info .left_nav li .i_icon{float:left;display:block;width:40px;height:40px;padding-left:10px;background:url(images/wireless_icon.png) no-repeat 0px -287px;}
 			.banner .b_content .c_info .left_nav li .i_desc{padding-left:10px;display:block;float:left;}
 			.banner .b_content .c_info .left_nav li .i_more{display:block;float:right;position:relative;font-weight:100;padding-right:10px;}
 			.banner .b_content .left_content{position:absolute;top:-1px;left:200px;z-index:3;}
-			.banner .b_content .left_content li{padding:20px 40px;border:2px solid #4594fd;background:#fff;width:769px;position:absolute;top:1px;left:-1px;display:none;}
-			.banner .b_content .left_content li .c_list{background:#c2d9f8;line-height:20px;padding:5px 10px;margin:5px;}
-			.banner .b_content .left_content li .c_list .l_second_item{font-weight:700;float:left; width:100px;text-align:center;margin-top:5px;}
+			.banner .b_content .left_content li{border:1px solid #b61d1d;background:#fafafa;width:769px;height:480px;position:absolute;top:0;left:0;display:none;}
+			.banner .b_content .left_content li .c_list{width:700px; margin-top:20px;line-height:20px;}
+			.banner .b_content .left_content li .c_list .l_second_item{font-weight:700px;float:left; width:100px;padding-left:50px;text-align:center;margin-top:5px;}
 			.banner .b_content .left_content li .c_list .l_second_item .span1{height:20px;float:left;}
 			.banner .b_content .left_content li .c_list .l_second_item .span2{width:20px;height:20px;float:right;}
 			.banner .b_content .left_content li .c_list .l_third_item{float:left;width:550px;text-align:left;}
-			.banner .b_content .left_content li .c_list:after{content:"";display:block;clear:both;}
 			.banner .b_content .left_content li .c_list .l_third_item a{color:#444;margin-top:5px;display:inline-block;border-left:1px solid #ccc;padding:0 10px;height:20px;}
+			.banner .b_content .btn_ul{position:absolute;top:400px;left:800px;z-index:2;}
+			.banner .b_content .btn_ul li{float:left;width:20px;height:20px;margin:0px 10px;background:#565656;border-radius:10px;-webkit-border-radius:10px;color:#fff;font-size:16px;line-height:20px;text-align:center;cursor:pointer;}
+			.banner .b_content .img_ul{width:980px;overflow:hidden;margin-left:102px;}
+			.banner .b_content .img_ul li{width:980px;margin-top:10px;}
 			
 		/*center end*/
 		/*login begin*/
@@ -70,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.login .l_header span{width:20px;height:20px;display:block;background:url(images/wireless_icon.png) no-repeat -50px -2px;float:left;margin-top:10px;cursor:pointer;}
 			.login .l_header span:hover{background-position:-71px -2px;}
 			.login .l_left{width:270px;height:190px;float:left;margin:17px 20px 0px 30px;}
-			.login .l_left .l_message{width:258px;height:20px; line-height:20px;border:1px solid #242424;text-align:center;color:#242424;margin-bottom:10px;}
+			.login .l_left .l_message{width:258px;height:20px; line-height:20px;border:1px solid #b61d1d;text-align:center;color:#b61d1d;margin-bottom:10px;}
 			
 			.login .l_left .l_select label{height:30px;line-height:20px;width:76px;display:block;float:left;}
 			
@@ -80,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.login .l_left .l_input .l_sel .l_box{width:20px;height:20px;margin-top:5px;background:url(images/wireless_icon.png) no-repeat -93px 0px;float:left;cursor:pointer;}
 			.login .l_left .l_input .l_sel .l_text{display:block;float:left;}
 			.login .l_left .l_input .l_sel a{display:block;float:right;color:#0181ec;}
-			.login .l_left .l_input .l_submit{width:70px;height:30px;line-height:30px;text-align:center;color:#fff;background:#242424;display:block;-webkit-border-radius:3px;border-radius:3px;margin:15px 0 0 93px;}
+			.login .l_left .l_input .l_submit{width:70px;height:30px;line-height:30px;text-align:center;color:#fff;background:#b61d1d;display:block;-webkit-border-radius:3px;border-radius:3px;margin:15px 0 0 93px;}
 			.login .l_right{width:251px;height:190px;float:left;border-left:1px dotted #ccc;margin-top:17px; }
 			.login .l_right p{width:200px;height:30px;line-height:30px; font-weight:700;padding:10px 0 0 25px;}
 			.login .l_right p a{color:#0181ec;cursor:pointer;}
@@ -99,29 +105,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<!-- header begin-->
 	<div class="title_fixed">
-		<div class="f_s">
-			<div class="s_right" id="s_right">
-				<div class="r_login">登录</div>
-				<div class="r_register"><a href="register.jsp">注册</a></div>
-			</div>
+		<div class="s_right" id="s_right">
+			<div class="r_login">登录</div>
+			<div class="r_register"><a href="register.jsp">注册</a></div>
 		</div>
 	</div>
 	<div class="header">
 		<div class="h_fir">
-			<div class="f_logo"><span>W</span>ireless <span>C</span>ity</div>
+			<div class="f_logo"></div>
 			<div class="f_search">
 				<div class="s_input">
 					<input type="text" placeholder="找服务资源" />
 					<div class="i_btn">搜索</div>
 				</div>
 				<div id="clear"></div>
+				<div class="s_hot">
+					<span>热词：</span>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+				</div>
+			</div>
+			<div class="f_contact">
+				<div class="c_fir">
+					<span class="f_icon"></span>
+					<span class="f_text">问题咨询：027-01293604</span>
+				</div>
 			</div>
 		</div>
 		<div class="h_sec">
 			<div class="s_wrapper">
 				<div class="s_left">
 					<ul id="nav_ul">
-						<li style="width:60px;margin-left:212px;" class="lidemo">首页</li>
+						<li style="width:60px;margin-left:212px;" >首页</li>
 						<li>求职就业</li>
 						<li>购物</li>
 						<li>教育培训</li>
@@ -139,58 +159,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="c_info">
 				<ul id="left_nav" class="left_nav">
 					<li>
+						<span class="i_desc">全部服务资源分类</span>
+					</li>
+					<li>
 						<span class="i_icon"></span>
-						<span class="i_desc">全部服务资源</span>
-					</li>
-					<li>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
 					<li>
+						<span class="i_icon"></span>
 						<span class="i_desc">无线政务</span>
 						<span class="i_more">&gt;</span>
 					</li>
-					
 				</ul>
 			</div>
 			<ul class="left_content" id="left_content">
@@ -210,7 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -226,7 +256,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -243,7 +273,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -261,7 +291,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -277,7 +307,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -309,7 +339,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -327,7 +357,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -343,7 +373,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -375,7 +405,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -393,7 +423,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -409,7 +439,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -441,7 +471,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -459,7 +489,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -475,7 +505,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -507,7 +537,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -525,7 +555,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -541,7 +571,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -573,7 +603,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -591,7 +621,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -607,7 +637,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -639,7 +669,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -657,7 +687,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -673,7 +703,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -705,7 +735,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -723,7 +753,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -739,7 +769,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -771,7 +801,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -789,7 +819,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -805,7 +835,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -837,7 +867,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -855,7 +885,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -871,7 +901,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -903,7 +933,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 				</li>
 				<li>
 					<div class="c_list">
@@ -921,7 +951,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -937,7 +967,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
 					<div class="c_list">
 						<div class="l_second_item">
 							<span class="span1">二类目</span>
@@ -969,11 +999,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">三类目</a>
 							<a href="javascript:void(0)">三类目</a>
 						</div>
-					</div>
+					<div>
+				</li>
+			</ul>
+			<ul class="btn_ul">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<ul class="img_ul">
+				<li>
+					<img src="images/banner1.jpg" alt="" height="471"/>
 				</li>
 			</ul>
 		</div>
+		
 	</div>
+	<div class="center">
+		
+	</div>
+	<!-- center end -->
 	
 	<!-- bottom beign -->
 	<s:include value="bottom.jsp"></s:include>
@@ -1072,15 +1117,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 			$("#left_content").find("li").each(function(index){
 				var _index=index+1;
-				var top=1+index*10;
 				var $this=$("#left_nav").find("li").eq(_index);
 				$(this).on({
 					"mouseenter":function(){
 						$(this).show();
-						$(this).css({"top":top});
+						$this.addClass("lihover");
+						$this.find(".i_more").text("");
 					},
 					"mouseleave":function(index){
 						$(this).hide();
+						$this.removeClass("lihover");
+						$this.find(".i_more").text(">");
 					}
 				
 				});
