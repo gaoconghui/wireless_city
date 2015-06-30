@@ -6,6 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <!doctype html>
 <html>
+<!-- 修改模板名字描述 和修改模板属性应该分开来 -->
 	<head>
 		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
