@@ -16,3 +16,5 @@ test/com/whut/wxcs/resmanager/bean/test/testGson.java
 build/classes/db.properties
 
 *.class
+
+
