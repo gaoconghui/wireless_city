@@ -1,8 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>无线城市-详情页</title>
 		<meta name="keywords" content="关键词,关键词">
@@ -13,11 +18,11 @@
 			/*header beign*/
 			::selection {color: #fff;background: #f99750;}
 			body{background:#f1f1f1;cursor:default;color:#444;}
-			.title_fixed{width:100%;height:40px;background:#fff;}
-			.title_fixed .s_right{float:right;width:400px;font-size:16px;line-height:40px;}
+			.title_fixed{width:100%;height:26px;background:#fafafa;}
+			.title_fixed .s_right{float:right;width:400px;font-size:12px;line-height:26px;}
 			.title_fixed .s_right .r_login,.r_register{width:50px;height:43px;float:right;cursor:pointer;}
 			.title_fixed .s_right .r_login,.r_register a{color:#444;}
-			.header{width:100%;background:#fff;border-bottom:2px solid #b61d1d;border-top:2px solid #b61d1d;}
+			.header{width:100%;background:#fff;height:100px;}
 			.header .h_fir{width:1200px;height:80px;margin:0px auto;}
 			.header .h_fir .f_logo{width:188px;height:50px;margin:10px 100px 0px 25px; background:url(images/logo.png) no-repeat;float:left;}
 			.header .h_fir .f_search{width:600px;height:60px;float:left;}
@@ -177,7 +182,7 @@
 			</div>
 			<div class="hd_details">
 				<div class="d_title">
-					<a name="attribute"></a>
+					<a name="attribute" href="javascript:void(0)"></a>
 					<ul>
 						<li><a href="javascript:void(0)" class="sel" >商品参数</a></li>
 						<li><a href="#pic">商品图片</a></li>

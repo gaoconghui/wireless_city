@@ -1,8 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>无线城市-提供商管理页</title>
 		<meta name="keywords" content="关键词,关键词">
@@ -13,8 +18,8 @@
 			/*header beign*/
 			::selection {color: #fff;background: #f99750;}
 			body{background:#f1f1f1;cursor:default;color:#444;}
-			.title_fixed{width:100%;height:40px;}
-			.title_fixed .s_right{float:right;width:400px;font-size:16px;line-height:40px;}
+			.title_fixed{width:100%;height:26px;background:#fafafa;}
+			.title_fixed .s_right{float:right;width:400px;font-size:12px;line-height:26px;}
 			.title_fixed .s_right .r_login,.r_register{width:50px;height:43px;float:right;cursor:pointer;}
 			.title_fixed .s_right .r_login,.r_register a{color:#444;}
 		/*header end*/
@@ -88,7 +93,7 @@
 			.add_services  .a_s_main .a_s_pic .p_upload{width:50px;height:30px;background:#0181ec;color:#fff;line-height:30px;text-align:center;cursor:pointer;border-radius:3px;-webkit-border-radius:3px;}
 			.add_services  .a_s_main .a_s_pic .p_preview{height:100px;margin-top:10px;}
 			.add_services  .a_s_main .a_s_pic .p_preview img{margin-left:20px;}
-			.add_services  .a_s_main .a_s_desc textarea{width:700px;height:40px;margin-left:20px;border:1px soid #ccc;}
+			.add_services  .a_s_main .a_s_desc textarea{resize:none;width:700px;height:40px;margin-left:20px;border:1px soid #ccc;}
 			.add_services  .a_s_main .a_s_desc div{font-size:14px;margin-bottom:10px;}
 			.add_services  .next_step,.pre_step{width:50px;height:30px;background:#0181ec;color:#fff;line-height:30px;text-align:center;cursor:pointer;border-radius:3px;-webkit-border-radius:3px;margin:40px 0px 0px 425px;}
 			.add_services  .a_s_main .a_s_attribute p{margin-top:10px;float:left;margin-left:40px;}
