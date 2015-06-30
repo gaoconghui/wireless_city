@@ -18,7 +18,7 @@
 	<center>
 		<h1>catalogue page1</h1>
 		<br>
-		<s:form action="CatalogueAction_dddCatalogue">
+		<s:form action="CatalogueAction_addCatalogue">
 			<s:hidden name="id"></s:hidden>
 			<table>
 				<tr>

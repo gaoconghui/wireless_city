@@ -9,7 +9,7 @@
 			<generator class="assigned" />
 		</id>
 		<many-to-one name="parent"
-			class="com.whut.wxcs.resmanager.model.Catalogue" fetch="join">
+			class="com.whut.wxcs.resmanager.model.Catalogue" >
 			<column name="PARENT_ID" />
 		</many-to-one>
 		<set name="child" table="CATALOGUE" inverse="false" lazy="true"

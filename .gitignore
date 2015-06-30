@@ -10,3 +10,5 @@ build/classes/com/whut/wxcs/resmanager/bean/test/testUserService.class
 build/classes/db.properties
 
 build/classes/struts-deafult00-xml.xml
+
+test/com/whut/wxcs/resmanager/bean/test/testGson.java

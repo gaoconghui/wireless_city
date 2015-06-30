@@ -20,5 +20,8 @@
         <property name="value" type="java.lang.String">
             <column name="ATTRIBUTE_VALUE" />
         </property>
+        <property name="templateid" type="long">
+            <column name="BUILD_TEMPLATE_ID" />
+        </property>
     </class>
 </hibernate-mapping>

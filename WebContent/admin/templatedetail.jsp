@@ -23,12 +23,34 @@
 		//更新模板名字 描述。url地址就是TemplateAction_updateTemplateUseAJAX，参数通过JS从输入的文本框内获取。
 		//1是成功 非1是失败
 		$(".update").click(function() {
-			var url = "CatalogueAction_getChildUseAJAX";
-			var args = {
-				"description" : "你好",
-				"templateName" : "你好",
-				"id" : "11"
-			};
+			var url = "AttributeAction_getAttributesByAJAX";
+			  var args = {
+				"tid" : "101"
+ 			};  
+			/* var args = {
+				"attributes":[
+				{ "name":"Bill" , "description":"Gates" },
+				{ "name":"George" , "description":"Bush" },
+				{ "name":"Thomas" , "description":"Carter" }
+				]
+				} */
+			 /*  var args = {};
+			  args["attributes[0].id"] = 0;
+		      args["attributes[0].name"] = "gchtest3";
+		      args["attributes[0].description"] = "desc";
+		      args["attributes[0].type"] = 1;
+		      args["attributes[0].value"] = "1,2,3";
+		      
+			  args["attributes[1].id"] = 13;
+		      args["attributes[1].name"] = "newName";
+		      args["attributes[1].description"] = "desc";
+		      args["attributes[1].type"] = 2;
+		      args["attributes[1].value"] = "1,2,3";
+		      
+			  args["attributes[2].id"] = -14;
+		      args["tid"] = "1";
+  */
+
 			$.post(url, args, function(data) {
 				console.log(data);
 				alert(data);

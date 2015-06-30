@@ -1,12 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>无线城市-后台-运营商登录页</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
-		<link type="text/css" href="../css/reset.css" rel="stylesheet">
+		<link type="text/css" href="css/reset.css" rel="stylesheet">
 		<style type="text/css">
 			/*t_left start*/
 			/*
@@ -22,6 +27,7 @@
 			.loginpanelinner .logo {color:#fff; font-weight:700;font-size:28px; text-align: center; padding: 20px 0;font-family:Viner Hand ITC,hakuyoxingshu7000,Kunstler Script; }
 			.inputwrapper input { border: 0; padding: 10px; background: #fff; width: 250px; }
 			.inputwrapper .submit {margin-top:10px;display: block; padding: 10px 0; background: #28b779; width: 100%;color: #fff;}
+			.inputwrapper .submit:hover{background:#1e90ff;}
 			.login-alert {visibility:hidden;}
 			.login-alert .alert { color:#fff;font-size: 11px; text-align: center; padding: 5px 0; border: 0; }
 			.inputwrapper label {
@@ -29,8 +35,8 @@
 			.inputwrapper label input { width: auto; margin: -3px 5px 0 0; vertical-align: middle; }
 			.inputwrapper .remember { padding: 0; background: none; }		
 		</style>
-		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="../js/yjutil.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/yjutil.js"></script>
 	</head>
 <body class="loginpage">
 	<div class="loginpanel">
@@ -47,7 +53,7 @@
 	                <input type="password" name="password" id="password" autocomplete="on" placeholder="请输入密码" />
 	            </div>
 	            <div class="inputwrapper">
-	                <a id="login" class="submit" href="ht_1.jsp">登录</a>
+	                <a id="login" class="submit" href="admin/ht_1.jsp">登录</a>
 	            </div>
 	            <div class="inputwrapper">
 	                <label><input type="checkbox" class="remember" name="signin" /> 记住密码</label>

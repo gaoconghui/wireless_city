@@ -22,7 +22,7 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	/*
 	 * 增加目录,model 里面有parent.id 和name 以及description
 	 */
-	public void saveCatalogue(Catalogue model);
+	public long saveCatalogue(Catalogue model);
 
 	/*
 	 * 获取包含所有子目录的根目录
@@ -74,6 +74,16 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 * 添加单个Attribute(templateid以及arrtibute属性)，同时给添加模板的所有子类目模板上同样添加
 	 */
 	public void saveSingleAttribute(Attribute attribute,long tId);
+
+	/*
+	 * 更新catalogue
+	 */
+	public void updateCatalogue(Catalogue model);
+
+	/*
+	 * 获取根据模板id 获取其属性
+	 */
+	public List<Attribute> getAttributesByTid(long tid);
 
 	
 

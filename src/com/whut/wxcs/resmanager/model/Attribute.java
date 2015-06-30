@@ -10,6 +10,16 @@ public class Attribute {
 	private String description;
 	private String value;
 
+	// 创建这个属性的模板
+	private long templateid;
+
+	public long getTemplateid() {
+		return templateid;
+	}
+
+	public void setTemplateid(long templateid) {
+		this.templateid = templateid;
+	}
 
 	public long getId() {
 		return id;
@@ -51,5 +61,11 @@ public class Attribute {
 		this.value = value;
 	}
 
+	@Override
+	public String toString() {
+		return "Attribute [id=" + id + ", name=" + name + ", type=" + type
+				+ ", description=" + description + ", value=" + value
+				+ ", templateid=" + templateid + "]";
+	}
 
 }

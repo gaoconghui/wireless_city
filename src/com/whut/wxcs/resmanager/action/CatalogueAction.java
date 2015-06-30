@@ -3,7 +3,9 @@ package com.whut.wxcs.resmanager.action;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import com.google.gson.Gson;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.service.CatalogueService;
+import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Controller
 @Scope("prototype")
@@ -66,7 +69,7 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 	/*
 	 * 执行类目添加
 	 */
-	public String dddCatalogue() {
+	public String addCatalogue() {
 		Catalogue parent = new Catalogue();
 		parent.setId(parentid);
 		model.setParent(parent);
@@ -100,15 +103,14 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		return "toDesignCataloguePage";
 	}
 
-	
 	/*
-	 * AJAX 通过 id 获取子类目
+	 * 获取根目录的AJAX
 	 */
-	public String getChildUseAJAX() {
-		
+	public String getRootCatalogueByAJAX() {
+
 		try {
-			rootCatalogues = catalogueService.getChildCatalogueByParentId(1);
-			for(Catalogue c :rootCatalogues){
+			rootCatalogues = catalogueService.getRootCatalogue();
+			for (Catalogue c : rootCatalogues) {
 				c.setChild(null);
 				c.setTemplate(null);
 				c.setParent(null);
@@ -118,6 +120,117 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 			System.out.println(str);
 			inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e1) {}
+		}
+		return "ajax-success";
+	}
+
+	/*
+	 * AJAX 通过 id 获取子类目
+	 */
+	public String getChildCatalogueByAJAX() {
+
+		try {
+			rootCatalogues = catalogueService
+					.getChildCatalogueByParentId(parentid);
+			for (Catalogue c : rootCatalogues) {
+				c.setChild(null);
+				c.setTemplate(null);
+				c.setParent(null);
+			}
+			Gson gson = new Gson();
+			String str = gson.toJson(rootCatalogues);
+			System.out.println(str);
+			inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e1) {}
+		}
+		return "ajax-success";
+	}
+
+	/*
+	 * AJAX 增加一个新的类目
+	 */
+	public String addCatalogueByAJAX() {
+
+		try {
+			Catalogue parent = new Catalogue();
+			parent.setId(parentid);
+			model.setParent(parent);
+			String newid = catalogueService.saveCatalogue(model) + "";
+
+			Gson gson = new Gson();
+			String str = gson.toJson(rootCatalogues);
+			System.out.println(str);
+			inputStream = new ByteArrayInputStream(newid.getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e1) {}
+		}
+		return "ajax-success";
+	}
+
+	/*
+	 * AJAX 删除一个类目
+	 */
+	public String deleteCatalogueByAJAX() {
+
+		try {
+			catalogueService.deleteCatalogueWithChild(model.getId());
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e1) {}
+		}
+		return "ajax-success";
+	}
+
+	/*
+	 * AJAX 获取一个类目详情（name 和description） 传入id
+	 */
+	public String getCatalogueDetailByAJAX() {
+
+		try {
+			model = catalogueService.getEntity(model.getId());
+			
+			Map<String,String> map = new HashMap<String, String>();
+			map.put("id", model.getId()+"");
+			map.put("description", model.getDescription());
+			map.put("name", model.getName());
+			
+			Gson gson = new Gson();
+			String str = gson.toJson(map);
+			if (ValidateUtil.isVaild(str)) {
+				inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
+			}else{
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			}
+		} catch (UnsupportedEncodingException e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e1) {}
+		}
+		return "ajax-success";
+	}
+
+	/*
+	 * AJAX 更新一个类目（name 和description） 传入id name desctiption
+	 */
+	public String UpdateCataloguelByAJAX() {
+
+		try {
+			catalogueService.updateCatalogue(model);
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e1) {}
 		}
 		return "ajax-success";
 	}

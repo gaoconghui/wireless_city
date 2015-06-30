@@ -1,5 +1,6 @@
 package com.whut.wxcs.resmanager.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,7 +10,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.whut.wxcs.resmanager.dao.BaseDao;
-import com.whut.wxcs.resmanager.dao.impl.CatalogueDaoImpl;
 import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Template;
@@ -50,7 +50,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	}
 
 	@Override
-	public void saveCatalogue(Catalogue model) {
+	public long saveCatalogue(Catalogue model) {
 
 		String hql = "from Catalogue c where c.parent.id = ? order by id desc";
 		List<Catalogue> child = catalogueDao.findEntityByHql(hql, model
@@ -65,6 +65,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		catalogueDao.saveEntity(model);
 		// 新建模板
 		this.newTemplate(model);
+		return model.getId();
 	}
 
 	/*
@@ -82,7 +83,9 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 			template.setAttributes(newAttributes);
 		}
 		String templateName = model.getName() + "模板";
+		String description = "";
 		template.setTemplateName(templateName);
+		template.setDescription(description);
 		template.setCatalogue(model);
 		templateDao.saveEntity(template);
 	}
@@ -171,6 +174,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 
 	@Override
 	public void saveSingleAttribute(Attribute attribute, long tid) {
+		attribute.setTemplateid(tid);
 		attributeDao.saveEntity(attribute);
 		Catalogue catalogue = catalogueDao.getEntity(tid);
 		setAttributeToTemplateAndChild(catalogue, attribute.getId());
@@ -196,6 +200,24 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	public List<Catalogue> getChildCatalogueByParentId(long id) {
 		String hql = "from Catalogue c where c.parent.id = ? order by id asc";
 		return catalogueDao.findEntityByHql(hql, id);
+	}
+
+	@Override
+	public void updateCatalogue(Catalogue model) {
+		String hql = "UPDATE Catalogue c SET c.description = ? ,c.name = ? WHERE c.id = ?";
+		templateDao.batchEntityByHql(hql, model.getDescription(),
+				model.getName(), model.getId());
+	}
+
+	@Override
+	public List<Attribute> getAttributesByTid(long tid) {
+		Template template = templateDao.getEntity(tid);
+		int size = template.getAttributes().size();
+		if (size == 0) {
+			return null;
+		} else {
+			return new ArrayList<Attribute>(template.getAttributes());
+		}
 	}
 
 }
