@@ -2062,7 +2062,7 @@ var ajaxTimeout = null;
 				});
 			}
 		}
-	}
+	};
 	
 	$.tmCookie = {
 		setCookie : function(name, value,time,option){

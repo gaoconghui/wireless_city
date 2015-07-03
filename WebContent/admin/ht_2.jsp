@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.tzht .t_right .r_table .r_label .l_select p .field select{width:60%; height:40px;}
 		
 			.tzht .t_right .r_table .r_label .l_show{width:66%;float:left;margin:10px 0 0 20px;}
-			.tzht .t_right .r_table .r_label .l_show .s_title{height:40px;background:#e5e5e5;line-height:40px;border:1px solid #1e90ff;}
-			.tzht .t_right .r_table .r_label .l_show .s_title:first-child{background:#1e90ff;font-size:14px;}
+			.tzht .t_right .r_table .r_label .l_show .details .s_title{height:40px;background:#e5e5e5;line-height:40px;border:1px solid #1e90ff;}
+			.tzht .t_right .r_table .r_label .l_show .s_title{height:40px;background:#1e90ff;line-height:40px;border:1px solid #1e90ff;font-size:14px;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span{display:block;width:25%;float:left;text-indent:4px;}
 			.tzht .t_right .r_table .r_label .l_show .s_title .span:before{content:"";border-left:1px dotted #ddd;height:40px;display:block;float:left;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span a{margin-top:8px;width:24px;height:24px;margin-right:2px;background:url("images/ht/ht_icon.png") no-repeat;display:block;float:left;}
@@ -51,13 +51,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a2{background-position:-379px -47px;background-color:#1fac75;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a3{background-position:-21px -20px;background-color:#6297bc;}
 			.tzht .t_right .r_table .r_label .l_show .s_content{display:none;padding-top:10px;border:1px solid #1e90ff;border-top:0px;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .c_name{width:25%;float:left;padding-bottom:10px;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .c_desc{width:70%;float:right;padding-bottom:10px;}
+			.tzht .t_right .r_table .r_label .l_show .s_content .c_desc{width:100%;padding-bottom:10px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content span{display:block;margin:0 4px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content span.normal{font-weight:500;color:#666;text-indent:30px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute{border-top:1px dotted #1e90ff;margin:0 10px;padding:10px 20px;}
+			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute:after{content:"";display:block;clear:both;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p{width:193px;background:#1e90ff;color:#fff;float:left;margin:0px 10px 10px 10px;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p span{line-height:20px;padding-bottom:5px;display:block;float:left;width:115px;font-weight:300;}
+			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p span{line-height:20px;padding-bottom:5px;display:block;float:left;width:115px;font-weight:300;word-wrap: break-word;word-break:break-all;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p span:nth-child(odd){width:61px;text-align:right;font-weight:700;}
 		
 
@@ -81,20 +81,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.add_module_attribute .add_delete .next_btn{background-position:-45px -1px;}
 			.add_module_attribute .add_delete .back_btn{background-position:-136px -1px;}
 			.add_module_attribute .attribute_show{height:353px;float:left;border:1px solid #282828;text-align:center;}
-			.add_module_attribute .attribute_show .s_scroll {height:313px;overflow-y:auto;overflow-x:hidden;}
+			.add_module_attribute .attribute_show .s_scroll {background:#fff;height:313px;overflow-y:auto;overflow-x:hidden;}
 			
 			.add_module_attribute .attribute_show .s_title{height:40px;line-height:40px;font-size:14px;background:#282828;color:#fff;border:0;}
 			.add_module_attribute .attribute_show .s_scroll .s_title{background:#fff;color:#444;height:20px;width:500px;line-height:20px;border-bottom:1px solid #999;}
-			.add_module_attribute .attribute_show .s_title span{width:124px;border-left:1px dotted #999;display:block;float:left;}
+			.add_module_attribute .attribute_show .s_title span{height:20px;width:124px;border-left:1px dotted #999;display:block;float:left;}
 			.add_module_attribute .attribute_show .s_title span:first-child{border:0;}
+			.add_module_attribute .attribute_show .s_title1 span{height:40px;}
 			
 			
 			
 		/* end add_module */
 		
 		</style>
-		<%-- <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script> --%>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/util.js"></script>
 	</head>
 <body>
 	<div class="tzht">
@@ -122,9 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p>
                             <label>一级类目</label>
                             <span class="field">
-	                            <select name="select" class="uniformselect">
-	                            	<option value="">Choose One</option>
-	                            	<option value="">Choose One</option>
+	                            <select name="select" class="uniformselect" id="category_1">
 	                            	<option value="">Choose One</option>
 	                            </select>
                             </span>
@@ -132,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <p>
                             <label>二级类目</label>
                             <span class="field">
-	                            <select name="select" class="uniformselect">
+	                            <select name="select" class="uniformselect" id="category_2">
 	                            	<option value="">Choose One</option>
 	                            </select>
                             </span>
@@ -140,7 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <p>
                             <label>三级类目</label>
                             <span class="field">
-	                            <select name="select" class="uniformselect">
+	                            <select name="select" class="uniformselect" id="category_3">
 	                            	<option value="">Choose One</option>
 	                            </select>
                             </span>
@@ -148,62 +147,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <p>
                             <label>四级类目</label>
                             <span class="field">
-                            <select name="select" class="uniformselect">
-                            	<option value="">Choose One</option>
-                            </select>
+	                            <select name="select" class="uniformselect" id="category_4">
+	                            	<option value="">Choose One</option>
+	                            </select>
                             </span>
                         </p>
                         <p>
                             <label>五级类目</label>
                             <span class="field">
-                            <select name="select" class="uniformselect">
-                            	<option value="">Choose One</option>
-                            </select>
+	                            <select name="select" class="uniformselect" id="category_5">
+	                            	<option value="">Choose One</option>
+	                            </select>
                             </span>
                         </p>
 					</div>
-					<div class="l_show" id="l_show">
-						<div class="s_title">
+					<div class="l_show">
+						<div class="s_title"  id="l_show">
 							<span>资源名称</span>
 							<span class="span">操作</span>
 							<span class="span">更新时间</span>
 							<span class="span">详情</span>
 						</div>
-						
-						<div class="s_title">
-							<span>衣服</span>
-							<span class="span">
-								<a class="r_t_a2" href="javascript:void(0)"></a>
-							</span>
-							<span class="span">2天前</span>
-							<span class="span"><a class="r_t_a3" href="javascript:void(0)"></a></span>
-						</div>
-						<div class="s_content">
-							<div class="c_name">
-								<span>名称：</span>
-								<span class="normal">衣服</span>
+						<!-- script -->
+						<div id="show_template_details" class="details">
+							
+							<div class="s_title" id="module_show">
+								<span id="current_module_name">-</span>
+								<span class="span">
+									<a style="display:none;" class="r_t_a2" href="javascript:void(0)"></a>
+								</span>
+								<span class="span">-</span>
+								<span class="span"><a style="display:none;" class="r_t_a3" href="javascript:void(0)"></a></span>
 							</div>
-							<div class="c_desc">
-								<span>描述:</span>
-								<span class="normal">这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！</span>
-							</div>
-							<div class="clear"></div>
-							<div class="c_attribute">
-								<p>
-									<span>属性名称：</span>
-									<span>价格</span>
-									<span>属性描述：</span>
-									<span style="text-indent:24px;">价格撒旦撒厉害的卡上了看到就爱上了咖啡拉萨路返回了山东路返回拉黑塑料袋和覅都if哦度是否看见</span>
-									<span>属性类型：</span>
-									<span>枚举</span>
-									<span>枚举类型：</span>
-									<span>100,500,1000</span>
-								</p>
+							<div class="s_content">
+								<div class="c_desc">
+									<span>描述:</span>
+									<span class="normal" id="current_module_desc">这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！</span>
+								</div>
 								<div class="clear"></div>
-								
+								<div class="c_attribute" id="mod_attribute">
+									<%-- <p>
+										<span>属性名称：</span>
+										<span>价格</span>
+										<span>属性描述：</span>
+										<span style="text-indent:24px;">价格撒旦撒厉害的卡上了看到就爱上了咖啡拉萨路返回了山东路返回拉黑塑料袋和覅都if哦度是否看见</span>
+										<span>属性类型：</span>
+										<span>枚举</span>
+										<span>枚举类型：</span>
+										<span>100,500,1000</span>
+									</p> --%>
+									
+								</div>
 							</div>
 						</div>
-					
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -213,17 +209,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!-- add_resource begin -->
 	<div id="yy"></div>
+	
 	<div class="add_module" id="add_module">
 		<div class="a_d_header">增加资源模板</div>
 		<div class="a_d_main">
 			<p>
-				<span>模板名称</span>
-				<input />
+				<span>模板名称:</span>
+				<input  id="module_name"/>
 			</p>
 			<p>
-				<span>模板描述</span>
+				<span>模板描述:</span>
 			</p>
-			<textarea></textarea>
+			<textarea id="module_desc"></textarea>
 		</div>
 		<div class="a_d_footer">
 			<span class="sure">下一步</span>
@@ -236,142 +233,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="a_d_main">
 				<p>
 					<span>属性名称：</span>
-					<input type="text"/>
+					<input type="text" id="module_attribute_name"/>
 				</p>
 				<p>
 					<span>属性描述：</span>
 				</p>
-				<textarea></textarea>
+				<textarea id="module_attribute_desc"></textarea>
 				<p>
 					<span>属性类型：</span>
-					<select>
-						<option>Selcet one</option>
+					<select id="module_attribute_type">
+						<option selected="selected" value="1">文本</option>
+						<option value="2">小数</option>
+						<option value="3">整形</option>
+						<option value="4">时间</option>
+						<option value="5">枚举</option>
 					</select>
 				</p>
-				<p>
+				<p id="enmu_type"  style="display:none;">
 					<span>枚举内容：</span>
-					<input type="text"/>
+					<input type="text" id="module_attribute_content"/>
 				</p>
 			</div>
 			<div class="a_d_footer">
+				<span class="back_step span">上一步</span>
 				<span class="sure span" >保存</span>
 				<span class="close span">取消</span>
-				<span class="back_step span">上一步</span>
+				
 			</div>
 		</div>
 		<div class="add_delete">
-			<div class="next_btn"></div>
-			<div class="back_btn"></div>
+			<div class="next_btn" id="next_btn"></div>
+			<div class="back_btn" id="back_btn"></div>
 		</div>
 		<div class="attribute_show">
-			<div class="s_title">
+			<div class="s_title s_title1">
 				<span>属性名称</span>
 				<span>属性描述</span>
 				<span>属性类型</span>
 				<span>枚举内容</span>
 			</div>
-			<div class="s_scroll">
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>	
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
-				<div class="s_title">
-					<span>价格</span>
-					<span>即多少钱</span>
-					<span>枚举类型</span>
-					<span>100,500,1000</span>
-				</div>
+			<div class="s_scroll" id="s_scroll">
+				
 			</div>
 		</div>
 		<div class="clear"></div>
 	</div>
-	
 	
 	<!-- end add_resource -->
 	<!-- dailog begin  -->
@@ -382,102 +288,242 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="javascript:void(0)" class="close">取消</a>
 		</div>
 	</div>
+	<script type="text/javascript" src="js/tmAjax.js"></script>
+	<script type="text/javascript" src="js/ht_2.js"></script>
 	<!-- end dialog  -->
 	<script type="text/javascript">
 		$(function(){
-			initialize();
 			
+			initialize();
 		});
 		function initialize(){
 			//查看详情
-			$("#l_show").on("click",".r_t_a3",function(){
-				$(this).parents(".s_title").next().slideDown("slow");
+			var n=0;
+			$("#show_template_details").find(".r_t_a3").off("click").on("click",function(){
+				n++;
+				if(n%2==1){
+					$(this).closest(".s_title").next().slideDown("slow");
+				}else{
+					$(this).closest(".s_title").next().slideUp("slow");
+				}	
 			});
-			$("#l_show").on("mouseleave",".s_content",function(){
-				$(this).stop(true,true).fadeOut(1000);
-			});
-			$("#l_show").on("mouseenter",".s_content",function(){
-				$(this).stop(true,true).fadeIn(1000);
-			});
-			
+			/* 根据类目查询模板 */
+			var param={parentid:"1"};
+			findCategory("category_1","CatalogueAction_getRootCatalogueByAJAX",param);
+			//findCategory2
+			findChildCategory("category_1",2);
+			//findCategory3
+			findChildCategory("category_2",3);
+			//findCategory4
+			findChildCategory("category_3",4);
+			//findCategory5
+			findChildCategory("category_4",5);
+			/* 根据类目查询模板 */
 			//编辑模板
-			$("#l_show").on("click",".r_t_a2",function(){
-				$("#yy").show();
-				var top=(getHeight()-$("#add_module").height())/2;
-				var left=(getWidth()-$("#add_module").width())/2;
-				$("#add_module").css({"top":top,"left":left});
-				$("#add_module").show();
-				$("#add_module").find(".sure").click(function(){
-					
-					$("#add_module").hide();
-					$("#add_module_attribute").show();
-					var n_top=(getHeight()-$("#add_module_attribute").height())/2;
-					var n_left=(getWidth()-$("#add_module_attribute").width())/2;
-					
-					$("#add_module_attribute").css({"top":n_top,"left":n_left});
-					$("#add_module").find("input,textarea").val("");
-					$("#add_module_attribute").find(".close").click(function(){
-						$("#add_module_attribute").hide();
-						$("#yy").hide();
-						//取消
+			var $yy=$("#yy");
+			$("#show_template_details").find(".r_t_a2").off("click").on("click",function(){
+				var $add_module=$("#add_module");
+				center_dialog("#add_module");
+				resize("#add_module");
+				$add_module.show();
+				$yy.show();
+				var $module_desc=$("#module_desc");
+				var $module_name=$("#module_name");
+				var oldName=$("#current_module_name").text();
+				var oldDesc=$("#current_module_desc").text();
+				console.log(oldName+"==="+oldDesc);
+				$module_name.val(oldName);
+				$module_desc.val(oldDesc);
+				$add_module.find(".sure").off("click").click(function(){
+					//delete id args
+					var delIdArgs=[];
+					var $module_attribute_desc=$("#module_attribute_desc");
+					var $module_attribute_name=$("#module_attribute_name");
+					var $module_attribute_type=$("#module_attribute_type");
+					var $module_attribute_content=$("#module_attribute_content");
+					var $s_scroll=$("#s_scroll");
+					//enter attribute editor
+					var html="";
+					$("#mod_attribute").find("p").each(function(){
+						var id=$(this).data("attrid");
+						
+						var name=$(this).find("span:eq(1)").text();
+						var desc=$(this).find("span:eq(3)").text();
+						var type=$(this).find("span:eq(5)").text();
+						var value=$(this).find("span:eq(7)").text();
+						html+="<div class='s_title' data-id='"+id+"'>"+
+						"	<span>"+name+"</span>"+
+						"	<span>"+desc+"</span>"+
+						"	<span>"+type+"</span>"+
+						"	<span>"+value+"</span>"+
+						"</div> ";
 					});
-					$("#add_module_attribute").find(".sure").off("click").click(function(){
-						$("#add_module_attribute").hide();
-						$("#yy").hide();
-						//保存成功
-						var html="<div class='s_title' style='display:none;'>"+
-						"	<span>衣服</span>"+
-						"	<span class='span'>"+
-						"		<a class='r_t_a2' href='javascript:void(0)' title='修改'></a>"+
-						"	</span>"+
-						"	<span class='span'>2天前</span>"+
-						"	<span class='span'><a class='r_t_a3' href='javascript:void(0)'></a></span>"+
-						"</div>"+
-						"<div class='s_content'>"+
-						"	<div class='c_name'>"+
-						"		<span>名称：</span>"+
-						"		<span class='normal'>衣服</span>"+
-						"	</div>"+
-						"	<div class='c_desc'>"+
-						"		<span>描述:</span>"+
-						"		<span class='normal'>这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！</span>"+
-						"	</div>"+
-						"	<div class='clear'></div>"+
-						"	<div class='c_attribute'>"+
-						"		<p>"+
-						"			<span>属性名称：</span>"+
-						"			<span>价格</span>"+
-						"			<span>属性描述：</span>"+
-						"			<span style='text-indent:24px;'>价格撒旦撒厉害的卡上了看到就爱上了咖啡拉萨路返回了山东路返回拉黑塑料袋和覅都if哦度是否看见</span>"+
-						"			<span>属性类型：</span>"+
-						"			<span>枚举</span>"+
-						"			<span>枚举类型：</span>"+
-						"			<span>100,500,1000</span>"+
-						"		</p>"+
-						"		<div class='clear'></div>"+
-						"	</div>"+
-						"</div>";
-						$("#l_show").append(html);
-						$("#l_show").find(".s_title").each(function(index){
-							if($(this).eq(2)){
-								$(this).fadeIn(1000);
-							}
+					$s_scroll.html(html);
+					var $add_module_attribute=$("#add_module_attribute");
+					$add_module.hide();
+					center_dialog("#add_module_attribute");
+					resize("#add_module_attribute");
+					$add_module_attribute.show();
+					
+					
+					$module_attribute_type.change(function(){
+						if($module_attribute_type.val()=="5"){
+							$("#enmu_type").show();
+						}else{
+							$("#enmu_type").hide();
+						}
+					});
+					$add_module_attribute.find(".close").off("click").click(function(){
+						$add_module_attribute.hide();
+						$module_attribute_desc.val("");
+						$module_attribute_name.val("");
+						$module_attribute_type.find("option:eq(0)").attr("selected","selected");
+						$module_attribute_content.val("");
+						$.tmUtil.infoShow({"message":"取消修改"}).fadeOut(2000);
+						$yy.hide();
+					});
+					$add_module_attribute.find(".sure").off("click").click(function(){
+						var module_desc=$module_desc.val();
+						var module_name=$module_name.val();
+						var templateId=$("#current_module_name").data("templateId");
+						if(module_desc!=oldDesc&&module_name!=oldName){
+							//修改模板名称，描述
+							var params={templateName:module_name,description:module_desc,id:templateId};
+							updateModule("TemplateAction_updateTemplateByAJAX",params);
+							$("#current_module_name").text(module_name);
+							$("#current_module_desc").text(module_desc);
+						}
+						//templateid delIdArgs[] args
+						
+					
+						
+						
+						
+						//保存模板属性操作
+						var args= {};
+						args["tid"] = templateId;
+						//alert(id+ typeof (id));
+						//为什么是0
+						var n=-1;
+						$s_scroll.find(".s_title").each(function(){
+							if(isEmpty($(this).data("id"))){
+								n++;
+								var txt_name=$(this).find("span").eq(0).text();
+								var txt_desc=$(this).find("span").eq(1).text();
+								var txt_type=$(this).find("span").eq(2).data("value");
+								var txt_content=$(this).find("span").eq(3).text();
+								args["attributes["+n+"].id"] = "0";
+								args["attributes["+n+"].name"] = txt_name;
+						        args["attributes["+n+"].description"] = txt_desc;
+						        args["attributes["+n+"].type"] = txt_type;
+						        args["attributes["+n+"].value"] = txt_content;	
+						        alert("add attribute==="+txt_name+"==="+txt_desc+"==="+txt_type+"==="+txt_content);
+							}	
 						});
-						$("#l_show").find(".s_title").eq(1).fadeOut(1000,function(){
-								$(this).remove();
+						var length=delIdArgs.length;
+						alert(length);
+						for(var i=n+1;i<n+1+length;i++){
+							args["attributes["+i+"].id"] = "-"+delIdArgs[i-n-1]+"";
+							alert(args["attributes["+i+"].id"]);
+						}
+			    	        
+			    	    //alert(args["attributes[0].name"]+"--"+args["attributes[0].description"]+"--"+args["attributes[0].type"]+"--"+args["attributes[0].value"]);
+						//alert(args["attributes[1].name"]+"--"+args["attributes[1].description"]+"--"+args["attributes[1].type"]+"--"+args["attributes[1].value"]);
+						//delete/save
+						saveModuleAttr("AttributeAction_doAttributesByAJAX",args);
+						
+						
+						
+						$module_attribute_desc.val("");
+						$module_attribute_name.val("");
+						$module_attribute_type.find("option:eq(0)").attr("selected","selected");
+						$module_attribute_content.val("");
+						$add_module_attribute.hide();
+						$.tmUtil.infoShow({"message":"修改完成！"}).fadeOut(2000);
+						$yy.hide();
+						alert("准备更新模板属性");
+						var p={tid:templateId};
+						findModuleAttrDetails("AttributeAction_getAttributesByAJAX",p);
+						
+					});
+					$add_module_attribute.find(".back_step").off("click").click(function(){
+						$add_module_attribute.hide();
+						$add_module.show();
+					});
+					$add_module_attribute.find(".next_btn").off("click").click(function(){
+						var module_attribute_desc=$module_attribute_desc.val();
+						var module_attribute_name=$module_attribute_name.val();
+						var module_attribute_type=$module_attribute_type.val();
+						var module_attribute_content=$module_attribute_content.val();
+					
+						var module_attribute_type_text=$module_attribute_type.find("option:selected").text();
+						
+						var html="<div class='s_title'>"+
+							"<span>"+module_attribute_name+"</span>"+
+							"<span>"+module_attribute_desc+"</span>"+
+							"<span data-value='"+module_attribute_type+"'>"+module_attribute_type_text+"</span>"+
+							"<span>"+module_attribute_content+"</span>"+
+						"</div>";
+						$s_scroll.append(html);
+						$module_attribute_desc.val("");
+						$module_attribute_name.val("");
+						$module_attribute_type.find("option:eq(0)").attr("selected","selected");
+						$module_attribute_content.val("");
+						$module_attribute_type.trigger("change");
+						var length=$s_scroll.find(".s_title").length-1;
+						$s_scroll.find(".s_title").eq(length).trigger("click");
+					});
+					$add_module_attribute.find(".back_btn").off("click").click(function(){
+						$s_scroll.find(".s_title").each(function(){
+							var $this=$(this);
+							if($this.data("sel")=="1"){
+								alert($this.data("id"));
+								if(isNotEmpty($this.data("id"))){
+									delIdArgs.push($this.data("id"));
+									alert("delete id args==="+delIdArgs);
+								}
+								
+								
+								var args=[];
+								for(var i=0;i<4;i++){
+									args[i]=$(this).find("span").eq(i).text();
+								}
+								$module_attribute_desc.val(args[1]);
+								$module_attribute_name.val(args[0]);
+								$module_attribute_content.val(args[3]);
+								$module_attribute_type.find("option").each(function(){
+									if($(this).text()==args[2]){
+										$(this).attr("selected","selected");
+									}
+								});
+								$module_attribute_type.trigger("change");
+								$this.fadeOut(2000,function(){
+									$this.remove();
+								});
+							}
 						});
 						
 					});
-					$("#add_module_attribute").find(".back_step").click(function(){
-						$("#add_module_attribute").hide();
-						$("#add_module").show();
-						//上一步
-					});		
+					//列表点击操作
+					$s_scroll.off("click").on("click",".s_title",function(){
+						$(this).css({"background":"#f0f0f0"}).siblings().css({"background":"#fff"});
+						$(this).data("sel","1").siblings().data("sel","0");
+					});
+					$s_scroll.on("mouseenter",".s_title",function(){
+						if($(this).data("sel")=="0"){
+							$(this).css({"background":"#f9f9f9"});
+						}
+					});
+					$s_scroll.on("mouseleave",".s_title",function(){
+						if($(this).data("sel")=="0"){
+							$(this).css({"background":"#fff"});
+						}
+					});
 				});
-				$("#add_module").find(".close").click(function(){
-					$("#add_module").hide();
-					$("#yy").hide();
-					$("#add_module").find("input,textarea").val("");
+				$add_module.find(".close").off("click").click(function(){
+					$add_module.hide();
+					$yy.hide();
+					//使用默认模板
 				});
 			});
 		}

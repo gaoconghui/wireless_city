@@ -2,13 +2,15 @@ package com.whut.wxcs.resmanager.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.interceptor.ParameterAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -19,7 +21,7 @@ import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Controller
 @Scope("prototype")
-public class CatalogueAction extends BaseAction<Catalogue> {
+public class CatalogueAction extends BaseAction<Catalogue> implements ParameterAware{
 
 	private static final long serialVersionUID = -3611810669887247642L;
 
@@ -41,6 +43,8 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 	private long parentid;
 
 	private Catalogue root;
+
+	private Map<String, String[]> paramMap;
 
 	public void setParentid(long parentid) {
 		this.parentid = parentid;
@@ -117,12 +121,11 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 			}
 			Gson gson = new Gson();
 			String str = gson.toJson(rootCatalogues);
-			System.out.println(str);
 			inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {}
+			} catch (Exception e1) {}
 		}
 		return "ajax-success";
 	}
@@ -144,10 +147,10 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 			String str = gson.toJson(rootCatalogues);
 			System.out.println(str);
 			inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {}
+			} catch (Exception e1) {}
 		}
 		return "ajax-success";
 	}
@@ -158,19 +161,22 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 	public String addCatalogueByAJAX() {
 
 		try {
+			
 			Catalogue parent = new Catalogue();
 			parent.setId(parentid);
 			model.setParent(parent);
 			String newid = catalogueService.saveCatalogue(model) + "";
 
-			Gson gson = new Gson();
-			String str = gson.toJson(rootCatalogues);
-			System.out.println(str);
+			for(Entry<String, String[]> entry : paramMap.entrySet()){
+				System.out.println(entry.getKey()+":"+Arrays.asList(entry.getValue()));
+			}
+			
 			inputStream = new ByteArrayInputStream(newid.getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
+			e.printStackTrace();
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {}
+			} catch (Exception e1) {}
 		}
 		return "ajax-success";
 	}
@@ -183,10 +189,10 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		try {
 			catalogueService.deleteCatalogueWithChild(model.getId());
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {}
+			} catch (Exception e1) {}
 		}
 		return "ajax-success";
 	}
@@ -211,10 +217,10 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 			}else{
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
 			}
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {}
+			} catch (Exception e1) {}
 		}
 		return "ajax-success";
 	}
@@ -227,12 +233,21 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		try {
 			catalogueService.updateCatalogue(model);
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {}
+			} catch (Exception e1) {}
 		}
 		return "ajax-success";
+	}
+
+	
+	/*
+	 * 以后要删除  测试
+	 */
+	@Override
+	public void setParameters(Map<String, String[]> arg0) {
+		this.paramMap = arg0;
 	}
 
 }

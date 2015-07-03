@@ -2,7 +2,6 @@ package com.whut.wxcs.resmanager.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,10 +74,10 @@ public class TemplateAction extends BaseAction<Template> {
 		try {
 			catalogueService.updateTemplate(model);
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {}
+			} catch (Exception e1) {}
 		}
 		return "ajax-success";
 	}
@@ -99,10 +98,10 @@ public class TemplateAction extends BaseAction<Template> {
 			String str = gson.toJson(map);
 			
 			inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {}
+			} catch (Exception e1) {}
 		}
 		return "ajax-success";
 	}

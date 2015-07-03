@@ -2,7 +2,6 @@ package com.whut.wxcs.resmanager.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,7 +67,7 @@ public class AttributeAction extends BaseAction<Attribute> implements
 		try {
 			catalogueService.updateAttribute(model);
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 		}
 		return "ajax-success";
 	}
@@ -80,7 +79,7 @@ public class AttributeAction extends BaseAction<Attribute> implements
 		try {
 			catalogueService.deleteAttribute(getTid(), model.getId());
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 		}
 		return "ajax-success";
 	}
@@ -97,7 +96,7 @@ public class AttributeAction extends BaseAction<Attribute> implements
 			} else {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
 			}
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 		}
 		return "ajax-success";
 	}
@@ -113,7 +112,7 @@ public class AttributeAction extends BaseAction<Attribute> implements
 			System.out.println(getTid());
 			System.out.println(attributes);
 			inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 		}
 		return "ajax-success";
 	}
@@ -145,7 +144,7 @@ public class AttributeAction extends BaseAction<Attribute> implements
 		} catch (Exception e) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {
+			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
@@ -171,7 +170,7 @@ public class AttributeAction extends BaseAction<Attribute> implements
 			e.printStackTrace();
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-			} catch (UnsupportedEncodingException e1) {
+			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}

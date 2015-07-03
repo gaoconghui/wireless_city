@@ -9,6 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<base href="<%=basePath%>">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>无线城市-后台头部</title>
+		<meta http-eqive="pragma" content="no-cache">
+		<meta http-eqive="cache-control" content="no-cache">
+		<meta http-eqive="expires" content="0">
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<link type="text/css" href="css/reset.css" rel="stylesheet">
@@ -38,7 +41,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			/*end t_left*/
 
 			/*t_header start*/
-			.tzht .t_header{width:100%;height:56px;background:#2f3437;position:relative;z-index:1;}
+			.tzht .t_header{width:100%;height:56px;background:#2f3437;}
+			.tzht .t_header .fixbox{background:#2f3437;position:fixed;z-index:1;top:0;left:0;height:56px;width:100%;}
 			.tzht .t_header .h_nav{margin-left:200px;float:left;}
 			.tzht .t_header .h_nav ul li{width:110px;height:56px;border-left:1px solid #414141;border-right:1px solid #000;float:left;}
 			.tzht .t_header .h_nav ul li a{display:block;text-align:center;color:#838383;}
@@ -69,8 +73,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.tzht .t_header .h_info .h_exit a i{width:14px;height:13px;display:block;background:url("images/ht/ht_icon.png") no-repeat 0 -51px;;margin:9px 8px;float:left;}
 			/*end t_hearder*/
 		</style>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script>
 	</head>
 <body>
 		<!-- t_left start -->
@@ -88,17 +90,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- end t_left -->
 		<!-- t_header start -->
 		<div class="t_header">
-			<div class="h_nav">
-				<ul>
-					<li><a href="#" class="h_sel"><i class="h_icon1"></i><span>首页</span></a></li>
-					<li><a href="#"><i class="h_icon2"></i><span>公告</span></a></li>
-					<li><a href="#"><i class="h_icon3"></i><span>回收站</span></a></li>
-					<li><a href="#"><i class="h_icon8"></i><span>设置</span></a></li>
-				</ul>
-			</div>
-			<div class="h_info">
-				<div class="h_mess">管理员 : 武汉理工大学教务处</div>
-				<div class="h_exit"><a href="admin/ht_login.jsp"><span>注销</span><i></i></a></div>
+			<div class="fixbox">
+				<div class="h_nav">
+					<ul>
+						<li><a href="#" class="h_sel"><i class="h_icon1"></i><span>首页</span></a></li>
+						<li><a href="#"><i class="h_icon2"></i><span>公告</span></a></li>
+						<li><a href="#"><i class="h_icon3"></i><span>回收站</span></a></li>
+						<li><a href="#"><i class="h_icon8"></i><span>设置</span></a></li>
+					</ul>
+				</div>
+				<div class="h_info">
+					<div class="h_mess">管理员 : 武汉理工大学教务处</div>
+					<div class="h_exit"><a href="admin/ht_login.jsp"><span>注销</span><i></i></a></div>
+				</div>
 			</div>
 		</div>
 		<!-- end t_header -->
