@@ -18,3 +18,13 @@ build/classes/db.properties
 *.class
 
 
+
+test/com/whut/wxcs/resmanager/bean/test/testCatalogueService.java
+
+*.class
+
+*.class
+
+test/com/whut/wxcs/resmanager/bean/test/testCatalogueService.java
+
+build/classes/db.properties
