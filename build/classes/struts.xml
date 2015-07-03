@@ -30,7 +30,7 @@
 		</global-results>
 
 		<action name="CatalogueAction_*" class="catalogueAction"
-			method="{1}">
+	method="{1}">
 			<result name="toDesignCataloguePage">/admin/designcatalogue.jsp</result>
 			<result name="toCatalogueManagerPage">/admin/cataloguemanager.jsp</result>
 			<result name="catalogueManagerAction" type="redirectAction">
@@ -59,7 +59,7 @@
 
 	<package name="regPage" extends="struts-default">
 		<action name="RegAction_*" class="regAction" method="{1}">
-			<result name="regPage">/reg.jsp</result>
+			<result name="regPage">/register.jsp</result>
 			<result name="input">/reg.jsp</result>
 			<result name="success">/success.jsp</result>
 			<result name="loginPage">/login/login.jsp</result>
