@@ -2,17 +2,17 @@ package com.whut.wxcs.resmanager.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.google.gson.Gson;
 import com.whut.wxcs.resmanager.model.Attribute;
-import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Template;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 
@@ -70,11 +70,39 @@ public class TemplateAction extends BaseAction<Template> {
 	/*
 	 * AJAX更新模板的名字和描述
 	 */
-	public String updateTemplateUseAJAX() {
+	public String updateTemplateByAJAX() {
 		try {
 			catalogueService.updateTemplate(model);
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {}
+		} catch (Exception e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (Exception e1) {}
+		}
+		return "ajax-success";
+	}
+	
+	/*
+	 * AJAX获取模板的名字和描述
+	 */
+	public String getTemplateDetailByAJAX() {
+		try {
+			model = catalogueService.getTemplate(model.getId());
+			
+			Map<String,String> map = new HashMap<String, String>();
+			map.put("id", model.getId()+"");
+			map.put("description", model.getDescription());
+			map.put("name", model.getTemplateName());
+			
+			Gson gson = new Gson();
+			String str = gson.toJson(map);
+			
+			inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
+		} catch (Exception e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (Exception e1) {}
+		}
 		return "ajax-success";
 	}
 
