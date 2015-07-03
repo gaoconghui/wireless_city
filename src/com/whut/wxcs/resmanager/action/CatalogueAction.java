@@ -241,8 +241,6 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		return "ajax-success";
 	}
 
-	
-
 	/**
 	 * 跳转到增加资源的页面 通过JS 来选择类目
 	 */
