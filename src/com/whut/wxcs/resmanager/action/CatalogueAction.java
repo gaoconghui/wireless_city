@@ -2,15 +2,12 @@ package com.whut.wxcs.resmanager.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
-import org.apache.struts2.interceptor.ParameterAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -21,7 +18,7 @@ import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Controller
 @Scope("prototype")
-public class CatalogueAction extends BaseAction<Catalogue> implements ParameterAware{
+public class CatalogueAction extends BaseAction<Catalogue> {
 
 	private static final long serialVersionUID = -3611810669887247642L;
 
@@ -40,11 +37,19 @@ public class CatalogueAction extends BaseAction<Catalogue> implements ParameterA
 
 	private List<Catalogue> rootCatalogues;
 
+	private List<Catalogue> childCatalogues;
+
 	private long parentid;
 
 	private Catalogue root;
 
-	private Map<String, String[]> paramMap;
+	public void setChildCatalogues(List<Catalogue> childCatalogues) {
+		this.childCatalogues = childCatalogues;
+	}
+
+	public List<Catalogue> getChildCatalogues() {
+		return childCatalogues;
+	}
 
 	public void setParentid(long parentid) {
 		this.parentid = parentid;
@@ -133,11 +138,10 @@ public class CatalogueAction extends BaseAction<Catalogue> implements ParameterA
 	/*
 	 * AJAX 通过 id 获取子类目
 	 */
-	public String getChildCatalogueByAJAX() {
+	public String getChildUseAJAX() {
 
 		try {
-			rootCatalogues = catalogueService
-					.getChildCatalogueByParentId(parentid);
+			rootCatalogues = catalogueService.getChildCatalogueByParentId(1);
 			for (Catalogue c : rootCatalogues) {
 				c.setChild(null);
 				c.setTemplate(null);
@@ -167,10 +171,6 @@ public class CatalogueAction extends BaseAction<Catalogue> implements ParameterA
 			model.setParent(parent);
 			String newid = catalogueService.saveCatalogue(model) + "";
 
-			for(Entry<String, String[]> entry : paramMap.entrySet()){
-				System.out.println(entry.getKey()+":"+Arrays.asList(entry.getValue()));
-			}
-			
 			inputStream = new ByteArrayInputStream(newid.getBytes("UTF-8"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -242,12 +242,22 @@ public class CatalogueAction extends BaseAction<Catalogue> implements ParameterA
 	}
 
 	
-	/*
-	 * 以后要删除  测试
+
+	/**
+	 * 跳转到增加资源的页面 通过JS 来选择类目
 	 */
-	@Override
-	public void setParameters(Map<String, String[]> arg0) {
-		this.paramMap = arg0;
+	public String toAddResourcePage() {
+		rootCatalogues = catalogueService.getRootCatalogue();
+		return "add_resource";
 	}
 
+	/**
+	 * 获得子目录
+	 */
+	public String chooseChild() {
+		System.out.println(parentid);
+		childCatalogues = catalogueService
+				.getChildCatalogueByParentId(parentid);
+		return "add_resource";
+	}
 }

@@ -36,6 +36,7 @@
 			<result name="catalogueManagerAction" type="redirectAction">
 				<param name="actionName">CatalogueAction_toCatalogueManagerPage</param>
 			</result>
+			<result name="add_resource">/login/provider_resource.jsp</result>
 		</action>
 
 		<action name="TemplateAction_*" class="templateAction" method="{1}">
@@ -45,14 +46,14 @@
 			<result name="updateTemplate">/admin/templatedetail.jsp</result>
 		</action>
 
-		<action name="AttributeAction_*" class="attributeAction" method="{1}">
+		<action name="AttributeAction_*" class="attributeAction"
+			method="{1}">
 		</action>
-		
 	</package>
 
 	<package name="regPage" extends="struts-default">
 		<action name="RegAction_*" class="regAction" method="{1}">
-			<result name="regPage">/reg.jsp</result>
+			<result name="regPage">/register.jsp</result>
 			<result name="input">/reg.jsp</result>
 			<result name="success">/success.jsp</result>
 			<result name="loginPage">/login/login.jsp</result>
