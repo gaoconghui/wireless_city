@@ -86,7 +86,7 @@ public   class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 	
 	@Override
-	public Object ubiqueResult(String hql, Object... objects) {
+	public Object uniqueResult(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		for(int i = 0 ; i < objects.length ; i++){
 			query.setParameter(i, objects[i]);
