@@ -5,6 +5,7 @@ var newCategoryId;
 			url:url,
 			beforeSend:function(){
 				$.tmUtil.infoShow({"message":"加载中..."});
+				$("#yy").hide();
 			},
 			error:function(){
 				$.tmUtil.infoShow({"message":"服务器出错"}).fadeOut(2000);
