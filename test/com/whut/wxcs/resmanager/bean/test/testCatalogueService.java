@@ -164,4 +164,9 @@ public class testCatalogueService {
 		}
 	}
 	
+	@Test
+	public void testGetAttribute(){
+		System.out.println(catalogueService.getEnumAttributesByTid(1010101));;
+	}
+	
 }

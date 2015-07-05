@@ -43,8 +43,11 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 
 	// 显示所有的类目以供选择 以后要删除
 	private List<Catalogue> catalogues;
-	
-	private List<Attribute> attributes;
+
+	private List<Attribute> attributeList;
+
+	// 页面选择属性
+	private String attrStr;
 
 	// 页面内基本信息
 	private Page<com.whut.wxcs.resmanager.model.Resource> page;
@@ -53,8 +56,20 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 		return page;
 	}
 
+	public void setAttrStr(String attrStr) {
+		this.attrStr = attrStr;
+	}
+
 	public void setPage(Page<com.whut.wxcs.resmanager.model.Resource> page) {
 		this.page = page;
+	}
+
+	public List<Attribute> getAttributeList() {
+		return attributeList;
+	}
+
+	public void setAttributeList(List<Attribute> attributeList) {
+		this.attributeList = attributeList;
 	}
 
 	// 用于接收session
@@ -64,7 +79,7 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 		return catalogues;
 	}
 
-	/*
+	/**
 	 * 列出所有的catalogue 以后是要删除的
 	 */
 	public String listAllCatalogue() {
@@ -80,7 +95,12 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 		this.rsid = System.nanoTime() + "";
 		sessionMap.put(getRsid(), model);
 
+		initAttributeTable(model.getCatalogueId());
 		this.page = searchResourceService.searchByCriteria(model);
+
+		System.out.println(model);
+		System.out.println(attributeList);
+
 		return "resourcelist";
 	}
 
@@ -89,12 +109,14 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String inFindByKeyWord() {
 		CriteriaResource cr = checkRsidAndGetCR();
+		
 		initPageNum(cr);
 
 		cr.setKeyWord(model.getKeyWord());
 		this.page = searchResourceService.searchByCriteria(cr);
 		System.out.println(cr);
 		this.model = cr;
+		initAttributeTable(cr.getCatalogueId());
 
 		return "resourcelist";
 	}
@@ -104,6 +126,7 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changeOrder() {
 		CriteriaResource cr = checkRsidAndGetCR();
+		
 		initPageNum(cr);
 
 		// 如果排序名称一样，则改变排序方式
@@ -117,6 +140,8 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 
 		this.page = searchResourceService.searchByCriteria(cr);
 		this.model = cr;
+		initAttributeTable(cr.getCatalogueId());
+		
 		System.out.println(cr);
 		return "resourcelist";
 	}
@@ -127,10 +152,12 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	public String changePageNo() {
 		CriteriaResource cr = checkRsidAndGetCR();
 		cr.setPageNum(model.getPageNum());
+		
 
 		this.page = searchResourceService.searchByCriteria(cr);
 		this.model = cr;
-
+		initAttributeTable(cr.getCatalogueId());
+		
 		System.out.println(cr);
 		return "resourcelist";
 	}
@@ -140,13 +167,37 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changePageSize() {
 		CriteriaResource cr = checkRsidAndGetCR();
+		
 		initPageNum(cr);
+		
 		cr.setPageSize(model.getPageSize());
 
 		this.page = searchResourceService.searchByCriteria(cr);
 		this.model = cr;
+		
+		initAttributeTable(cr.getCatalogueId());
 
 		System.out.println(cr);
+		return "resourcelist";
+	}
+
+	/**
+	 * 增加属性筛选
+	 */
+	public String addAttribute() {
+		CriteriaResource cr = checkRsidAndGetCR();
+		
+		initPageNum(cr);
+
+		cr.getAttributes().add(attrStr);
+
+		this.page = searchResourceService.searchByCriteria(cr);
+		this.model = cr;
+		
+		initAttributeTable(cr.getCatalogueId());
+
+		System.out.println(cr);
+
 		return "resourcelist";
 	}
 
@@ -155,6 +206,14 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 */
 	private void initPageNum(CriteriaResource cr) {
 		cr.setPageNum(1);
+	}
+
+	/**
+	 * 初始化attribute 选择框里的内容
+	 */
+	private void initAttributeTable(long catalogueId) {
+		this.attributeList = catalogueService.getEnumAttributesByTid(model
+				.getCatalogueId());
 	}
 
 	/*
@@ -169,7 +228,6 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 			sessionMap.put(getRsid(), model);
 			return model;
 		}
-
 	}
 
 	/*

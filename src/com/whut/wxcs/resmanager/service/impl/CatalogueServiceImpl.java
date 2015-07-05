@@ -220,4 +220,15 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		}
 	}
 
+	@Override
+	public List<Attribute> getEnumAttributesByTid(long catalogueId) {
+//		Template template = templateDao.getEntity(catalogueId);
+//		int size = template.getAttributes().size();
+
+		String sql = "select * from ATTRIBUTE where ATTRIBUTE_ID in (select ATTRIBUTE_ID from TEMPLATE_ATTRIBUTE where TEMPLATE_ID = ? ) "
+				+ " and ATTRIBUTE_TYPE = 5";
+
+		return attributeDao.findEntityBySql(sql, catalogueId);
+	}
+
 }

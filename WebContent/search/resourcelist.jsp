@@ -31,7 +31,18 @@ td {
 	<br>
 	<br>
 	<center>
-		<s:debug></s:debug>
+
+		<table>
+			<s:iterator value="attributeList">
+				<tr>
+					<td><s:property value="name" />:&nbsp;&nbsp;&nbsp;</td>
+					<s:iterator value="enumValue" status="st">
+						<td><s:a href="SearchResourceAction_addAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}"><s:property /></s:a></td>
+					</s:iterator>
+				</tr>
+			</s:iterator>
+		</table>
+		<br>
 		<s:form action="SearchResourceAction_inFindByKeyWord">
 			<table>
 				<tr>
@@ -48,10 +59,13 @@ td {
 			</table>
 		</s:form>
 
-		<br> 
-			<s:a href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=10">10</s:a>
-			<s:a href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=20">20</s:a>
-			<s:a href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=50">50</s:a>
+		<br>
+		<s:a
+			href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=10">10</s:a>
+		<s:a
+			href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=20">20</s:a>
+		<s:a
+			href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=50">50</s:a>
 		<br> <br>
 		<table>
 			<tr>

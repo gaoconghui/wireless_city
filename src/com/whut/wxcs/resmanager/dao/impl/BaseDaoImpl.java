@@ -111,7 +111,7 @@ public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public List<T> findEntityBySql(String sql, Object... objects) {
-		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql).addEntity(clazz);
 		for(int i = 0 ; i < objects.length ; i++){
 			query.setParameter(i, objects[i]);
 		}

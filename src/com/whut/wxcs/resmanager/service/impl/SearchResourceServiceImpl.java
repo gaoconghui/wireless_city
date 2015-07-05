@@ -67,6 +67,7 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 
 	/**
 	 * 在criteria 里增加属性拦截
+	 * 相同的属性不同值用或连接，不同属性之间用且连接
 	 * 
 	 * @param model
 	 * @param criteria
@@ -74,11 +75,12 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 	private void addCriteriaAttribute(CriteriaResource model, Criteria criteria) {
 		Disjunction disjunction;
 		Conjunction conjunction;
+		Conjunction allConjunction;
 		if (ValidateUtil.isVaild(model.getAttributes())) {
 
 			Criteria attributeCriteria = criteria.createCriteria("attributes");
-			// 存储多个用 or 连接的属性
-			disjunction = Restrictions.disjunction();
+			// 存储多个用 且 连接的属性
+			allConjunction = Restrictions.conjunction();
 			Attribute attribute;
 
 			// 遍历 给每个限定的attribute 增加拦截
@@ -90,9 +92,8 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 				conjunction = Restrictions.conjunction();
 				conjunction.add(Restrictions.eq("value", getValue(attr)));
 				conjunction.add(Restrictions.eq("attribute", attribute));
-				disjunction.add(conjunction);
+				attributeCriteria.add(conjunction);
 			}
-			attributeCriteria.add(disjunction);
 		}
 	}
 
