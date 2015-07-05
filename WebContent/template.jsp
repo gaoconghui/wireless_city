@@ -11,13 +11,30 @@
 	<s:debug></s:debug>
 	<center>
 		<s:form action="AddResourceAction_addResource" theme="simple">
+			<s:hidden name="cid"></s:hidden>
 			<table border="1" cellpadding="10" cellspacing="0">
-				<s:iterator var="t" value="template.attributes">
+				<tr>
+					<td>资源名称:</td>
+					<td><s:textfield name="resource_name"></s:textfield></td>
+				</tr>
+				<s:iterator var="t" value="template.attributes" status="status">
 					<tr>
+						<s:set var="type" value="#t.type"></s:set>
+						<s:hidden name="resourceAttrs[%{#status.index}].attribute.id"
+							value="%{id}"></s:hidden>
 						<td><s:property value="name" /></td>
-						<td><s:textfield name="value" /></td>
+						<td><s:if test="#type==5">
+								<s:radio list="#t.enumValue"
+									name="resourceAttrs[%{#status.index}].value"></s:radio>
+							</s:if> <s:else>
+								<s:textfield name="resourceAttrs[%{#status.index}].value" />
+							</s:else></td>
 					</tr>
 				</s:iterator>
+				<tr>
+					<td>资源描述:</td>
+					<td><s:textarea name="description"></s:textarea></td>
+				</tr>
 				<tr>
 					<td colspan="2"><s:submit></s:submit></td>
 				</tr>

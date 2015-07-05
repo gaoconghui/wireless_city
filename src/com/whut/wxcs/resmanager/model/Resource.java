@@ -1,6 +1,6 @@
 package com.whut.wxcs.resmanager.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 

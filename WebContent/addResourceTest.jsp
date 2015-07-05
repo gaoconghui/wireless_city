@@ -9,26 +9,13 @@
 </head>
 <body>
 	<center>
-		<s:form action="AddResourceAction_showTemplate">
-			<table border="1" cellpadding="10" cellspacing="0">
-				<tr>
-					<td>一级类目</td>
-					<td><select>
-							<option>请选择类目一</option>
-							<s:iterator var="c1" value="catalogues">
-							   <option>
-							      <s:property value="name"/>
-							   </option>
-							</s:iterator>
-					</select></td>
-				</tr>
-			</table>
-			<s:submit></s:submit>
-		</s:form>
+		<h1>选择种类</h1>
+		<s:iterator var="c" value="catalogues">
+			<a
+				href="AddResourceAction_showTemplate?cid=<s:property value="#c.id"/>">
+				<s:property value="name" /><br>
+			</a>
+		</s:iterator>
 	</center>
-	<a
-		href="AddResourceAction_showTemplate?cid=<s:property value="#c.id"/>">
-		<s:property value="name" /><br>
-	</a>
 </body>
 </html>

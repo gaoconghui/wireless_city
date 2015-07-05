@@ -3,9 +3,9 @@ package com.whut.wxcs.resmanager.util;
 import java.security.MessageDigest;
 
 public class DataUtils {
-    /**
-     * MD5加密算法 
-     */
+	/**
+	 * MD5加密算法
+	 */
 	public static String MD5(String src) {
 		try {
 			StringBuffer buffer = new StringBuffer();
@@ -22,6 +22,16 @@ public class DataUtils {
 			return buffer.toString();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 将字符串转换为数组，分隔
+	 */
+	public static String[] toArray(String src) {
+		if (ValidateUtil.isVaild(src)) {
+			return src.split(",");
 		}
 		return null;
 	}

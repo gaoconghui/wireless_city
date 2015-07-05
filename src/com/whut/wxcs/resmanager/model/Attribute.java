@@ -1,5 +1,7 @@
 package com.whut.wxcs.resmanager.model;
 
+import com.whut.wxcs.resmanager.util.DataUtils;
+
 public class Attribute {
 
 	private long id;
@@ -9,6 +11,7 @@ public class Attribute {
 	private byte type;
 	private String description;
 	private String value;
+	private String enumValue[];
 
 	// 创建这个属性的模板
 	private long templateid;
@@ -59,6 +62,15 @@ public class Attribute {
 
 	public void setValue(String value) {
 		this.value = value;
+		this.enumValue = DataUtils.toArray(value);
+	}
+
+	public String[] getEnumValue() {
+		return enumValue;
+	}
+
+	public void setEnumValue(String[] enumValue) {
+		this.enumValue = enumValue;
 	}
 
 	@Override
