@@ -30,7 +30,7 @@
 		</global-results>
 
 		<action name="CatalogueAction_*" class="catalogueAction"
-	method="{1}">
+			method="{1}">
 			<result name="toDesignCataloguePage">/admin/designcatalogue.jsp</result>
 			<result name="toCatalogueManagerPage">/admin/cataloguemanager.jsp</result>
 			<result name="catalogueManagerAction" type="redirectAction">
@@ -84,7 +84,13 @@
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<!-- <result name="user_info"></result> -->
 		</action>
-		
+
+		<action name="AddResourceAction_*" class="addResourceAction"
+			method="{1}">
+			<result name="toAddPage">/addResourceTest.jsp</result>
+			<result name="template">/template.jsp</result>
+			<result name="addResource">/success.jsp</result>
+		</action>
 
 	</package>
 </struts>

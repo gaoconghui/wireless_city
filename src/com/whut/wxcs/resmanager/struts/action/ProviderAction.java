@@ -18,7 +18,6 @@ import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ProviderService;
 import com.whut.wxcs.resmanager.util.DataUtils;
-import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Controller
 @Scope("prototype")
@@ -32,7 +31,6 @@ public class ProviderAction extends BaseAction<Provider> implements
 	@Resource
 	private CatalogueService catalogueService;
 	private Provider provider = new Provider();
-	private String confirmPwd;
 	private Map<String, Object> session;
 	private Catalogue catalogue;
 	private InputStream inputStream;
@@ -62,10 +60,6 @@ public class ProviderAction extends BaseAction<Provider> implements
 		return state;
 	}
 
-	public void setConfirmPwd(String confirmPwd) {
-		this.confirmPwd = confirmPwd;
-	}
-
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -75,29 +69,6 @@ public class ProviderAction extends BaseAction<Provider> implements
 	public Provider getModel() {
 		return provider;
 	}
-
-	/*
-	*//**
-	 * 验证
-	 */
-	/*
-	 * public void validateReg() { if
-	 * (!ValidateUtil.isVaild(provider.getName())) { addFieldError("name",
-	 * "服务商名称不能位空"); } if (!ValidateUtil.isVaild(provider.getLoginName())) {
-	 * addFieldError("loginName", "登陆账号不能位空"); } if
-	 * (!ValidateUtil.isVaild(provider.getLoginPwd())) {
-	 * addFieldError("loginPwd", "密码不能位空"); } if
-	 * (!ValidateUtil.isVaild(provider.getTelephone())) {
-	 * addFieldError("phoneNumber", "联系电话不能为空"); } if
-	 * (!ValidateUtil.isVaild(provider.getEmail())) { addFieldError("email",
-	 * "邮箱账号不能位空"); } if (hasErrors()) { return; } if
-	 * (!ValidateUtil.phoneNumberValid(provider.getTelephone())) {
-	 * addFieldError("phoneNumber", "请输入正确的手机号码"); return; } if
-	 * (!provider.getLoginPwd().equals(confirmPwd)) {
-	 * addFieldError("confirmPassword", "密码必须一致"); return; } if
-	 * (providerService.isLoginNameExit(provider.getLoginName())) {
-	 * addFieldError("loginName", "该账号已存在"); return; } }
-	 */
 
 	/**
 	 * 服务商登陆,并验证
@@ -110,24 +81,17 @@ public class ProviderAction extends BaseAction<Provider> implements
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			/*
-			 * addActionError("账户名密码错误"); return "login_fail";
-			 */
 		}
 		if (provider.getCheckState() == 2) {
-			/*
-			 * addActionError("账户正在审核"); return "login_fail";
-			 */try {
-				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			try {
+				inputStream = new ByteArrayInputStream("2".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
 		}
 		if (provider.getCheckState() == 0) {
-			/*
-			 * addActionError("审核未通过"); return "login_fail";
-			 */try {
-				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			try {
+				inputStream = new ByteArrayInputStream("3".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
@@ -143,16 +107,30 @@ public class ProviderAction extends BaseAction<Provider> implements
 	}
 
 	/**
-	 * 服务商注册,并审核
+	 * 验证服务商登陆账号
 	 */
-	public String reg() {
+	public String validateProvider() {
 		if (providerService.isLoginNameExit(provider.getLoginName())) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
+		} else {
+			try {
+				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
 		}
+		return "ajax-success";
+	}
+
+	/**
+	 * 服务商注册,并审核
+	 */
+	public String reg() {
+
 		provider.setRegisterTime(new Date());
 		provider.setLoginPwd(DataUtils.MD5(provider.getLoginPwd()));
 		provider.setCheckState(2);
