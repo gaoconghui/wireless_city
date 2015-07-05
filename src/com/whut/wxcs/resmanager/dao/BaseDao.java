@@ -2,6 +2,8 @@ package com.whut.wxcs.resmanager.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+
 /**
  * baseDao接口
  * @author apple
@@ -10,6 +12,7 @@ import java.util.List;
  */
 public interface BaseDao<T> {
 
+	public Criteria getCriteria();
 	
 	public void saveEntity(T t);
 	public void saveOrUpdateEntity(T t);

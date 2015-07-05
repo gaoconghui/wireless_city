@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,13 +22,18 @@ import com.whut.wxcs.resmanager.util.ReflectionUtils;
 
 
 @SuppressWarnings("unchecked")
-public   class BaseDaoImpl<T> implements BaseDao<T> {
+public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
 	
 	@Resource(name="sessionFactory")
 	 SessionFactory sessionFactory ;
 	
 	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();
+	}
+	
+	@Override
+	public Criteria getCriteria() {
+		return this.getSession().createCriteria(clazz);
 	}
 	
 	Class<T> clazz;
@@ -111,5 +117,6 @@ public   class BaseDaoImpl<T> implements BaseDao<T> {
 		}
 		return query.list();
 	}
+
 
 }

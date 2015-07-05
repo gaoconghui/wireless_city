@@ -10,12 +10,12 @@
 			<generator class="native" />
 		</id>
 		<many-to-one name="resource" class="com.whut.wxcs.resmanager.model.Resource"
-			fetch="join">
+			>
 			<column name="RESOURCE_ID" />
 		</many-to-one>
 
 		<many-to-one name="attribute"
-			class="com.whut.wxcs.resmanager.model.Attribute" fetch="join">
+			class="com.whut.wxcs.resmanager.model.Attribute">
 			<column name="ATTRIBUTE_ID" />
 		</many-to-one>
 		
