@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.CriteriaResource;
 import com.whut.wxcs.resmanager.model.Page;
@@ -42,6 +43,8 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 
 	// 显示所有的类目以供选择 以后要删除
 	private List<Catalogue> catalogues;
+	
+	private List<Attribute> attributes;
 
 	// 页面内基本信息
 	private Page<com.whut.wxcs.resmanager.model.Resource> page;
