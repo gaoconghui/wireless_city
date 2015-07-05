@@ -50,6 +50,12 @@
 			method="{1}">
 		</action>
 
+		<action name="SearchResourceAction_*" class="searchResourceAction"
+			method="{1}">
+			<result name="listCatalogue">/search/listcatalogue.jsp</result>
+			<result name="resourcelist">/search/resourcelist.jsp</result>
+		</action>
+
 	</package>
 
 	<package name="regPage" extends="struts-default">
@@ -78,6 +84,7 @@
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<!-- <result name="user_info"></result> -->
 		</action>
+		
 
 	</package>
 </struts>
