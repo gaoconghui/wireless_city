@@ -58,8 +58,8 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	}
 	
 	@Override
-	public Object ubiqueResult(String hql, Object... objects) {
-		return baseDao.ubiqueResult(hql, objects);
+	public Object uniqueResult(String hql, Object... objects) {
+		return baseDao.uniqueResult(hql, objects);
 	}
 
 }

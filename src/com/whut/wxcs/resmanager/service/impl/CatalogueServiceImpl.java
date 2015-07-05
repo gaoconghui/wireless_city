@@ -93,7 +93,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	@Override
 	public Catalogue getRootCatalogueWithAllChild() {
 		String hql = "from Catalogue c where c.id = 1";
-		Catalogue root = (Catalogue) catalogueDao.ubiqueResult(hql);
+		Catalogue root = (Catalogue) catalogueDao.uniqueResult(hql);
 		getAllChild(root);
 		return root;
 	}

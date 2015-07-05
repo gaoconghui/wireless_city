@@ -14,5 +14,5 @@ public interface BaseService<T> {
 	public T getEntity(long id);
 	public List<T> findEntityByHql(String hql,Object...objects);
 	//单值检索，确保查询结果只有一个数
-	public Object ubiqueResult(String hql,Object...objects);
+	public Object uniqueResult(String hql,Object...objects);
 }
