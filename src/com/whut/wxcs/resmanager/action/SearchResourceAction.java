@@ -40,8 +40,10 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	@Resource
 	private SearchResourceService searchResourceService;
 
+	// 显示所有的类目以供选择 以后要删除
 	private List<Catalogue> catalogues;
 
+	// 页面内基本信息
 	private Page<com.whut.wxcs.resmanager.model.Resource> page;
 
 	public Page<com.whut.wxcs.resmanager.model.Resource> getPage() {
@@ -56,7 +58,6 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	private Map<String, Object> sessionMap;
 
 	public List<Catalogue> getCatalogues() {
-
 		return catalogues;
 	}
 
