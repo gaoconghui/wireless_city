@@ -45,7 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.layout_all .wrapper_right .r_select .s_main_title{height:30px;font-weight:900;margin-left:20px;color:#000;}
 			.layout_all .wrapper_right .r_select .s_sort{margin-left:20px;}
 			.layout_all .wrapper_right .r_select .s_sort .s_main{width:142px;float:left;}
-			.layout_all .wrapper_right .r_select .s_sort .s_main select{ width:100px;}
 			.layout_all .wrapper_right .r_select .s_attribute{margin-left:20px;margin-top:20px;}
 			.layout_all .wrapper_right .r_select .s_attribute p{padding-top:20px;}
 			.layout_all .wrapper_right .r_select .s_attribute p:first-child{border-top:1px solid #005ea7;}
@@ -88,7 +87,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.add_services  .a_s_main .a_s_choose{height:30px;line-height:30px;font-size:14px;}
 			.add_services  .a_s_main .a_s_sel .s_sort{margin-left:20px;}
 			.add_services  .a_s_main .a_s_sel .s_sort .s_main{width:142px;float:left;}
-			.add_services  .a_s_main .a_s_sel .s_sort .s_main select{width:100px; }
 			.add_services  .a_s_main .a_s_name{height:60px;margin-left:20px;margin-top:10px;}
 			.add_services  .a_s_main .a_s_name span{font-size:14px;height:30px;line-height:30px;display:block;}
 			.add_services  .a_s_main .a_s_name input{height:30px;display:block;line-height:30px;padding-left:10px;margin-left:20px;}
@@ -146,9 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</style>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/placeholder.js"></script>
-		
-		<script type="text/javascript" src="js/tmAjax.js"></script>
-		<script type="text/javascript" src="js/util.js"></script>
+		<script type="text/javascript" src="js/yjutil.js"></script>
 	</head>
 <body>
 	<!-- header begin-->
@@ -166,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="c_content">
 				<ul>
 					<li><a href="javascript:void(0)"  class="sel">管理中心</a></li>
-					<li><a href="font/salor_store.html">企业主页</a></li>
+					<li><a href="wireless_salor_store.html">企业主页</a></li>
 				</ul>
 			</div>
 			<div class="c_search">
@@ -193,32 +189,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="s_sort">
 					<div class="s_main">
 						<span>一类</span>
-						<select id="category_1">
-							<option value="">-请选择-</option>
+						<select>
+							<option>-请选择-</option>
+
 						</select>
 					</div>
 					<div class="s_main">
 						<span>二类</span>
-						<select id="category_2">
-							<option value="">-请选择-</option>
+						<select>
+							<option>-请选择-</option>
 						</select>
 					</div>
 					<div class="s_main">
 						<span>三类</span>
-						<select id="category_3">
-							<option value="">-请选择-</option>
+						<select>
+							<option>-请选择-</option>
 						</select>
 					</div>
 					<div class="s_main">
 						<span>四类</span>
-						<select id="category_4">
-							<option value="">-请选择-</option>
+						<select>
+							<option>-请选择-</option>
 						</select>
 					</div>
 					<div class="s_main">
 						<span>五类</span>
-						<select id="category_5">
-							<option value="">-请选择-</option>
+						<select>
+							<option>-请选择-</option>
 						</select>
 					</div>	
 					<div class="clear"></div>
@@ -331,32 +328,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="s_sort">
 						<div class="s_main">
 							<span>一类</span>
-							<select id="category1">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main">
 							<span>二类</span>
-							<select id="category2">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main">
 							<span>三类</span>
-							<select id="category3">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main">
 							<span>四类</span>
-							<select id="category4">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main">
 							<span>五类</span>
-							<select id="category5">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>	
 						<div class="clear"></div>
@@ -425,7 +422,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="next_step" id="submit">提交</div>
 		</div>
 	</div>
-	<%-- <div class="update_services" id="update_services">
+	<div class="update_services" id="update_services">
 		<div class="a_s_title">
 			增加服务资源
 			<div class="t_icon" id="close_2"></div>
@@ -437,32 +434,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="s_sort">
 						<div class="s_main">
 							<span>一类</span>
-							<select id="category_1">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main">
 							<span>二类</span>
-							<select id="category_2">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main">
 							<span>三类</span>
-							<select id="category_3">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main">
 							<span>四类</span>
-							<select  id="category_4">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main">
 							<span>五类</span>
-							<select  id="category_5">
-								<option value="">-请选择-</option>
+							<select>
+								<option>-请选择-</option>
 							</select>
 						</div>	
 						<div class="clear"></div>
@@ -530,7 +527,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="pre_step" id="update_pre_step">上一步</div>
 			<div class="next_step" id="update_submit">提交</div>
 		</div>
-	</div> --%>
+	</div>
 
 	<!-- bottom begin -->
 	<s:include value="bottom.jsp"></s:include>
@@ -548,74 +545,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			init();
 			initialize();
 		});
-		
-		function getChildCategory(idName,nextIdName){
-			$("#"+idName).off("change").on("change",function(){
-				var h="<option value=''>-请选择-</option>";
-				var nextId=nextIdName.substr(9,1);
-				alert(nextId);
-				for(var i=nextId;i<6;i++){
-					$("#category_"+i).html(h);
-				}
-				var pid=$(this).val();
-				if(isEmpty(pid)){return;}
-				var options={
-					params:{parentid:pid},
-					callback:function(data){
-						if(data=="[]"){
-							
-						}else{
-							var $data=$.parseJSON(data);
-							var length=$data.length;
-							var html="";
-							for(var i=0;i<length;i++){
-								html+="<option value='"+$data[i].id+"'>"+$data[i].name+"</option>";
-							}
-							$("#"+nextIdName).append(html);
-						}
-					}
-				};
-				findCategory(options);
-			});		
-		}
 		function initialize(){
-			//查询一类目
-			var options={
-				params:{parentid:"1"},
-				callback:function(data){
-					if(data=="[]"){
-						
-					}else{
-						var $data=$.parseJSON(data);
-						var length=$data.length;
-						var html="";
-						for(var i=0;i<length;i++){
-							html+="<option value='"+$data[i].id+"'>"+$data[i].name+"</option>";
-						}
-						$("#category1").append(html);
-						$("#category_1").append(html);
-					}
-				}
-			};
-			findCategory(options);
-			//查询2类目
-			getChildCategory("category1","category2");
-			getChildCategory("category_1","category_2");
-			//查询3类目
-			getChildCategory("category2","category3");
-			getChildCategory("category_2","category_3");
-			//查询4类目
-			getChildCategory("category3","category4");
-			getChildCategory("category_3","category_4");
-			//查询5类目
-			getChildCategory("category4","category5");
-			getChildCategory("category_4","category_5");
-			
-			
-			
-			
-			
-			
 			$("input[placeholder]").placeholder();
 			/*添加服务按钮*/
 			$("#add_service_btn").on("click",function(){
@@ -665,7 +595,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							"	<a href='javascript:void(0)' class='delete'>删除</a>"+
 							"	<a href='javascript:void(0)'>查看详情</a>"+
 							"</div>"+
-						"</div>";
+						"</div>"
 				$("#l_content").prepend(html);
 				$("#l_content").find(".l_content:first").slideDown("slow");
 			});

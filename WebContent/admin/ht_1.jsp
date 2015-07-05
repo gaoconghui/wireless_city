@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- <link type="text/css" href="css/reset.css" rel="stylesheet"> -->
 		<!--css,js-->
 		<style type="text/css">
+			.tzht{width:100%,background:#282828;font-weight:700;}
 		/*start t_right*/
 			.tzht .t_right{background:#f3f4f5;margin-left:200px;}
 			/*start r_location*/

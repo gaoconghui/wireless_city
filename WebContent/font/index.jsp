@@ -37,10 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.header .h_fir .f_contact .c_fir{width:250px;height:70px; color:#b61d1d;font-size:18px;font-weight:400;}
 			.header .h_fir .f_contact .c_fir .f_icon{width:20px;height:20px;background:url(images/wireless_icon.png) no-repeat -24px -1px; display:block;margin:25px 5px 0px 5px;float:left;}
 			.header .h_fir .f_contact .c_fir .f_text{float:left;}
-			.header .h_sec{width:100%;color:#333;font-size:16px;line-height:43px;height:50px;}
-			.header .h_sec .s_wrapper{width:1200px;height:43px;margin:0px auto;}
+			.header .h_sec{width:100%;color:#333;font-size:16px;line-height:43px;}
+			.header .h_sec .s_wrapper{width:1200px;height:43px;margin:0 auto;}
+			.header .h_sec .s_wrapper .s_left{float:left;width:800px;}
 			.header .h_sec .s_wrapper .s_left ul li{padding:0px 15px;height:43px;float:left;text-align:center;cursor:pointer;}
-			.header .h_sec .s_wrapper .s_left ul:after{display:block;clear:both;content:"";}
 			.header .h_sec .s_wrapper .s_left ul .lidemo{background:#b61d1d;color:#fff;}
 		/*header end*/
 		
@@ -54,17 +54,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.banner .b_content .c_info .left_nav li:after{content:"";display:block;clear:both;}
 			.banner .b_content .c_info .left_nav li .i_icon{float:left;display:block;width:40px;height:40px;padding-left:10px;background:url(images/wireless_icon.png) no-repeat 0px -287px;}
 			.banner .b_content .c_info .left_nav li .i_desc{padding-left:10px;display:block;float:left;}
-			.banner .b_content .c_info .left_nav li .i_desc a{color:#fff;}
 			.banner .b_content .c_info .left_nav li .i_more{display:block;float:right;position:relative;font-weight:100;padding-right:10px;}
 			.banner .b_content .left_content{position:absolute;top:-1px;left:200px;z-index:3;}
-			.banner .b_content .left_content li{display:none;padding:15px 50px 20px 50px;border:1px solid #b61d1d;background:#fafafa;width:668px;position:absolute;top:0;left:0;}
-			.banner .b_content .left_content li .c_list{line-height:20px; }
-			.banner .b_content .left_content li .c_list:after{display:block;content:"";clear:both;}
-			.banner .b_content .left_content li .c_list .l_second_item{ font-weight:700;float:left; width:100px; text-align:center;margin-top:10px;}
+			.banner .b_content .left_content li{border:1px solid #b61d1d;background:#fafafa;width:769px;height:480px;position:absolute;top:0;left:0;display:none;}
+			.banner .b_content .left_content li .c_list{width:700px; margin-top:20px;line-height:20px;}
+			.banner .b_content .left_content li .c_list .l_second_item{font-weight:700px;float:left; width:100px;padding-left:50px;text-align:center;margin-top:5px;}
 			.banner .b_content .left_content li .c_list .l_second_item .span1{height:20px;float:left;}
 			.banner .b_content .left_content li .c_list .l_second_item .span2{width:20px;height:20px;float:right;}
-			.banner .b_content .left_content li .c_list .l_third_item{float:left;text-align:left;width:550px;}
-			.banner .b_content .left_content li .c_list .l_third_item a{color:#444;margin-top:10px;display:inline-block;border-left:1px solid #ccc;padding:0 10px;height:20px;}
+			.banner .b_content .left_content li .c_list .l_third_item{float:left;width:550px;text-align:left;}
+			.banner .b_content .left_content li .c_list .l_third_item a{color:#444;margin-top:5px;display:inline-block;border-left:1px solid #ccc;padding:0 10px;height:20px;}
 			.banner .b_content .btn_ul{position:absolute;top:400px;left:800px;z-index:2;}
 			.banner .b_content .btn_ul li{float:left;width:20px;height:20px;margin:0px 10px;background:#565656;border-radius:10px;-webkit-border-radius:10px;color:#fff;font-size:16px;line-height:20px;text-align:center;cursor:pointer;}
 			.banner .b_content .img_ul{width:980px;overflow:hidden;margin-left:102px;}
@@ -99,17 +97,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.login .l_right .QQ:hover{background-position:-157px -31px;}
 			.login .l_right .r_question{width:150px;height:20px;line-height:20px;color:#0181ec;display:block;margin:40px 0 0 100px;}
 		/*login end*/
-		/* begin info */
-		.info{padding:5px 10px;background:#222;color:#fff;position:fixed;top:100px;left:400px;border-radius:10px;display:none;}
-		.info span{display:block;float:left;line-height:24px;padding:2px;}
-		.info span.i_icon{background-repeat:no-repeat;background-position:cneter;width:24px;height:24px;}
-		/* end info */
 		</style>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/tmAjax.js"></script>
-		<script type="text/javascript" src="js/util.js"></script>
+		<script type="text/javascript" src="js/yjutil.js"></script>
 		<script type="text/javascript" src="js/placeholder.js"></script>
-		
 	</head>
 <body>
 	<!-- header begin-->
@@ -126,6 +117,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="s_input">
 					<input type="text" placeholder="找服务资源" />
 					<div class="i_btn">搜索</div>
+				</div>
+				<div id="clear"></div>
+				<div class="s_hot">
+					<span>热词：</span>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
+					<a href="javascript:void(0)">热词</a>
 				</div>
 			</div>
 			<div class="f_contact">
@@ -159,11 +161,846 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<span class="i_desc">全部服务资源分类</span>
 					</li>
-					
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
+					<li>
+						<span class="i_icon"></span>
+						<span class="i_desc">无线政务</span>
+						<span class="i_more">&gt;</span>
+					</li>
 				</ul>
 			</div>
-			<ul class="left_content" id="left_content" >
-				
+			<ul class="left_content" id="left_content">
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
+				<li>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+					<div class="c_list">
+						<div class="l_second_item">
+							<span class="span1">二类目</span>
+							<span class="span2">&gt;</span>
+						</div>
+						<div class="l_third_item">
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+							<a href="javascript:void(0)">三类目</a>
+						</div>
+					<div>
+				</li>
 			</ul>
 			<ul class="btn_ul">
 				<li>1</li>
@@ -221,100 +1058,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	<!-- login_age end -->
-	<!-- begin info -->
-	<div class="info">
-		<span class="i_icon"></span>
-		<span class="i_content"></span>
-	</div>
-	<!-- end info -->
 	<script type="text/javascript">
 		$(function(){
 			init();
 			initialize();
 		});
-		
 		function initialize(){
 		$("input[placeholder]").placeholder();
-		
-		/* findCategory begin*/
-		//查询1类目
-		var options={
-				async:false,
-				params:{parentid:"1"},
-				callback:function(data){
-					var $data=$.parseJSON(data);
-					var length=$data.length;
-					var html="";
-					for(var i=0;i<length;i++){
-						html+="<li data-id='"+$data[i].id+"' data-index='"+i+"'>"+
-						"	<span class='i_icon'></span>"+
-						"	<span class='i_desc'><a href='font/search.jsp?pid="+$data[i].id+"'>"+$data[i].name+"</a></span>"+
-						"	<span class='i_more'>&gt;</span>"+
-						"</li>";
-					}
-					$("#left_nav").append(html);
-				}	
-		};
-		findCategory(options);
-		//查询2类目
-		var html="";
-		$("#left_nav").find("li").each(function(index){
-			if(index!=0){
-				var parentid=$(this).data("id");
-				var options={
-					async:false,
-					params:{parentid:parentid},
-					callback:function(data){
-						if(data=="[]"){
-							html+="<li></li>";
-						}else{
-							var $data=$.parseJSON(data);
-							var length=$data.length;
-							var h="";
-							for(var i=0;i<length;i++){
-								h+="<div class='c_list' data-id='"+$data[i].id+"'>"+
-								"		<div class='l_second_item'>"+
-								"			<span class='span1'><a href='font/search.jsp?pid="+$data[i].id+"'>"+$data[i].name+"</a></span>"+
-								"			<span class='span2'>&gt;</span>"+
-								"		</div>"+
-								"		<div class='l_third_item'>"+
-								"		</div>"+
-								"	</div>";
-							}
-							html+="<li>"+h+"</li>";
-						}
-					}
-				};
-				findCategory(options);
-			}
-		});
-		$("#left_content").html(html);
-		//查询3类目
-		$("#left_content").find("li").each(function(index){
-			$(this).find(".c_list").each(function(index){
-				var parentid=$(this).data("id");
-				var html="";
-				var options={
-					async:false,
-					params:{parentid:parentid},
-					callback:function(data){
-						if(data=="[]"){
-						}else{
-							console.log(data);
-							var $data=$.parseJSON(data);
-							var length=$data.length;
-							console.log(length+"-------------");
-							for(var i=0;i<length;i++){
-								html+="<a href='font/search.jsp?pid="+$data[i].id+"' data-id='"+$data[i].id+"'>"+$data[i].name+"</a>";
-							}
-						}
-					}
-				};
-				findCategory(options);
-				$(this).find(".l_third_item").html(html);
-			});
-		});
-		/* findCAtegory end */
 		/*login show*/
 			$("#s_right").on("click",".r_login",function(){
 				$("#yy,#login_page").show();
@@ -347,40 +1097,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		/*nav_ul click*/
 		/*left_nav hover*/
-			$("#left_nav").on({
-				"mouseenter":function(){
-					var _index=$(this).data("index"); 
-					$(this).addClass("lihover");
-					$(this).find("a").css({"color":"#b61d1d"});
-					$(this).find(".i_more").text("");
-					$("#left_content").find("li").eq(_index).css("top",40*_index+"px").show();
-					
-				},
-				"mouseleave":function(index){
-					var _index=$(this).data("index"); 
-					$(this).removeClass("lihover");
-					$(this).find(".i_more").text(">");
-					$(this).find("a").css({"color":"#fff"});
-					$("#left_content").find("li").eq(_index).hide();
+			$("#left_nav").find("li").each(function(index){
+				var _index=index-1;
+				if(_index!=-1){
+					$(this).on({
+						"mouseenter":function(){
+							$(this).addClass("lihover");
+							$(this).find(".i_more").text("");
+							$("#left_content").find("li").eq(_index).show();
+						},
+						"mouseleave":function(){
+							$(this).removeClass("lihover");
+							$(this).find(".i_more").text(">");
+							$("#left_content").find("li").eq(_index).hide();
+						}
+					});
 				}
-			},"li");
-			
-			$("#left_content").on({
-				"mouseenter":function(index){
-					var _index=index+1;
-					var $this=$("#left_nav").find("li").eq(_index);
-					$(this).show();
-					$this.addClass("lihover");
-					$this.find(".i_more").text("");
-				},
-				"mouseleave":function(index){
-					var _index=index+1;
-					var $this=$("#left_nav").find("li").eq(_index);
-					$(this).hide();
-					$this.removeClass("lihover");
-					$this.find(".i_more").text(">");
-				}
-			},"li");
+			});	
+		
+			$("#left_content").find("li").each(function(index){
+				var _index=index+1;
+				var $this=$("#left_nav").find("li").eq(_index);
+				$(this).on({
+					"mouseenter":function(){
+						$(this).show();
+						$this.addClass("lihover");
+						$this.find(".i_more").text("");
+					},
+					"mouseleave":function(index){
+						$(this).hide();
+						$this.removeClass("lihover");
+						$this.find(".i_more").text(">");
+					}
+				
+				});
+			});
 		/*left_nav hover*/
 		}
 	</script>

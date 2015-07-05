@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- <link type="text/css" href="css/reset.css" rel="stylesheet"> -->
 		<!--css,js-->
 		<style type="text/css">
+			.tzht{width:100%,background:#282828;font-weight:700;}
 		/*start t_right*/
 			.tzht .t_right{background:#f3f4f5;margin-left:200px;padding-bottom:20px;border-bottom:1px solid #ccc;}
 			/*start r_location*/
@@ -50,14 +51,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a2{background-position:-379px -47px;background-color:#1fac75;}
 			.tzht .t_right .r_table .r_label .l_show .s_title span .r_t_a3{background-position:-21px -20px;background-color:#6297bc;}
 			.tzht .t_right .r_table .r_label .l_show .s_content{display:none;padding-top:10px;border:1px solid #1e90ff;border-top:0px;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .attr_color{margin:0px 20px;padding:10px 0px;border-top:1px dotted #1e90ff;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .attr_color p span{display:block;float:left;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .attr_color p span:first-child{width:12px;height:12px;background:#bd2d30;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .attr_color p:first-child span:first-child{background:#1e90ff;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_desc{width:100%;padding-bottom:10px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content span{display:block;margin:0 4px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content span.normal{font-weight:500;color:#666;text-indent:30px;}
-			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute{margin:0 10px;padding:10px 20px;}
+			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute{border-top:1px dotted #1e90ff;margin:0 10px;padding:10px 20px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute:after{content:"";display:block;clear:both;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p{width:193px;background:#1e90ff;color:#fff;float:left;margin:0px 10px 10px 10px;}
 			.tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p span{line-height:20px;padding-bottom:5px;display:block;float:left;width:115px;font-weight:300;word-wrap: break-word;word-break:break-all;}
@@ -95,11 +92,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			
 		/* end add_module */
-		/* begin info */
-		.info{padding:5px 10px;background:#222;color:#fff;position:fixed;top:100px;left:400px;border-radius:10px;display:none;}
-		.info span{display:block;float:left;line-height:24px;padding:2px;}
-		.info span.i_icon{background-repeat:no-repeat;background-position:cneter;width:24px;height:24px;}
-		/* end info */
 		
 		</style>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
@@ -115,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="t_right">
 			<!-- r_location start -->
 			<div class="r_location" id="location">
-				<i></i><span>您当前所在位置：<a href="javascript:void(0)" id="choose">资源模板管理</a></span>
+				<i></i><span>您当前所在位置：<a href="#" id="choose">资源模板管理</a></span>
 			</div>
 			<!-- end r_location -->
 			<div class="r_table">
@@ -192,17 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span>描述:</span>
 									<span class="normal" id="current_module_desc">这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！</span>
 								</div>
-								<div class="attr_color">
-									<p>
-										<span></span>
-										<span>本属性</span>
-									</p>
-									<p>
-										<span></span>
-										<span>上级属性(需在上级模板中修改)</span>
-									</p>
-									
-								</div>
+								<div class="clear"></div>
 								<div class="c_attribute" id="mod_attribute">
 									<%-- <p>
 										<span>属性名称：</span>
@@ -296,15 +278,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="clear"></div>
 	</div>
-	<!-- begin info -->
-	<div class="info">
-		<span class="i_icon"></span>
-		<span class="i_content"></span>
-	</div>
-	<!-- end info -->
+	
 	<!-- end add_resource -->
+	<!-- dailog begin  -->
+	<div id="yp_dialog">
+		<p class="dialog_title">确定删除吗？<span class="close">X</span></p>
+		<div class="dialog_content">
+			<a href="javascript:void(0)" class="sure">确定</a>
+			<a href="javascript:void(0)" class="close">取消</a>
+		</div>
+	</div>
 	<script type="text/javascript" src="js/tmAjax.js"></script>
 	<script type="text/javascript" src="js/ht_2.js"></script>
+	<!-- end dialog  -->
 	<script type="text/javascript">
 		$(function(){
 			
@@ -358,22 +344,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					var $s_scroll=$("#s_scroll");
 					//enter attribute editor
 					var html="";
-					var templateId=$("#current_module_name").data("templateId");
 					$("#mod_attribute").find("p").each(function(){
-						var templateid=$(this).data("templateid");
-						if(templateid==templateId){
-							var id=$(this).data("attrid");
-							var name=$(this).find("span:eq(1)").text();
-							var desc=$(this).find("span:eq(3)").text();
-							var type=$(this).find("span:eq(5)").text();
-							var value=$(this).find("span:eq(7)").text();
-							html+="<div class='s_title' data-id='"+id+"'>"+
-							"	<span>"+name+"</span>"+
-							"	<span>"+desc+"</span>"+
-							"	<span>"+type+"</span>"+
-							"	<span>"+value+"</span>"+
-							"</div> ";
-						}
+						var id=$(this).data("attrid");
+						
+						var name=$(this).find("span:eq(1)").text();
+						var desc=$(this).find("span:eq(3)").text();
+						var type=$(this).find("span:eq(5)").text();
+						var value=$(this).find("span:eq(7)").text();
+						html+="<div class='s_title' data-id='"+id+"'>"+
+						"	<span>"+name+"</span>"+
+						"	<span>"+desc+"</span>"+
+						"	<span>"+type+"</span>"+
+						"	<span>"+value+"</span>"+
+						"</div> ";
 					});
 					$s_scroll.html(html);
 					var $add_module_attribute=$("#add_module_attribute");
@@ -402,6 +385,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$add_module_attribute.find(".sure").off("click").click(function(){
 						var module_desc=$module_desc.val();
 						var module_name=$module_name.val();
+						var templateId=$("#current_module_name").data("templateId");
 						if(module_desc!=oldDesc&&module_name!=oldName){
 							//修改模板名称，描述
 							var params={templateName:module_name,description:module_desc,id:templateId};
@@ -433,14 +417,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						        args["attributes["+n+"].description"] = txt_desc;
 						        args["attributes["+n+"].type"] = txt_type;
 						        args["attributes["+n+"].value"] = txt_content;	
-						       // alert("add attribute==="+txt_name+"==="+txt_desc+"==="+txt_type+"==="+txt_content);
+						        alert("add attribute==="+txt_name+"==="+txt_desc+"==="+txt_type+"==="+txt_content);
 							}	
 						});
 						var length=delIdArgs.length;
-						//alert(length);
+						alert(length);
 						for(var i=n+1;i<n+1+length;i++){
 							args["attributes["+i+"].id"] = "-"+delIdArgs[i-n-1]+"";
-							//alert(args["attributes["+i+"].id"]);
+							alert(args["attributes["+i+"].id"]);
 						}
 			    	        
 			    	    //alert(args["attributes[0].name"]+"--"+args["attributes[0].description"]+"--"+args["attributes[0].type"]+"--"+args["attributes[0].value"]);
@@ -457,7 +441,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$add_module_attribute.hide();
 						$.tmUtil.infoShow({"message":"修改完成！"}).fadeOut(2000);
 						$yy.hide();
-						//alert("准备更新模板属性");
+						alert("准备更新模板属性");
 						var p={tid:templateId};
 						findModuleAttrDetails("AttributeAction_getAttributesByAJAX",p);
 						
@@ -493,10 +477,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$s_scroll.find(".s_title").each(function(){
 							var $this=$(this);
 							if($this.data("sel")=="1"){
-								//alert($this.data("id"));
+								alert($this.data("id"));
 								if(isNotEmpty($this.data("id"))){
 									delIdArgs.push($this.data("id"));
-									//alert("delete id args==="+delIdArgs);
+									alert("delete id args==="+delIdArgs);
 								}
 								
 								

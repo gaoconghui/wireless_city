@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- <link type="text/css" href="css/reset.css" rel="stylesheet"> -->
 		<!--css,js-->
 		<style type="text/css">
+			.tzht{width:100%,background:#282828;font-weight:700;}
 		/*start t_right*/
 			.tzht .t_right{background:#f3f4f5;margin-left:200px;padding-bottom:20px;border-bottom:1px solid #ccc;}
 			/*start r_location*/
@@ -75,8 +76,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</style>
 		<%-- <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/yjutil.js"></script> --%>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/util.js"></script>
 	</head>
 <body>
 	<div class="tzht">
@@ -88,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="t_right">
 			<!-- r_location start -->
 			<div class="r_location" id="location">
-				<i></i><span>您当前所在位置：<a href="javascript:void(0)" id="choose">服务商管理</a></span>
+				<i></i><span>您当前所在位置：<a href="#" id="choose">服务商管理</a></span>
 				
 			</div>
 			<!-- end r_location -->

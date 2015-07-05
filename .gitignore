@@ -19,17 +19,4 @@ build/classes/db.properties
 
 
 
-<<<<<<< HEAD
-*.class
-=======
-test/com/whut/wxcs/resmanager/bean/test/testCatalogueService.java
-
-*.class
-
-*.class
-
-test/com/whut/wxcs/resmanager/bean/test/testCatalogueService.java
-
-build/classes/db.properties
->>>>>>> NewJSP
 *.class

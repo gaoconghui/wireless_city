@@ -82,7 +82,6 @@
 			method="{1}">
 			<result name="toAddPage">/addResourceTest.jsp</result>
 			<result name="template">/template.jsp</result>
-			<result name="addResource">/success.jsp</result>
 		</action>
 	</package>
 </struts>
