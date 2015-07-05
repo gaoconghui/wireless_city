@@ -42,9 +42,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			.layout_hd{width:900px;margin:40px auto;background:#fff;border:1px solid #dedede;padding-bottom:10px;}
 			.layout_hd .hd_reference{width:860px;height:30px;margin-top:10px;margin-left:20px;line-height:30px;}
+			.layout_hd .hd_reference a:hover{text-decoration:underline;}
 			.layout_hd .hd_sort{width:860px;margin-left:20px;}
 			.layout_hd .hd_sort .s_details{margin-top:20px;}
-			.layout_hd .hd_sort .s_details span a{color:#005ea7;}
+			.layout_hd .hd_sort .s_details  a{color:#005ea7;padding:0px 5px;}
+			.layout_hd .hd_sort .s_details  a:hover{text-decoration:underline;}
 			.layout_hd .hd_sort .s_details span a:first-child{font-weight:900;color:#000;}
 
 
@@ -77,10 +79,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</style>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/placeholder.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script>
+		<script type="text/javascript" src="js/tmAjax.js"></script>
+		<script type="text/javascript" src="js/util.js"></script>
 	</head>
 <body>
 	<!-- header begin-->
+	<%
+		String pid=request.getParameter("pid");
+		pageContext.setAttribute("parentid",pid );
+	%>
+	<div id="pid" style="display:none">${parentid }</div>
 	<div class="title_fixed">
 		<div class="s_right" id="s_right">
 			<div class="r_login">登录</div>
@@ -117,35 +125,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!-- header end-->
 	<div class="layout_hd">
-		<div class="hd_reference">
-			<a href="javascript:void(0)">所有分类</a>
-			<a href="javascript:void(0)">&gt;无线政务</a>
-			<a href="javascript:void(0)">&gt;二类目</a>
-			<a href="javascript:void(0)">&gt;三类目</a>
+		<div class="hd_reference" id="reference">
+			<a href="font/search.jsp?pid=1">所有分类</a>
 		</div>
 		<div class="hd_sort">
-			<div class="s_details">
-				<span>三类目:</span>
+			<div class="s_details" id="s_details">
 				<span>
 					<a href="javascript:void(0)">全部</a>
-					<a href="javascript:void(0)">四类目</a>
-					<a href="javascript:void(0)">四类目</a>
-					<a href="javascript:void(0)">四类目</a>
-					<a href="javascript:void(0)">四类目</a>
-					<a href="javascript:void(0)">四类目</a>
-					<a href="javascript:void(0)">四类目</a>
-				</span>
-			</div>
-			<div class="s_details">
-				<span>四类目:</span>
-				<span>
-					<a href="javascript:void(0)">全部</a>
-					<a href="javascript:void(0)">五类目</a>
-					<a href="javascript:void(0)">五类目</a>
-					<a href="javascript:void(0)">五类目</a>
-					<a href="javascript:void(0)">五类目</a>
-					<a href="javascript:void(0)">五类目</a>
-					<a href="javascript:void(0)">五类目</a>
+					
 				</span>
 			</div>
 		</div>
@@ -245,7 +232,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			initialize();
 		});
 		function initialize(){
+			//获取传递过来的id值
+			var parentid=$("#pid").text();
+			//reference
+			var length=parentid.length;
+			var time=(length-1)/2;
+			var html="";
+			var id=parentid;
+			for(var i=0;i<time;i++){
+				var params={id:id};
+				//对id操作
+				var options={
+					async:false,
+					url:"CatalogueAction_getCatalogueDetailByAJAX",
+					params:params,
+					callback:function(data){
+						if(data=="[]"){
+							
+						}else{
+							//alert(data);
+							var $data=$.parseJSON(data);
+							param={id:$data.id,name:$data.name};
+							html="&gt;<a href='font/search.jsp?pid="+$data.id+"'>"+$data.name+"</a>"+html;
+						}
+					}
+				};
+				findCategory(options);
+				var end=length-(i+1)*2;
+				id=id.substr(0,end);
+				//alert(id);
+			} 
+			$("#reference").append(html);
+			//s_details
+			var params={parentid:parentid};
+			var options={
+				params:params,
+				callback:function(data){
+					if(data=="[]"){
+						$("#s_details").hide();
+					}else{
+						var $data=$.parseJSON(data);
+						var length=$data.length;
+						var html="";
+						for(var i=0;i<length;i++){
+							html+="<a href='font/search.jsp?pid="+$data[i].id+"'>"+$data[i].name+"</a>";
+						}
+						$("#s_details").append(html);
+					}
+				}
+			};
 			
+			findCategory(options);
+			
+			
+			//input placeholder 兼容
 			$("input[placeholder]").placeholder();
 		}
 	</script>

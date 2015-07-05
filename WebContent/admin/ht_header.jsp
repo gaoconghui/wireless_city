@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="description" content="">
 		<link type="text/css" href="css/reset.css" rel="stylesheet">
 		<style type="text/css">
+			.tzht{width:100%,background:#282828;font-weight:700;min-width:1046px;}
 			/*t_left start*/
 			/*
 			蓝：#1e90ff
@@ -24,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			绿：#28b779
 			蒙版：#2f3437
 			*/
-			.tzht .t_left{width:200px;height:800px;position:fixed;top:0;left:0;background:#282828;z-index:2;}
+			.tzht .t_left{height:100%;width:200px;position:fixed;top:0;left:0;background:#282828;z-index:2;}
 			.tzht .t_left .l_img{font-size:28px;width:100%;height:55px;line-height:55px;font-family:Viner Hand ITC,hakuyoxingshu7000,Kunstler Script;color:#fff;font-weight:700;text-align:center;border-bottom:1px solid #000;}
 			.tzht .t_left .l_content{width:100%;border-bottom:1px solid #414141;}
 			.tzht .t_left .l_content ul li{line-height:50px;border-bottom:1px solid #000;border-top:1px solid #414141;}
@@ -76,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 <body>
 		<!-- t_left start -->
-		<div class="t_left">
+		<div class="t_left" id="t_left">
 			<div class="l_img">Wireless City</div>
 			<div class="l_content">
 				<ul id="choices">
@@ -93,10 +94,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="fixbox">
 				<div class="h_nav">
 					<ul>
-						<li><a href="#" class="h_sel"><i class="h_icon1"></i><span>首页</span></a></li>
-						<li><a href="#"><i class="h_icon2"></i><span>公告</span></a></li>
-						<li><a href="#"><i class="h_icon3"></i><span>回收站</span></a></li>
-						<li><a href="#"><i class="h_icon8"></i><span>设置</span></a></li>
+						<li><a href="javascript:void(0)" class="h_sel"><i class="h_icon1"></i><span>首页</span></a></li>
+						<li><a href="javascript:void(0)"><i class="h_icon2"></i><span>公告</span></a></li>
+						<li><a href="javascript:void(0)"><i class="h_icon3"></i><span>回收站</span></a></li>
+						<li><a href="javascript:void(0)"><i class="h_icon8"></i><span>设置</span></a></li>
 					</ul>
 				</div>
 				<div class="h_info">
@@ -117,6 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			});
 		});
+		
 	</script>
 </body>
 </html>
