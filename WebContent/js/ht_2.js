@@ -19,7 +19,6 @@ var ajaxqueue=1;
 					//$.tmUtil.infoHide();
 					//$.tmUtil.infoShow({"message":"数据异常"}).fadeOut(2000);
 				}else{
-					
 					var html="";
 					console.log(data);
 					var $data=$.parseJSON(data);
@@ -77,13 +76,14 @@ var ajaxqueue=1;
 					$.tmUtil.infoShow({"message":"数据异常"}).fadeOut(2000);
 					$("#yy").hide();
 				}else{
-					console.log(data);
+					console.log("标识"+data);
 					$.tmUtil.infoHide();
 					var $data=$.parseJSON(data);
 					var html="";
 					var length=$data.length;
-					
+					var color="";
 					for(var i=0;i<length;i++){
+						
 						var type="";
 						switch($data[i].type){
 							case 1:type="文本";break;
@@ -93,7 +93,8 @@ var ajaxqueue=1;
 							case 5:type="枚举";break;
 							default:type="-";break;
 						}
-						html+="<p data-attrid='"+$data[i].id+"'>"+
+						if($data[i].templateid==dataParams.tid){color="#1e90ff";}else{color="#bd2d30";}
+						html+="<p data-attrid='"+$data[i].id+"'  style='background:"+color+";'  data-templateid='"+$data[i].templateid+"'>"+
 						"			<span>属性名称：</span>"+
 						"			<span>"+getDefalutSpan($data[i].name)+"</span>"+
 						"			<span>属性描述：</span>"+
@@ -202,7 +203,7 @@ var ajaxqueue=1;
 					$.tmUtil.infoHide();
 					$.tmUtil.infoShow({"message":"数据异常"}).fadeOut(2000);
 				}else if(data=="1"){
-					alert("保存属性成功！");
+					//alert("保存属性成功！");
 					$.tmUtil.infoHide();
 				}else{
 					$.tmUtil.infoShow({"message":"未知错误"}).fadeOut(2000);

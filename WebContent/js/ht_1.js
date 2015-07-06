@@ -5,7 +5,6 @@ var newCategoryId;
 			url:url,
 			beforeSend:function(){
 				$.tmUtil.infoShow({"message":"加载中..."});
-				$("#yy").hide();
 			},
 			error:function(){
 				$.tmUtil.infoShow({"message":"服务器出错"}).fadeOut(2000);
@@ -291,7 +290,7 @@ var newCategoryId;
 					$.tmUtil.infoHide();
 					$.tmUtil.infoShow({"message":"数据异常"}).fadeOut(2000);
 				}else if(data=="1"){
-					alert("保存属性成功！");
+					//alert("保存属性成功！");
 					$.tmUtil.infoHide();
 				}else{
 					$.tmUtil.infoShow({"message":"未知错误"}).fadeOut(2000);
