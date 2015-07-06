@@ -14,7 +14,7 @@ import com.whut.wxcs.resmanager.service.ResourceService;
 @Service("resourceService")
 public class ResourceServiceImpl implements ResourceService {
 
-	@javax.annotation.Resource(name = "resourceAttribute")
+	@javax.annotation.Resource(name = "resourceAttributeDao")
 	private BaseDao<ResourceAttribute> resourceAttributeDao;
 	@javax.annotation.Resource(name = "resourceDao")
 	private BaseDao<Resource> resourceDao;
