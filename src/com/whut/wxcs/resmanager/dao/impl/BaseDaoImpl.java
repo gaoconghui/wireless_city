@@ -12,33 +12,32 @@ import org.hibernate.SessionFactory;
 import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.util.ReflectionUtils;
 
-
 /**
  * BaseDao 实现类
+ * 
  * @author apple
  *
  * @param <T>
  */
 
-
 @SuppressWarnings("unchecked")
-public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
-	
-	@Resource(name="sessionFactory")
-	 SessionFactory sessionFactory ;
-	
+public abstract class BaseDaoImpl<T> implements BaseDao<T> {
+
+	@Resource(name = "sessionFactory")
+	SessionFactory sessionFactory;
+
 	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();
 	}
-	
+
 	@Override
 	public Criteria getCriteria() {
 		return this.getSession().createCriteria(clazz);
 	}
-	
+
 	Class<T> clazz;
-	
-	public BaseDaoImpl(){
+
+	public BaseDaoImpl() {
 		clazz = ReflectionUtils.getSuperGenericType(getClass());
 	}
 
@@ -65,7 +64,7 @@ public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public void batchEntityByHql(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for(int i = 0 ; i < objects.length ; i++){
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		query.executeUpdate();
@@ -84,26 +83,26 @@ public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public List<T> findEntityByHql(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for(int i = 0 ; i < objects.length ; i++){
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		return query.list();
-		
 	}
-	
+
 	@Override
 	public Object ubiqueResult(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for(int i = 0 ; i < objects.length ; i++){
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		return query.uniqueResult();
 	}
+	
 
 	@Override
 	public void batchEntityBySql(String sql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
-		for(int i = 0 ; i < objects.length ; i++){
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		query.executeUpdate();
@@ -111,10 +110,18 @@ public abstract  class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public List<T> findEntityBySql(String sql, Object... objects) {
-		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql).addEntity(clazz);
-		for(int i = 0 ; i < objects.length ; i++){
+		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql)
+				.addEntity(clazz);
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
+		return query.list();
+	}
+	
+	@Override
+	public List findBySql(String sql,String name,Object[] array) {
+		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.setParameterList(name, array);
 		return query.list();
 	}
 

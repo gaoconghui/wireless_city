@@ -29,15 +29,41 @@ td {
 	<br>
 	<br>
 	<br>
+	<s:form action="SearchResourceAction_frontFindByKeyWord">
+		<table>
+			<tr>
+				<s:hidden name="rsid"></s:hidden>
+				<td><s:textfield name="frontKey"></s:textfield></td>
+				<td><s:submit value="搜索"></s:submit></td>
+			</tr>
+		</table>
+	</s:form>
 	<br>
 	<center>
+		<s:iterator value="page.catalogue.parent.child">
+			<s:a
+				href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{id}">
+				<s:property value="name" /> &nbsp;
+			</s:a>
+		</s:iterator>
+		<br>
+		<s:iterator value="page.catalogue.child">
+			<s:a
+				href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{id}">
+				<s:property value="name" /> &nbsp;
+			</s:a>
+		</s:iterator>
+		<br>
 
 		<table>
-			<s:iterator value="attributeList">
+			<s:iterator value="page.attrList">
 				<tr>
 					<td><s:property value="name" />:&nbsp;&nbsp;&nbsp;</td>
 					<s:iterator value="enumValue" status="st">
-						<td><s:a href="SearchResourceAction_addAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}"><s:property /></s:a></td>
+						<td><s:a
+								href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
+								<s:property value="enumValue[#st.index]" />
+							</s:a></td>
 					</s:iterator>
 				</tr>
 			</s:iterator>
@@ -66,6 +92,16 @@ td {
 			href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=20">20</s:a>
 		<s:a
 			href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=50">50</s:a>
+
+		&nbsp;&nbsp;&nbsp;
+		<s:iterator value="attrMap">
+			<s:a
+				href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{key}&attrLab=%{value}">
+				<s:property value="value" />
+			</s:a>
+		</s:iterator>
+
+		<s:a></s:a>
 		<br> <br>
 		<table>
 			<tr>

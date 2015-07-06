@@ -13,8 +13,10 @@ import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.CriteriaResource;
 import com.whut.wxcs.resmanager.model.Page;
+import com.whut.wxcs.resmanager.model.ResourcePage;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.SearchResourceService;
+import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Controller
 @Scope("prototype")
@@ -44,33 +46,31 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	// 显示所有的类目以供选择 以后要删除
 	private List<Catalogue> catalogues;
 
-	private List<Attribute> attributeList;
-
 	// 页面选择属性
 	private String attrStr;
+	// 页面属性标签
+	private String attrLab;
 
 	// 页面内基本信息
-	private Page<com.whut.wxcs.resmanager.model.Resource> page;
+	private ResourcePage page;
 
-	public Page<com.whut.wxcs.resmanager.model.Resource> getPage() {
+
+	public ResourcePage getPage() {
 		return page;
+	}
+
+	public void setPage(ResourcePage page) {
+		this.page = page;
+	}
+
+	public void setAttrLab(String attrLab) {
+		this.attrLab = attrLab;
 	}
 
 	public void setAttrStr(String attrStr) {
 		this.attrStr = attrStr;
 	}
 
-	public void setPage(Page<com.whut.wxcs.resmanager.model.Resource> page) {
-		this.page = page;
-	}
-
-	public List<Attribute> getAttributeList() {
-		return attributeList;
-	}
-
-	public void setAttributeList(List<Attribute> attributeList) {
-		this.attributeList = attributeList;
-	}
 
 	// 用于接收session
 	private Map<String, Object> sessionMap;
@@ -91,15 +91,12 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 * 根据传入的参数查询出资源 , 根据类目查询资源，不管是什么情况下，都是新建一个搜索，重置rsid
 	 */
 	public String searchResourceByCatalogue() {
+		
+		clearAndInitRS();
 
-		this.rsid = System.nanoTime() + "";
-		sessionMap.put(getRsid(), model);
-
-		initAttributeTable(model.getCatalogueId());
 		this.page = searchResourceService.searchByCriteria(model);
 
 		System.out.println(model);
-		System.out.println(attributeList);
 
 		return "resourcelist";
 	}
@@ -109,14 +106,13 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String inFindByKeyWord() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		
+
 		initPageNum(cr);
 
 		cr.setKeyWord(model.getKeyWord());
 		this.page = searchResourceService.searchByCriteria(cr);
 		System.out.println(cr);
 		this.model = cr;
-		initAttributeTable(cr.getCatalogueId());
 
 		return "resourcelist";
 	}
@@ -126,7 +122,7 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changeOrder() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		
+
 		initPageNum(cr);
 
 		// 如果排序名称一样，则改变排序方式
@@ -140,8 +136,7 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 
 		this.page = searchResourceService.searchByCriteria(cr);
 		this.model = cr;
-		initAttributeTable(cr.getCatalogueId());
-		
+
 		System.out.println(cr);
 		return "resourcelist";
 	}
@@ -152,12 +147,10 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	public String changePageNo() {
 		CriteriaResource cr = checkRsidAndGetCR();
 		cr.setPageNum(model.getPageNum());
-		
 
 		this.page = searchResourceService.searchByCriteria(cr);
 		this.model = cr;
-		initAttributeTable(cr.getCatalogueId());
-		
+
 		System.out.println(cr);
 		return "resourcelist";
 	}
@@ -167,15 +160,13 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changePageSize() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		
+
 		initPageNum(cr);
-		
+
 		cr.setPageSize(model.getPageSize());
 
 		this.page = searchResourceService.searchByCriteria(cr);
 		this.model = cr;
-		
-		initAttributeTable(cr.getCatalogueId());
 
 		System.out.println(cr);
 		return "resourcelist";
@@ -184,18 +175,43 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	/**
 	 * 增加属性筛选
 	 */
-	public String addAttribute() {
+	public String handleAttribute() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		
+
 		initPageNum(cr);
 
-		cr.getAttributes().add(attrStr);
+		if (cr.getAttrMap().containsKey(attrStr)) {
+			cr.getAttrMap().remove(attrStr);
+		} else {
+			try {
+				for (String attributeStr : cr.getAttrMap().keySet()) {
+					if (attributeStr.startsWith(attrStr.substring(0,
+							attrStr.indexOf("_") + 1))) {
+						cr.getAttrMap().remove(attributeStr);
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			cr.getAttrMap().put(attrStr, attrLab);
+		}
 
 		this.page = searchResourceService.searchByCriteria(cr);
 		this.model = cr;
-		
-		initAttributeTable(cr.getCatalogueId());
 
+		System.out.println(cr);
+
+		return "resourcelist";
+	}
+
+	/**
+	 * 全局搜索
+	 */
+	public String frontFindByKeyWord() {
+
+		CriteriaResource cr = clearAndInitRS();
+
+		this.page = searchResourceService.searchByCriteria(cr);
 		System.out.println(cr);
 
 		return "resourcelist";
@@ -208,15 +224,8 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 		cr.setPageNum(1);
 	}
 
-	/**
-	 * 初始化attribute 选择框里的内容
-	 */
-	private void initAttributeTable(long catalogueId) {
-		this.attributeList = catalogueService.getEnumAttributesByTid(model
-				.getCatalogueId());
-	}
 
-	/*
+	/**
 	 * 从session 中获取搜索信息，不存在则返回model
 	 */
 	private CriteriaResource checkRsidAndGetCR() {
@@ -228,6 +237,20 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 			sessionMap.put(getRsid(), model);
 			return model;
 		}
+	}
+
+	/**
+	 * 处理session 中的搜索信息，有的话就重置，没有则新增
+	 * 
+	 * @return
+	 */
+	private CriteriaResource clearAndInitRS() {
+		if (ValidateUtil.isVaild(getRsid())) {
+			sessionMap.remove(getRsid());
+		}
+		this.rsid = System.nanoTime() + "";
+		sessionMap.put(getRsid(), model);
+		return model;
 	}
 
 	/*

@@ -21,10 +21,21 @@
 	<br>
 	<center>
 		<s:iterator value="catalogues" var="catalogue">
-			<s:a href="SearchResourceAction_searchResourceByCatalogue?catalogueId=%{id}">
+			<s:a
+				href="SearchResourceAction_searchResourceByCatalogue?catalogueId=%{id}">
 				<s:property value="name" />
 			</s:a>
 		</s:iterator>
+		<br>
+		<br>
+		<s:form action="SearchResourceAction_frontFindByKeyWord">
+			<table>
+				<tr>
+					<td><s:textfield name="frontKey"></s:textfield></td>
+					<td><s:submit value="搜索"></s:submit></td>
+				</tr>
+			</table>
+		</s:form>
 	</center>
 
 </body>

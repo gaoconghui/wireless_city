@@ -28,10 +28,13 @@ public class CriteriaResource {
 	private long catalogueId;
 
 	// attributeid_value 如25_1
-	List<String> attributes = new ArrayList<String>();
+	// List<String> attributes = new ArrayList<String>();
+	private Map<String, String> attrMap = new HashMap<String, String>();
 
-	// 关键字
+	// 内关键字
 	private String keyWord;
+	// 全局关键字
+	private String frontKey;
 
 	// 每页显示数量
 	private Integer pageSize = 20;
@@ -51,12 +54,12 @@ public class CriteriaResource {
 		this.catalogueId = catalogueId;
 	}
 
-	public List<String> getAttributes() {
-		return attributes;
+	public Map<String, String> getAttrMap() {
+		return attrMap;
 	}
 
-	public void setAttributes(List<String> attributes) {
-		this.attributes = attributes;
+	public void setAttrMap(Map<String, String> attrMap) {
+		this.attrMap = attrMap;
 	}
 
 	public String getKeyWord() {
@@ -65,6 +68,14 @@ public class CriteriaResource {
 
 	public void setKeyWord(String keyWord) {
 		this.keyWord = keyWord;
+	}
+
+	public String getFrontKey() {
+		return frontKey;
+	}
+
+	public void setFrontKey(String frontKey) {
+		this.frontKey = frontKey;
 	}
 
 	public Integer getPageSize() {
@@ -105,12 +116,12 @@ public class CriteriaResource {
 
 	@Override
 	public String toString() {
-		return "CriteriaResource [catalogueId=" + catalogueId + ", attributes="
-				+ attributes + ", keyWord=" + keyWord + ", pageSize="
-				+ pageSize + ", pageNum=" + pageNum + ", orderSequence="
-				+ orderSequence + ", orderName=" + orderName + "]";
+		return "CriteriaResource [catalogueId=" + catalogueId + ", attrMap="
+				+ attrMap + ", keyWord=" + keyWord + ", frontKey=" + frontKey
+				+ ", pageSize=" + pageSize + ", pageNum=" + pageNum
+				+ ", orderSequence=" + orderSequence + ", orderName="
+				+ orderName + "]";
 	}
-	
-	
+
 
 }

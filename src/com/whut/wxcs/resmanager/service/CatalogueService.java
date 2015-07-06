@@ -89,6 +89,12 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 */
 	public List<Attribute> getEnumAttributesByTid(long catalogueId);
 
+	/**
+	 * 初始化一个catalogue
+	 */
+	public Catalogue initCatalogueById(long tid);
+
+
 	
 
 }
