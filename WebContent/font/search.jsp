@@ -100,10 +100,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="f_logo"></div>
 			<div class="f_search">
 				<div class="s_input">
-					<input type="text" placeholder="找服务资源" />
-					<div class="i_btn">搜索</div>
+					<form method="post" action="#" id="s_all">
+						<input type="text" placeholder="找服务资源" />
+						<div class="i_btn" id="search_all">搜索</div>
+					</form>
 				</div>
-				<div id="clear"></div>
+				<div class="clear"></div>
 				<div class="s_hot">
 					<span>热词：</span>
 					<a href="javascript:void(0)">热词</a>
@@ -158,9 +160,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</p>
 		</div>
 		<div class="hd_search">
-			<input type="text" placeholder="找本类" />
-			<div class="s_btn">找本类</div>
-			<div id="clear"></div>
+			<form method="post" action="#" id="s_self">
+				<input type="text" placeholder="找本类" />
+				<div class="s_btn" id="seach_self">找本类</div>
+			</form>
+			<div class="clear"></div>
 		</div>
 	</div>
 	<div class="layout_body">
@@ -232,6 +236,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			initialize();
 		});
 		function initialize(){
+			//提交搜索表单
+			$("#search_all").off("click").click(function(){
+				$("#s_all")[0].submit();
+			});
+			$("#search_self").off("click").click(function(){
+				$("#s_self")[0].submit();
+			});
 			//获取传递过来的id值
 			var parentid=$("#pid").text();
 			//reference
