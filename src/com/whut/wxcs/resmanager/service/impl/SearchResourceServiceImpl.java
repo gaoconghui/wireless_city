@@ -80,7 +80,7 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 		} else if (ValidateUtil.isVaild(model.getFrontKey()) && size > 0) {
 			tid = getTidByResourceList(reosourceList);
 		}
-		page.setAttrList(catalogueService.getAttributesByTid(tid));
+		page.setAttrList(catalogueService.getEnumAttributesByTid(tid));
 		page.setCatalogue(catalogueService.initCatalogueById(tid));
 
 		// 增加分页

@@ -14,14 +14,19 @@ import com.whut.wxcs.resmanager.util.ReflectionUtils;
 
 /**
  * BaseDao 实现类
+<<<<<<< HEAD
+=======
  * 
  * @author apple
+>>>>>>> origin/无线城市
  *
  * @param <T>
  */
 
 @SuppressWarnings("unchecked")
+
 public abstract class BaseDaoImpl<T> implements BaseDao<T> {
+
 
 	@Resource(name = "sessionFactory")
 	SessionFactory sessionFactory;
@@ -30,16 +35,19 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 		return this.sessionFactory.getCurrentSession();
 	}
 
+
 	@Override
 	public Criteria getCriteria() {
 		return this.getSession().createCriteria(clazz);
 	}
+
 
 	Class<T> clazz;
 
 	public BaseDaoImpl() {
 		clazz = ReflectionUtils.getSuperGenericType(getClass());
 	}
+
 
 	@Override
 	public void saveEntity(T t) {
@@ -87,6 +95,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 			query.setParameter(i, objects[i]);
 		}
 		return query.list();
+
 	}
 
 	@Override
