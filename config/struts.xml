@@ -45,6 +45,16 @@
 		<action name="AttributeAction_*" class="attributeAction"
 			method="{1}">
 		</action>
+
+
+		<action name="SearchResourceAction_*" class="searchResourceAction"
+			method="{1}">
+			<result name="listCatalogue">/search/listcatalogue.jsp</result>
+			<result name="resourcelist">/search/resourcelist.jsp</result>
+		</action>
+
+	
+
 		<action name="RegAction_*" class="regAction" method="{1}">
 			<result name="regPage">/register.jsp</result>
 			<result name="input">/reg.jsp</result>
@@ -70,6 +80,7 @@
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<!-- <result name="user_info"></result> -->
 		</action>
+
 		<action name="AddResourceAction_*" class="addResourceAction"
 			method="{1}">
 			<result name="toAddPage">/provider/addResourceTest.jsp</result>
@@ -80,5 +91,6 @@
 			<result name="order">/provider/orderByTime.jsp</result>
 			<result name="delete_success">/addResource.jsp</result>
 		</action>
+
 	</package>
 </struts>

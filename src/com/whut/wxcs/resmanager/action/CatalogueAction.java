@@ -138,10 +138,10 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 	/*
 	 * AJAX 通过 id 获取子类目
 	 */
-	public String getChildUseAJAX() {
+	public String getChildCatalogueByAJAX() {
 
 		try {
-			rootCatalogues = catalogueService.getChildCatalogueByParentId(1);
+			rootCatalogues = catalogueService.getChildCatalogueByParentId(parentid);
 			for (Catalogue c : rootCatalogues) {
 				c.setChild(null);
 				c.setTemplate(null);

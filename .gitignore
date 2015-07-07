@@ -3,9 +3,6 @@ build/classes/com/whut/wxcs/resmanager/bean/test/testUserService.class
 
 *.class
 
-*.class
-
-*.class
 
 build/classes/db.properties
 
@@ -15,8 +12,14 @@ test/com/whut/wxcs/resmanager/bean/test/testGson.java
 
 build/classes/db.properties
 
-*.class
 
 
 
-*.class
+
+
+build/classes/struts.xml
+
+
+build/classes/db.properties
+
+config/db.properties

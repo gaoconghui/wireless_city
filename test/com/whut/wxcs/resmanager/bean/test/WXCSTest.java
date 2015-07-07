@@ -37,6 +37,5 @@ public class WXCSTest {
 	
 	@Test
 	public void test(){
-		
 	}
 }

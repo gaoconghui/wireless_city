@@ -14,12 +14,19 @@ import com.whut.wxcs.resmanager.util.ReflectionUtils;
 
 /**
  * BaseDao 实现类
+<<<<<<< HEAD
+=======
+ * 
+ * @author apple
+>>>>>>> origin/无线城市
  *
  * @param <T>
  */
 
 @SuppressWarnings("unchecked")
-public class BaseDaoImpl<T> implements BaseDao<T> {
+
+public abstract class BaseDaoImpl<T> implements BaseDao<T> {
+
 
 	@Resource(name = "sessionFactory")
 	SessionFactory sessionFactory;
@@ -28,15 +35,19 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		return this.sessionFactory.getCurrentSession();
 	}
 
+
+	@Override
+	public Criteria getCriteria() {
+		return this.getSession().createCriteria(clazz);
+	}
+
+
 	Class<T> clazz;
 
 	public BaseDaoImpl() {
 		clazz = ReflectionUtils.getSuperGenericType(getClass());
 	}
 
-	public Criteria getCriteria() {
-		return this.sessionFactory.getCurrentSession().createCriteria(clazz);
-	}
 
 	@Override
 	public void saveEntity(T t) {
@@ -95,6 +106,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		}
 		return query.uniqueResult();
 	}
+	
 
 	@Override
 	public void batchEntityBySql(String sql, Object... objects) {
@@ -114,5 +126,13 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		}
 		return query.list();
 	}
+	
+	@Override
+	public List findBySql(String sql,String name,Object[] array) {
+		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.setParameterList(name, array);
+		return query.list();
+	}
+
 
 }

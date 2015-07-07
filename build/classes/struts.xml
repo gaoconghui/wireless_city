@@ -19,9 +19,7 @@
 			</interceptor-stack>
 		</interceptors>
 
-
 		<default-interceptor-ref name="CityIntercptor"></default-interceptor-ref>
-
 		<global-results>
 			<result type="stream" name="ajax-success">
 				<param name="contentType">text/html</param>
@@ -38,21 +36,25 @@
 			</result>
 			<result name="add_resource">/login/provider_resource.jsp</result>
 		</action>
-
 		<action name="TemplateAction_*" class="templateAction" method="{1}">
 			<result name="toNewTemplatePage">/admin/addtemplate.jsp</result>
 			<result name="toTemplateDetailPage">/admin/templatedetail.jsp</result>
 			<result name="newTemplate">/admin/templatedetail.jsp</result>
 			<result name="updateTemplate">/admin/templatedetail.jsp</result>
 		</action>
-
 		<action name="AttributeAction_*" class="attributeAction"
 			method="{1}">
 		</action>
 
-	</package>
 
-	<package name="regPage" extends="struts-default">
+		<action name="SearchResourceAction_*" class="searchResourceAction"
+			method="{1}">
+			<result name="listCatalogue">/search/listcatalogue.jsp</result>
+			<result name="resourcelist">/search/resourcelist.jsp</result>
+		</action>
+
+	
+
 		<action name="RegAction_*" class="regAction" method="{1}">
 			<result name="regPage">/register.jsp</result>
 			<result name="input">/reg.jsp</result>
@@ -78,10 +80,17 @@
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<!-- <result name="user_info"></result> -->
 		</action>
+
 		<action name="AddResourceAction_*" class="addResourceAction"
 			method="{1}">
-			<result name="toAddPage">/addResourceTest.jsp</result>
-			<result name="template">/template.jsp</result>
+			<result name="toAddPage">/provider/addResourceTest.jsp</result>
+			<result name="template">/provider/template.jsp</result>
+			<result name="addResource">/provider/success.jsp</result>
+			<result name="resourcePage">/provider/resourcePage.jsp</result>
+			<result name="updatePage">/provider/updateResource.jsp</result>
+			<result name="order">/provider/orderByTime.jsp</result>
+			<result name="delete_success">/addResource.jsp</result>
 		</action>
+
 	</package>
 </struts>

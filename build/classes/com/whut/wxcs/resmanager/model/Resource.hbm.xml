@@ -15,13 +15,13 @@
 			</key>
 			<one-to-many class="com.whut.wxcs.resmanager.model.ResourceAttribute" />
 		</set>
-		
+
 		<many-to-one name="catalogue"
 			class="com.whut.wxcs.resmanager.model.Catalogue" fetch="join">
 			<column name="CATALOGUE_ID" />
 		</many-to-one>
-		<many-to-one name="provider" class="com.whut.wxcs.resmanager.model.Provider"
-			fetch="join">
+		<many-to-one name="provider"
+			class="com.whut.wxcs.resmanager.model.Provider">
 			<column name="PROVIDER_ID" />
 		</many-to-one>
 

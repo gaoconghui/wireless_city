@@ -6,9 +6,13 @@ public class Page<T> {
 
 	private int pageNo;
 
+
 	private List<T> list;
 
 	private int pageSize = 20;
+
+
+	
 
 	private long totalItemNumber;
 
@@ -16,6 +20,7 @@ public class Page<T> {
 		super();
 		this.pageNo = pageNo;
 	}
+
 
 	public int getPageNo() {
 		if (pageNo < 0)
@@ -85,6 +90,7 @@ public class Page<T> {
 		if (isHasNext()) {
 			return getPageNo() + 1;
 		}
+
 
 		return getPageNo();
 	}
