@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,29 +12,30 @@ import org.hibernate.SessionFactory;
 import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.util.ReflectionUtils;
 
-
 /**
  * BaseDao 实现类
- * @author apple
  *
  * @param <T>
  */
 
-
 @SuppressWarnings("unchecked")
-public   class BaseDaoImpl<T> implements BaseDao<T> {
-	
-	@Resource(name="sessionFactory")
-	 SessionFactory sessionFactory ;
-	
+public class BaseDaoImpl<T> implements BaseDao<T> {
+
+	@Resource(name = "sessionFactory")
+	SessionFactory sessionFactory;
+
 	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();
 	}
-	
+
 	Class<T> clazz;
-	
-	public BaseDaoImpl(){
+
+	public BaseDaoImpl() {
 		clazz = ReflectionUtils.getSuperGenericType(getClass());
+	}
+
+	public Criteria getCriteria() {
+		return this.sessionFactory.getCurrentSession().createCriteria(clazz);
 	}
 
 	@Override
@@ -59,7 +61,7 @@ public   class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public void batchEntityByHql(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for(int i = 0 ; i < objects.length ; i++){
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		query.executeUpdate();
@@ -78,17 +80,17 @@ public   class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public List<T> findEntityByHql(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for(int i = 0 ; i < objects.length ; i++){
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		return query.list();
-		
+
 	}
-	
+
 	@Override
 	public Object ubiqueResult(String hql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		for(int i = 0 ; i < objects.length ; i++){
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		return query.uniqueResult();
@@ -97,7 +99,7 @@ public   class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public void batchEntityBySql(String sql, Object... objects) {
 		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
-		for(int i = 0 ; i < objects.length ; i++){
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		query.executeUpdate();
@@ -105,8 +107,9 @@ public   class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public List<T> findEntityBySql(String sql, Object... objects) {
-		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql);
-		for(int i = 0 ; i < objects.length ; i++){
+		Query query = sessionFactory.getCurrentSession().createSQLQuery(sql)
+				.addEntity(clazz);
+		for (int i = 0; i < objects.length; i++) {
 			query.setParameter(i, objects[i]);
 		}
 		return query.list();

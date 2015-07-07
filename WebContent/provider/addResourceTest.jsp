@@ -5,9 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>服务商增加资源测试页面</title>
+<title>增加资源</title>
 </head>
 <body>
-	<a href="AddResourceAction_toAddResource">增加资源</a>
+	<center>
+		<h1>选择种类</h1>
+		<s:iterator var="c" value="catalogues">
+			<a
+				href="AddResourceAction_showTemplate?cid=<s:property value="#c.id"/>">
+				<s:property value="name" /><br>
+			</a>
+		</s:iterator>
+
+
+	</center>
 </body>
 </html>

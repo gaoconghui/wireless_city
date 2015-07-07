@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -19,35 +21,56 @@ import com.whut.wxcs.resmanager.model.ResourceAttribute;
 import com.whut.wxcs.resmanager.model.Template;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ResourceService;
+import com.whut.wxcs.resmanager.struts2.ProviderAware;
 
 @Controller
 @Scope("prototype")
-public class AddResourceAction extends BaseAction<Resource> {
+public class AddResourceAction extends BaseAction<Resource> implements
+		ProviderAware, SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	@javax.annotation.Resource
 	private CatalogueService catalogueService;
-	private Integer cid;
+	private int cid;
 	private Template template;
 	private List<Catalogue> catalogues;
 	private List<Resource> resources;
 	private Resource model = new Resource();
 	@javax.annotation.Resource
 	private ResourceService resourceService;
- 
-	private Provider provider ;
-	
+	private Map<String, Object> session;
+
+	private int rid;
+
+	private Provider provider = new Provider();
+
 	private InputStream inputStream;
 
-	public void setInputStream(InputStream inputStream) {
-		this.inputStream = inputStream;
-	}
+	private List<ResourceAttribute> resourceAttrs = new ArrayList<ResourceAttribute>();
 
 	public InputStream getInputStream() {
 		return inputStream;
 	}
 
-	private List<ResourceAttribute> resourceAttrs = new ArrayList<ResourceAttribute>();
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
+
+	public int getRid() {
+		return rid;
+	}
+
+	public void setInputStream(InputStream inputStream) {
+		this.inputStream = inputStream;
+	}
+
+	public void setResources(List<Resource> resources) {
+		this.resources = resources;
+	}
+
+	public List<Resource> getResources() {
+		return resources;
+	}
 
 	public List<ResourceAttribute> getResourceAttrs() {
 		return resourceAttrs;
@@ -107,37 +130,40 @@ public class AddResourceAction extends BaseAction<Resource> {
 	 * 得到服务商下的所有服务资源
 	 */
 	public String getAllResource() {
-	     resources = resourceService.getProviderResource(provider);
+		System.out.println("getProviderResource方法被调用");
+		resources = resourceService.getProviderResource(provider);
 		return "";
 	}
 
 	/**
 	 * 获得某服务商某类目下的所有服务资源
 	 */
-	public String getProviderCatalogueResource(){
-		  
-		
-		return "";
+	public String getConcreteResource() {
+		// 实验~~~后期删除
+		session.put("cid", cid);
+//		catalogues = resourceService.getChildCatalogues(cid);
+		provider.setId(1);
+		resources = resourceService.getCatalogueProviderResource(cid, provider);
+		return "resourcePage";
 	}
-	
-	
+
 	/**
 	 * 输入服务资源名称，检查服务资源名称的唯一性
 	 */
 	public String resourceNameUnique() {
-      if(resourceService.isResourceNameUnique(model.getResource_name())){
-    	  try {
-			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		if (resourceService.isResourceNameUnique(model.getResource_name())) {
+			try {
+				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
 		}
-      }else{
-    	  try {
-			inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-      }
 		return "ajax-success";
 	}
 
@@ -156,6 +182,54 @@ public class AddResourceAction extends BaseAction<Resource> {
 		resourceService.addResource(model);
 		return "addResource";
 	}
-	
-	
+
+	public String toShowResourcePage() {
+		catalogues = catalogueService.getAllCatalogue();
+		System.out.println(catalogues.size());
+		return "resourcePage";
+	}
+
+	public String showResource() {
+		resources = resourceService.getCatalogueProviderResource(cid, provider);
+		return "";
+	}
+
+	public String deleteResource() {
+		resourceService.delete(rid);
+		return "delete_success";
+	}
+
+	/**
+	 * 资源按照创建时间排序
+	 */
+	public String orderByTime() {
+		int pid = 1;
+		resources = resourceService.orderByTime(pid, cid);
+		System.out.println("ACTION" + resources.size());
+		return "order";
+	}
+
+	public String toUpdateResource() {
+		model = resourceService.getResource(rid);
+		for (ResourceAttribute resourceAttribute : model.getAttributes()) {
+			System.out.println(resourceAttribute.getValue());
+		}
+		return "updatePage";
+	}
+
+	public String updateResource() {
+		resourceService.updateResource(model);
+		return "resourceAction";
+	}
+
+	@Override
+	public void setProvider(Provider provider) {
+		this.provider = provider;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
 }

@@ -22,7 +22,7 @@ public class Provider {
 	private String cellphone;
 	private String contects;
 	private String url;
-	private int grade;
+	private int grade = 1;
 	private String certificationType;
 	private String loginName;
 	private String loginPwd;
