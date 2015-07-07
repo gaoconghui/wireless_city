@@ -43,36 +43,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.layout-1-hd .main-head .title{font-size:30px;width:900px;height:100px;text-align:center;font-weight:normal;line-height:100px;border-bottom:1px solid #dedede;}
 
 			.layout-1-hd .reg{width:900px;}
-			.layout-1-hd .reg .l_left{width:648px;float:left;}
-			.layout-1-hd .reg .l_left .l_choices{width:300px;margin-left:174px;margin-top:20px;}
+			.layout-1-hd .reg .l_left{width:648px;float:left;border-right:1px solid #ddd}
+			.layout-1-hd .reg .l_left .l_choices{width:400px;margin:20px auto; }
 			.layout-1-hd .reg .l_left .l_choices .c_ask{height:30px;line-height:30px; }
-			.layout-1-hd .reg .l_left .l_choices .c_response{width:300px;}
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_sel label{margin-right:80px;}
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_sel label input{vertical-align:middle;margin-right:10px;}
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_table{position:relative;width:300px;}
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .t_buyer,.t_salor{width:300px; position:absolute;top:0;left:0;}
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table{width:400px; }
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .t_buyer,.t_salor{width:200px; }
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .t_salor{display:none;}
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .t_salor .wrapper{width:295px;font-size:14px;color:#999;}
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .t_salor .wrapper .container{margin-top:20px;height:30px;}
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .t_salor .wrapper .container select option{color:#999;}
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .t_salor .wrapper .container span{width:43px;height:32px;line-height:30px;float:left;display:block;text-align:center;}
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .t_salor .wrapper .container select{width:250px;height:30px;float:left;}
 
-
-			
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_table  input{width:295px;height:30px;line-height:30px;padding-left:5px;margin-top:20px;color:#666;border:1px solid #ccc;border-radius:3px;-webkit-border-radius:3px;display:block;}
-
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table  input{float:left;width:200px;height:30px;line-height:30px;padding-left:5px;margin-top:20px;color:#666;border:1px solid #ccc;border-radius:3px;-webkit-border-radius:3px;display:block;}
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .infomation{display:none;float:left;width:192px;margin-top:20px;height:30px;line-height:30px;}
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .infomation .icon{background:url("images/register.png") no-repeat -160px -390px; margin:6px 5px 0 5px;width:18px;height:18px;display:block;float:left;}
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .infomation .info{ display:block;float:left;width:164px;white-space:nowrap;}
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .desc textarea{resize:none;display:block;border-radius:3px;-webkit-border-radius:3px;padding-left:5px;overflow-y:hidden;line-height:30px;color:#666;font-size:14px;width:295px;height:100px;border:1px solid #ccc;}
-
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table form:after{content:"";display:block;clear:both;}
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table form{width:400px; }
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .desc{width:400px;float:left;}
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .logo{width:100px;float:left;}
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .desc .desc_main{ line-height:30px;font-size:14px;color:#999;padding-left:5px;}
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .logo_uplode{cursor:pointer;border-radius:3px;-webkit-border-radius:3px;width:80px;height:30px;background:#0181ec;;color:#fff;line-height:30px;text-align:center;margin-top:10px;}
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_table .logo_pic{margin-top:10px;}
 			
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_table  p{height:30px;line-height:30px;margin-top:20px;}
 			.layout-1-hd .reg .l_left .l_choices .c_response .c_table  p a{color:#0181ec;}
-			.layout-1-hd .reg .l_left .l_choices .c_response .c_register{width:300px;height:30px;background:#b61d1d;color:#fff;line-height:30px;text-align:center;border:1px solid #b61d1d;border-radius:3px;-webkit-border-radius:3px;cursor:pointer;margin-bottom:30px;}
+			.layout-1-hd .reg .l_left .l_choices .c_response .c_register{width:203px;height:30px;background:#b61d1d;color:#fff;line-height:30px;text-align:center;border:1px solid #b61d1d;border-radius:3px;-webkit-border-radius:3px;cursor:pointer;margin-bottom:30px;}
 
-			.layout-1-hd .reg .l_right{width:251px;height:350px;float:left;border-left:1px dotted #ccc;margin-top:17px; }
+			.layout-1-hd .reg .l_right{width:251px;height:350px;float:left;margin-top:17px; }
 			.layout-1-hd .reg .l_right p{width:200px;height:30px;line-height:30px; font-weight:700;padding:10px 0 0 25px;}
 			.layout-1-hd .reg .l_right p a{color:#0181ec;cursor:pointer;}
 			.layout-1-hd .reg .l_right span{background:url(images/wireless_icon.png) no-repeat;width:45px;height:45px; float:left;margin-left:25px;display:block;margin-top:10px;}
@@ -86,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</style>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/placeholder.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script>
+		<script type="text/javascript" src="js/util.js"></script>
 	</head>
 <body>
 	<!-- header begin-->
@@ -135,81 +132,138 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="c_ask">施主你是？</div>
 					<div class="c_response">
 						<div class="c_sel" id="c_sel">
-							<label><input type="radio" name="s_icon" checked="checked" value="buyer"/>消费者</label>
-							<label><input type="radio" name="s_icon" value="salor"/>服务商</label>
+							<label><input type="radio" name="s_icon" checked="checked" value="0"/>消费者</label>
+							<label><input type="radio" name="s_icon" value="1"/>服务商</label>
 						</div>
 						
 						<div class="c_table" id="c_table">
 							<div class="t_buyer" id="t_buyer">
-								<input type="text" id="buyer_name" name="username" placeholder="账号"/>
-								<input type="password" id="buyer_password" name="password" placeholder="密码"/>
-								<input type="password" id="buyer_password" name="password2" placeholder="确认密码"/>
-								<input type="text"  name="buyer_cellphone" placeholder="手机"/>
-								<input type="text"  name="buyer_realname" placeholder="真实姓名"/>
-								<input type="text"  name="buyer_email" placeholder="邮箱"/>
+								<form id="userform">
+									<input type="text" id="user_name" name="name" placeholder="账号"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="2~20个字符"></span>
+									</div>
+									<input type="password"  name="loginPwd" placeholder="密码"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="6~16个字符"></span>
+									</div>
+									<input type="password"  name="confirmPwd" placeholder="确认密码"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="确认密码"></span>
+									</div>
+									<input type="text"  name="phoneNumber" placeholder="手机"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="11位大陆手机号码,暂不支持海外手机"></span>
+									</div>
+									<input type="text"  name="realName" placeholder="真实姓名"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="真实姓名一旦确认不可修改"></span>
+									</div>
+									<input type="text"  name="email" placeholder="邮箱"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：12345@sina.com"></span>
+									</div>
+								</form>
 								<p>点击注册按钮，即同意<a href="javascript:void(0)">注册协议</a></p>
 							</div>
 							<div class="t_salor" id="t_salor">
-								<input type="text" id="salor_name" name="username" placeholder="账号"/>
-								<input type="password" id="salor_password" name="password" placeholder="密码"/>
-								<input type="password" id="buyer_password" name="password2" placeholder="确认密码"/>
-								<input type="text"  name="salor_companyname" placeholder="企业名称"/>
-								<input type="text"  name="salor_companyscale" placeholder="规模"/>
-								<div class="wrapper">
-									<div class="container">
-										<span>行业:</span>
-										<select id="tm_province">
-											<option value="">-请选择-</option>
-										</select>
+								<form id="providerform">
+									<input type="text" id="provider_name" name="loginName" placeholder="账号"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="2~20个字符"></span>
 									</div>
-									<div class="container">
-										<span>省份:</span>
-										<select id="tm_province">
-											<option value="">-请选择-</option>
-										</select>
+									<input type="password"  name="loginPwd" placeholder="密码"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="6~16个字符"></span>
 									</div>
-									<div class="container">
-										<span>城市:</span>
-										<select id="tm_city">
-											<option value="">-请选择-</option>
-										</select>
+									<input type="password"  name="confirmPwd" placeholder="确认密码"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="确认密码"></span>
 									</div>
-									<div class="container">
-										<span>地区:</span>
-										<select id="tm_area">
-											<option value="">-请选择-</option>
-											<option value="">-请选择-</option>
-											<option value="">-请选择-</option>
-											<option value="">-请选择-</option>
-										</select>
+									<input type="text"  name="name" placeholder="企业名称"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：XXX企业"></span>
 									</div>
-								</div>
-
-								<input type="text"  name="salor_mailcode" placeholder="具体地址"/>
-								<input type="text"  name="salor_mailcode" placeholder="网址"/>
-								<input type="text"  name="salor_mailcode" placeholder="邮编"/>
-								<input type="text"  name="salor_fixedphone" placeholder="固话"/>
-								<input type="text"  name="salor_cellphone" placeholder="手机"/>
-								<input type="text"  name="salor_email" placeholder="邮箱"/>
-								<input type="text"  name="salor_email" placeholder="传真"/>
-								<input type="text"  name="salor_realname" placeholder="联系人"/>
-								<input type="text"  name="salor_realname" placeholder="客服QQ"/>
-								
-								<div class="desc">
-									<div class="desc_main">简介:</div>
-									<textarea name=""></textarea>
-								</div>
-								<div class="logo">
-									<div class="logo_uplode">上传logo</div>
-									<div class="logo_pic" title="logo展示区">
-										<img src="images/list_demo.jpg" width="100" height="100" alt="企业logo"/>
+									<input type="text"  name="scale" placeholder="规模"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：1~100人"></span>
 									</div>
-								</div>
-								
+									<input type="text"  name="industry" placeholder="行业"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：零售业"></span>
+									</div>
+									<input type="text"  name="address" placeholder="具体地址"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：XX省XX市XX区XX楼XX室;请具体到门户号"></span>
+									</div>
+									<%-- <input type="text"  name="salor_mailcode" placeholder="网址"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：http://www.wirelesscity.com;以http(s)://开头"></span>
+									</div> --%>
+									<input type="text"  name="postcode" placeholder="邮编"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：400071"></span>
+									</div>
+									<input type="text"  name="telephone" placeholder="固话"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：0591-85931970"></span>
+									</div>
+									<input type="text"  name="cellphone" placeholder="手机"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="11位大陆手机号码,暂不支持海外手机"></span>
+									</div>
+									<input type="text"  name="email" placeholder="邮箱"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：1234@163.com"></span>
+									</div>
+									<input type="text"  name="fax" placeholder="传真"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：0591-85931970"></span>
+									</div>
+									<input type="text"  name="qq" placeholder="客服QQ"/>
+									<div class="infomation">
+										<span class="icon"></span>
+										<span class="info" data-content="如：11111111"></span>
+									</div>
+									<div class="desc">
+										<div class="desc_main">简介:</div>
+										<textarea name=""></textarea>
+									</div>
+									<div class="logo">
+										<div class="logo_uplode">上传logo</div>
+										<div class="logo_pic" title="logo展示区">
+											<img src="images/list_demo.jpg" width="100" height="100" alt="企业logo"/>
+										</div>
+									</div>
+									<div class="infomation" style="margin-top:10px;display:block;">
+										<span class="icon"></span>
+										<span class="info">上传文件格式为：png/gif/jpg;建议小于100kb;</span>
+									</div>
+									
+								</form>
 								<p>点击注册按钮，即同意<a href="javascript:void(0)">注册协议</a></p>
 							</div>
 						</div>
-						<div class="c_register">立即注册</div>
+						<div class="c_register" id="submit">立即注册</div>
 					</div>
 				</div>
 			</div>
@@ -228,36 +282,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<s:include value="bottom.jsp"></s:include>
 	<!-- bottom end -->
 	
+	<script type="text/javascript" src="js/register.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			init();
+			register();
 			initialize();
+			
 		});
 		function initialize(){
-			var height=$("#t_buyer").height();
-			$("#c_table").height(height);
+			//$("#user_name")[0].focus();
 			$("input[placeholder]").placeholder();
-			$("#buyer_name").focus();
 			$("#c_sel").find("input").click(function(){
 				var value=$("#c_sel").find("input:checked").val();
-				if(value=="buyer"){
-					var height=$("#t_buyer").height();
-					$("#c_table").height(height);
+				if(value=="0"){
 					$("#t_buyer").show();
 					$("#t_salor").hide();
 				}else{
-					var height=$("#t_salor").height();
-					$("#c_table").height(height);
 					$("#t_buyer").hide();
 					$("#t_salor").show();
 				}
-			});
-			$("#s_right").on("click",".r_login",function(){
-				$("#yy,#login_page").show();
-				$("#username").focus();
-			});
-			$("#login_close").on("click",function(){
-				$("#login_page,#yy").hide();
 			});
 		}
 	</script>

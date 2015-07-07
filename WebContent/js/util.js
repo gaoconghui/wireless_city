@@ -80,3 +80,62 @@ function findCategory(opts){
 		}
 	});
 }
+/*验证身份证*/
+function idCardFormatCheck(idCard){
+    var format = /^(\d{6})(18|19|20)?(\d{2})([01]\d)([0123]\d)(\d{3})(\d|X)?$/;
+    if (!idCard.match(format)) {
+    	return false;
+    }
+    return true;
+}
+/*验证邮箱*/
+function emailFormatCheck(email){
+    if ((email.length > 128) || (email.length < 6)) {
+    	return false;
+    }
+    var format = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+    if (!email.match(format)) {
+    	return false;
+    }
+    return true;
+}
+/*验证手机号*/
+function mobilephoneFormatCheck(mobilephone){
+    var format = /^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/;
+    if (!mobilephone.match(format)) {
+    	return false;
+    }
+    return true;
+}
+/*验证固话*/
+function fixphoneFormatCheck(fixphone){
+	var format = /^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/;
+	if (!fixphone.match(format)) {
+		return false;
+	}
+	return true;
+}
+/*验证QQ*/
+function qqFormatCheck(qq){
+	var format=/^[1-9][0-9]{4,}$/;
+	if(!qq.match(format)){
+		return false;
+	}
+	return true;
+}
+/*验证邮编*/
+function codeFormatCheck(code){
+	var format=/^[0-9][0-9]{5}$/;
+	if(!code.match(format)){
+		return false;
+	}
+	return true;
+}
+/*验证网址*/
+function urlFormatCheck(url){
+	var format=/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+	if(!url.match(format)){
+		return false;
+	}
+	return true;
+}

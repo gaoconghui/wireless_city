@@ -20,15 +20,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			body{background:#fafafa;cursor:default;color:#444;}
 			.title_fixed{width:100%;height:26px;background:#fafafa;}
 			.title_fixed .s_right{float:right;width:400px;font-size:12px;line-height:26px;}
-			.title_fixed .s_right .r_login,.r_register{width:50px;height:43px;float:right;cursor:pointer;}
-			.title_fixed .s_right .r_login,.r_register a{color:#444;}
+			.title_fixed .s_right .r_login,.r_register,.r_info{width:50px;height:43px;float:right;cursor:pointer;}
+			.title_fixed .s_right .r_login,.r_register,.r_info a{color:#444;}
+			.title_fixed .s_right .r_wel{width:50px;height:43px;float:right;}
+			
 			.header{width:100%;background:#fff;border-bottom:2px solid #b61d1d;}
 			.header .h_fir{width:1200px;height:80px;margin:0px auto;}
 			.header .h_fir .f_logo{width:188px;height:50px;margin:10px 100px 0px 25px; background:url(images/logo.png) no-repeat;float:left;}
 			.header .h_fir .f_search{width:600px;height:60px;float:left;}
-			.header .h_fir .f_search .s_hot{width:500px;height:20px;line-height:20px;color:#666;}
-			.header .h_fir .f_search .s_hot a{margin-left:10px;color:#666;}
-			.header .h_fir .f_search .s_hot a:hover{color:#b61d1d;}
 			.header .h_fir .f_search .s_input{width:500px;height:42px;margin-top:8px;}
 			.header .h_fir .f_search .s_input input:first-child{width:400px;height:40px;border:2px solid #b61d1d;border-right:0;line-height:40px;color:#666;padding-left:10px;display:block;float:left;}
 			.header .h_fir .f_search .s_input .i_btn{width:80px;height:44px;background:#b61d1d;color:#fff;line-height:40px;text-align:center;font-size:16px; border:0;float:left;cursor:pointer;}
@@ -78,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.login .l_header span{width:20px;height:20px;display:block;background:url(images/wireless_icon.png) no-repeat -50px -2px;float:left;margin-top:10px;cursor:pointer;}
 			.login .l_header span:hover{background-position:-71px -2px;}
 			.login .l_left{width:270px;height:190px;float:left;margin:17px 20px 0px 30px;}
-			.login .l_left .l_message{width:258px;height:20px; line-height:20px;border:1px solid #b61d1d;text-align:center;color:#b61d1d;margin-bottom:10px;}
+			.login .l_left .l_message{width:258px;height:20px; line-height:20px;border:1px solid #209ddd;text-align:center;color:#209ddd;margin-bottom:10px;}
 			
 			.login .l_left .l_select label{height:30px;line-height:20px;width:76px;display:block;float:left;}
 			
@@ -115,8 +114,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- header begin-->
 	<div class="title_fixed">
 		<div class="s_right" id="s_right">
+			
 			<div class="r_login">登录</div>
-			<div class="r_register"><a href="register.jsp">注册</a></div>
+			<div class="r_register"><a href="font/register.jsp">注册</a></div>
 		</div>
 	</div>
 	<div class="header">
@@ -195,20 +195,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<span id="login_close"></span>
 		</div>
 		<div class="l_left">
-			<div class="l_message">欢迎使用无线城市</div>
-			<div class="l_select">
-				<label><input type="radio" name="usertype" value="消费者">消费者</label>
-				<label><input type="radio" name="usertype" value="服务商">服务商</label>
+			<div class="l_message" id="message">欢迎使用无线城市</div>
+			<div class="l_select" id="userType">
+				<label><input type="radio" name="usertype" checked value="0">消费者</label>
+				<label><input type="radio" name="usertype" value="1">服务商</label>
 			</div>
 			<div class="l_input">
-				<input id="username" class="input" type="text" placeholder="账号" name="usermame" class="l_username"/>
-				<input class="input" type="password" placeholder="密码" name="password" class="l_password"/>
+				<input id="username" class="input" type="text" placeholder="账号" class="l_username"/>
+				<input id="password" class="input" type="password" placeholder="密码"  class="l_password"/>
 				<label class="l_sel">
 					<span id="l_box" class="l_box" data-sel="0"></span>
 					<span class="l_text">下次自动登录</span>
 					<a href="javascript:void(0)">忘记密码？</a>
 				</label>
-				<a href="javascript:void(0)" class="l_submit">登录</a> 
+				<a href="javascript:void(0)" class="l_submit" id="submit">登录</a> 
 			</div>
 		</div>
 		<div class="l_right">
@@ -234,6 +234,77 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 		
 		function initialize(){
+		//登录
+		var timer=null;
+		$("#submit").click(function(){
+			var name=$("#username").val();
+			var loginPwd=$("#password").val();
+			if(isEmpty(name)){
+				$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("用户名不能为空！");
+				return;
+			}
+			if(isEmpty(loginPwd)){
+				$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("密码不能为空！");
+				return;
+			}
+			/* 
+			LoginAction_login	name:用户登陆账号
+									loginPwd:用户登陆密码
+				
+			ProviderAction_login	loginName:服务商登陆账号
+									loginPwd:服务商登陆密码
+			*/
+			var userType=$("#userType").find("input:checked").val();
+			if(userType=="0"){
+				var param={name:name,loginPwd:loginPwd};
+				clearTimeout(timer);
+				timer=setTimeout(function(){
+					$.ajax({
+						url:"LoginAction_login",
+						type:"post",
+						data:param,
+						success:function(data){
+							if(data=="0"){
+								//失败返回0；
+								$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("用户名或密码不正确！");
+							}else{
+								//成功返回id
+								$("#login_page").hide();
+								$("#yy").hide();
+								var html="<div class='r_info'><a href='font/buyer.jsp?id="+data+"'>"+name+"</a></div>"+
+										"<div class='r_wel'>欢迎您,</div>";
+								$("#s_right").html(html);
+							}
+						}
+					});
+				},200);
+			}else{
+				var param={loginName:name,loginPwd:loginPwd};
+				clearTimeout(timer);
+				timer=setTimeout(function(){
+					$.ajax({
+						url:"ProviderAction_login",
+						type:"post",
+						data:param,
+						success:function(data){
+							alert(data);
+							if(data=="0"){
+								$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("用户名或密码不正确！");
+							}else{
+								//返回id
+								$("#login_page").hide();
+								$("#yy").hide();
+								var html="<div class='r_info'><a href='font/buyer.jsp?id="+data+"'>"+name+"</a></div>"+
+										"<div class='r_wel'>欢迎您,</div>";
+								$("#s_right").html(html);
+							}
+						}
+					});
+				},200);
+			}
+		});
+			
+			
 		$("input[placeholder]").placeholder();
 		
 		/* findCategory begin*/
@@ -322,6 +393,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 			$("#login_close").on("click",function(){
 				$("#login_page,#yy").hide();
+				$("#password,#username").val("");
 			});
 			$("#l_box").on("click",function(){
 				var sel=$(this).data("sel");
