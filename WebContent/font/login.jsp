@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.login_wrapper .w_center .w_login .login_header .header_text{font-family:Viner Hand ITC;float:left;height:85px;line-height:85px;font-size:22px;font-weight:bold;}
 			.login_wrapper .w_center .w_login .l_select{font-size:14px;margin-left:22px;height:20px;line-height:20px;}
 			.login_wrapper .w_center .w_login .l_select label{width:67px;display:block;float:left;}
-			.login_wrapper .w_center .w_login .l_message{display:none;idth:360px;height:40px;position:absolute;top:20px;left:20px;color:red;background:#faffbd;border-radius:5px;line-height:40px;text-align:center;font-size:12px;}
+			.login_wrapper .w_center .w_login .l_message{display:none;width:360px;height:40px;position:absolute;top:20px;left:20px;color:red;background:#faffbd;border-radius:5px;line-height:40px;text-align:center;font-size:12px;}
 			.login_wrapper .w_center .w_login .login_body{width:360px;margin:22px;}
 			.login_wrapper .w_center .w_login .login_body .input{height:63px;border:1px solid #666;}
 			.login_wrapper .w_center .w_login .login_body input{background:#fdfdfd;width:312px;height:62px;float:left;line-height:62px;}
@@ -42,38 +42,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.login_wrapper .w_center .w_login .login_body .login:hover{background-position:0 -52px;}
 		</style>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script>
+		<script type="text/javascript" src="js/util.js"></script>
 	</head>
 <body>
 	<div class="login_wrapper">
 		<div class="w_center">
 			<!-- <img width="100%" height="322" alt="" src="images/login_bottom.jpg"/>
 			<img width="100%" height="322" alt="" src="images/login_top.jpg"/> -->
-			<img id="bg" width="100%" height="" alt="" src="images/Kid_bg.jpg"/>
+			<img id="bg" width="100%" height="100%" alt="" src="images/Kid_bg.jpg"/>
 			<div class="w_login">
 				<div class="login_header">
 					<div class="header_pic"></div>
 					<div class="header_text">Welcome to Wireless City</div>
 				</div>
-				<div class="l_message"></div>
-				<div class="l_select">
-					<label><input type="radio" value="消费者" name="usertype" checked/>消费者</label>
-					<label><input type="radio" value="服务商" name="usertype">服务商</label>
+				<div class="l_message" id="message"></div>
+				<div class="l_select" id="userType">
+					<label><input type="radio" value="0" name="usertype" checked/>消费者</label>
+					<label><input type="radio" value="1" name="usertype">服务商</label>
 				</div>
 				<form id="l_form">
 					<div class="login_body">
 						<div class="input" style="border-bottom:0px;">
-							<span class="span1"></span><input autocomplete="on" id="l_username" name="username" type="text" placeholder="用户名"/>
+							<span class="span1"></span><input autocomplete="on" id="username"  type="text" placeholder="用户名"/>
 						</div>
 						<div class="input" style="border-top:0px;">
-							<span class="span2"></span><input autocomplete="off" id="l_password" name="password" style="border-top:1px solid #666;" type="password" placeholder="密码"/>
+							<span class="span2"></span><input autocomplete="off" id="password"  style="border-top:1px solid #666;" type="password" placeholder="密码"/>
 						</div>
 						<label>
 							<span class="select" data-sel="0" id="sel"></span>
 							<span class="login_free">七天免登录</span>
-							<span class="forget">没有账号？<a href="register.jsp">立即注册</a></span>
+							<span class="forget">没有账号？<a href="font/register.jsp">立即注册</a></span>
 						</label>
-						<div class="login" id="l_sure"></div>
+						<div class="login" id="submit"></div>
 					</div>
 				</form>
 			</div>
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript">
 		$(function(){
-			$("#l_username").focus();
+			$("#username").focus();
 			$("#sel").on("click",function(){
 				var sel=$(this).data("sel");
 				if(sel==0){
@@ -91,11 +91,71 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$(this).data("sel","0");$(this).css("backgroundPosition","-113px 0px");
 				}
 			});
-			setBgHeight();
+			initialize();
 		});
-		function setBgHeight(){
-			var height=getHeight();
-			$("#bg").height(height);
+		function initialize(){
+			var timer=null;
+			$("#submit").click(function(){
+				var name=$("#username").val();
+				var loginPwd=$("#password").val();
+				if(isEmpty(name)){
+					$("#message").show().text("用户名不能为空！");
+					return;
+				}
+				if(isEmpty(loginPwd)){
+					$("#message").show().text("密码不能为空！");
+					return;
+				}
+				/* 
+				LoginAction_login	name:用户登陆账号
+										loginPwd:用户登陆密码
+					
+				ProviderAction_login	loginName:服务商登陆账号
+										loginPwd:服务商登陆密码
+				*/
+				var userType=$("#userType").find("input:checked").val();
+				alert(userType);
+				if(userType=="0"){
+					var param={name:name,loginPwd:loginPwd};
+					clearTimeout(timer);
+					timer=setTimeout(function(){
+						$.ajax({
+							url:"LoginAction_login",
+							type:"post",
+							data:param,
+							success:function(data){
+								alert(data);
+								if(data=="0"){
+									//失败返回0；
+									$("#message").show().text("用户名或密码不正确！");
+								}else{
+									//成功返回id
+									window.location.href="font/index.jsp?id="+data+"";
+								}
+							}
+						});
+					},200);
+				}else{
+					var param={loginName:name,loginPwd:loginPwd};
+					clearTimeout(timer);
+					timer=setTimeout(function(){
+						$.ajax({
+							url:"ProviderAction_login",
+							type:"post",
+							data:param,
+							success:function(data){
+								alert(data);
+								if(data=="0"){
+									$("#message").show().text("用户名或密码不正确！");
+								}else{
+									//返回id
+									window.location.href="font/index.jsp?id="+data+"";
+								}
+							}
+						});
+					},200);
+				}
+			});
 		}
 	</script>
 </body>
