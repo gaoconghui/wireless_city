@@ -23,3 +23,5 @@ build/classes/struts.xml
 build/classes/db.properties
 
 config/db.properties
+
+*.class
