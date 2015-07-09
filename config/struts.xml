@@ -50,14 +50,10 @@
 		<action name="SearchResourceAction_*" class="searchResourceAction"
 			method="{1}">
 			<result name="listCatalogue">/search/listcatalogue.jsp</result>
-			<result name="resourcelist">/search/resourcelist.jsp</result>
+			<!-- <result name="resourcelist">/search/resourcelist.jsp</result> -->
+			<result name="resourcelist">/font/search.jsp</result>
 		</action>
 
-<<<<<<< HEAD
-=======
-	
-
->>>>>>> origin/无线城市
 		<action name="RegAction_*" class="regAction" method="{1}">
 			<result name="regPage">/register.jsp</result>
 			<result name="input">/reg.jsp</result>

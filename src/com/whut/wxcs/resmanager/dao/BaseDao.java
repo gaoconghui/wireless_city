@@ -6,10 +6,6 @@ import org.hibernate.Criteria;
 
 /**
  * baseDao接口
- * 
- * @author apple
- *
- * @param <T>
  */
 public interface BaseDao<T> {
 
