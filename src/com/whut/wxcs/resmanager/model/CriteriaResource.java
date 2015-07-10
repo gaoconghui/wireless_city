@@ -1,10 +1,7 @@
 package com.whut.wxcs.resmanager.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.jar.Attributes;
 
 /*
  * 封装查询参数的信息
@@ -122,6 +119,5 @@ public class CriteriaResource {
 				+ ", orderSequence=" + orderSequence + ", orderName="
 				+ orderName + "]";
 	}
-
 
 }

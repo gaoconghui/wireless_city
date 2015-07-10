@@ -25,6 +25,7 @@ td {
 </style>
 </head>
 <body>
+<s:debug></s:debug>
 
 	<br>
 	<br>

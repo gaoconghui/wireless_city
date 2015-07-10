@@ -28,16 +28,16 @@ public class InsertResource {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
 				"applicationContext.xml");
 		resourceDao = (BaseDao<Resource>) ac.getBean("resourceDao");
-		raDao = (BaseDao<ResourceAttribute>) ac.getBean("resourceAttribute");
+		raDao = (BaseDao<ResourceAttribute>) ac.getBean("resourceAttributeDao");
 		catalogueDao = (BaseDao<Catalogue>) ac.getBean("catalogueDao");
-		catalogueService = (CatalogueService) ac.getBean("resourceService");
+		catalogueService = (CatalogueService) ac.getBean("catalogueService");
 	}
 
 	@Test
 	public void insertResource() {
 		Resource resource;
-		long id = 101;
-		for (int i = 0; i < 100; i++) {
+		long id = 10101;
+		for (int i = 50; i < 100; i++) {
 			resource = new Resource();
 			Catalogue catalogue = new Catalogue();
 			catalogue.setId(id);

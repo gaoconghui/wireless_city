@@ -2,10 +2,6 @@ package com.whut.wxcs.resmanager.service.impl;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +9,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Disjunction;
@@ -22,13 +17,10 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
-import org.hibernate.type.*;
 
-import com.sun.xml.internal.ws.streaming.TidyXMLStreamReader;
 import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.CriteriaResource;
-import com.whut.wxcs.resmanager.model.Page;
 import com.whut.wxcs.resmanager.model.Resource;
 import com.whut.wxcs.resmanager.model.ResourceAttribute;
 import com.whut.wxcs.resmanager.model.ResourcePage;

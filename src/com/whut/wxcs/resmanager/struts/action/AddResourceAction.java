@@ -141,7 +141,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String getConcreteResource() {
 		// 实验~~~后期删除
 		session.put("cid", cid);
-//		catalogues = resourceService.getChildCatalogues(cid);
+		// catalogues = resourceService.getChildCatalogues(cid);
 		provider.setId(1);
 		resources = resourceService.getCatalogueProviderResource(cid, provider);
 		return "resourcePage";

@@ -132,6 +132,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	public Catalogue getCatalogueById(long id) {
 		Catalogue catalogue = catalogueDao.getEntity(id);
 		catalogue.getParent();
+		catalogue.getParent().getChild();
 		return catalogue;
 	}
 
