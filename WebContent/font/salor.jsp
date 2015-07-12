@@ -12,8 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>无线城市-提供商管理页</title>
 		<meta name="keywords" content="关键词,关键词">
 		<meta name="description" content="">
-		<!--css,js-->
-		<link type="text/css" href="css/reset.css" rel="stylesheet">
+		<link href="css/reset.css" rel="stylesheet">
+		<link href="css/front_default_style.css" rel="stylesheet">
 		<style type="text/css">
 			/*header beign*/
 			::selection {color: #fff;background: #f99750;}
@@ -41,19 +41,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.layout_all .wrapper_left dl dt:first-child{margin-top:0;}
 			.layout_all .wrapper_left dl dd{margin-top:10px;}
 			.layout_all .wrapper_right{float:left;width:770px;}
+			
+			/*查詢開始*/
+			.layout_all .wrapper_right .r_select .hd_reference{height:20px;  height:20px; }
+			.layout_all .wrapper_right .r_select .hd_reference a{display:block;float:left;padding:2px;}
+			.layout_all .wrapper_right .r_select .hd_reference a:nth-child(odd):hover{text-decoration:underline;}
+			.layout_all .wrapper_right .r_select .hd_attrref{height:20px; border-top:1px solid #005ea7; margin-top:10px;padding-top:20px;}
+			.layout_all .wrapper_right .r_select .hd_attrref:after{content:"";display:block;clear:both;}
+			.layout_all .wrapper_right .r_select .hd_attrref p{float:left;border:1px solid #ccc;background:#f1f1f1;}
+			.layout_all .wrapper_right .r_select .hd_attrref p:first-child{border:0;background:#fff; }
+			.layout_all .wrapper_right .r_select .hd_attrref a{ padding:2px; }
+			.layout_all .wrapper_right .r_select  .icon{display:block;float:left;background:url(images/more_delete.png) no-repeat;width:12px;height:12px; }
+			.layout_all .wrapper_right .r_select  .delete_icon{background-position:-209px -407px;}
+			.layout_all .wrapper_right .r_select  .more_icon{background-position:-124px -408px;}
+			/*-226px -410px*/
+			.layout_all .wrapper_right .r_select .hd_attrref p a{display:block;float:left;}
+			.layout_all .wrapper_right .r_select .hd_sort{ margin-left:20px;}
+			.layout_all .wrapper_right .r_select .hd_sort .s_details{margin-top:10px;padding-bottom:10px;}
+			.layout_all .wrapper_right .r_select .hd_sort .s_details  a{padding:0px 5px;}
+			.layout_all .wrapper_right .r_select .hd_sort .s_details  a:hover{text-decoration:underline;}
+			.layout_all .wrapper_right .r_select .hd_sort .s_details span a:first-child{font-weight:700;color:#000;}
+			.layout_all .wrapper_right .r_select .hd_sort .s_details span a:hover{text-decoration:none;}
+
+			.layout_all .wrapper_right .r_select .hd_attribute{ margin-left:20px;}
+			.layout_all .wrapper_right .r_select .hd_attribute p{padding-top:20px;}
+			.layout_all .wrapper_right .r_select .hd_attribute span:first-child{font-weight:700;color:#000;padding-right:10px;}
+			.layout_all .wrapper_right .r_select .hd_attribute p span a{padding-right:10px;}
+			.layout_all .wrapper_right .r_select .hd_attribute p span a:hover{text-decoration:underline;}
+			
+			/*查詢結束*/
 			.layout_all .wrapper_right .r_select,.r_list{background:#fff;padding:20px 20px;}
-			.layout_all .wrapper_right .r_select .s_main_title{height:30px;font-weight:900;margin-left:20px;color:#000;}
-			.layout_all .wrapper_right .r_select .s_sort{margin-left:20px;}
+			.layout_all .wrapper_right .r_select .s_main_title{height:30px;font-weight:900;color:#000;}
+			.layout_all .wrapper_right .r_select .s_sort input{margin-top:20px;cursor:pointer;display:block;height:30px;width:50px;background:#0181ec;color:#fff;text-align:center;line-height:30px;border:0;}
 			.layout_all .wrapper_right .r_select .s_sort .s_main{width:142px;float:left;}
 			.layout_all .wrapper_right .r_select .s_sort .s_main select{ width:100px;}
-			.layout_all .wrapper_right .r_select .s_attribute{margin-left:20px;margin-top:20px;}
+			.layout_all .wrapper_right .r_select .s_attribute{margin-top:20px;display:none;}
 			.layout_all .wrapper_right .r_select .s_attribute p{padding-top:20px;}
 			.layout_all .wrapper_right .r_select .s_attribute p:first-child{border-top:1px solid #005ea7;}
 			.layout_all .wrapper_right .r_select .s_attribute p span a{color:#005ea7;}
 			.layout_all .wrapper_right .r_select .s_attribute p span a:first-child{font-weight:900;color:#000;}
 			.layout_all .wrapper_right .r_list{margin-top:20px;}
 			.layout_all .wrapper_right .r_list .servic_title{width:730px;height:40px;background:#d1d1d1;}
-			.layout_all .wrapper_right .r_list .servic_title .t_left{height:40px;line-height:40px;float:left;color:#000;font-weight:900;}
+			.layout_all .wrapper_right .r_list .servic_title .t_left{height:40px;line-height:40px;float:left;color:#000;font-weight:900;text-indent:4px;}
 			.layout_all .wrapper_right .r_list .servic_title .t_right{height:40px;float:right;margin-right:30px;line-height:30px;}
 			.layout_all .wrapper_right .r_list .servic_title .t_right .r_search,.r_add{float:left;margin-top:10px;}
 			.layout_all .wrapper_right .r_list .servic_title .t_right .r_search input{width:150px;height:20px;line-height:20px;font-size:12px;color:#666;padding-left:10px;display:block;float:left;border:2px solid #39393f;}
@@ -62,9 +91,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.layout_all .wrapper_right .r_list .servic_title .t_right .r_add span.span_text{width:100px;height:24px;display:block;float:left;text-align:center;margin-left:10px;background:#39393f;color:#fff; line-height:24px;cursor:pointer;}
 
 			.layout_all .wrapper_right .r_list .content_title{width:730px;height:40px;line-height:40px;background:#f1f1f1;}
-			.layout_all .wrapper_right .r_list .content_title div{height:40px;border-left:1px dotted #ccc;float:left;width:134px;padding-left:5px;}
-
-
+			.layout_all .wrapper_right .r_list .content_title div{height:40px;border-left:1px dotted #ccc;float:left;width:134px;padding-left:5px;position:relative;}
+			.layout_all .wrapper_right .r_list .content_title a{background:url(images/icon.gif) no-repeat -49px -337px;position:absolute;top:14px;left:32px;width:10px;height:10px;display:block;cursor:pointer;}
 			.layout_all .wrapper_right .r_list .content_title div:first-child{border-left:0px;}
 			.layout_all .wrapper_right .r_list .l_content{width:730px;height:120px;border-bottom:1px solid #999;padding-top:10px;}
 			.layout_all .wrapper_right .r_list .l_content div{padding-left:5px;float:left;width:135px;height:100px;}
@@ -72,10 +100,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.layout_all .wrapper_right .r_list .l_content .l_operation a{width:60px;height:30px;background:#0181ec;display:block;line-height:30px;text-align:center;color:#fff;border-radius:3px;-webkit-border-radius:3px;margin-bottom:10px;margin-left:50px;}
 
 
-			.layout_all .wrapper_right .r_list .l_paging{height:40px;margin:0 auto; ;margin-top:10px;width:210px;}
-			.layout_all .wrapper_right .r_list .l_paging a{color:#0181ec;width:20px;height:20px;display:block;float:left;line-height:20px;border:1px solid #ccc;margin-left:10px;margin-top:10px;border-radius:2px;-webkit-border-radius:2px;}
-			.layout_all .wrapper_right .r_list .l_paging a.sel{border-color:#0181ec;background:#0181ec;color:#fff;font-weight:700;}
-			.layout_all .wrapper_right .r_list .l_paging .next{width:60px;}
+			.layout_all .wrapper_right .r_list .bd_paging{height:40px;margin:0 auto; ;margin-top:10px;width:400px;}
+			.layout_all .wrapper_right .r_list .bd_paging a{color:#0181ec;padding:0 8px;height:20px;display:block;float:left;line-height:20px;border:1px solid #ccc;margin-left:10px;margin-top:10px;border-radius:2px;-webkit-border-radius:2px;}
+			.layout_all .wrapper_right .r_list .bd_paging span{color:#0181ec;padding:0 4px;height:20px;font-weight:700;display:block;float:left;line-height:20px;margin-left:10px;margin-top:10px;}
+			.layout_all .wrapper_right .r_list .bd_paging a.sel{border-color:#b61d1d;background:#b61d1d;color:#fff;font-weight:700;}
 
 
 		/*add_services begin*/
@@ -189,58 +217,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="wrapper_right">
 			<div class="r_select">
-				<div class="s_main_title">服务筛选</div>
-				<div class="s_sort">
-					<div class="s_main">
-						<span>一类</span>
-						<select id="category_1">
-							<option value="">-请选择-</option>
-						</select>
-					</div>
-					<div class="s_main">
-						<span>二类</span>
-						<select id="category_2">
-							<option value="">-请选择-</option>
-						</select>
-					</div>
-					<div class="s_main">
-						<span>三类</span>
-						<select id="category_3">
-							<option value="">-请选择-</option>
-						</select>
-					</div>
-					<div class="s_main">
-						<span>四类</span>
-						<select id="category_4">
-							<option value="">-请选择-</option>
-						</select>
-					</div>
-					<div class="s_main">
-						<span>五类</span>
-						<select id="category_5">
-							<option value="">-请选择-</option>
-						</select>
-					</div>	
-					<div class="clear"></div>
+				<div class="hd_reference" id="reference">
+					<a href="font/salor.jsp?pid=1">所有分类</a>
 				</div>
-				<div class="s_attribute">
+				<div class="hd_sort">
+					<div class="s_details" id="s_details">
+						<span>
+							<a href="javascript:void(0)">子类：</a>
+						</span>
+						<!-- 這裡是一類目迭代 -->
+						<a href="font/search.jsp?id=101">無線政務</a>
+						<!-- 這裡是一類目迭代 -->
+					</div>
+				</div>
+				<div class="hd_attrref" id="hd_attrref">
+					<p>
+						<a href="javascript:void(0)">所有属性</a>
+					</p>
+					<!-- 這裡是屬性顯示 -->
+					<a href="javascript:void(0)" class="more_icon icon"></a>	
+					<p class="attr_show" data-tag="0" style="border-color: rgb(204, 204, 204);">
+						<a href="javascript:void(0)">属性值2</a>	
+						<a href="javascript:void(0)" class="delete_icon icon" style="background-position: -209px -407px;"></a>
+					</p>
+					<!-- 這裡是屬性顯示 -->
+				</div>
+				<div class="hd_attribute" id="hd_attribute">
+					<!-- 注意data-tag -->
 					<p>
 						<span>属性1:</span>
 						<span>
-							<a href="javascript:void(0)">全部</a>
-							<a href="javascript:void(0)">属性值1</a>
-							<a href="javascript:void(0)">属性值2</a>
-							<a href="javascript:void(0)">属性值3</a>
-							<a href="javascript:void(0)">属性值4</a>
+							<a href="javascript:void(0)" data-tag="0">属性值1</a>
+							<a href="javascript:void(0)" data-tag="0">属性值2</a>
+							<a href="javascript:void(0)" data-tag="0">属性值3</a>
+							<a href="javascript:void(0)" data-tag="0">属性值4</a>
 						</span>
 					</p>
 					<p>
 						<span>属性2:</span>
 						<span>
-							<a href="javascript:void(0)">全部</a>
-							<a href="javascript:void(0)">属性值1</a>
-							<a href="javascript:void(0)">属性值2</a>
-							<a href="javascript:void(0)">属性值3</a>
+							<a href="javascript:void(0)"  data-tag="1">属性值11</a>
+							<a href="javascript:void(0)" data-tag="1">属性值22</a>
+							<a href="javascript:void(0)" data-tag="1">属性值33</a>
 						</span>
 					</p>
 				</div>
@@ -252,8 +270,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="t_right">
 						<div class="r_search">
-							<input type="text" placeholder="查询"/>
-							<div class="s_btn">查询</div>
+							<form id="search_service_form" action="" method="post">
+								<input type="text" placeholder="服务资源关键字"/>
+								<div class="s_btn" id="search_service">查询</div>
+							</form>
 						</div>
 						<div class="r_add">
 							<span class="span_text" id="add_service_btn">增加服务资源</span>
@@ -262,9 +282,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="content_title">
 					<div>图片</div>
-					<div>名称</div>
+					<div>名称
+						<a id="name_sort" href="javascript:void(0)"></a>
+					</div>
 					<div>描述</div>
-					<div>发布时间</div>
+					<div>时间
+						<a id="time_sort" href="javascript:void(0)"></a>
+					</div>
 					<div>操作</div>
 				</div>
 				<div id="l_content">
@@ -307,13 +331,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 				</div>
-				<div class="l_paging">
+				
+				<div class="bd_paging" id="paging" >
+					<a href="javascript:void(0)" id="first">首页</a>
+					<span style="display:none;">. . .</span>
+					<a href="javascript:void(0)" class="sel" id="first_page">1</a>
+					<a href="javascript:void(0)" id="second_page">2</a>
+					<a href="javascript:void(0)" id="third_page">3</a>
+					<a href="javascript:void(0)" id="forth_page">4</a>
+					<a href="javascript:void(0)" id="last_page">5</a>
+					<span>. . .</span>
+					<a href="javascript:void(0)" id="last">尾页</a>
+				</div>
+				<!-- <div class="l_paging">
 					<a href="javascript:void(0)" class="sel">1</a>
 					<a href="javascript:void(0)">2</a>
 					<a href="javascript:void(0)">3</a>
 					<a href="javascript:void(0)">4</a>
 					<a href="javascript:void(0)" class="next">下一页&gt;</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="clear"></div>
@@ -327,33 +363,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="a_s_1" id="a_s_1">
 			<div class="a_s_main">
 				<div class="a_s_choose">服务资源类型选择：</div>
-				<div class="a_s_sel">
-					<div class="s_sort">
+				<div class="a_s_sel" >
+					<div class="s_sort" id="s_sort">
 						<div class="s_main">
 							<span>一类</span>
 							<select id="category1">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
-						<div class="s_main">
+						<div class="s_main dis_none" >
 							<span>二类</span>
 							<select id="category2">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
-						<div class="s_main">
+						<div class="s_main dis_none">
 							<span>三类</span>
 							<select id="category3">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
-						<div class="s_main">
+						<div class="s_main dis_none">
 							<span>四类</span>
 							<select id="category4">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
-						<div class="s_main">
+						<div class="s_main dis_none">
 							<span>五类</span>
 							<select id="category5">
 								<option value="">-请选择-</option>
@@ -363,7 +399,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<div class="a_s_name">
-					<span>名称：</span><input type="text" />
+					<span>名称：</span><input type="text" id="sevice_name"/>
 				</div>
 				<div class="a_s_pic">
 					<div class="p_upload">上传图片</div>
@@ -377,7 +413,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="a_s_desc">
 					<div>描述：</div>
-					<textarea></textarea>
+					<textarea id="sevice_desc"></textarea>
 				</div>
 			</div>
 			<div class="next_step" id="next_step">下一步</div>
@@ -386,31 +422,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="a_s_main">
 				<div class="a_s_choose">属性填写：</div>
 				<div class="a_s_attribute">
-					<div class="at_fill">
-						<p>
-							<span>属性1:</span><input type="text" value="属性值1"/>
+					<div class="at_fill" id="at_fill">
+						<%-- <p>
+							<span>属性1:</span><input type="text" placeholder="填写属性"/>
 						</p>
 						<p>
-							<span>属性2:</span><input type="text" value="属性值2"/>
-						</p>
-						<p>
-							<span>属性3:</span><input type="text" value="属性值3"/>
-						</p>
-						<p>
-							<span>属性4:</span><input type="text" value="属性值4"/>
-						</p>
-						<p>
-							<span>属性5:</span><input type="text" value="属性值5"/>
-						</p>
-						<p>
-							<span>属性6:</span><input type="text" value="属性值6"/>
-						</p>
-						<p>
-							<span>属性7:</span><input type="text" value="属性值7"/>
-						</p>
-						<p>
-							<span>属性8:</span><input type="text" value="属性值8"/>
-						</p>
+							<span>属性2:</span><input type="text" placeholder="填写属性"/>
+						</p> --%>
+						
 					</div>
 					<div class="at_fill">
 						<div class="at_add_newattribute" id="new_attribute">添加属性</div>
@@ -548,18 +567,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			init();
 			initialize();
 		});
-		
 		function getChildCategory(idName,nextIdName){
 			$("#"+idName).off("change").on("change",function(){
 				var h="<option value=''>-请选择-</option>";
-				var nextId=nextIdName.substr(9,1);
-				alert(nextId);
+				var nextId=nextIdName.substr(8,1);
+				$("#category"+nextId).parents(".s_main").show();
 				for(var i=nextId;i<6;i++){
-					$("#category_"+i).html(h);
+					$("#category"+i).html(h);
+					if(i<5){
+						$("#category"+(i*1+1)).parents(".s_main").hide();
+					}
 				}
 				var pid=$(this).val();
 				if(isEmpty(pid)){return;}
 				var options={
+					beforeSend:function(){},
 					params:{parentid:pid},
 					callback:function(data){
 						if(data=="[]"){
@@ -579,6 +601,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});		
 		}
 		function initialize(){
+			//查詢服務資源
+			$("#search_service").click(function(){
+				$("#search_service_form")[0].submit();
+			});
+			//排序
+			$("#name_sort").off("click").click(function(){
+				alert("-49px -354px");
+				/* background-position":"-49px -354px" */
+				window.location.href="javascript:void(0)";/* 這裡是根據名稱排序  查詢服務資源 action*/		
+			});
+			$("#time_sort").off("click").click(function(){
+				alert("-49px -354px");
+				/* background-position":"-49px -354px" */
+				window.location.href="javascript:void(0)";/* 這裡是根據名稱排序  查詢服務資源 action*/		
+			});
+			//属性筛选
+			$("#hd_attrref").on({
+				"mouseenter":function(){
+					$(this).css("border-color","#f00");
+					$(this).find(".delete_icon").css("backgroundPosition","-226px -407px");
+				},
+				"mouseleave":function(){
+					$(this).css("border-color","#ccc");
+					$(this).find(".delete_icon").css("backgroundPosition","-209px -407px");
+				},
+				"click":function(){
+					var tag=$(this).data("tag");
+					$(this).prev().remove();
+					$(this).remove();
+					
+					$("#hd_attribute").find("a").each(function(){
+						if($(this).data("tag")==tag){
+							$(this).css("color","#444");
+						}
+					});
+				}
+			},".attr_show");
+			$("#hd_attribute").off("click").on("click","a",function(){
+				var $this=$(this);
+				$this.css({"color":"#005ea7","fontWeight":"700"}).siblings().css("color","#444");
+				var tag=$this.data("tag");
+				$("#hd_attrref").find("p").each(function(){
+					if($(this).data("tag")==tag){
+						$(this).prev().remove();
+						$(this).remove();
+						
+					}
+				});
+				var html="	<a href='javascript:void(0)' class='more_icon icon'></a>"+
+						"	<p class='attr_show' data-tag='"+tag+"'>"+
+						"	<a href='javascript:void(0)'>"+$(this).text()+"</a>"+
+						"	<a href='javascript:void(0)' class='delete_icon icon'></a>"+
+						"</p>";
+				$("#hd_attrref").append(html);
+			});
 			//查询一类目
 			var options={
 				params:{parentid:"1"},
@@ -593,28 +670,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							html+="<option value='"+$data[i].id+"'>"+$data[i].name+"</option>";
 						}
 						$("#category1").append(html);
-						$("#category_1").append(html);
 					}
 				}
 			};
 			findCategory(options);
 			//查询2类目
 			getChildCategory("category1","category2");
-			getChildCategory("category_1","category_2");
 			//查询3类目
 			getChildCategory("category2","category3");
-			getChildCategory("category_2","category_3");
 			//查询4类目
 			getChildCategory("category3","category4");
-			getChildCategory("category_3","category_4");
 			//查询5类目
 			getChildCategory("category4","category5");
-			getChildCategory("category_4","category_5");
-			
-			
-			
-			
-			
 			
 			$("input[placeholder]").placeholder();
 			/*添加服务按钮*/
@@ -628,54 +695,113 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("#a_s_2").hide();
 				$("#a_s_1").show();
 				$("#at_new").html("");
+				$("#sevice_name").val("");
+				$("#sevice_desc").val("");
+				$("#category1").find("select").find("option:eq(0)").attr("selected","selected");
+				$("#category2").parents(".s_main").hide();
+				$("#category3").parents(".s_main").hide();
+				$("#category4").parents(".s_main").hide();
+				$("#category5").parents(".s_main").hide();
 			});
 			$("#next_step").on("click",function(){
+				alert("表单提交哪些参数？");
+				var n=-2;
+				$("#s_sort").find(".s_main").each(function(){
+					if($(this).css("display")=="block")n++;
+				});
+				if(n<0){return false;}
+				var pid=$("#s_sort").find(".s_main:eq("+n+")").find("select").val();
+				//alert(pid);
+				var param={pid:pid};/* 修改1 参数只有pid?*/
+				$.ajax({
+					data:param,
+					type:"post",
+					url:"",/* 查询服务资源模板属性名称action *//* 修改2 */
+					success:function(data){
+						alert(data);
+						var html="";
+						var $data=$.parseJSON(data);
+						var length=$data.length;
+						for(var i=0;i<length;i++){
+							html+="<p data-id='"+$data.id+"'>"+/* 修改3   id  name */
+									"<span>"+$data.name+"</span><input type='text' placeholder='填写属性'/>"+
+									"</p>";
+						}
+						$("#at_fill").html(html);
+					}
+				});
 				$("#a_s_1").hide();
 				$("#a_s_2").show();
 				var height=$("#add_services").height();
 				$("#add_services").css("marginTop","-"+height/2+"px");
+				//第二个框框
+				$("#pre_step").on("click",function(){
+					$("#a_s_2").hide();
+					$("#a_s_1").show();
+					var height=$("#add_services").height();
+					$("#add_services").css("marginTop","-"+height/2+"px");
+					$("#at_new").html("");
+				});
+				$("#submit").on("click",function(){
+					alert("表单提交哪些参数？");
+					//pid service_name service_desc还需要什么参数？
+					var service_name=$("#service_name").val();
+					var service_desc=$("#service_desc").val();
+					var param={/* 修改4 */
+						pid:pid,
+						service_name:service_name,
+						service_desc:service_desc,
+						attribute:{
+							attribute1:[{attribute_id:"",attribute_value:""}]
+						}
+					};
+					$.ajax({
+						data:param,
+						url:"",/* 添加服务资源action *//* 修改5 */
+						type:"post"
+					});
+					$("#add_services,#yy").hide();
+					$("#a_s_2").hide();
+					$("#a_s_1").show();
+					$("#at_new").html("");
+					$("#sevice_name").val("");
+					$("#sevice_desc").val("");
+					$("#category1").find("select").find("option:eq(0)").attr("selected","selected");
+					$("#category2").parents(".s_main").hide();
+					$("#category3").parents(".s_main").hide();
+					$("#category4").parents(".s_main").hide();
+					$("#category5").parents(".s_main").hide();
+					/* var html="<div class='l_content' style='display:none;'>"+
+								"<div class='l_img'>"+
+								"	<img alt='' src='images/list_demo.jpg' height='100' width='100' />"+
+								"</div>"+
+								"<div class='l_name'>"+
+								"	名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒"+
+								"</div>"+
+								"<div class='l_desc'>"+
+								"	描述"+
+								"</div>"+
+								"<div class='l_time'>"+
+								"	发布时间"+
+								"</div>"+
+								"<div class='l_operation'>"+
+								"	<a href='javascript:void(0)' class='update'>修改</a>"+
+								"	<a href='javascript:void(0)' class='delete'>删除</a>"+
+								"	<a href='javascript:void(0)'>查看详情</a>"+
+								"</div>"+
+							"</div>";
+					$("#l_content").prepend(html);
+					$("#l_content").find(".l_content:first").slideDown("slow"); */
+				});
+				$("#new_attribute").on("click",function(){
+					var html="<p>"+
+								"<input placeholder='属性' type='text'/><input type='text' placeholder='属性值'/>"+
+								"</p>";
+					$(this).next().append(html);
+					$("input[placeholder]").placeholder();
+				});
 			});
-			$("#pre_step").on("click",function(){
-				$("#a_s_2").hide();
-				$("#a_s_1").show();
-				var height=$("#add_services").height();
-				$("#add_services").css("marginTop","-"+height/2+"px");
-				$("#at_new").html("");
-			});
-			$("#submit").on("click",function(){
-				$("#add_services,#yy").hide();
-				$("#a_s_2").hide();
-				$("#a_s_1").show();
-				$("#at_new").html("");
-				var html="<div class='l_content' style='display:none;'>"+
-							"<div class='l_img'>"+
-							"	<img alt='' src='images/list_demo.jpg' height='100' width='100' />"+
-							"</div>"+
-							"<div class='l_name'>"+
-							"	名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒"+
-							"</div>"+
-							"<div class='l_desc'>"+
-							"	描述"+
-							"</div>"+
-							"<div class='l_time'>"+
-							"	发布时间"+
-							"</div>"+
-							"<div class='l_operation'>"+
-							"	<a href='javascript:void(0)' class='update'>修改</a>"+
-							"	<a href='javascript:void(0)' class='delete'>删除</a>"+
-							"	<a href='javascript:void(0)'>查看详情</a>"+
-							"</div>"+
-						"</div>";
-				$("#l_content").prepend(html);
-				$("#l_content").find(".l_content:first").slideDown("slow");
-			});
-			$("#new_attribute").on("click",function(){
-				var html="<p>"+
-							"<input placeholder='属性' type='text'/><input type='text' placeholder='属性值'/>"+
-							"</p>";
-				$(this).next().append(html);
-				$("input[placeholder]").placeholder();
-			});
+			
 			/*添加服务按钮*/
 			/*删除服务按钮*/
 			$("#l_content").on("click",".delete",function(){
@@ -683,74 +809,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				dialogShow($(this));
 			});
 			/*删除服务按钮*/
-			/*更改服务按钮*/
-			$("#l_content").on("click",".update",function(){
-				$(this).parents(".l_content").data("delete","1");
-				var height=$("#update_services").height();
-				$("#update_services").css("marginTop","-"+height/2+"px");
-				$("#update_services,#yy").show();
-			});
-			$("#close_2").on("click",function(){
-				$(this).parents(".l_content").removeData("delete");
-				$("#update_services,#yy").hide();
-				$("#u_s_2").hide();
-				$("#u_s_1").show();
-				$("#ut_new").html("");
-			});
-			$("#update_next_step").on("click",function(){
-				$("#u_s_1").hide();
-				$("#u_s_2").show();
-				var height=$("#update_services").height();
-				$("#update_services").css("marginTop","-"+height/2+"px");
-			});
-			$("#update_pre_step").on("click",function(){
-				$("#u_s_2").hide();
-				$("#u_s_1").show();
-				var height=$("#update_services").height();
-				$("#update_services").css("marginTop","-"+height/2+"px");
-				$("#ut_new").html("");
-			});
-			$("#update_submit").on("click",function(){
-				$("#l_content").find(".l_content").each(function(){
-					if($(this).data("delete")=="1"){
-						$(this).remove();	
-					}
-				});
-				$("#update_services,#yy").hide();
-				$("#u_s_2").hide();
-				$("#u_s_1").show();
-				$("#ut_new").html("");
-				var html="<div class='l_content' style='display:none;'>"+
-							"<div class='l_img'>"+
-							"	<img alt='' src='images/list_demo.jpg' height='100' width='100' />"+
-							"</div>"+
-							"<div class='l_name'>"+
-							"	新建的"+
-							"</div>"+
-							"<div class='l_desc'>"+
-							"	描述"+
-							"</div>"+
-							"<div class='l_time'>"+
-							"	发布时间"+
-							"</div>"+
-							"<div class='l_operation'>"+
-							"	<a href='javascript:void(0)' class='update'>修改</a>"+
-							"	<a href='javascript:void(0)' class='delete'>删除</a>"+
-							"	<a href='javascript:void(0)'>查看详情</a>"+
-							"</div>"+
-						"</div>"
-				$("#l_content").prepend(html);
-				$("#l_content").find(".l_content:first").slideDown("slow");
-			});
-			$("#update_new_attribute").on("click",function(){
-				var html="<p>"+
-							"<input placeholder='属性' type='text'/><input type='text' placeholder='属性值'/>"+
-							"</p>";
-				$(this).next().append(html);
-				$("input[placeholder]").placeholder();
-			});
-			/*更改服务按钮*/
-
 		}
 		/*dialog show*/
 		function dialogShow(obj){
@@ -764,16 +822,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$dialog.css({"marginLeft":newLeft,"marginTop":newTop,"top":"50%","left":"50%"}).slideDown("slow");
 			$dialog.find(".close").click(function(){
 				$dialog.slideUp("slow");
-				$("#yy").hide();
+				$("#yy").hide(); 
 			});
 			$dialog.find(".sure").off("click").on("click",function(){
-				$(obj).each(function(){
-					$(obj).parents(".l_content").slideUp("slow",function(){
-						$(this).remove();
-					});
-				});
-				$dialog.slideUp("slow");
-				$("#yy").hide();
+				window.location.href="javascript:void(0)";/* 删除服务资源action *//* 修改6 */
 			});
 		}
 		/*dialog show*/

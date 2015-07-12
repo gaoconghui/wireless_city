@@ -1,0 +1,28 @@
+
+
+/*bottom begin*/
+	.bottom{width:100%;background:#39393f;color:#c9cad6;margin-top:40px;}
+	.bottom .about_us{width:1200px;margin:0px auto;}
+	.bottom .about_us ul{padding-left:10px;width:800px; float:left;margin:20px 0px;}
+	.bottom .about_us ul li{width:200px;float:left;margin:0px 0px 0px 0px;}
+	.bottom .about_us ul li p{margin-top:20px;color:#8b8d93;cursor:pointer;}
+	.bottom .about_us ul li p:hover{color:#fff;}
+	.bottom .about_us .b_contact{width:270px;float:left;margin-top:50px;}
+	.bottom .about_us .b_contact .c_icon{width:60px;height:60px;display:block;float:left;background:url(images/wireless_icon.png) no-repeat 5px -82px;}
+	.bottom .about_us .b_contact .c_tel{width:200px;height:60px;float:left; }
+	.bottom .about_us .b_contact .c_tel .tel{width:250px;font-size:32px;}
+	.bottom .about_us .b_contact .c_tel .time{width:180px;margin-top:3px;}
+	.bottom .copyright .before{height:1px;border-top: 1px solid #1c1c1d;background:#4c4d53;}
+	.bottom .friend_link .before{height:1px;border-top: 1px solid #1c1c1d;background:#4c4d53;}
+	.bottom .friend_link{width:1200px;margin:0 auto;line-height:20px;margin-bottom:20px;}
+	.bottom .friend_link h3{padding:10px;}
+	.bottom .friend_link a{display:inline-block;padding:0 10px;height:20px;color:#8b8d93;}
+	.bottom .copyright{width:1200px;height:50px;margin:0px auto;}
+	.bottom .copyright p{width:1200px;height:50px;line-height:50px;font-size:14px;color:#fff;margin:0px auto;text-align:center;}
+	#feedback-link{width:28px;height:86px;position:fixed;right:0;top:50%;margin:-45px 0;z-index:100;}
+	#feedback-link a{width:20px;height:86px;display:block;color:#fff;background:#333;font-size:12px;line-height:21px;text-lagin:center;padding:0 4px;}
+	#feedback-link a:hover{background-position:-372px -91px;}
+	#totop{width:43px;height:44px;position:fixed;right:30px;bottom:100px;z-index:100;display:none;}
+	#totop a{width:43px;height:44px;display:block;background-color: #000;background-image: url(images/wireless_icon.png);background-repeat: no-repeat;background-position:1px -285px;opacity:0.8;filter:alpha(opacity=80);}
+	#totop a:hover{opacity:0.5;filter:alpha(opacity=50);}
+/*bottom end*/

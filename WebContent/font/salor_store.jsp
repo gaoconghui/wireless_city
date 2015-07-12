@@ -12,8 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>无线城市-提供商企业主页</title>
 		<meta name="keywords" content="关键词,关键词">
 		<meta name="description" content="">
-		<!--css,js-->
-		<link type="text/css" href="css/reset.css" rel="stylesheet">
+		<link href="css/reset.css" rel="stylesheet">
+		<link href="css/front_default_style.css" rel="stylesheet">
 		<style type="text/css">
 			/*header beign*/
 			::selection {color: #fff;background: #f99750;}

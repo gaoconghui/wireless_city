@@ -70,7 +70,7 @@ public class LoginAction extends BaseAction<User> implements SessionAware {
 			userService.saveOrUpdateEntity(user);
 			session.put("user", user);
 			try {
-				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+				inputStream = new ByteArrayInputStream((user.getId()+"").getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}

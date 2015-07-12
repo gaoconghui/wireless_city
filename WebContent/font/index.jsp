@@ -12,8 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>无线城市-主页（含登录页面）</title>
 		<meta name="keywords" content="关键词,关键词">
 		<meta name="description" content="">
-		<!--css,js-->
-		<link type="text/css" href="css/reset.css" rel="stylesheet">
+		<link href="css/reset.css" rel="stylesheet">
+		<link href="css/front_default_style.css" rel="stylesheet">
 		<style type="text/css">
 		/*header beign*/
 			::selection {color: #fff;background: #f99750;}
@@ -78,9 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.login .l_header span:hover{background-position:-71px -2px;}
 			.login .l_left{width:270px;height:190px;float:left;margin:17px 20px 0px 30px;}
 			.login .l_left .l_message{width:258px;height:20px; line-height:20px;border:1px solid #209ddd;text-align:center;color:#209ddd;margin-bottom:10px;}
-			
 			.login .l_left .l_select label{height:30px;line-height:20px;width:76px;display:block;float:left;}
-			
 			.login .l_left .l_input{width:260px;margin-top:10px;}
 			.login .l_left .l_input .input{margin-bottom:10px;width:255px;height:30px;border:1px solid #ccc;line-height:30px;padding-left:4px;display:block;}
 			.login .l_left .l_input .l_sel{width:250px;height:30px;display:block;line-height:30px;}
@@ -114,7 +112,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- header begin-->
 	<div class="title_fixed">
 		<div class="s_right" id="s_right">
-			
 			<div class="r_login">登录</div>
 			<div class="r_register"><a href="font/register.jsp">注册</a></div>
 		</div>
@@ -186,7 +183,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- bottom beign -->
 	<s:include value="bottom.jsp"></s:include>
 	<!-- bottom end -->
-	
 	<!-- login_page begin -->
 	<div id="yy"></div>
 	<div class="login" id="login_page">
@@ -292,21 +288,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("用户名或密码不正确！");
 							}else{
 								//返回id
-								$("#login_page").hide();
+								window.location.href="font/salor.jsp";
+								/* $("#login_page").hide();
 								$("#yy").hide();
-								var html="<div class='r_info'><a href='font/buyer.jsp?id="+data+"'>"+name+"</a></div>"+
+								var html="<div class='r_info'><a href='font/salor.jsp?id="+data+"'>"+name+"</a></div>"+
 										"<div class='r_wel'>欢迎您,</div>";
-								$("#s_right").html(html);
+								$("#s_right").html(html); */
 							}
 						}
 					});
 				},200);
 			}
-		});
-			
-			
+		});	
 		$("input[placeholder]").placeholder();
-		
 		/* findCategory begin*/
 		//查询1类目
 		var options={
