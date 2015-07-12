@@ -1,62 +1,46 @@
-package com.whut.wxcs.resmanager.model;
+package com.whut.wxcs.resmanager.model.web;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/*
- * 封装查询参数的信息
- */
-public class CriteriaResource {
+public class CriteriaProvider {
 
 	public static Integer ORDER_DESC = 1;
 	public static Integer ORDER_ASC = 0;
 
-	public static Integer ORDER_BY_CREATE_TIME = 0;
-	public static Integer ORDER_BY_NAME = 1;
+	public static Integer ORDER_BY_CHECK_STATE = 0;
+	public static Integer ORDER_BY_REGISTER_TIME = 1;
+	public static Integer ORDER_BY_NAME = 2;
+	public static Integer ORDER_BY_RRADE = 3;
 
+	// 排序数组
 	private static Map<Integer, String> orderMap = new HashMap<Integer, String>();
 
 	static {
-		orderMap.put(ORDER_BY_CREATE_TIME, "create_time");
-		orderMap.put(ORDER_BY_NAME, "resource_name");
+		orderMap.put(ORDER_BY_CHECK_STATE, "checkState");
+		orderMap.put(ORDER_BY_REGISTER_TIME, "registerTime");
+		orderMap.put(ORDER_BY_NAME, "name");
+		orderMap.put(ORDER_BY_RRADE, "grade");
 	}
-
-	// 所属模板id
-	private long catalogueId;
-
-	// attributeid_value 如25_1
-	// List<String> attributes = new ArrayList<String>();
-	private Map<String, String> attrMap = new HashMap<String, String>();
-
+	// 服务商审核状态:0-未通过 1-审核通过 2-正在审核中 10-全部
+	private int checkState = 10;
 	// 内关键字
 	private String keyWord;
-	// 全局关键字
-	private String frontKey;
-
 	// 每页显示数量
 	private Integer pageSize = 20;
 	// 第几页
 	private Integer pageNum = 1;
-
 	// 排序方式 ，0是升序，1是降序
 	private Integer orderSequence = 1;
-	// 根据什么排序 0是按时间 1是按名字 ...
+	// 根据什么排序 0是按checkState 1是按时间 2是名字 ...
 	private Integer orderName = 0;
 
-	public long getCatalogueId() {
-		return catalogueId;
+	public int getCheckState() {
+		return checkState;
 	}
 
-	public void setCatalogueId(long catalogueId) {
-		this.catalogueId = catalogueId;
-	}
-
-	public Map<String, String> getAttrMap() {
-		return attrMap;
-	}
-
-	public void setAttrMap(Map<String, String> attrMap) {
-		this.attrMap = attrMap;
+	public void setCheckState(int checkState) {
+		this.checkState = checkState;
 	}
 
 	public String getKeyWord() {
@@ -65,14 +49,6 @@ public class CriteriaResource {
 
 	public void setKeyWord(String keyWord) {
 		this.keyWord = keyWord;
-	}
-
-	public String getFrontKey() {
-		return frontKey;
-	}
-
-	public void setFrontKey(String frontKey) {
-		this.frontKey = frontKey;
 	}
 
 	public Integer getPageSize() {
@@ -111,13 +87,17 @@ public class CriteriaResource {
 		return orderMap;
 	}
 
+	public static void setOrderMap(Map<Integer, String> orderMap) {
+		CriteriaProvider.orderMap = orderMap;
+	}
+
 	@Override
 	public String toString() {
-		return "CriteriaResource [catalogueId=" + catalogueId + ", attrMap="
-				+ attrMap + ", keyWord=" + keyWord + ", frontKey=" + frontKey
-				+ ", pageSize=" + pageSize + ", pageNum=" + pageNum
+		return "CriteriaProvider [checkState=" + checkState + ", keyWord="
+				+ keyWord + ", pageSize=" + pageSize + ", pageNum=" + pageNum
 				+ ", orderSequence=" + orderSequence + ", orderName="
 				+ orderName + "]";
 	}
+	
 
 }

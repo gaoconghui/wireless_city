@@ -132,6 +132,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	public Catalogue getCatalogueById(long id) {
 		Catalogue catalogue = catalogueDao.getEntity(id);
 		catalogue.getParent();
+		catalogue.getParent().getChild();
 		return catalogue;
 	}
 
@@ -232,18 +233,19 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	@Override
 	public Catalogue initCatalogueById(long tid) {
 		Catalogue catalogue = this.getCatalogueById(tid);
+		long parentid = tid;
+		Catalogue parent = catalogue;
 
 		Set<Catalogue> child;
 		child = catalogue.getChild();
 		if (ValidateUtil.isVaild(child))
 			child.size();
 
-		if(tid >1){
-			Catalogue parent = catalogue.getParent();
-			child = parent.getChild();
-			if (ValidateUtil.isVaild(child))
-				child.size();
+		while(parentid >1){
+			parent = parent.getParent();
+			parentid = parent.getId();
 		}
+		
 		return catalogue;
 	}
 

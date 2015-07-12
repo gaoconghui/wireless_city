@@ -8,12 +8,11 @@ public class Page<T> {
 
 
 	private List<T> list;
-
+    
+	//一页page的容量
 	private int pageSize = 20;
 
-
-	
-
+    //查询的所有总数
 	private long totalItemNumber;
 
 	public Page(int pageNo) {

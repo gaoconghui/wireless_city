@@ -13,19 +13,21 @@
 		<h1>资源列表</h1>
 		<s:iterator var="c" value="catalogues">
 			<a
-				href="AddResourceAction_getConcreteResource?cid=<s:property value="id"/>">
+				href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=<s:property value="id" />">
 				<s:property value="name" />
 			</a>
 		</s:iterator>
-
 		<table>
-			<s:form action="" theme="simple">
+			<s:form action="SearchProviderResourceAction_keyWordSearch"
+				theme="simple">
+				<s:hidden name="rsid"></s:hidden>
 				<tr>
-					<td><s:textfield name=""></s:textfield></td>
-					<td><s:submit></s:submit></td>
+					<td><s:textfield name="frontKey"></s:textfield></td>
+					<td><s:submit value="关键字搜索"></s:submit></td>
 				</tr>
 			</s:form>
 		</table>
+
 		<s:if test="resources!=null&&resources.size()!=0">
 
 			<table>
@@ -57,5 +59,7 @@
 			</table>
 		</s:if>
 	</center>
+	<center></center>
+
 </body>
 </html>

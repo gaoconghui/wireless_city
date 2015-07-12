@@ -9,10 +9,8 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.CriteriaResource;
-import com.whut.wxcs.resmanager.model.Page;
 import com.whut.wxcs.resmanager.model.ResourcePage;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.SearchResourceService;

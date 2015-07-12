@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <input type="password" name="password" id="password" autocomplete="on" placeholder="请输入密码" />
 	            </div>
 	            <div class="inputwrapper">
-	                <a id="login" class="submit" href="admin/ht_1.jsp">登录</a>
+	                <a id="login" class="submit" href="CatalogueAction_toCatalogueManagerPage">登录</a>
 	            </div>
 	            <div class="inputwrapper">
 	                <label><input type="checkbox" class="remember" name="signin" /> 记住密码</label>

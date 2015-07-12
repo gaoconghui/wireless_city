@@ -13,14 +13,7 @@ import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.util.ReflectionUtils;
 
 /**
- * BaseDao 实现类
-<<<<<<< HEAD
-=======
- * 
- * @author apple
->>>>>>> origin/无线城市
  *
- * @param <T>
  */
 
 @SuppressWarnings("unchecked")

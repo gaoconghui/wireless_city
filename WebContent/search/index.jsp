@@ -14,11 +14,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
 	<center>
 		<s:a href="SearchResourceAction_listAllCatalogue">列出所有目录</s:a>
 	</center>
-
 </body>
 </html>
