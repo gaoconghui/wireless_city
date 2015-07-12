@@ -676,11 +676,6 @@ body {
 				<span>. . .</span>
 			</s:if>
 
-			<!-- 	<a href="javascript:void(0)" class="sel" id="first_page">1</a> <a
-				href="javascript:void(0)" id="second_page">2</a> <a
-				href="javascript:void(0)" id="third_page">3</a> <a
-				href="javascript:void(0)" id="forth_page">4</a> <a
-				href="javascript:void(0)" id="last_page">5</a> -->
 			<s:a
 				href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}"
 				id="last">尾页</s:a>

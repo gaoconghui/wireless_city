@@ -66,6 +66,10 @@ public class TemplateAction extends BaseAction<Template> {
 		model = catalogueService.getTemplateWithAll(model.getId());
 		return "toTemplateDetailPage";
 	}
+	
+	public String toTemplateManagerPage(){
+		return "toTemplateManagerPage";
+	}
 
 	/*
 	 * AJAX更新模板的名字和描述

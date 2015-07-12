@@ -27,8 +27,8 @@
 
 		<action name="CatalogueAction_*" class="catalogueAction"
 			method="{1}">
-			<result name="toDesignCataloguePage">/admin/designcatalogue.jsp</result>
-			<result name="toCatalogueManagerPage">/admin/cataloguemanager.jsp</result>
+			<!-- <result name="toDesignCataloguePage">/admin/designcatalogue.jsp</result> -->
+			<result name="toCatalogueManagerPage">/admin/ht_1.jsp</result>
 			<result name="catalogueManagerAction" type="redirectAction">
 				<param name="actionName">CatalogueAction_toCatalogueManagerPage</param>
 			</result>
@@ -39,6 +39,8 @@
 			<result name="toTemplateDetailPage">/admin/templatedetail.jsp</result>
 			<result name="newTemplate">/admin/templatedetail.jsp</result>
 			<result name="updateTemplate">/admin/templatedetail.jsp</result>
+			
+			<result name="toTemplateManagerPage">/admin/ht_2.jsp</result>
 		</action>
 		<action name="AttributeAction_*" class="attributeAction"
 			method="{1}">
@@ -50,6 +52,11 @@
 			<result name="listCatalogue">/search/listcatalogue.jsp</result>
 			<!-- <result name="resourcelist">/search/resourcelist.jsp</result> -->
 			<result name="resourcelist">/font/search.jsp</result>
+		</action>
+
+		<action name="SearchProviderAction_*" class="searchProviderAction"
+			method="{1}">
+			<result name="providerlist">/admin/ht_3.jsp</result>
 		</action>
 
 		<action name="RegAction_*" class="regAction" method="{1}">
@@ -73,6 +80,12 @@
 			<result name="provider_manager">/admin/manager.jsp</result>
 			<result name="pass_check" type="redirectAction">ProviderAction_manager</result>
 			<!-- <result name="loginSuccess">/login/provider_resource.jsp</result> -->
+			
+			<result name="providerListAction" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">SearchProviderAction_getAllProviders</param>
+				<param name="psid">${psid}</param>
+			</result>
 		</action>
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<!-- <result name="user_info"></result> -->

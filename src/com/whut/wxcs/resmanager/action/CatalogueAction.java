@@ -86,13 +86,13 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		return "catalogueManagerAction";
 	}
 
-	/*
-	 * 到类目管理页面（可能要改成只返回根目录的结构）
-	 */
-	public String toCatalogueManagerPage() {
-		root = catalogueService.getRootCatalogueWithAllChild();
-		return "toCatalogueManagerPage";
-	}
+//	/*
+//	 * 到类目管理页面（可能要改成只返回根目录的结构）
+//	 */
+//	public String toCatalogueManagerPage() {
+//		root = catalogueService.getRootCatalogueWithAllChild();
+//		return "toCatalogueManagerPage";
+//	}
 
 	/*
 	 * 删除类目以及其所有的子类目
@@ -110,6 +110,13 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		setParentid(model.getParent().getId());
 		rootCatalogues = catalogueService.getAllCatalogue();
 		return "toDesignCataloguePage";
+	}
+	
+	/**
+	 * 
+	 */
+	public String toCatalogueManagerPage(){
+		return "toCatalogueManagerPage";
 	}
 
 	/*
