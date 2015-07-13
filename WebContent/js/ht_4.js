@@ -3,6 +3,7 @@ $(function(){
 	initialize();
 });
 function initialize(){
+	$("#paging_center").css({"marginLeft":-$("#paging").width()/2});
 	/* 选择开始 */
 	$("#l_form").find(".choose").each(function(){
 		var n=0;

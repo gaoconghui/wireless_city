@@ -88,7 +88,7 @@
 			.layout_body .bd_list .l_content .l_details span{width:430px;height:25px;line-height:25px;padding-left:20px;float:left; ;}
 			.layout_body .bd_list .l_content .l_visit{float:left;margin-left:200px;margin-top:30px;}
 			.layout_body .bd_list .l_content .l_visit a{width:60px;height:40px;background:#0181ec;display:block;line-height:40px;text-align:center;color:#fff;border-radius:3px;-webkit-border-radius:3px;}
-			.layout_body .bd_paging{height:40px;margin:0 auto; ;margin-top:10px;width:400px;border:1px solid red;}
+			.layout_body .bd_paging{height:40px;margin:0 auto; display:inline-block;margin-top:10px;margin-left:50%;}
 			.layout_body .bd_paging a{color:#0181ec;padding:0 8px;height:20px;display:block;float:left;line-height:20px;border:1px solid #ccc;margin-left:10px;margin-top:10px;border-radius:2px;-webkit-border-radius:2px;}
 			.layout_body .bd_paging span{color:#0181ec;padding:0 4px;height:20px;font-weight:700;display:block;float:left;line-height:20px;margin-left:10px;margin-top:10px;}
 			.layout_body .bd_paging a.sel{border-color:#b61d1d;background:#b61d1d;color:#fff;font-weight:700;}
@@ -136,8 +136,7 @@
 	<div class="layout_hd">
 			<s:if test="page.catalogue.parent.id != 1">
 			<div class="hd_reference" id="reference">
-				<s:a href="javascript:void(0)">全部类目
-						</s:a>
+				<s:a href="javascript:void(0)">全部类目</s:a>
 				<s:if test="page.catalogue.parent.parent.id != 1">
 					<s:if test="page.catalogue.parent.parent.parent.id != 1">
 						<s:a cssClass="more_icon icon"
@@ -147,12 +146,12 @@
 							<s:property value="page.catalogue.parent.parent.parent.name" />
 						</s:a>
 					</s:if>
-					<s:a cssClass="more_icon icon"
-						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}"></s:a>
-					<s:a
-						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}">
-						<s:property value="page.catalogue.parent.parent.name" />
-					</s:a>
+						<s:a cssClass="more_icon icon"
+							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}"></s:a>
+						<s:a
+							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}">
+							<s:property value="page.catalogue.parent.parent.name" />
+						</s:a>
 				</s:if>
 				<s:a cssClass="more_icon icon"
 					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.id}"></s:a>
@@ -280,51 +279,53 @@
 			</s:iterator>
 		</div>
 		<div class="bd_paging" id="paging">
-			<s:a href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=1"
+			<div id="center_page">
+				<s:a href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=1"
 				id="first">首页</s:a>
-			<s:if test="pageNum -3 >0">
-				<span>. . .</span>
-			</s:if>
-			<s:if test="pageNum-2 >0">
+				<s:if test="pageNum -3 >0">
+					<span>. . .</span>
+				</s:if>
+				<s:if test="pageNum-2 >0">
+					<s:a
+						href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum -2}"
+						id="first_page">
+						<s:property value="pageNum -2" />
+					</s:a>
+				</s:if>
+				<s:if test="pageNum-1 >0">
+					<s:a
+						href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum -1}"
+						id="second_page">
+						<s:property value="pageNum -1" />
+					</s:a>
+				</s:if>
 				<s:a
-					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum -2}"
-					id="first_page">
-					<s:property value="pageNum -2" />
+					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum}"
+					id="third_page" cssClass="sel">
+					<s:property value="pageNum" />
 				</s:a>
-			</s:if>
-			<s:if test="pageNum-1 >0">
+				<s:if test="pageNum+1 <= page.totalPageNumber">
+					<s:a
+						href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum + 1 }"
+						id="forth_page">
+						<s:property value="pageNum +1" />
+					</s:a>
+				</s:if>
+				<s:if test="pageNum+2 <= page.totalPageNumber">
+					<s:a
+						href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum +2}"
+						id="last_page">
+						<s:property value="pageNum +2" />
+					</s:a>
+				</s:if>
+				<s:if test="pageNum+3 <= page.totalPageNumber">
+					<span>. . .</span>
+				</s:if>
+	
 				<s:a
-					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum -1}"
-					id="second_page">
-					<s:property value="pageNum -1" />
-				</s:a>
-			</s:if>
-			<s:a
-				href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum}"
-				id="third_page" cssClass="sel">
-				<s:property value="pageNum" />
-			</s:a>
-			<s:if test="pageNum+1 <= page.totalPageNumber">
-				<s:a
-					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum + 1 }"
-					id="forth_page">
-					<s:property value="pageNum +1" />
-				</s:a>
-			</s:if>
-			<s:if test="pageNum+2 <= page.totalPageNumber">
-				<s:a
-					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum +2}"
-					id="last_page">
-					<s:property value="pageNum +2" />
-				</s:a>
-			</s:if>
-			<s:if test="pageNum+3 <= page.totalPageNumber">
-				<span>. . .</span>
-			</s:if>
-
-			<s:a
-				href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}"
-				id="last">尾页</s:a>
+					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}"
+					id="last">尾页</s:a>
+			</div>
 		</div>
 	</div>
 	<!-- bottom begin -->
@@ -337,6 +338,9 @@
 			initialize();
 		});
 		function initialize() {
+			//页码居中
+			var width=$("#paging").width();
+			$("#center_page").css("marginLeft",-width/2);
 			//分页
 			/* $("#paging").find("a").each(function(){
 				//页数

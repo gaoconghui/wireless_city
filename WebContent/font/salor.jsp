@@ -95,12 +95,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.layout_all .wrapper_right .r_list .content_title a{background:url(images/icon.gif) no-repeat -49px -337px;position:absolute;top:14px;left:32px;width:10px;height:10px;display:block;cursor:pointer;}
 			.layout_all .wrapper_right .r_list .content_title div:first-child{border-left:0px;}
 			.layout_all .wrapper_right .r_list .l_content{width:730px;height:120px;border-bottom:1px solid #999;padding-top:10px;}
-			.layout_all .wrapper_right .r_list .l_content div{padding-left:5px;float:left;width:135px;height:100px;}
+			.layout_all .wrapper_right .r_list .l_content div{padding-left:5px;float:left;width:135px;height:108px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:9;-webkit-box-orient:vertical;}
 			.layout_all .wrapper_right .r_list .l_content .l_operation{float:left;}
 			.layout_all .wrapper_right .r_list .l_content .l_operation a{width:60px;height:30px;background:#0181ec;display:block;line-height:30px;text-align:center;color:#fff;border-radius:3px;-webkit-border-radius:3px;margin-bottom:10px;margin-left:50px;}
 
 
-			.layout_all .wrapper_right .r_list .bd_paging{height:40px;margin:0 auto; ;margin-top:10px;width:400px;}
+			.layout_all .wrapper_right .r_list .bd_paging{height:40px;margin:0 auto; display:inline-block;margin-top:10px;margin-left:50%;}
 			.layout_all .wrapper_right .r_list .bd_paging a{color:#0181ec;padding:0 8px;height:20px;display:block;float:left;line-height:20px;border:1px solid #ccc;margin-left:10px;margin-top:10px;border-radius:2px;-webkit-border-radius:2px;}
 			.layout_all .wrapper_right .r_list .bd_paging span{color:#0181ec;padding:0 4px;height:20px;font-weight:700;display:block;float:left;line-height:20px;margin-left:10px;margin-top:10px;}
 			.layout_all .wrapper_right .r_list .bd_paging a.sel{border-color:#b61d1d;background:#b61d1d;color:#fff;font-weight:700;}
@@ -218,7 +218,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="wrapper_right">
 			<div class="r_select">
 				<div class="hd_reference" id="reference">
-					<a href="font/salor.jsp?pid=1">所有分类</a>
+					<a href="javascript:void(0)">所有分类</a>
+					<!-- 以下为迭代 两个a一组 -->
+					<a href="javascript:void(0)" class="more_icon icon"></a>	
+					<a href="javascript:void(0)">無線政務</a>
 				</div>
 				<div class="hd_sort">
 					<div class="s_details" id="s_details">
@@ -226,7 +229,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)">子类：</a>
 						</span>
 						<!-- 這裡是一類目迭代 -->
-						<a href="font/search.jsp?id=101">無線政務</a>
+						<a href="javascript:void(0)">無線政務1</a>
+						<a href="javascript:void(0)">無線政務2</a>
+						<a href="javascript:void(0)">無線政務3</a>
 						<!-- 這裡是一類目迭代 -->
 					</div>
 				</div>
@@ -300,7 +305,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒
 						</div>
 						<div class="l_desc">
-							描述
+							描述名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒
 						</div>
 						<div class="l_time">
 							发布时间
@@ -333,15 +338,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				<div class="bd_paging" id="paging" >
-					<a href="javascript:void(0)" id="first">首页</a>
-					<span style="display:none;">. . .</span>
-					<a href="javascript:void(0)" class="sel" id="first_page">1</a>
-					<a href="javascript:void(0)" id="second_page">2</a>
-					<a href="javascript:void(0)" id="third_page">3</a>
-					<a href="javascript:void(0)" id="forth_page">4</a>
-					<a href="javascript:void(0)" id="last_page">5</a>
-					<span>. . .</span>
+					<div id="center_page">
+						<a href="javascript:void(0)" id="first">首页</a>
+						<span style="display:none;">. . .</span>
+						<a href="javascript:void(0)" class="sel" id="first_page">1</a>
+						<a href="javascript:void(0)" id="second_page">2</a>
+						<a href="javascript:void(0)" id="third_page">3</a>
+						<a href="javascript:void(0)" id="forth_page">4</a>
+						<a href="javascript:void(0)" id="last_page">5</a>
+						<span>. . .</span>
 					<a href="javascript:void(0)" id="last">尾页</a>
+					</div>
 				</div>
 				<!-- <div class="l_paging">
 					<a href="javascript:void(0)" class="sel">1</a>
@@ -601,6 +608,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});		
 		}
 		function initialize(){
+			//页码居中
+			var width=$("#paging").width();
+			$("#center_page").css("marginLeft",-width/2);
+			
+			
 			//查詢服務資源
 			$("#search_service").click(function(){
 				$("#search_service_form")[0].submit();

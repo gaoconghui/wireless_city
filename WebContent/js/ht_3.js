@@ -3,6 +3,10 @@ $(function(){
 	initialize();
 });
 function initialize(){
+	$("#search_self").click(function(){
+		$(this).closest("form").submit();
+	});
+	$("#paging_center").css({"marginLeft":-$("#paging").width()/2});
 	/* 选择开始 */
 	$("#l_form").find(".choose").each(function(){
 		var n=0;
@@ -10,8 +14,18 @@ function initialize(){
 			n++;
 			if(n%2==1){
 				$(this).css({"background-position":"-7px -148px"});
+				$(this).attr("sel","1");
 			}else{
 				$(this).css({"background-position":"-31px -148px"});
+				$(this).attr("sel","0");
+			}
+			var count=$("#l_form").find(".choose[sel=1]").length;
+			if(count==0){
+				$("#r_t_action").hide();
+			}else{
+				if($("#r_t_action").css("display")=="none"){
+					$("#r_t_action").show();
+				}	
 			}
 		});
 	});
@@ -35,9 +49,9 @@ function dialogShow(obj){
 	//var cH=getHeight();
 	var newTop=-dH/2;
 	var newLeft=-dW/2;
-	$dialog.css({"marginLeft":newLeft,"marginTop":newTop,"top":"50%","left":"50%"}).slideDown("slow");
+	$dialog.css({"marginLeft":newLeft,"marginTop":newTop,"top":"50%","left":"50%"}).show();
 	$dialog.find(".close").click(function(){
-		$dialog.slideUp("slow");
+		$dialog.hide();
 		$("#yy").hide();
 	});
 	$dialog.find(".sure").off("click").on("click",function(){
@@ -46,7 +60,7 @@ function dialogShow(obj){
 				$(this).remove();
 			});
 		});
-		$dialog.slideUp("slow");
+		$dialog.hide();
 		$("#yy").hide();
 	});
 }

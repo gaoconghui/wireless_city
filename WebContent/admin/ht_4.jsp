@@ -35,6 +35,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span class="r_t_a3 ra" title="下架" id="offsheet_btn"></span>
 						<span class="r_t_a4 ra" title="删除" id="delete_btn"></span>
 					</div>	
+					<div class="s_input">
+						<input class="input" type="text" placeholder="找服务资源" />
+						<div class="i_btn">搜索</div>
+					</div>
 				</div>
 				<div class="r_label">
 					<div class="l_label">
@@ -76,11 +80,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span>巴宝莉香水</span>
 								<span>香水模板</span>
 								<span>
-									<a href="javascript:void(0)" class="ra detail" title="详情"></a>	
-									<a href="javascript:void(0)" class="ra info" title="通知修改"></a>
-									<a href="javascript:void(0)" class="ra submit" title="通过"></a>
-									<a href="javascript:void(0)" class="ra offsheet" title="下架"></a>
-									<a href="javascript:void(0)" class="ra delete" title="删除"></a>
+									<small class="operation">
+										<a href="javascript:void(0)" class="ra detail" title="详情"></a>	
+										<a href="javascript:void(0)" class="ra info" title="通知修改"></a>
+										<a href="javascript:void(0)" class="ra submit" title="通过"></a>
+										<a href="javascript:void(0)" class="ra offsheet" title="下架"></a>
+										<a href="javascript:void(0)" class="ra delete" title="删除"></a>
+									</small>
 								</span>
 								<span>
 									通知修改中
@@ -112,12 +118,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</div>
 				</div>
-				<div class="paging">
-					<a href="javascript:void(0)" class="sel">1</a>
-					<a href="javascript:void(0)">2</a>
-					<a href="javascript:void(0)">3</a>
-					<a href="javascript:void(0)">4</a>
-					<a href="javascript:void(0)" class="next">下一页&gt;</a>
+				<div class="paging" id="paging">
+					<div id="paging_center">
+						<a href="javascript:void(0)" class="sel">1</a>
+						<a href="javascript:void(0)">2</a>
+						<a href="javascript:void(0)">3</a>
+						<a href="javascript:void(0)">4</a>
+						<a href="javascript:void(0)" class="next">下一页&gt;</a>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -121,8 +121,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="f_logo"></div>
 			<div class="f_search">
 				<div class="s_input">
-					<input type="text" placeholder="找服务资源" />
-					<div class="i_btn">搜索</div>
+					<s:form action="SearchResourceAction_frontFindByKeyWord" id="s_all">
+						<s:textfield name="frontKey" placeholder="找服务资源"></s:textfield>
+						<s:hidden name="rsid"></s:hidden>
+						<div class="i_btn" id="search_all">搜索</div>
+					</s:form>
 				</div>
 			</div>
 			<div class="f_contact">
@@ -230,6 +233,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});
 		
 		function initialize(){
+		//搜索
+		$("#search_all").click(function(){
+			$(this).closest("form")[0].submit();
+		});
 		//登录
 		var timer=null;
 		$("#submit").click(function(){
@@ -263,6 +270,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							if(data=="0"){
 								//失败返回0；
 								$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("用户名或密码不正确！");
+								$("#password").val("");
+								$("#password").focus();
 							}else{
 								//成功返回id
 								$("#login_page").hide();
@@ -313,7 +322,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					for(var i=0;i<length;i++){
 						html+="<li data-id='"+$data[i].id+"' data-index='"+i+"'>"+
 						"	<span class='i_icon'></span>"+
-						"	<span class='i_desc'><a href='font/search.jsp?pid="+$data[i].id+"'>"+$data[i].name+"</a></span>"+
+						"	<span class='i_desc'><a href='SearchResourceAction_searchResourceByCatalogue?catalogueId="+$data[i].id+"'>"+$data[i].name+"</a></span>"+
 						"	<span class='i_more'>&gt;</span>"+
 						"</li>";
 					}
@@ -339,7 +348,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							for(var i=0;i<length;i++){
 								h+="<div class='c_list' data-id='"+$data[i].id+"'>"+
 								"		<div class='l_second_item'>"+
-								"			<span class='span1'><a href='font/search.jsp?pid="+$data[i].id+"'>"+$data[i].name+"</a></span>"+
+								"			<span class='span1'><a href='SearchResourceAction_searchResourceByCatalogue?catalogueId="+$data[i].id+"'>"+$data[i].name+"</a></span>"+
 								"			<span class='span2'>&gt;</span>"+
 								"		</div>"+
 								"		<div class='l_third_item'>"+
@@ -370,7 +379,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							var length=$data.length;
 							console.log(length+"-------------");
 							for(var i=0;i<length;i++){
-								html+="<a href='font/search.jsp?pid="+$data[i].id+"' data-id='"+$data[i].id+"'>"+$data[i].name+"</a>";
+								html+="<a href='SearchResourceAction_searchResourceByCatalogue?catalogueId="+$data[i].id+"'>"+$data[i].name+"</a>";
 							}
 						}
 					}

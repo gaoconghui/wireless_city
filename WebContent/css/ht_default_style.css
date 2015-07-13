@@ -325,7 +325,7 @@
 
 .tzht .t_right .r_table .r_title .r_t_action .ra {
 	margin: 2px;
-	width: 12px;
+	width: 13px;
 	height: 18px;
 	background: url("../images/ht/icon.png") no-repeat;
 	display: block;
@@ -348,8 +348,8 @@
 }
 
 .tzht .t_right .r_table .r_title .r_t_action .r_t_a4 {
-	background-position: -37px -100px;
-	background-color: #bd2d30;
+	background-position: -76px -100px;
+	background-color: #28b779;
 }
 
 .tzht .t_right .r_table .r_title .s_input {
@@ -359,7 +359,7 @@
 	float: right;
 }
 
-.tzht .t_right .r_table .r_title .s_input input:first-child {
+.tzht .t_right .r_table .r_title .s_input .input {
 	width: 130px;
 	height: 22px;
 	border: 2px solid #28b779;
@@ -419,6 +419,7 @@
 }
 
 .tzht .t_right .r_table .r_label .l_tr span {
+	min-height:10px;
 	width: 19%;
 	display: block;
 	float: left;
@@ -439,11 +440,22 @@
 	height: 18px;
 	margin: 6px;
 	float: left;
+	
+}
+
+.tzht .t_right .r_table .r_label .first_tr span a{
+	width:60%;
+	height:40px;
+	line-height:40px;
+	background:none;
+	margin:0;
+	text-align:left;
+	color:#fff;
 }
 
 .tzht .t_right .r_table .r_label .l_tr span a.delete {
-	background-position: -37px -100px;
-	background-color: #bd2d30;
+	background-position: -76px -100px;
+	background-color: #28b779;
 }
 
 .tzht .t_right .r_table .r_label .l_tr span a.submit {
@@ -475,20 +487,20 @@
 
 .tzht .t_right .r_table .paging {
 	height: 40px;
-	margin: 0 auto;
-	margin: 0 auto;
-	width: 210px;
+	display:inline-block;
+	text-align:center;
+	margin-left:50%;
 }
 
 .tzht .t_right .r_table .paging a {
 	color: #1e90ff;
-	width: 20px;
+	padding:0px 6px;
 	height: 20px;
 	display: block;
 	float: left;
 	line-height: 20px;
 	border: 1px solid #ccc;
-	margin-left: 10px;
+	margin-left: 5px;
 	margin-top: 10px;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
@@ -501,9 +513,7 @@
 	font-weight: 700;
 }
 
-.tzht .t_right .r_table .paging .next {
-	width: 60px;
-}
+
 
 .tzht .t_right .r_table .r_label .l_select {
 	width: 30%;
@@ -549,7 +559,7 @@
 	border: 1px solid #1e90ff;
 	font-size: 14px;
 }
-
+.tzht .t_right .r_table .r_label .l_show>.s_title{color:#fff;}
 .tzht .t_right .r_table .r_label .l_show .s_title span {
 	display: block;
 	width: 25%;

@@ -219,9 +219,9 @@ var ajaxqueue=1;
 		var dH=$dialog.height();
 		var newTop=-dH/2;
 		var newLeft=-dW/2;
-		$dialog.css({"marginLeft":newLeft,"marginTop":newTop,"top":"50%","left":"50%"}).slideDown("slow");
+		$dialog.css({"marginLeft":newLeft,"marginTop":newTop,"top":"50%","left":"50%"}).show();
 		$dialog.find(".close").off("click").click(function(){
-			$dialog.slideUp("slow");
+			$dialog.hide();
 			$("#yy").hide();
 		});
 		$dialog.find(".sure").off("click").on("click",function(){
@@ -233,7 +233,7 @@ var ajaxqueue=1;
 			});
 			var param={"id":id};
 			deleteCategory("CatalogueAction_deleteCatalogueByAJAX",param);
-			$dialog.slideUp("slow");
+			$dialog.hide();
 			$("#yy").hide();
 		});
 	}

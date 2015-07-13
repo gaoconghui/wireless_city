@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="r_title">
 					<i></i><span>资源模板管理</span>
 					<div class="s_input">
-						<input type="text" placeholder="找服务资源" />
+						<input class="input" type="text" placeholder="找资源模板" />
 						<div class="i_btn">搜索</div>
 					</div>
 				</div>
