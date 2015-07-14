@@ -961,12 +961,12 @@
 
 .add_module_attribute .add_delete .next_btn {
 	cursor: pointer;
-	background-position: -45px -1px;
+	background-position: -2px -174px;
 }
 
 .add_module_attribute .add_delete .back_btn {
 	cursor: pointer;
-	background-position: -136px -1px;
+	background-position: -59px -174px;
 }
 
 .add_module_attribute .attribute_show {

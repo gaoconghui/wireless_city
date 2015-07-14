@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!-- t_left start -->
 <div class="t_left" id="t_left">
 	<div class="l_img">Wireless City</div>

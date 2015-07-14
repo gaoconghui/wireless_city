@@ -18,7 +18,6 @@
 		<link href="css/front_default_style.css" rel="stylesheet">
 		<style type="text/css">
 			/*header beign*/
-			::selection {color: #fff;background: #f99750;}
 			form:after{content:"";display:block;clear:both;}
 			body{background:#fafafa;cursor:default;color:#444;}
 			.title_fixed{width:100%;height:26px;background:#fafafa;}
