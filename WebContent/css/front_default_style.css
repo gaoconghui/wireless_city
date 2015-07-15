@@ -1,3 +1,593 @@
+/*yp_dialog begin*/
+.yp_dialog {
+	width: 250px;
+	height: 150px;
+	border: 1px solid #282828;
+	background: #f7f7f7;
+	position: fixed;
+	z-index: 10;
+	display: none;
+}
+
+.yp_dialog .dialog_title {
+	width: 250px;
+	height: 40px;
+	background: #282828;
+	color: #fff;
+	text-indent: 4px;
+	line-height: 40px;
+	font-size: 14px;
+	position: relative;
+}
+
+.yp_dialog .dialog_title span {
+	line-height: 20px;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+.yp_dialog .dialog_content {
+	width: 250px;
+	height: 110px;
+}
+
+.yp_dialog .dialog_content a {
+	background: #3083eb;
+	display: block;
+	height: 30px;
+	width: 50px;
+	margin: 40px 0 0 47px;
+	float: left;
+	color: #fff;
+	line-height: 30px;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 3px;
+}
+/*yp_dialog end*/
+/* salor.jsp */
+/*查詢開始*/
+.layout_all .wrapper_right .r_select .hd_reference {
+	height: 20px;
+	height: 20px;
+}
+
+.layout_all .wrapper_right .r_select .hd_reference a {
+	display: block;
+	float: left;
+	padding: 2px;
+}
+
+.layout_all .wrapper_right .r_select .hd_reference a:nth-child(odd):hover
+	{
+	text-decoration: underline;
+}
+
+.layout_all .wrapper_right .r_select .hd_attrref {
+	height: 20px;
+	border-top: 1px solid #005ea7;
+	margin-top: 10px;
+	padding-top: 20px;
+}
+
+.layout_all .wrapper_right .r_select .hd_attrref:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.layout_all .wrapper_right .r_select .hd_attrref p {
+	float: left;
+	border: 1px solid #ccc;
+	background: #f1f1f1;
+}
+
+.layout_all .wrapper_right .r_select .hd_attrref p:first-child {
+	border: 0;
+	background: #fff;
+}
+
+.layout_all .wrapper_right .r_select .hd_attrref a {
+	padding: 2px;
+}
+
+.layout_all .wrapper_right .r_select  .icon {
+	display: block;
+	float: left;
+	background: url(images/more_delete.png) no-repeat;
+	width: 12px;
+	height: 12px;
+}
+
+.layout_all .wrapper_right .r_select  .delete_icon {
+	background-position: -209px -407px;
+}
+
+.layout_all .wrapper_right .r_select  .more_icon {
+	background-position: -124px -408px;
+}
+/*-226px -410px*/
+.layout_all .wrapper_right .r_select .hd_attrref p a {
+	display: block;
+	float: left;
+}
+
+.layout_all .wrapper_right .r_select .hd_sort {
+	margin-left: 20px;
+}
+
+.layout_all .wrapper_right .r_select .hd_sort .s_details {
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+.layout_all .wrapper_right .r_select .hd_sort .s_details  a {
+	padding: 0px 5px;
+}
+
+.layout_all .wrapper_right .r_select .hd_sort .s_details  a:hover {
+	text-decoration: underline;
+}
+
+.layout_all .wrapper_right .r_select .hd_sort .s_details span a:first-child
+	{
+	font-weight: 700;
+	color: #000;
+}
+
+.layout_all .wrapper_right .r_select .hd_sort .s_details span a:hover {
+	text-decoration: none;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute {
+	margin-left: 20px;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute p {
+	padding-top: 20px;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute span:first-child {
+	font-weight: 700;
+	color: #000;
+	padding-right: 10px;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute p span a {
+	padding-right: 10px;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute p span a:hover {
+	text-decoration: underline;
+}
+
+/*查詢結束*/
+.layout_all .wrapper_right .r_select, .r_list_salor {
+	background: #fff;
+	padding: 20px 20px;
+}
+
+.layout_all .wrapper_right .r_select .s_main_title {
+	height: 30px;
+	font-weight: 900;
+	color: #000;
+}
+
+.layout_all .wrapper_right .r_select .s_sort input {
+	margin-top: 20px;
+	cursor: pointer;
+	display: block;
+	height: 30px;
+	width: 50px;
+	background: #0181ec;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	border: 0;
+}
+
+.layout_all .wrapper_right .r_select .s_sort .s_main {
+	width: 142px;
+	float: left;
+}
+
+.layout_all .wrapper_right .r_select .s_sort .s_main select {
+	width: 100px;
+}
+
+.layout_all .wrapper_right .r_select .s_attribute {
+	margin-top: 20px;
+	display: none;
+}
+
+.layout_all .wrapper_right .r_select .s_attribute p {
+	padding-top: 20px;
+}
+
+.layout_all .wrapper_right .r_select .s_attribute p:first-child {
+	border-top: 1px solid #005ea7;
+}
+
+.layout_all .wrapper_right .r_select .s_attribute p span a {
+	color: #005ea7;
+}
+
+.layout_all .wrapper_right .r_select .s_attribute p span a:first-child {
+	font-weight: 900;
+	color: #000;
+}
+
+.layout_all .wrapper_right .r_list_salor{
+	margin-top:20px;	
+}
+
+.layout_all .wrapper_right .r_list_salor .servic_title {
+	width: 730px;
+	height: 40px;
+	background: #d1d1d1;
+}
+
+.layout_all .wrapper_right .r_list_salor .servic_title .t_left {
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	color: #000;
+	font-weight: 900;
+	text-indent: 4px;
+}
+
+.layout_all .wrapper_right .r_list_salor .servic_title .t_right {
+	height: 40px;
+	float: right;
+	margin-right: 30px;
+	line-height: 30px;
+}
+
+.layout_all .wrapper_right .r_list_salor .servic_title .t_right .r_search,
+	.r_add {
+	float: left;
+	margin-top: 10px;
+}
+
+.layout_all .wrapper_right .r_list_salor .servic_title .t_right .r_search input
+	{
+	width: 150px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	color: #666;
+	padding-left: 10px;
+	display: block;
+	float: left;
+	border: 2px solid #39393f;
+}
+
+.layout_all .wrapper_right .r_list_salor .servic_title .t_right .r_search .s_btn
+	{
+	float: left;
+	width: 80px;
+	height: 24px;
+	background: #39393f;
+	color: #fff;
+	line-height: 20px;
+	text-align: center;
+	border: 0;
+	cursor: pointer;
+}
+
+.layout_all .wrapper_right .r_list_salor .servic_title .t_right .r_add span.span_text
+	{
+	width: 100px;
+	height: 24px;
+	display: block;
+	float: left;
+	text-align: center;
+	margin-left: 10px;
+	background: #39393f;
+	color: #fff;
+	line-height: 24px;
+	cursor: pointer;
+}
+
+.layout_all .wrapper_right .r_list_salor .content_title {
+	width: 730px;
+	height: 40px;
+	line-height: 40px;
+	background: #f1f1f1;
+}
+
+.layout_all .wrapper_right .r_list_salor .content_title div {
+	height: 40px;
+	border-left: 1px dotted #ccc;
+	float: left;
+	width: 134px;
+	padding-left: 5px;
+	position: relative;
+}
+
+.layout_all .wrapper_right .r_list_salor .content_title a {
+	background: url(images/icon.gif) no-repeat -49px -337px;
+	position: absolute;
+	top: 14px;
+	left: 32px;
+	width: 10px;
+	height: 10px;
+	display: block;
+	cursor: pointer;
+}
+
+.layout_all .wrapper_right .r_list_salor .content_title div:first-child {
+	border-left: 0px;
+}
+
+.layout_all .wrapper_right .r_list_salor .l_content {
+	width: 730px;
+	height: 120px;
+	border-bottom: 1px solid #999;
+	padding-top: 10px;
+}
+
+.layout_all .wrapper_right .r_list_salor .l_content div {
+	padding-left: 5px;
+	float: left;
+	width: 135px;
+	height: 100px;
+}
+
+.layout_all .wrapper_right .r_list_salor .l_content .l_operation {
+	float: left;
+}
+
+.layout_all .wrapper_right .r_list_salor .l_content .l_operation a {
+	width: 60px;
+	height: 30px;
+	background: #0181ec;
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	margin-bottom: 10px;
+	margin-left: 50px;
+}
+
+.layout_all .wrapper_right .r_list_salor .bd_paging {
+	height: 40px;
+	margin: 0 auto;;
+	margin-top: 10px;
+	display: inline-block;
+	margin-left:50%;
+}
+
+.layout_all .wrapper_right .r_list_salor .bd_paging a {
+	color: #0181ec;
+	padding: 0 8px;
+	height: 20px;
+	display: block;
+	float:left;
+	line-height: 20px;
+	border: 1px solid #ccc;
+	margin-left: 10px;
+	margin-top: 10px;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+.layout_all .wrapper_right .r_list_salor .bd_paging span {
+	color: #0181ec;
+	padding: 0 4px;
+	height: 20px;
+	font-weight: 700;
+	display: block;
+	float: left;
+	line-height: 20px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.layout_all .wrapper_right .r_list_salor .bd_paging a.sel {
+	border-color: #b61d1d;
+	background: #b61d1d;
+	color: #fff;
+	font-weight: 700;
+}
+
+/*add_services begin*/
+.add_services {
+	z-index: 11;
+	width: 900px;
+	position: fixed;
+	background: #fff;
+	box-shadow: 0 3px 7px 2px rgba(0, 0, 0, .4);
+	-webkit-box-shadow: 0 3px 7px 2px rgba(0, 0, 0, .4);
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	top: 50%;
+	left: 50%;
+	margin-left: -450px;
+	display: none;
+	padding-bottom: 40px;
+}
+
+.add_services .a_s_2 {
+	display: none;
+}
+
+.add_services .a_s_title {
+	position: relative;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	text-align: center;
+	border: 1px solid #ccc;
+}
+
+.add_services .a_s_title .t_icon {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background: url(images/wireless_icon.png) no-repeat -50px -2px;
+	cursor: pointer;
+	position: absolute;
+	top: 10px;
+	left: 870px;
+}
+
+.add_services .a_s_title .t_icon:hover {
+	background-position: -71px -2px;
+}
+
+.add_services  .a_s_main .a_s_pic, .a_s_desc, .a_s_sel, .a_s_choose {
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.add_services  .a_s_main .a_s_choose {
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.add_services  .a_s_main .a_s_sel .s_sort {
+	margin-left: 20px;
+}
+
+.add_services  .a_s_main .a_s_sel .s_sort .s_main {
+	width: 142px;
+	float: left;
+}
+
+.add_services  .a_s_main .a_s_sel .s_sort .s_main select {
+	width: 100px;
+}
+
+.add_services  .a_s_main .a_s_name {
+	height: 60px;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.add_services  .a_s_main .a_s_name span {
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+}
+
+.add_services  .a_s_main .a_s_name input {
+	height: 30px;
+	display: block;
+	line-height: 30px;
+	padding-left: 10px;
+	margin-left: 20px;
+}
+
+.add_services  .a_s_main .a_s_pic .p_upload {
+	width: 50px;
+	height: 30px;
+	background: #0181ec;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.add_services  .a_s_main .a_s_pic .p_preview {
+	height: 100px;
+	margin-top: 10px;
+}
+
+.add_services  .a_s_main .a_s_pic .p_preview img {
+	margin-left: 20px;
+}
+
+.add_services  .a_s_main .a_s_desc textarea {
+	resize: none;
+	width: 700px;
+	height: 40px;
+	margin-left: 20px;
+	border: 1px soid #ccc;
+}
+
+.add_services  .a_s_main .a_s_desc div {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.add_services  .next_step, .pre_step {
+	width: 50px;
+	height: 30px;
+	background: #0181ec;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	margin: 40px 0px 0px 425px;
+}
+
+.add_services  .a_s_main .a_s_attribute p {
+	margin-top: 10px;
+	float: left;
+	margin-left: 40px;
+}
+
+.add_services  .a_s_main .a_s_attribute p input {
+	font-size: 12px;
+	padding-left: 5px;
+	width: 100px;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.add_services  .a_s_main .a_s_attribute .at_fill {
+	float: left;
+	width: 430px;
+}
+
+.add_services  .a_s_main .a_s_attribute .at_fill:first-child {
+	border-right: 1px dashed #ccc;
+}
+
+.add_services  .a_s_main .a_s_attribute .at_fill .at_add_newattribute {
+	margin-left: 20px;
+	width: 60px;
+	height: 30px;
+	background: #0181ec;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	margin-top: -30px;
+}
+
+.add_services  .a_s_main .a_s_attribute .at_fill .at_new {
+	
+}
+
+.add_services  .a_s_2 .next_step, .pre_step {
+	margin: 0;
+	float: left;
+	margin: 40px 0px 0px 20px;
+}
+
+.add_services  .pre_step {
+	margin-left: 390px;
+}
+/*end add_services*/
+/* salor.jsp */
 /*search.jsp*/
 .layout_hd {
 	width: 900px;
@@ -423,16 +1013,10 @@ form:after{
 .layout_all .wrapper_right {
 	float: left;
 	width: 770px;
-	position: relative;
-	height: 500px;
 }
 
-.layout_all .wrapper_right .r_list {
-	width: 770px;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
+
+.layout_all .wrapper_right #info{margin-bottom:40px;}
 
 .layout_all .wrapper_right #info .l_details {
 	background: #fff;

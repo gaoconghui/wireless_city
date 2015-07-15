@@ -53,7 +53,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</dl>
 		</div>
 		<div class="wrapper_right" >
-			<div id="all" class="r_list dis_none" >全部功能展示页</div>
 			<div id="info" class="r_list">
 				<div class="l_details">
 					<div class="title">基本资料</div>
@@ -92,12 +91,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			initialize();
 		});
 		function initialize(){
-			$("#all_function").click(function(){
-				$("#all").show().siblings().hide();
-			});
-			$("#information").click(function(){
-				$("#info").show().siblings().hide();
-			});
 		}
 	</script>
 </body>
