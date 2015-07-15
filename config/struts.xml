@@ -92,7 +92,7 @@
 		<action name="SearchProviderResourceAction_*" class="searchProviderResourceAction"
 			method="{1}">
 			<!-- <result name="resource">/provider/resource_list.jsp</result> -->
-			<result name="resource">/salor.jsp</result>
+			<result name="resource">/font/salor.jsp</result>
 			<result name="resourcelist">/provider/resourcePage.jsp</result>
 		</action>
 

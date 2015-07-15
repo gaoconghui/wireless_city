@@ -32,7 +32,7 @@
 					</tr>
 				</s:iterator>
 				<tr>
-					<td>资源描述:</td>
+					<td>资源描述	:</td>
 					<td><s:textarea name="description"></s:textarea></td>
 				</tr>
 				<tr>

@@ -9,7 +9,6 @@
 </head>
 <body>
 	<center>
-		<s:debug></s:debug>
 		<h1>资源列表</h1>
 		<s:iterator var="c" value="catalogues">
 			<a

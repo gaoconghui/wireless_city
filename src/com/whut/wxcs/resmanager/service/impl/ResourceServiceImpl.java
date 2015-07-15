@@ -10,9 +10,11 @@ import java.util.Map.Entry;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Conjunction;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 import sun.jdbc.odbc.OdbcDef;
 
 import com.whut.wxcs.resmanager.dao.BaseDao;
+import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.CriteriaResource;
 import com.whut.wxcs.resmanager.model.Provider;
@@ -247,9 +250,45 @@ public class ResourceServiceImpl implements ResourceService {
 		return getTidFromCountMap(newMap, sum);
 	}
 
+	/**
+	 * 在criteria 里增加属性拦截 相同的属性不同值用或连接，不同属性之间用且连接
+	 * 
+	 * @param model
+	 * @param criteria
+	 */
 	private void addCriteriaAttribute(CriteriaResource model, Criteria criteria) {
+		if (model.getAttrMap().size() != 0) {
 
+			Conjunction conjunction;
+			Attribute attribute;
+			DetachedCriteria detachedCriteria;
+
+			// 遍历 给每个限定的attribute 增加拦截
+			for (String attr : model.getAttrMap().keySet()) {
+
+				conjunction = Restrictions.conjunction();
+				conjunction.add(Restrictions.eq("value", getValue(attr)));
+				conjunction.add(Restrictions.eq("attribute.id",
+						getAttributeId(attr)));
+
+				detachedCriteria = DetachedCriteria
+						.forClass(ResourceAttribute.class).add(conjunction)
+						.setProjection(Property.forName("resource.id"));
+				criteria.add(Property.forName("id").in(detachedCriteria));
+			}
+
+		}
 	}
+	
+	// 传入string 获取出value 如传入25_3 取出3
+		private String getValue(String attr) {
+			return attr.substring(attr.indexOf("_") + 1, attr.length());
+		}
+
+		// 传入string 获取出attributeid 如传入25_3 取出25
+		private long getAttributeId(String attr) {
+			return Long.parseLong(attr.substring(0, attr.indexOf("_")));
+		}
 
 	private void addCriteriaOrderByTime(CriteriaResource model,
 			Criteria criteria) {

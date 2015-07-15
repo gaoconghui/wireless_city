@@ -1,8 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!doctype html>
 <html>
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <title>无线城市-提供商管理页</title>
 <meta name="keywords" content="关键词,关键词">
@@ -910,45 +915,60 @@ body {
 						<div class="l_img">
 							<img alt="" src="images/list_demo.jpg" height="100" width="100" />
 						</div>
-						<div class="l_name">
-							名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒
-						</div>
-						<div class="l_desc">
-							描述
-						</div>
-						<div class="l_time">
-							发布时间
-						</div>
+						<div class="l_name">名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒</div>
+						<div class="l_desc">描述</div>
+						<div class="l_time">发布时间</div>
 						<div class="l_operation">
-							<a href="javascript:void(0)" class="update">修改</a>
-							<a href="javascript:void(0)" class="delete">删除</a>
-							<a href="javascript:void(0)">查看详情</a>
+							<a href="javascript:void(0)" class="update">修改</a> <a
+								href="javascript:void(0)" class="delete">删除</a> <a
+								href="javascript:void(0)">查看详情</a>
 						</div>
 					</div> -->
 				</div>
 				<div class="l_paging">
-					<!-- <a href="javascript:void(0)" class="sel">1</a> <a
+					<!-- 					<a href="javascript:void(0)" class="sel">1</a> <a
 						href="javascript:void(0)">2</a> <a href="javascript:void(0)">3</a>
 					<a href="javascript:void(0)">4</a> <a href="javascript:void(0)"
 						class="next">下一页&gt;</a> -->
-					当前第
-					<s:property value="page.pageNo" />
-					页
-					<s:if test="page.hasPrev">
-						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.prevPage}"
-							class="next">上一页</s:a>
+					<s:a
+						href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=1">首页</s:a>
+					<s:if test="pageNum-3>0">
+						<span>...</span>
 					</s:if>
-					<s:if test="page.hasNext">
+					<s:if test="pageNum-2>0">
 						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=1"
-							class="sel">1</s:a>
+							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum-2}">
+							<s:property value="%{pageNum-2}" />
+						</s:a>
+					</s:if>
+					<s:if test="pageNum-1>0">
 						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.nextPage}"
-							class="next">下一页</s:a>
+							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum-1}">
+							<s:property value="%{pageNum-1}" />
+						</s:a>
 					</s:if>
 					<s:a
-						href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}">末页</s:a>
+						href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum}">
+						<s:property value="%{pageNum}" />
+					</s:a>
+					<s:if test="pageNum+1<=page.totalPageNumber">
+						<s:a
+							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum+1}">
+							<s:property value="%{pageNum+1}" />
+						</s:a>
+					</s:if>
+					<s:if test="pageNum+2<=page.totalPageNumber">
+						<s:a
+							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum+2}">
+							<s:property value="%{pageNum+2}" />
+						</s:a>
+					</s:if>
+					<s:if test="pageNum+3<=page.totalPageNumber">
+						<span>...</span>
+					</s:if>
+					<s:a href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}">
+					     尾页
+					</s:a>
 				</div>
 			</div>
 		</div>

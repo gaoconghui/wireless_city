@@ -488,7 +488,7 @@ body {
 	</div>
 	<!-- header end-->
 	<div class="layout_hd">
-			<s:if test="page.catalogue.parent.id != 1">
+		<s:if test="page.catalogue.parent.id != 1">
 			<div class="hd_reference" id="reference">
 				<s:a href="javascript:void(0)">全部类目
 						</s:a>
@@ -539,12 +539,6 @@ body {
 				</div>
 			</div>
 		</s:if>
-
-
-
-
-
-
 		<div class="hd_attrref" id="hd_attrref">
 			<p>
 				<a href="javascript:void(0)">所有属性</a>
@@ -579,7 +573,6 @@ body {
 					</span>
 				</p>
 			</s:iterator>
-
 		</div>
 		<div class="hd_search">
 			<s:form action="SearchResourceAction_inFindByKeyWord" id="s_self">

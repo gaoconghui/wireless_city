@@ -122,6 +122,11 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 			}
 			cr.getAttrMap().put(attrStr, attrLab);
 		}
+		int pid = 1;// TODO
+		page = resourceService.searchByCriteria(pid, cr);
+		model = cr ;
+		System.out.println(page);
+
 		return "resource";
 	}
 
@@ -135,9 +140,13 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String searchResourceBycatalogue() {
 		clearAndInitRS();
+		CriteriaResource cr = checkRsidAndGetCR();
 		int pid = 1;// 后期改为provider.getId()
-		page = resourceService.searchByCriteria(pid, model);
-		System.out.println(page.getCatalogue().getParent().getChild().size());
+		page = resourceService.searchByCriteria(pid, cr);
+		model = cr;
+		/*
+		 * System.out.println(page.getCatalogue().getParent().getChild().size());
+		 */
 		return "resource";
 	}
 

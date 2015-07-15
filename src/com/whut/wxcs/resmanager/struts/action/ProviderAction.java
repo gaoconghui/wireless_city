@@ -34,6 +34,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 	private Map<String, Object> session;
 	private Catalogue catalogue;
 	private InputStream inputStream;
+	private List<Catalogue> catalogues;
 
 	public InputStream getInputStream() {
 		return inputStream;
@@ -96,11 +97,14 @@ public class ProviderAction extends BaseAction<Provider> implements
 				e.printStackTrace();
 			}
 		}
-		session.put("provider", provider);
-		try {
-			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		if (provider.getCheckState() == 1) {
+			session.put("provider", provider);
+			catalogues = catalogueService.getRootCatalogue();
+			try {
+				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
 		}
 		return "ajax-success";
 
