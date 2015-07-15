@@ -8,96 +8,455 @@
 %>
 <!doctype html>
 <html>
-	<head>
-		<base href="<%=basePath%>">
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<title>无线城市-搜索页</title>
-		<meta name="keywords" content="关键词,关键词">
-		<meta name="description" content="">
-		<link href="css/reset.css" rel="stylesheet">
-		<link href="css/front_default_style.css" rel="stylesheet">
-		<style type="text/css">
-			/*header beign*/
-			::selection {color: #fff;background: #f99750;}
-			form:after{content:"";display:block;clear:both;}
-			body{background:#fafafa;cursor:default;color:#444;}
-			.title_fixed{width:100%;height:26px;background:#fafafa;}
-			.title_fixed .s_right{float:right;width:400px;font-size:12px;line-height:26px;}
-			.title_fixed .s_right .r_login,.r_register{width:50px;height:43px;float:right;cursor:pointer;}
-			.title_fixed .s_right .r_login,.r_register a{color:#444;}
-			.header{width:100%;background:#fff;height:100px;}
-			.header .h_fir{width:1200px;height:80px;margin:0px auto;}
-			.header .h_fir .f_logo{width:188px;height:50px;margin:10px 100px 0px 25px; background:url(images/logo.png) no-repeat;float:left;}
-			.header .h_fir .f_search{width:600px;height:60px;float:left;}
-			.header .h_fir .f_search .s_input{width:500px;height:42px;margin-top:8px;}
-			.header .h_fir .f_search .s_input input:first-child{width:400px;height:40px;border:2px solid #b61d1d;border-right:0;line-height:40px;color:#666;padding-left:10px;display:block;float:left;}
-			.header .h_fir .f_search .s_input .i_btn{width:80px;height:44px;background:#b61d1d;color:#fff;line-height:40px;text-align:center;font-size:16px; border:0;float:left;cursor:pointer;}
-			.header .h_fir .f_search .s_input .i_btn:hover{background:#c81623;}
-			.header .h_fir .f_contact{float:left;width:250px;height:70px;line-height:70px; }
-			.header .h_fir .f_contact .c_fir{width:250px;height:70px; color:#b61d1d;font-size:18px;font-weight:400;}
-			.header .h_fir .f_contact .c_fir .f_icon{width:20px;height:20px;background:url(images/wireless_icon.png) no-repeat -24px -1px; display:block;margin:25px 5px 0px 5px;float:left;}
-			.header .h_fir .f_contact .c_fir .f_text{float:left;}
-		/*header end*/
-		
-			
-			.layout_hd{width:900px;margin:40px auto;background:#fff;border:1px solid #dedede;padding:20px 0;}
-			.layout_hd .hd_reference{height:20px; width:860px;height:20px;margin-left:20px;}
-			.layout_hd .hd_reference a{display:block;float:left;padding:2px;}
-			.layout_hd .hd_reference a:nth-child(odd):hover{text-decoration:underline;}
-			.layout_hd .hd_attrref{height:20px; border-top:1px solid #005ea7;width:860px;margin-top:10px;padding-top:20px;margin-left:20px;}
-			.layout_hd .hd_attrref:after{content:"";display:block;clear:both;}
-			.layout_hd .hd_attrref p{float:left;border:1px solid #ccc;background:#f1f1f1;}
-			.layout_hd .hd_attrref p:first-child{border:0;background:#fff; }
-			.layout_hd .hd_attrref a{ padding:2px; }
-			.layout_hd  .icon{display:block;float:left;background:url(images/more_delete.png) no-repeat;width:12px;height:12px; }
-			.layout_hd  .delete_icon{background-position:-209px -407px;}
-			.layout_hd  .more_icon{background-position:-124px -408px;}
-			/*-226px -410px*/
-			.layout_hd .hd_attrref p a{display:block;float:left;}
-			.layout_hd .hd_sort{width:860px;margin-left:40px;}
-			.layout_hd .hd_sort .s_details{margin-top:10px;padding-bottom:10px;}
-			.layout_hd .hd_sort .s_details  a{padding:0px 5px;}
-			.layout_hd .hd_sort .s_details  a:hover{text-decoration:underline;}
-			.layout_hd .hd_sort .s_details span a:first-child{font-weight:700;color:#000;}
-			.layout_hd .hd_sort .s_details span a:hover{text-decoration:none;}
+<head>
+<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>无线城市-搜索页</title>
+<meta name="keywords" content="关键词,关键词">
+<meta name="description" content="">
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/front_default_style.css" rel="stylesheet">
+<style type="text/css">
+/*header beign*/
+::selection {
+	color: #fff;
+	background: #f99750;
+}
 
-			.layout_hd .hd_attribute{width:860px;margin-left:40px;}
-			.layout_hd .hd_attribute p{padding-top:20px;}
-			.layout_hd .hd_attribute span:first-child{font-weight:700;color:#000;padding-right:10px;}
-			.layout_hd .hd_attribute p span a{padding-right:10px;}
-			.layout_hd .hd_attribute p span a:hover{text-decoration:underline;}
-			
-			.layout_hd .hd_search{margin-top:20px;padding-left:20px;}
-			.layout_hd .hd_search input{width:300px;height:30px;border:2px solid #b61d1d;border-right:0;line-height:30px;color:#666;padding-left:10px;display:block;float:left;}
-			.layout_hd .hd_search .s_btn{width:80px;height:34px;background:#b61d1d;color:#fff;line-height:30px;text-align:center;font-size:16px; border:0;float:left;cursor:pointer;}
-			.layout_hd .hd_search .s_btn:hover{background:#c81623;}
+form:after {
+	content: "";
+	display: block;
+	clear: both;
+}
 
-			.layout_body{width:900px;margin:40px auto;background:#fff;border:1px solid #dedede;padding-bottom:10px;}
-			.layout_body .bd_title{width:900px;height:40px;background:#d1d1d1;}
-			.layout_body .bd_title .bd_left{padding:0px 10px;margin-top:10px;float:right;line-height:20px;}
-			
-			
-			.layout_body .bd_title .bd_right{height:40px;float:right;margin-right:30px;line-height:30px;}
-			.layout_body .bd_title .bd_right span{display:block;float:left;margin-top:5px;text-align:center;margin-left:10px;border:1px solid #39393f; }
-			.layout_body .bd_title .bd_right span a{width:60px;height:30px; display:block;}
-			.layout_body .bd_title .bd_right span:first-child a{background:#39393f;color:#fff;}
-			.layout_body .bd_list{width:860px;margin-left:20px;}
-			.layout_body .bd_list .l_content{width:860px;height:120px;border-bottom:1px solid #999;padding-top:10px;}
-			.layout_body .bd_list .l_content .l_img{width:100px;height:100px; ;float:left;}
-			.layout_body .bd_list .l_content .l_details{float:left;width:450px;height:100px;}
-			.layout_body .bd_list .l_content .l_details span{width:430px;height:25px;line-height:25px;padding-left:20px;float:left; ;}
-			.layout_body .bd_list .l_content .l_visit{float:left;margin-left:200px;margin-top:30px;}
-			.layout_body .bd_list .l_content .l_visit a{width:60px;height:40px;background:#0181ec;display:block;line-height:40px;text-align:center;color:#fff;border-radius:3px;-webkit-border-radius:3px;}
-			.layout_body .bd_paging{height:40px;margin:0 auto; display:inline-block;margin-top:10px;margin-left:50%;}
-			.layout_body .bd_paging a{color:#0181ec;padding:0 8px;height:20px;display:block;float:left;line-height:20px;border:1px solid #ccc;margin-left:10px;margin-top:10px;border-radius:2px;-webkit-border-radius:2px;}
-			.layout_body .bd_paging span{color:#0181ec;padding:0 4px;height:20px;font-weight:700;display:block;float:left;line-height:20px;margin-left:10px;margin-top:10px;}
-			.layout_body .bd_paging a.sel{border-color:#b61d1d;background:#b61d1d;color:#fff;font-weight:700;}
-		</style>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/placeholder.js"></script>
-		<script type="text/javascript" src="js/tmAjax.js"></script>
-		<script type="text/javascript" src="js/util.js"></script>
-	</head>
+body {
+	background: #fafafa;
+	cursor: default;
+	color: #444;
+}
+
+.title_fixed {
+	width: 100%;
+	height: 26px;
+	background: #fafafa;
+}
+
+.title_fixed .s_right {
+	float: right;
+	width: 400px;
+	font-size: 12px;
+	line-height: 26px;
+}
+
+.title_fixed .s_right .r_login, .r_register {
+	width: 50px;
+	height: 43px;
+	float: right;
+	cursor: pointer;
+}
+
+.title_fixed .s_right .r_login, .r_register a {
+	color: #444;
+}
+
+.header {
+	width: 100%;
+	background: #fff;
+	height: 100px;
+}
+
+.header .h_fir {
+	width: 1200px;
+	height: 80px;
+	margin: 0px auto;
+}
+
+.header .h_fir .f_logo {
+	width: 188px;
+	height: 50px;
+	margin: 10px 100px 0px 25px;
+	background: url(images/logo.png) no-repeat;
+	float: left;
+}
+
+.header .h_fir .f_search {
+	width: 600px;
+	height: 60px;
+	float: left;
+}
+
+.header .h_fir .f_search .s_input {
+	width: 500px;
+	height: 42px;
+	margin-top: 8px;
+}
+
+.header .h_fir .f_search .s_input input:first-child {
+	width: 400px;
+	height: 40px;
+	border: 2px solid #b61d1d;
+	border-right: 0;
+	line-height: 40px;
+	color: #666;
+	padding-left: 10px;
+	display: block;
+	float: left;
+}
+
+.header .h_fir .f_search .s_input .i_btn {
+	width: 80px;
+	height: 44px;
+	background: #b61d1d;
+	color: #fff;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+	border: 0;
+	float: left;
+	cursor: pointer;
+}
+
+.header .h_fir .f_search .s_input .i_btn:hover {
+	background: #c81623;
+}
+
+.header .h_fir .f_contact {
+	float: left;
+	width: 250px;
+	height: 70px;
+	line-height: 70px;
+}
+
+.header .h_fir .f_contact .c_fir {
+	width: 250px;
+	height: 70px;
+	color: #b61d1d;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.header .h_fir .f_contact .c_fir .f_icon {
+	width: 20px;
+	height: 20px;
+	background: url(images/wireless_icon.png) no-repeat -24px -1px;
+	display: block;
+	margin: 25px 5px 0px 5px;
+	float: left;
+}
+
+.header .h_fir .f_contact .c_fir .f_text {
+	float: left;
+}
+/*header end*/
+.layout_hd {
+	width: 900px;
+	margin: 40px auto;
+	background: #fff;
+	border: 1px solid #dedede;
+	padding: 20px 0;
+}
+
+.layout_hd .hd_reference {
+	height: 20px;
+	width: 860px;
+	height: 20px;
+	margin-left: 20px;
+}
+
+.layout_hd .hd_reference a {
+	display: block;
+	float: left;
+	padding: 2px;
+}
+
+.layout_hd .hd_reference a:nth-child(odd):hover {
+	text-decoration: underline;
+}
+
+.layout_hd .hd_attrref {
+	height: 20px;
+	border-top: 1px solid #005ea7;
+	width: 860px;
+	margin-top: 10px;
+	padding-top: 20px;
+	margin-left: 20px;
+}
+
+.layout_hd .hd_attrref:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.layout_hd .hd_attrref p {
+	float: left;
+	border: 1px solid #ccc;
+	background: #f1f1f1;
+}
+
+.layout_hd .hd_attrref p:first-child {
+	border: 0;
+	background: #fff;
+}
+
+.layout_hd .hd_attrref a {
+	padding: 2px;
+}
+
+.layout_hd  .icon {
+	display: block;
+	float: left;
+	background: url(images/more_delete.png) no-repeat;
+	width: 12px;
+	height: 12px;
+}
+
+.layout_hd  .delete_icon {
+	background-position: -209px -407px;
+}
+
+.layout_hd  .more_icon {
+	background-position: -124px -408px;
+}
+/*-226px -410px*/
+.layout_hd .hd_attrref p a {
+	display: block;
+	float: left;
+}
+
+.layout_hd .hd_sort {
+	width: 860px;
+	margin-left: 40px;
+}
+
+.layout_hd .hd_sort .s_details {
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+.layout_hd .hd_sort .s_details  a {
+	padding: 0px 5px;
+}
+
+.layout_hd .hd_sort .s_details  a:hover {
+	text-decoration: underline;
+}
+
+.layout_hd .hd_sort .s_details span a:first-child {
+	font-weight: 700;
+	color: #000;
+}
+
+.layout_hd .hd_sort .s_details span a:hover {
+	text-decoration: none;
+}
+
+.layout_hd .hd_attribute {
+	width: 860px;
+	margin-left: 40px;
+}
+
+.layout_hd .hd_attribute p {
+	padding-top: 20px;
+}
+
+.layout_hd .hd_attribute span:first-child {
+	font-weight: 700;
+	color: #000;
+	padding-right: 10px;
+}
+
+.layout_hd .hd_attribute p span a {
+	padding-right: 10px;
+}
+
+.layout_hd .hd_attribute p span a:hover {
+	text-decoration: underline;
+}
+
+.layout_hd .hd_search {
+	margin-top: 20px;
+	padding-left: 20px;
+}
+
+.layout_hd .hd_search input {
+	width: 300px;
+	height: 30px;
+	border: 2px solid #b61d1d;
+	border-right: 0;
+	line-height: 30px;
+	color: #666;
+	padding-left: 10px;
+	display: block;
+	float: left;
+}
+
+.layout_hd .hd_search .s_btn {
+	width: 80px;
+	height: 34px;
+	background: #b61d1d;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
+	font-size: 16px;
+	border: 0;
+	float: left;
+	cursor: pointer;
+}
+
+.layout_hd .hd_search .s_btn:hover {
+	background: #c81623;
+}
+
+.layout_body {
+	width: 900px;
+	margin: 40px auto;
+	background: #fff;
+	border: 1px solid #dedede;
+	padding-bottom: 10px;
+}
+
+.layout_body .bd_title {
+	width: 900px;
+	height: 40px;
+	background: #d1d1d1;
+}
+
+.layout_body .bd_title .bd_left {
+	padding: 0px 10px;
+	margin-top: 10px;
+	float: right;
+	line-height: 20px;
+}
+
+.layout_body .bd_title .bd_right {
+	height: 40px;
+	float: right;
+	margin-right: 30px;
+	line-height: 30px;
+}
+
+.layout_body .bd_title .bd_right span {
+	display: block;
+	float: left;
+	margin-top: 5px;
+	text-align: center;
+	margin-left: 10px;
+	border: 1px solid #39393f;
+}
+
+.layout_body .bd_title .bd_right span a {
+	width: 60px;
+	height: 30px;
+	display: block;
+}
+
+.sort_1 {
+	background: #39393f;
+	color: #fff;
+}
+
+.sort_2 {
+	background: #fff;
+	color: #39393f;
+}
+
+.layout_body .bd_list {
+	width: 860px;
+	margin-left: 20px;
+}
+
+.layout_body .bd_list .l_content {
+	width: 860px;
+	height: 120px;
+	border-bottom: 1px solid #999;
+	padding-top: 10px;
+}
+
+.layout_body .bd_list .l_content .l_img {
+	width: 100px;
+	height: 100px;;
+	float: left;
+}
+
+.layout_body .bd_list .l_content .l_details {
+	float: left;
+	width: 450px;
+	height: 100px;
+}
+
+.layout_body .bd_list .l_content .l_details span {
+	width: 430px;
+	height: 25px;
+	line-height: 25px;
+	padding-left: 20px;
+	float: left;;
+}
+
+.layout_body .bd_list .l_content .l_visit {
+	float: left;
+	margin-left: 200px;
+	margin-top: 30px;
+}
+
+.layout_body .bd_list .l_content .l_visit a {
+	width: 60px;
+	height: 40px;
+	background: #0181ec;
+	display: block;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.layout_body .bd_paging {
+	height: 40px;
+	margin: 0 auto;
+	display: inline-block;
+	margin-top: 10px;
+	margin-left: 50%;
+}
+
+.layout_body .bd_paging a {
+	color: #0181ec;
+	padding: 0 8px;
+	height: 20px;
+	display: block;
+	float: left;
+	line-height: 20px;
+	border: 1px solid #ccc;
+	margin-left: 10px;
+	margin-top: 10px;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+.layout_body .bd_paging span {
+	color: #0181ec;
+	padding: 0 4px;
+	height: 20px;
+	font-weight: 700;
+	display: block;
+	float: left;
+	line-height: 20px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.layout_body .bd_paging a.sel {
+	border-color: #b61d1d;
+	background: #b61d1d;
+	color: #fff;
+	font-weight: 700;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/placeholder.js"></script>
+<script type="text/javascript" src="js/tmAjax.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+</head>
 <body>
 	<!-- header begin-->
 	<%
@@ -134,7 +493,7 @@
 	</div>
 	<!-- header end-->
 	<div class="layout_hd">
-			<s:if test="page.catalogue.parent.id != 1">
+		<s:if test="page.catalogue.parent.id != 1">
 			<div class="hd_reference" id="reference">
 				<s:a href="javascript:void(0)">全部类目</s:a>
 				<s:if test="page.catalogue.parent.parent.id != 1">
@@ -146,12 +505,12 @@
 							<s:property value="page.catalogue.parent.parent.parent.name" />
 						</s:a>
 					</s:if>
-						<s:a cssClass="more_icon icon"
-							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}"></s:a>
-						<s:a
-							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}">
-							<s:property value="page.catalogue.parent.parent.name" />
-						</s:a>
+					<s:a cssClass="more_icon icon"
+						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}"></s:a>
+					<s:a
+						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}">
+						<s:property value="page.catalogue.parent.parent.name" />
+					</s:a>
 				</s:if>
 				<s:a cssClass="more_icon icon"
 					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.id}"></s:a>
@@ -238,9 +597,19 @@
 		<div class="bd_title">
 			<div class="bd_right" id="order_by">
 				<span> <s:a
-						href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=0">按时间</s:a>
+						href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=0">
+				 按时间<i class="iconfont"> <s:if test="orderName == 0">
+								<s:if test="orderSequence == 0">&#xe600;</s:if>
+								<s:if test="orderSequence == 1">&#xe601;</s:if>
+							</s:if></i>
+					</s:a>
 				</span> <span> <s:a
-						href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=1">按名称</s:a>
+						href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=1">按名称<i
+							class="iconfont"> <s:if test="orderName == 1">
+								<s:if test="orderSequence == 0">&#xe600;</s:if>
+								<s:if test="orderSequence == 1">&#xe601;</s:if>
+							</s:if></i>
+					</s:a>
 				</span>
 			</div>
 			<div class="bd_left">
@@ -281,7 +650,7 @@
 		<div class="bd_paging" id="paging">
 			<div id="center_page">
 				<s:a href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=1"
-				id="first">首页</s:a>
+					id="first">首页</s:a>
 				<s:if test="pageNum -3 >0">
 					<span>. . .</span>
 				</s:if>
@@ -321,7 +690,7 @@
 				<s:if test="pageNum+3 <= page.totalPageNumber">
 					<span>. . .</span>
 				</s:if>
-	
+
 				<s:a
 					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}"
 					id="last">尾页</s:a>
@@ -339,8 +708,8 @@
 		});
 		function initialize() {
 			//页码居中
-			var width=$("#paging").width();
-			$("#center_page").css("marginLeft",-width/2);
+			var width = $("#paging").width();
+			$("#center_page").css("marginLeft", -width / 2);
 			//分页
 			/* $("#paging").find("a").each(function(){
 				//页数
@@ -494,18 +863,18 @@
 			};
 
 			findCategory(options);
-
-			//排序
-			$("#order_by").find("span").click(function() {
-				$(this).find("a").css({
-					"background" : "#39393f",
-					"color" : "#fff"
-				});
-				$(this).siblings().find("a").css({
-					"background" : "#fff",
-					"color" : "#444"
-				});
-			});
+			/* 
+			 //排序
+			 $("#order_by").find("span").click(function() {
+			 $(this).find("a").css({
+			 "background" : "#39393f",
+			 "color" : "#fff"
+			 });
+			 $(this).siblings().find("a").css({
+			 "background" : "#fff",
+			 "color" : "#444"
+			 });
+			 }); */
 			//input placeholder 兼容
 			$("input[placeholder]").placeholder();
 		}
