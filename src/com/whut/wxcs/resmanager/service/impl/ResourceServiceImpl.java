@@ -19,10 +19,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 
 import com.whut.wxcs.resmanager.dao.BaseDao;
-
 import com.whut.wxcs.resmanager.model.Attribute;
 import com.whut.wxcs.resmanager.model.Catalogue;
-
 import com.whut.wxcs.resmanager.model.CriteriaResource;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;
@@ -30,6 +28,7 @@ import com.whut.wxcs.resmanager.model.ResourceAttribute;
 import com.whut.wxcs.resmanager.model.ResourcePage;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ResourceService;
+import com.whut.wxcs.resmanager.util.DataUtils;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Service("resourceService")
@@ -350,9 +349,9 @@ public class ResourceServiceImpl implements ResourceService {
 	@Override
 	public List<Catalogue> getProviderCatalogue(List<Resource> resources) {
 		for (Resource resource : resources) {
-/*			if (resource.getCatalogue().getId()) {
-
-			}*/
+			if (DataUtils.isTrible(resource.getCatalogue().getId())) {
+                
+			}
 		}
 		return null;
 	}

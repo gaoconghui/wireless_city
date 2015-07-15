@@ -35,4 +35,16 @@ public class DataUtils {
 		}
 		return null;
 	}
+
+	/**
+	 * 判断catalogue_id的位数是否为3
+	 */
+	public static boolean isTrible(Long l) {
+		String lStr = l.toString();
+		if (lStr.length() == 3) {
+			return true;
+		}
+		return false;
+	}
+
 }
