@@ -27,28 +27,28 @@
 				<s:a href="javascript:void(0)">全部类目</s:a>
 				<s:if test="page.catalogue.parent.parent.id != 1">
 					<s:if test="page.catalogue.parent.parent.parent.id != 1">
-						<s:a cssClass="more_icon icon"
-							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.parent.id}"></s:a>
+						<s:a cssClass="more_icon icon iconfont"
+							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.parent.id}">&#xe615;</s:a>
 						<s:a
 							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.parent.id}">
 							<s:property value="page.catalogue.parent.parent.parent.name" />
 						</s:a>
 					</s:if>
-					<s:a cssClass="more_icon icon"
-						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}"></s:a>
+					<s:a cssClass="more_icon icon iconfont"
+						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}">&#xe615;</s:a>
 					<s:a
 						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}">
 						<s:property value="page.catalogue.parent.parent.name" />
 					</s:a>
 				</s:if>
-				<s:a cssClass="more_icon icon"
-					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.id}"></s:a>
+				<s:a cssClass="more_icon icon iconfont"
+					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.id}">&#xe615;</s:a>
 				<s:a
 					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.id}">
 					<s:property value="page.catalogue.parent.name" />
 				</s:a>
-				<s:a cssClass="more_icon icon"
-					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.id}"></s:a>
+				<s:a cssClass="more_icon icon iconfont"
+					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.id}">&#xe615;</s:a>
 				<s:a
 					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.id}">
 					<s:property value="page.catalogue.name" />
@@ -75,7 +75,7 @@
 				<a href="javascript:void(0)">所有属性</a>
 			</p>
 			<s:iterator value="attrMap">
-				<a href="javascript:void(0)" class="more_icon icon"></a>
+				<a href="javascript:void(0)" class="more_icon icon iconfont">&#xe615;</a>
 				<p style="border-color: rgb(204, 204, 204);" class="attr_show">
 					<s:a
 						href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{key}&attrLab=%{value}">
@@ -83,12 +83,13 @@
 					</s:a>
 					<s:a style="background-position: -209px -407px;"
 						href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{key}&attrLab=%{value}"
-						cssClass="delete_icon icon"></s:a>
+						cssClass="delete_icon icon iconfont">&#xe613;</s:a>
 				</p>
 			</s:iterator>
 		</div>
 		<div class="hd_attribute" id="hd_attribute">
 			<s:iterator value="page.attrList" status="rowst">
+				<!-- TODO 颜色class="colorgradient" -->
 				<p>
 					<span><s:property value="name" />:</span> <span> <s:iterator
 							value="enumValue" status="st">
@@ -134,14 +135,14 @@
 			<div class="bd_left" id="bd_left">
 				<label>默认显示条数</label> 
 				<select>
-					<option value="10">
-						<s:a href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=10">10</s:a>
+					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=10">
+						10
 					</option>
-					<option value="20">
-						<s:a href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=20">20</s:a>
+					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=20">
+						20
 					</option>
-					<option value="50">
-						<s:a href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize=50">50</s:a>
+					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=50">
+						50
 					</option>
 				</select>
 			</div>
