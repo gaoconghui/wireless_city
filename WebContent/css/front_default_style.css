@@ -437,8 +437,14 @@
 	position: absolute;
 	top: 10px;
 	left: 870px;
+	line-height:20px;
+	color:#0181ec;
+	font-size:26px;
 }
 
+.add_services .a_s_title .t_icon:hover{
+	color:#b61d1d;
+}
 
 .add_services  .a_s_main .a_s_pic, .a_s_desc, .a_s_sel, .a_s_choose {
 	margin-top: 10px;
