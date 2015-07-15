@@ -190,7 +190,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			loginBoxShow();
 			loginValidator();
 			init();
-			
 			registerValidate();
 			changeUsertype();
 		});

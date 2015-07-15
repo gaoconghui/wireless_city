@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- header begin-->
 	<s:include value="header.jsp"></s:include>
 	<!-- header end-->
-	<div class="layout_hd">
+	<div class="details_layout_hd">
 		<div class="hd_reference">
 			<a href="javascript:void(0)">所有分类</a>
 			<a href="javascript:void(0)">&gt;无线政务</a>

@@ -1,3 +1,34 @@
+/*查询页初始化*/
+function searchInitialize() {
+	//页码居中
+	var width = $("#paging").width();
+	$("#center_page").css("marginLeft", -width / 2);
+	//seach
+	$("#search_self").off("click").click(function() {
+		$("#s_self")[0].submit();
+	});
+	//属性筛选
+	$("#hd_attrref").on(
+		{
+			"mouseenter" : function() {
+				$(this).css("border-color", "#f00");
+				$(this).find(".delete_icon").css(
+						"backgroundPosition", "-226px -407px");
+			},
+			"mouseleave" : function() {
+				$(this).css("border-color", "#ccc");
+				$(this).find(".delete_icon").css(
+						"backgroundPosition", "-209px -407px");
+			}
+		}, ".attr_show");
+	//查询条数
+	$("#bd_left").on("change","select",function(){
+		var value=$(this).val();
+		alert(value);
+		window.location.href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize="+value;
+		});
+	}
+/*查询页初始化*/
 /*首页nav*/
 function navOperation(){
 	/*nav_ul click*/
