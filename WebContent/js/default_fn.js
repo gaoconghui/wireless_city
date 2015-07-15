@@ -1,3 +1,59 @@
+/*首页nav*/
+function navOperation(){
+	/*nav_ul click*/
+	$("#nav_ul").find("li").each(function() {
+		$(this).on({
+			"mouseenter" : function() {
+				$(this).addClass("lidemo");
+			},
+			"mouseleave" : function() {
+				$(this).removeClass("lidemo");
+			}
+		});
+	});
+	/*nav_ul click*/
+	/*left_nav hover*/
+	$("#left_nav").on(
+			{
+				"mouseenter" : function() {
+					var _index = $(this).data("index");
+					$(this).addClass("lihover");
+					$(this).find("a").css({
+						"color" : "#b61d1d"
+					});
+					$("#left_content").find("li").eq(_index).css("top",
+							40 * _index + "px").show();
+
+				},
+				"mouseleave" : function(index) {
+					var _index = $(this).data("index");
+					$(this).removeClass("lihover");
+					$(this).find("a").css({
+						"color" : "#fff"
+					});
+					$("#left_content").find("li").eq(_index).hide();
+				}
+			}, "li");
+
+	$("#left_content").on({
+		"mouseenter" : function(index) {
+			var _index = index + 1;
+			var $this = $("#left_nav").find("li").eq(_index);
+			$(this).show();
+			$this.addClass("lihover");
+			$this.find(".i_more").text("");
+		},
+		"mouseleave" : function(index) {
+			var _index = index + 1;
+			var $this = $("#left_nav").find("li").eq(_index);
+			$(this).hide();
+			$this.removeClass("lihover");
+			$this.find(".i_more").text(">");
+		}
+	}, "li");
+	/*left_nav hover*/
+}
+/*首页nav*/
 /*loginvalidate*/
 function loginValidator(){
 	//登录
@@ -371,12 +427,6 @@ function registerValidate(){
 
 /*loginshow*/
 function loginBoxShow(){
-	$("#s_right").on("mouseleave",".information_box",function(){
-		$(this).hide();
-	});
-	$("#s_right").on("mouseenter",".more",function(){
-		$(this).siblings(".information_box").show();
-	});
 	$("#s_right").on("click",".r_login",function(){
 		//enter键
 		$(document).keyup(function(e){
@@ -418,6 +468,13 @@ function changeUsertype(){
 }
 /*初始化 totop*/
 function init(){
+	//个人中心
+	$("#s_right").on("mouseleave",".information_box",function(){
+		$(this).hide();
+	});
+	$("#s_right").on("mouseenter",".more",function(){
+		$(this).siblings(".information_box").show();
+	});
 	//搜索
 	$("#search_all").click(function() {
 		$(this).closest("form")[0].submit();

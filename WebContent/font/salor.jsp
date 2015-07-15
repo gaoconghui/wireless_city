@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="keywords" content="关键词,关键词">
 		<meta name="description" content="">
 		<link href="css/reset.css" rel="stylesheet">
-		<link href="css/front_default_style.css" rel="stylesheet">
+		<!-- <link href="css/front_default_style.css" rel="stylesheet"> -->
 		<style type="text/css">
 			/*header beign*/
 			::selection {color: #fff;background: #f99750;}
@@ -569,6 +569,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="javascript:void(0)" class="close">取消</a>
 		</div>
 	</div>
+	<script src="js/default_fn.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			init();

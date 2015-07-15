@@ -4,12 +4,25 @@
 	<div class="s_right" id="s_right">
 		<div class="r_login">登录</div>
 		<div class="r_register"><a href="font/register.jsp">注册</a></div>
+		<!-- <div class="more iconfont">&#xe60a;</div>
+		<div class="r_info">name</div>
+		<div class="r_wel iconfont">&#xe608;</div>
 		<div class="information_box">
 			<ul>
-				<li><a href='font/buyer.jsp?id="++"'><i class="iconfont">&#xe612;</i></a>个人中心</li>
-				<li><a href=''><i class="iconfont">&#xe611;</i>退出</a></li>
+				<li>
+					<a href="font/buyer.jsp?id=1">
+						<i class="iconfont">&#xe612;</i>
+						个人中心
+					</a>
+				</li>
+				<li>
+					<a href="LoginAction_exit">
+						<i class="iconfont">&#xe611;</i>
+						退出
+					</a>
+				</li>
 			</ul>
-		</div>
+		</div> -->
 	</div>
 </div>
 <div class="header">
