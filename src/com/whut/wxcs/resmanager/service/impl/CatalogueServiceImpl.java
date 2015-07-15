@@ -130,7 +130,11 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 
 	@Override
 	public Catalogue getCatalogueById(long id) {
+		//TODO 为什么这里要初始化parent和child？   这种情况下不能初始化ID为1 的
 		Catalogue catalogue = catalogueDao.getEntity(id);
+		if(id == 1){
+			return catalogue;
+		}
 		catalogue.getParent();
 		catalogue.getParent().getChild();
 		return catalogue;

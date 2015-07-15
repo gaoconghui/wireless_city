@@ -36,6 +36,17 @@ public class ProviderAction extends BaseAction<Provider> implements
 	private InputStream inputStream;
 	private List<Catalogue> catalogues;
 
+	// providerList 页面中，对服务商执行操作后转发psid，重定向时使用
+	private long psid;
+
+	public long getPsid() {
+		return psid;
+	}
+
+	public void setPsid(long psid) {
+		this.psid = psid;
+	}
+
 	public InputStream getInputStream() {
 		return inputStream;
 	}
@@ -102,6 +113,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 			catalogues = catalogueService.getRootCatalogue();
 			try {
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
@@ -187,7 +199,18 @@ public class ProviderAction extends BaseAction<Provider> implements
 		provider = providerService.getEntity(provider.getId());
 		provider.setCheckState(1);
 		providerService.saveOrUpdateEntity(provider);
-		return "pass_check";
+		return "providerListAction";
+	}
+
+	/**
+	 * 使服务商账号下架
+	 */
+	public String offCheck() {
+		System.out.println(provider.getId());
+		provider = providerService.getEntity(provider.getId());
+		provider.setCheckState(0);
+		providerService.saveOrUpdateEntity(provider);
+		return "providerListAction";
 	}
 
 }

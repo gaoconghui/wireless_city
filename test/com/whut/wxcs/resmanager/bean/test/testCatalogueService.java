@@ -1,5 +1,8 @@
 package com.whut.wxcs.resmanager.bean.test;
 
+import java.util.Date;
+import java.util.Random;
+
 import javax.annotation.Resource;
 
 import org.junit.BeforeClass;
@@ -16,12 +19,15 @@ import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Template;
 import com.whut.wxcs.resmanager.service.CatalogueService;
+import com.whut.wxcs.resmanager.service.ProviderService;
 
 
 public class testCatalogueService {
 
 	@Resource
 	private static CatalogueService catalogueService ;
+	@Resource
+	private static ProviderService providerService ;
 	
 	@Resource
 	private static BaseDao<Catalogue> catalogueDao ;
@@ -35,6 +41,7 @@ public class testCatalogueService {
 	public static void iniUserService(){
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		catalogueService = (CatalogueService) applicationContext.getBean("catalogueService");
+		providerService = (ProviderService) applicationContext.getBean("providerService");
 		catalogueDao =(BaseDao<Catalogue>) applicationContext.getBean("catalogueDao");
 		templateDao =(BaseDao<Template>) applicationContext.getBean("templateDao");
 		resourceDao =(BaseDao<com.whut.wxcs.resmanager.model.Resource>) applicationContext.getBean("resourceDao");
@@ -168,5 +175,69 @@ public class testCatalogueService {
 	public void testGetAttribute(){
 		System.out.println(catalogueService.getEnumAttributesByTid(1010101));;
 	}
+	
+	// 增加100个随机的provider
+	@Test
+	public void testInsertProvider(){
+		Provider provider;
+		
+		
+		for(int i = 0 ; i < 100 ; i ++){
+			provider = new Provider();
+			provider.setAddress(i+":"+this.getRandomString(20));
+			provider.setCellphone(this.getRandomString(11));
+			provider.setCertificationType("1");
+			provider.setCheckState((int)(Math.random()*3));
+			provider.setContects(i+":"+this.getRandomString(20));
+			provider.setEmail(this.getRandomNumber(5)+"@163.com");
+			provider.setFax(i+":"+this.getRandomString(20));
+			provider.setGrade(1);
+			provider.setIndustry(i+":"+this.getRandomString(20));
+			provider.setLoginName(i+":"+this.getRandomString(10));
+			provider.setLoginPwd(i+":"+this.getRandomString(20));
+			provider.setName(i+":"+this.getRandomString(20));
+			provider.setLogo(i+":"+this.getRandomString(20));
+			provider.setQq(i+":"+this.getRandomString(20));
+			provider.setRegisterTime(new Date(
+					(long) (Math.random() * 2436007511596L)));
+			provider.setPostcode(i+":"+this.getRandomString(20));
+			provider.setProfile(this.getRandomNumber(8));
+			provider.setUrl(i+":"+this.getRandomString(20));
+			provider.setTelephone(this.getRandomNumber(11));
+			provider.setScale(i+":"+this.getRandomString(20));
+			
+			providerService.saveEntity(provider);
+		}
+		
+	}
+	
+	 public  String getRandomString(int length){
+	     String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	     Random random=new Random();
+	     StringBuffer sb=new StringBuffer();
+	     for(int i=0;i<length;i++){
+	       int number=random.nextInt(62);
+	       sb.append(str.charAt(number));
+	     }
+	     return sb.toString();
+	 }
+	 
+	 public  String getRandomNumber(int length){
+		 String str="0123456789";
+		 Random random=new Random();
+		 StringBuffer sb=new StringBuffer();
+		 for(int i=0;i<length;i++){
+			 int number=random.nextInt(10);
+			 sb.append(str.charAt(number));
+		 }
+		 return sb.toString();
+	 }
+	 
+	 @Test
+	 public void test(){
+		 for(int i = 0 ; i < 20 ; i ++){
+			 System.out.println((int)(Math.random()*3));
+		 }
+	 }
 	
 }

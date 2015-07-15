@@ -13,14 +13,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="description" content="">
 		<link type="text/css" href="css/reset.css" rel="stylesheet">
 		<style type="text/css">
-			/*t_left start*/
-			/*
-			蓝：#1e90ff
-			橙：#ff912f
-			红：#bd2d30
-			绿：#28b779
-			蒙版：#2f3437
-			*/
 			.loginpage{background:#282828;}
 			.loginpanel { position: absolute; top: 50%; left: 50%; height: 300px; }
 			.loginpanelinner { position: relative; top: -170px; left: -50%; }
@@ -30,13 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			.inputwrapper .submit:hover{background:#1e90ff;}
 			.login-alert {visibility:hidden;}
 			.login-alert .alert { color:#fff;font-size: 11px; text-align: center; padding: 5px 0; border: 0; }
-			.inputwrapper label {
-					  display: inline-block; margin-top: 10px; color: rgba(255,255,255,0.8); font-size: 11px; vertical-align: middle; }
+			.inputwrapper label {display: inline-block; margin-top: 10px; color: rgba(255,255,255,0.8); font-size: 11px; vertical-align: middle; }
 			.inputwrapper label input { width: auto; margin: -3px 5px 0 0; vertical-align: middle; }
 			.inputwrapper .remember { padding: 0; background: none; }		
 		</style>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script>
 	</head>
 <body class="loginpage">
 	<div class="loginpanel">
@@ -53,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <input type="password" name="password" id="password" autocomplete="on" placeholder="请输入密码" />
 	            </div>
 	            <div class="inputwrapper">
-	                <a id="login" class="submit" href="admin/ht_1.jsp">登录</a>
+	                <a id="login" class="submit" href="CatalogueAction_toCatalogueManagerPage">登录</a>
 	            </div>
 	            <div class="inputwrapper">
 	                <label><input type="checkbox" class="remember" name="signin" /> 记住密码</label>
@@ -64,6 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<script type="text/javascript">
 		$(function(){
+			
 		});
 	</script>
 </body>

@@ -12,72 +12,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>无线城市-用户个人中心</title>
 		<meta name="keywords" content="关键词,关键词">
 		<meta name="description" content="">
-		<!--css,js-->
-		<link type="text/css" href="css/reset.css" rel="stylesheet">
-		<style type="text/css">
-		/*header beign*/
-			::selection {color: #fff;background: #f99750;}
-			body{background:#f1f1f1;cursor:default;color:#444;}
-			.title_fixed{width:100%;height:26px;background:#fafafa;}
-			.title_fixed .s_right{float:right;width:400px;font-size:12px;line-height:26px;}
-			.title_fixed .s_right .r_login,.r_register{width:50px;height:43px;float:right;cursor:pointer;}
-			.title_fixed .s_right .r_login,.r_register a{color:#444;}
-		/*header end*/
-			.nav{width:100%;height:80px;background:#e45050;}
-			.nav .nav_center{width:1200px;height:80px;padding-top:15px;}
-			.nav .nav_center .c_logo{width:188px;height:50px;margin:0px 10px 0px 25px; background:url(images/logo1.png) no-repeat;float:left;}
-			.nav .nav_center .c_content{width:500px;height:50px;float:left;}
-			.nav .nav_center .c_content ul li{float:left;margin-left:20px;}
-			.nav .nav_center .c_content ul li a{height:50px;font-size:16px;color:#fff;text-align:center;line-height:50px;width:80px;display:block;}
-			.nav .nav_center .c_content ul li a.sel{background:#fff;color:#e45050;border-radius:25px;-webkit-border-radius:25px;}
-			.nav .nav_center .c_search{float:right;margin-top:10px;}
-			.nav .nav_center .c_search input{width:200px;height:30px;line-height:30px;color:#666;padding-left:10px;display:block;float:left;border:2px solid #ccc;}
-			.nav .nav_center .c_search .s_btn{width:80px;height:34px;background:#ccc;color:#444;line-height:30px;text-align:center;font-size:16px; border:0;float:left;cursor:pointer;}
-			
-			.layout_all{width:900px;margin:40px auto;padding-bottom:10px;}
-			.layout_all .wrapper_left{float:left;width:130px;}
-			.layout_all .wrapper_left dl dt{font-size:16px;color:#000;font-weight:700;margin-top:30px;padding-bottom:10px;}
-			.layout_all .wrapper_left dl dt:first-child{margin-top:0;}
-			.layout_all .wrapper_left dl dd{margin-top:10px;text-indent:20px;}
-			.layout_all .wrapper_right{float:left;width:770px;position:relative;height:500px;}
-			.layout_all .wrapper_right .r_list{width:770px;position:absolute;left:0;top:0;}
-			.layout_all .wrapper_right #info .l_details{background:#fff;padding:10px 20px;width:400px;}
-			.layout_all .wrapper_right #info .l_details .title{padding-bottom:10px;font-size:16px;height:30px;line-height:30px;font-weight:700;border-bottom:1px solid #ccc;}
-			.layout_all .wrapper_right #info .l_details .main ul li{height:30px;line-height:30px;text-align:left;}
-			.layout_all .wrapper_right #info .l_details .main ul li span{height:30px;display:block;float:left;padding:0 10px;}
-			.layout_all .wrapper_right #info .l_details .main ul li .span{width:60px;}
-			.layout_all .wrapper_right #info .l_details .main ul li span a{color:#0181ec;}
-			.layout_all .wrapper_right #info .l_details .foot{height:30px;line-height:30px;text-align:center;border-top:1px solid #ccc;}
-		</style>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/placeholder.js"></script>
-		<script type="text/javascript" src="js/yjutil.js"></script>
+		<link href="css/reset.css" rel="stylesheet">
+		<link href="css/front_default_style.css" rel="stylesheet">
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/placeholder.js"></script>
 	</head>
 <body>
 	<!-- header begin-->
-	<div class="title_fixed">
-		<div class="s_right" id="s_right">
-			<div class="r_login">登录</div>
-			<div class="r_register"><a href="wireless_register.html">注册</a></div>
-		</div>
-	</div>
-	<!-- header end -->
+	<s:include value="logined_header.jsp"></s:include>
 	<div class="nav">
 		<div class="nav_center">
 			<div class="c_logo">
 			</div>
 			<div class="c_content">
 				<ul>
-					<li><a href="javascript:void(0)"  class="sel">个人中心</a></li>
+					<li><a href="font/buyer.jsp?id=1"  class="sel">个人中心</a></li>
 					<li><a href="javascript:void(0)">个人主页</a></li>
 				</ul>
 			</div>
 			<div class="c_search">
-				<input type="text" placeholder="搜索服务资源"/>
-				<div class="s_btn">搜索</div>
+				<s:form action="SearchResourceAction_frontFindByKeyWord" id="s_all">
+					<s:textfield name="frontKey" placeholder="找服务资源"></s:textfield>
+					<s:hidden name="rsid"></s:hidden>
+					<div class="s_btn" id="search_all"><i class="iconfont">&#xe60f;</i>搜索</div>
+				</s:form>
 			</div>
 		</div>
 	</div>
+	<!-- header end -->
 	<div class="layout_all">
 		<div class="wrapper_left">
 			<dl>
@@ -91,7 +53,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</dl>
 		</div>
 		<div class="wrapper_right" >
-			<div id="all" class="r_list"  style="display:none;" >全部功能展示页</div>
 			<div id="info" class="r_list">
 				<div class="l_details">
 					<div class="title">基本资料</div>
@@ -114,28 +75,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</li>
 						</ul>
 					</div>
-					<div class="foot">编辑个人资料&gt;</div>
+					<div class="foot">编辑个人资料<i class="iconfont">&#xe614;</i></div>
 				</div>
 			</div>
 		</div>
-		<div id="clear"></div>
+		<div class="clear"></div>
 	</div>
 	<!-- bottom begin -->
 	<s:include value="bottom.jsp"></s:include>
 	<!-- end bottom -->
+	<script src="js/default_fn.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			init();
 			initialize();
 		});
 		function initialize(){
-			$("input[placeholder]").placeholder();
-			$("#all_function").click(function(){
-				$("#all").show().siblings().hide();
-			});
-			$("#information").click(function(){
-				$("#info").show().siblings().hide();
-			});
 		}
 	</script>
 </body>
