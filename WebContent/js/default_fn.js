@@ -13,19 +13,18 @@ function searchInitialize() {
 			"mouseenter" : function() {
 				$(this).css("border-color", "#f00");
 				$(this).find(".delete_icon").css(
-						"backgroundPosition", "-226px -407px");
+						"color", "#f00");
 			},
 			"mouseleave" : function() {
 				$(this).css("border-color", "#ccc");
 				$(this).find(".delete_icon").css(
-						"backgroundPosition", "-209px -407px");
+						"color", "#ccc");
 			}
 		}, ".attr_show");
 	//查询条数
 	$("#bd_left").on("change","select",function(){
 		var value=$(this).val();
-		alert(value);
-		window.location.href="SearchResourceAction_changePageSize?rsid=%{rsid}&pageSize="+value;
+		window.location.href=value;
 		});
 	}
 /*查询页初始化*/
