@@ -179,7 +179,8 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		catalogue.setId(cid);
 		model.setCatalogue(catalogue);
 		model.setCreate_time(new Date());
-		resourceService.addResource(model);
+		long id = resourceService.addResource(model);
+		System.out.println("---------" + id + "-----------------");
 		return "addResource";
 	}
 

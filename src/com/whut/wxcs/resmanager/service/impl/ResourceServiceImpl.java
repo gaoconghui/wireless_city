@@ -43,11 +43,11 @@ public class ResourceServiceImpl implements ResourceService {
 	private CatalogueService catalogueService;
 
 	@Override
-	public void addResource(Resource model) {
-		resourceDao.saveEntity(model);
+	public long addResource(Resource model) {
 		for (ResourceAttribute resourceAttribute : model.getAttributes()) {
 			resourceAttributeDao.saveEntity(resourceAttribute);
 		}
+		return resourceDao.saveEntity(model);
 	}
 
 	@Override
@@ -66,6 +66,9 @@ public class ResourceServiceImpl implements ResourceService {
 		String hql = "from Resource r where r.provider.id = ?";
 		List<Resource> resources = resourceDao.findEntityByHql(hql,
 				provider.getId());
+		for (Resource resource : resources) {
+			resource.getCatalogue();
+		}
 		return resources;
 	}
 
@@ -278,16 +281,16 @@ public class ResourceServiceImpl implements ResourceService {
 
 		}
 	}
-	
-	// 传入string 获取出value 如传入25_3 取出3
-		private String getValue(String attr) {
-			return attr.substring(attr.indexOf("_") + 1, attr.length());
-		}
 
-		// 传入string 获取出attributeid 如传入25_3 取出25
-		private long getAttributeId(String attr) {
-			return Long.parseLong(attr.substring(0, attr.indexOf("_")));
-		}
+	// 传入string 获取出value 如传入25_3 取出3
+	private String getValue(String attr) {
+		return attr.substring(attr.indexOf("_") + 1, attr.length());
+	}
+
+	// 传入string 获取出attributeid 如传入25_3 取出25
+	private long getAttributeId(String attr) {
+		return Long.parseLong(attr.substring(0, attr.indexOf("_")));
+	}
 
 	private void addCriteriaOrderByTime(CriteriaResource model,
 			Criteria criteria) {
@@ -342,6 +345,16 @@ public class ResourceServiceImpl implements ResourceService {
 					.sqlRestriction("this_.CATALOGUE_ID like '"
 							+ model.getCatalogueId() + "%'"));
 		}
+	}
+
+	@Override
+	public List<Catalogue> getProviderCatalogue(List<Resource> resources) {
+		for (Resource resource : resources) {
+/*			if (resource.getCatalogue().getId()) {
+
+			}*/
+		}
+		return null;
 	}
 
 }

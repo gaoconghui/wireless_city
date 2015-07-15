@@ -9,12 +9,9 @@ import org.hibernate.Criteria;
  */
 public interface BaseDao<T> {
 
-
-
-	
 	public Criteria getCriteria();
 
-	public void saveEntity(T t);
+	public long saveEntity(T t);
 
 	public void saveOrUpdateEntity(T t);
 

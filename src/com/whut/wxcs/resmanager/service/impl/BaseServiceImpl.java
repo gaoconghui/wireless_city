@@ -18,8 +18,8 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Override
-	public void saveEntity(T t) {
-		baseDao.saveEntity(t);
+	public long saveEntity(T t) {
+		return  baseDao.saveEntity(t);
 	}
 
 	@Override

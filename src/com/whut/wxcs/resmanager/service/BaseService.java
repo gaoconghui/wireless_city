@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface BaseService<T> {
 
-	public void saveEntity(T t);
+	public long saveEntity(T t);
+
 	public void saveOrUpdateEntity(T t);
 	public void updateEntity(T t);
 	public void deleteEntity(T t);

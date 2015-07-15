@@ -11,7 +11,7 @@ import com.whut.wxcs.resmanager.model.ResourcePage;
 
 public interface ResourceService {
 
-	public void addResource(Resource model);
+	public long addResource(Resource model);
 
 	public boolean isResourceNameUnique(String resource_name);
 
@@ -47,5 +47,7 @@ public interface ResourceService {
 	 * 根据封装好的属性进行查询
 	 */
 	public ResourcePage searchByCriteria(long pid ,CriteriaResource model);
+
+	public List<Catalogue> getProviderCatalogue(List<Resource> resources);
 
 }

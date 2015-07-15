@@ -7,16 +7,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Provider;
+import com.whut.wxcs.resmanager.model.Resource;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ProviderService;
+import com.whut.wxcs.resmanager.service.ResourceService;
 import com.whut.wxcs.resmanager.util.DataUtils;
 
 @Controller
@@ -26,14 +26,17 @@ public class ProviderAction extends BaseAction<Provider> implements
 
 	private static final long serialVersionUID = 1L;
 
-	@Resource
+	@javax.annotation.Resource
 	private ProviderService providerService;
-	@Resource
+	@javax.annotation.Resource
+	private InputStream inputStream;
+	@javax.annotation.Resource
+	private ResourceService resourceService;
 	private CatalogueService catalogueService;
 	private Provider provider = new Provider();
 	private Map<String, Object> session;
 	private Catalogue catalogue;
-	private InputStream inputStream;
+	private List<Resource> resources;
 	private List<Catalogue> catalogues;
 
 	// providerList 页面中，对服务商执行操作后转发psid，重定向时使用
@@ -110,7 +113,8 @@ public class ProviderAction extends BaseAction<Provider> implements
 		}
 		if (provider.getCheckState() == 1) {
 			session.put("provider", provider);
-			catalogues = catalogueService.getRootCatalogue();
+            resources = resourceService.getProviderResource(provider);
+            catalogues = resourceService.getProviderCatalogue(resources);
 			try {
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 
