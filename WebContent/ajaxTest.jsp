@@ -28,39 +28,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <script type="text/javascript">
     	$(function(){
-    		//增加属性
-    		//更改属性
-    		 var args = {};
-    		 /* args["attributes[0].id"] = "0";
-    	        args["attributes[0].name"] = "gchtest3";
-    	        args["attributes[0].description"] = "desc";
-    	        args["attributes[0].type"] = "1";
-    	        args["attributes[0].value"] = "1,2,3";
-    	        args["attributes[1].id"] = "0";
-    	        args["attributes[1].name"] = "gchtest1";
-    	        args["attributes[1].description"] = "desc1";
-    	        args["attributes[1].type"] = "11";
-    	        args["attributes[1].value"] = "1,2,311"; */
-    	        
-    	    /*  args["attributes[2].id"] = 101;
-    	        args["attributes[2].name"] = "newName";
-    	        args["attributes[2].description"] = "desc";
-    	        args["attributes[2].type"] = 2;
-    	        args["attributes[2].value"] = "1,2,3";*/ 
-    	       
-    	     args["attributes[3].id"] = "-67"; 
-    	        args["tid"] = "106";
-    		$.ajax({
-    			url:"AttributeAction_doAttributesByAJAX",
-    			data:args,
-    			success:function(data){
-    				alert(data);
-    			}
-    		});
-    		/* $.tmAjax.request({url:"AttributeAction_doAttributesByAJAX",callback:function(data){
-    			alert(data);
-    		}},args);  */
+    		
+    		var resourceAttrs=[];
+    		var json={};
+    		json.value="AVce";
+    		json.Attribute=[];
+    		json.Attribute[0]={id:1};
+    		resourceAttrs.push(json);
+			alert(jsonToString(resourceAttrs));
+			/* var args={};
+			args.tid = "102";
+					args.attributes["id"] = "0";
+					args["attributes[0].name"] = "txt_name";
+			        args["attributes[1].id"] = "1";
+			        args["attributes[1].name"] = "txt_type";
+			alert(jsonToString(args)); */
     	});
+    	
+
     </script>
   </body>
 </html>

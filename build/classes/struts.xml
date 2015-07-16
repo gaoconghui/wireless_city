@@ -28,6 +28,7 @@
 		<action name="CatalogueAction_*" class="catalogueAction"
 			method="{1}">
 			<!-- <result name="toDesignCataloguePage">/admin/designcatalogue.jsp</result> -->
+			<result name="toIndexPage">/font/index.jsp</result>
 			<result name="toCatalogueManagerPage">/admin/ht_1.jsp</result>
 			<result name="catalogueManagerAction" type="redirectAction">
 				<param name="actionName">CatalogueAction_toCatalogueManagerPage</param>
@@ -82,7 +83,7 @@
 			<!-- <result name="loginSuccess">/login/provider_resource.jsp</result> -->
 			
 			<result name="providerListAction" type="redirectAction">
-				<param name="namespace">/</param>
+				<!-- <param name="namespace">/</param> -->
 				<param name="actionName">SearchProviderAction_getAllProviders</param>
 				<param name="psid">${psid}</param>
 			</result>
