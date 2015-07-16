@@ -345,21 +345,15 @@ public class ResourceServiceImpl implements ResourceService {
 							+ model.getCatalogueId() + "%'"));
 		}
 	}
-	
+
 	@Override
 	public List<Catalogue> getProviderCatalogue(List<Resource> resources) {
-		List<Catalogue> catalogues = new ArrayList<Catalogue>();
-		//将resource中catalogue为3位数的ID  踢出出来
 		for (Resource resource : resources) {
 			if (DataUtils.isTrible(resource.getCatalogue().getId())) {
-				Catalogue catalogue = catalogueService
-						.initCatalogueById(resource.getCatalogue().getId());
-			     if(!catalogues.contains(catalogue)){
-			    	 catalogues.add(catalogue);
-			     }
+                
 			}
 		}
-		return catalogues;
+		return null;
 	}
 
 }
