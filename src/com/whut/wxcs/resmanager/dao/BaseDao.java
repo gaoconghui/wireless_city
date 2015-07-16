@@ -34,6 +34,7 @@ public interface BaseDao<T> {
 
 	//按in list 查询
 	public List findBySql(String sql, String name, Object[] array);
+
 	
 
 

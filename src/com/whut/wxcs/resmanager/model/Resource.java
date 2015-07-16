@@ -102,4 +102,5 @@ public class Resource {
 		this.quantity = quantity;
 	}
 
+
 }
