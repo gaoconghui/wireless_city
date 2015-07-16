@@ -139,3 +139,124 @@ function urlFormatCheck(url){
 	}
 	return true;
 }
+/*获取几天前*/
+function getTimeFormat(startTime) {
+	var startTimeMills = startTime.getTime();
+	var endTimeMills = new Date().getTime();
+	var diff = parseInt((endTimeMills - startTimeMills) / 1000);//秒
+	var day_diff = parseInt(Math.floor(diff / 86400));//天
+	var buffer = Array();
+	if (day_diff < 0) {
+		return "[error],时间越界...";
+	} else {
+		if (day_diff == 0 && diff < 60) {
+			if (diff <= 0)
+				diff = 1;
+			buffer.push(diff + "秒前");
+		} else if (day_diff == 0 && diff < 120) {
+			buffer.push("1 分钟前");
+		} else if (day_diff == 0 && diff < 3600) {
+			buffer.push(Math.round(Math.floor(diff / 60)) + "分钟前");
+		} else if (day_diff == 0 && diff < 7200) {
+			buffer.push("1小时前");
+		} else if (day_diff == 0 && diff < 86400) {
+			buffer.push(Math.round(Math.floor(diff / 3600)) + "小时前");
+		} else if (day_diff == 1) {
+			buffer.push("1天前");
+		} else if (day_diff < 7) {
+			buffer.push(day_diff + "天前");
+		} else if (day_diff < 30) {
+			buffer.push(Math.round(Math.floor(day_diff / 7)) + " 星期前");
+		} else if (day_diff >= 30 && day_diff <= 179) {
+			buffer.push(Math.round(Math.floor(day_diff / 30)) + "月前");
+		} else if (day_diff >= 180 && day_diff < 365) {
+			buffer.push("半年前");
+		} else if (day_diff >= 365) {
+			buffer.push(Math.round(Math.floor(day_diff / 30 / 12)) + "年前");
+		}
+	}
+	return buffer.toString();
+}
+/*date format*/
+Date.prototype.format = function(fmt) {
+	var o = {
+		"M+" : this.getMonth() + 1,
+		// 月份
+		"d+" : this.getDate(),
+		// 日
+		"h+" : this.getHours() % 12 == 0 ? 12 : this.getHours() % 12,
+		// 小时
+		"H+" : this.getHours(),
+		// 小时
+		"m+" : this.getMinutes(),
+		// 分
+		"s+" : this.getSeconds(),
+		// 秒
+		"q+" : Math.floor((this.getMonth() + 3) / 3),
+		// 季度
+		"S" : this.getMilliseconds()
+	// 毫秒
+	};
+	var week = {
+		"0" : "/u65e5",
+		"1" : "/u4e00",
+		"2" : "/u4e8c",
+		"3" : "/u4e09",
+		"4" : "/u56db",
+		"5" : "/u4e94",
+		"6" : "/u516d"
+	};
+	if (/(y+)/.test(fmt)) {
+		fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "")
+				.substr(4 - RegExp.$1.length));
+	}
+	if (/(E+)/.test(fmt)) {
+		fmt = fmt
+				.replace(
+						RegExp.$1,
+						((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "/u661f/u671f"
+								: "/u5468")
+								: "")
+								+ week[this.getDay() + ""]);
+	}
+	for ( var k in o) {
+		if (new RegExp("(" + k + ")").test(fmt)) {
+			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k])
+					: (("00" + o[k]).substr(("" + o[k]).length)));
+		}
+	}
+	return fmt;
+};
+/*json转字符串*/
+function jsonToString(obj) {
+	var THIS = this;
+	switch (typeof (obj)) {
+	case 'string':
+		return '"' + obj.replace(/(["\\])/g, '\\$1') + '"';
+	case 'array':
+		return '[' + obj.map(THIS.jsonToString).join(',') + ']';
+	case 'object':
+		if (obj instanceof Array) {
+			var strArr = [];
+			var len = obj.length;
+			for (var i = 0; i < len; i++) {
+				strArr.push(THIS.jsonToString(obj[i]));
+			}
+			return '[' + strArr.join(',') + ']';
+		} else if (obj == null) {
+			return 'null';
+
+		} else {
+			var string = [];
+			for ( var property in obj)
+				string.push(THIS.jsonToString(property) + ':'
+						+ THIS.jsonToString(obj[property]));
+			return '{' + string.join(',') + '}';
+		}
+	case 'number':
+		return obj;
+	case false:
+		return obj;
+	}
+}
+
