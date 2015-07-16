@@ -20,7 +20,6 @@
 <script src="js/util.js"></script>
 </head>
 <body>
-	<s:debug></s:debug>
 	<!-- header begin-->
 	<s:include value="logined_header.jsp"></s:include>
 	<div class="nav">
@@ -310,10 +309,10 @@
 					</div>
 					<div class="clear"></div>
 				</div>
-				<div class="a_s_attibute"></div>
 			</div>
 			<div class="pre_step" id="pre_step">上一步</div>
 			<div class="next_step" id="submit">提交</div>
+			<div class="clear"></div>
 		</div>
 	</div>
 	<!-- bottom begin -->
@@ -358,7 +357,6 @@
 							},
 							callback : function(data) {
 								if (data == "[]") {
-									alert("该类目没有子类！");
 								} else {
 									var $data = $.parseJSON(data);
 									var length = $data.length;
@@ -399,8 +397,8 @@
 				},
 			}, ".attr_show");
 			/*添加服务按钮*/
-			$("#add_service_btn").on("click", function() {
-				var height = $("#add_services").height();
+			$("#add_service_btn").off("click").on("click", function() {
+				var height = $("#add_services").height()+42;
 				$("#add_services").css("marginTop", "-" + height / 2 + "px");
 				$("#add_services,#yy").show();
 				//查询一类目
@@ -432,6 +430,7 @@
 				getChildCategory("category3", "category4");
 				//查询5类目
 				getChildCategory("category4", "category5");
+				//定制block
 				getChildCategory("category5", "category6");
 				$("#close_1").on(
 						"click",
@@ -440,15 +439,15 @@
 							$("#a_s_2").hide();
 							$("#a_s_1").show();
 							$("#at_new").html("");
-							$("#sevice_name").val("");
-							$("#sevice_desc").val("");
+							$("#service_name").val("");
+							$("#service_desc").val("");
 							$("#category1").html("<option value=''>-请选择-</option>");
 							$("#category2").parents(".s_main").hide();
 							$("#category3").parents(".s_main").hide();
 							$("#category4").parents(".s_main").hide();
 							$("#category5").parents(".s_main").hide();
 						});
-				$("#next_step").on("click",function() {
+				$("#next_step").off("click").on("click",function() {
 					var n = -2;
 					$("#s_sort").find(".s_main").each(function() {
 						if ($(this).css("display") == "block")n++;
@@ -462,60 +461,70 @@
 						type : "post",
 						url : "AttributeAction_getAttributesByAJAX",/* 查询服务资源模板属性名称action *//* 修改2 */
 						success : function(data) {
+							console.log(data);
 							var html = "";
 							var $data = $.parseJSON(data);
 							var length = $data.length;
 							for (var i = 0; i < length; i++) {
-								html += "<p data-id='"+$data[i].id+"'>"+
-										"	<span>"+ $data[i].name+ ":</span><input type='text' placeholder='填写属性'/>"+ 
-										"</p>";
+								var type="";
+								switch($data[i].type){
+									case 1:type="文本";break;
+									case 2:type="小数";break;
+									case 3:type="整形";break;
+									case 4:type="时间";break;
+									case 5:type="枚举";break;
+									default:type="-";break;
+								}
+								if($data[i].type!=5){
+									html += "<p data-attrid='"+$data[i].id+"'>"+
+									"	<span title='"+$data[i].name+"'>"+ $data[i].name+ ":</span><input type='text' placeholder='"+type+"'/>"+ 
+									"</p>";
+								}else{
+									var args=[];
+									args=$data[i].value.split(",");
+									var h="";
+									var length=args.length;
+									for(var j=0;j<length;j++){
+										h+="<option value='"+j+"'>"+args[j]+"</option>";
+									}
+									html += "<p data-attrid='"+$data[i].id+"'>"+
+									"	<span title='"+$data[i].name+"'>"+ $data[i].name+ ":</span>"+
+									"<select>"+
+									"	<option value='0'>-请选择-</option>"+h+
+									"</select>"+ 
+									"</p>";
+								}
 							}
 							$("#at_fill").html(html);
 						}
 					});
 					$("#a_s_1").hide();
 					$("#a_s_2").show();
-					var height = $("#add_services").height();
+					var height = $("#add_services").height()+42;
 					$("#add_services").css("marginTop","-" + height / 2 + "px");
 					$("#pre_step").on(
 							"click",
 							function() {
 								$("#a_s_2").hide();
 								$("#a_s_1").show();
-								var height = $("#add_services").height();
+								var height = $("#add_services").height()+42;
 								$("#add_services").css("marginTop","-" + height / 2 + "px");
 								$("#at_new").html("");
 							});
-					$("#submit").on("click",function() {
+					$("#submit").off("click").on("click",function() {
 						var service_name = $("#service_name").val();
 						var service_desc = $("#service_desc").val();
-						console.log(service_name+"---"+service_desc+"---"+pid);
 						var param = {
 							cid : pid,
 							resource_name : service_name,
-							description : service_desc,
-							attribute : {
-								attribute1 : [ {
-									attribute_id : "",
-									attribute_value : ""
-								} ]
-							}
+							description : service_desc
 						};
-						var html="<div class='l_content' style='display:none;'>"+
-						"<div class='l_img'>"+
-						"	<img alt='' src='images/list_demo.jpg' height='100' width='100' />"+
-						"</div>"+
-						"<div class='l_name'>"+service_name+"</div>"+
-						"<div class='l_desc'>"+service_desc+"</div>"+
-						"<div class='l_time'>"+new Date().format("yyyy-MM-dd HH:mm:ss")+" ("+getTimeFormat(new Date())+")"+"</div>"+
-						"<div class='l_operation'>"+
-						"	<a href='javascript:void(0)' class='update'>修改</a>"+
-						"	<a href='javascript:void(0)' class='delete'>删除</a>"+
-						"	<a href='javascript:void(0)'>查看详情</a>"+
-						"</div>"+
-					"</div>";
-					$("#l_content").prepend(html);
-					$("#l_content").find(".l_content:first").slideDown("slow");
+						$("#at_fill").find("p").each(function(index){
+							var value=$(this).find("input").val();
+							var id=$(this).data("attrid");
+							param["resourceAttrs["+index+"].value"]=value;
+							param["resourceAttrs["+index+"].attribute.id"]=id;
+						});
 						$.ajax({
 							beforeSend:function(){
 								
@@ -524,14 +533,27 @@
 								alert("非常抱歉,服务器出错！");
 							},
 							data : param,
-							url : "",
+							url : "AddResourceAction_addResource",
 							type : "post",
 							success:function(data){
-								alert(data);
 								if(data==0){
 									
 								}else{
-									
+									var html="<div class='l_content' style='display:none;'>"+
+										"<div class='l_img'>"+
+										"	<img alt='' src='images/list_demo.jpg' height='100' width='100' />"+
+										"</div>"+
+										"<div class='l_name'>"+service_name+"</div>"+
+										"<div class='l_desc'>"+service_desc+"</div>"+
+										"<div class='l_time'>"+new Date().format("yyyy-MM-dd HH:mm:ss")+" ("+getTimeFormat(new Date())+")"+"</div>"+
+										"<div class='l_operation'>"+
+										"	<a href='javascript:void(0)' class='update'>修改</a>"+
+										"	<a href='javascript:void(0)' class='delete'>删除</a>"+
+										"	<a href='javascript:void(0)'>查看详情</a>"+
+										"</div>"+
+									"</div>";
+									$("#l_content").prepend(html);
+									$("#l_content").find(".l_content:first").slideDown("slow");
 								}
 							}
 							
@@ -540,15 +562,15 @@
 						$("#a_s_2").hide();
 						$("#a_s_1").show();
 						$("#at_new").html("");
-						$("#sevice_name").val("");
-						$("#sevice_desc").val("");
+						$("#service_name").val("");
+						$("#service_desc").val("");
 						$("#category1").html("<option value=''>-请选择-</option>");
 						$("#category2").parents(".s_main").hide();
 						$("#category3").parents(".s_main").hide();
 						$("#category4").parents(".s_main").hide();
 						$("#category5").parents(".s_main").hide();
 					});
-					$("#new_attribute").on("click",function() {
+					$("#new_attribute").off("click").on("click",function() {
 						var html = "<p>"
 								+ "<input placeholder='属性' type='text'/><input type='text' placeholder='属性值'/>"
 								+ "</p>";
@@ -558,7 +580,7 @@
 			});
 			/*添加服务按钮*/
 			/*删除服务按钮*/
-			$("#l_content").on("click", ".delete", function() {
+			$("#l_content").off("click").on("click", ".delete", function() {
 				$("#yy").show();
 				dialogShow($(this));
 			});

@@ -413,11 +413,12 @@
 	left: 50%;
 	margin-left: -450px;
 	display: none;
-	padding-bottom: 40px;
+	padding-bottom: 20px;
 }
 
 .add_services .a_s_2 {
 	display: none;
+	min-height:431px;
 }
 
 .add_services .a_s_title {
@@ -487,7 +488,7 @@
 	height: 30px;
 	display: block;
 	line-height: 30px;
-	padding-left: 10px;
+	text-indent:5px;
 	margin-left: 20px;
 }
 
@@ -518,6 +519,7 @@
 	height: 40px;
 	margin-left: 20px;
 	border: 1px soid #ccc;
+	text-indent:5px;
 }
 
 .add_services  .a_s_main .a_s_desc div {
@@ -541,7 +543,19 @@
 .add_services  .a_s_main .a_s_attribute p {
 	margin-top: 10px;
 	float: left;
-	margin-left: 40px;
+	margin-left: 20px;
+	width:182px;
+}
+
+.add_services  .a_s_main .a_s_attribute p span{
+	display:block;
+	float:left;
+	width:62px;
+	line-height:25px;
+	text-align:right;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
 }
 
 .add_services  .a_s_main .a_s_attribute p input {
@@ -552,11 +566,21 @@
 	line-height: 20px;
 	vertical-align: middle;
 	margin-left: 10px;
+	display:block;
+	float:left;
+}
+.add_services  .a_s_main .a_s_attribute p select {
+	margin-left: 10px;
+ 	width: 108px;
+  	border: 1px solid #aaa;
+	display:block;
+	float:left;
 }
 
 .add_services  .a_s_main .a_s_attribute .at_fill {
 	float: left;
 	width: 430px;
+	min-height:320px;
 }
 
 .add_services  .a_s_main .a_s_attribute .at_fill:first-child {
@@ -577,9 +601,6 @@
 	margin-top: -30px;
 }
 
-.add_services  .a_s_main .a_s_attribute .at_fill .at_new {
-	
-}
 
 .add_services  .a_s_2 .next_step, .pre_step {
 	margin: 0;
