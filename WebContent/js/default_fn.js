@@ -161,7 +161,7 @@ function loginValidator(){
 							$("#password").focus();
 							$("#login_submit").text("登录");
 						}else{
-							window.location.href="../font/salor.jsp";
+							window.location.href="font/salor.jsp";
 						}
 					}
 				});
@@ -596,7 +596,8 @@ function loginValidate(){
 							$("#password").val("");
 							$("#password").focus();
 						}else{
-							window.location.href="../font/salor.jsp";
+
+							window.location.href="font/salor.jsp";
 						}
 					}
 				});

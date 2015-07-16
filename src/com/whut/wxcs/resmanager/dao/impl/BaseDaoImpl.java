@@ -39,7 +39,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public long saveEntity(T t) {
-		return  (Long) this.sessionFactory.getCurrentSession().save(t);
+		return (long) this.sessionFactory.getCurrentSession().save(t);
 	}
 
 	@Override
