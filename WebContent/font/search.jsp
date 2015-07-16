@@ -2,9 +2,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/";
 %>
 <!doctype html>
 <html>
@@ -57,7 +55,7 @@
 				</s:a>
 			</div>
 		</s:if>
-		<s:if
+		<s:if 
 			test="page.catalogue.child != null && page.catalogue.child.size >0">
 			<div class="hd_sort">
 				<div class="s_details" id="s_details">
@@ -93,8 +91,8 @@
 			<s:iterator value="page.attrList" status="rowst">
 				<!-- TODO 颜色class="colorgradient" -->
 				<p>
-					<span><s:property value="name" />:</span> <span> 
-					<s:iterator value="enumValue" status="st">
+					<span><s:property value="name" />:</span> <span> <s:iterator
+							value="enumValue" status="st">
 							<s:a
 								href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
 								<s:property value="enumValue[#st.index]" />
@@ -115,26 +113,26 @@
 	<div class="layout_body">
 		<div class="bd_title">
 			<div class="bd_right" id="order_by">
-				<span> <s:a
-						href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=0">
-					 按时间<i class="iconfont"> <s:if test="orderName == 0">
+				<span> 
+					<s:a href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=0">
+					 按时间<i class="iconfont"> 
+					 		<s:if test="orderName == 0">
 								<s:if test="orderSequence == 0">&#xe600;</s:if>
 								<s:if test="orderSequence == 1">&#xe601;</s:if>
 							</s:if>
 						</i>
 					</s:a>
-				</span> <span> <s:a
-						href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=1">
+				</span> 
+				<span> 
+					<s:a href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=1">
 					按名称<i class="iconfont"> <s:if test="orderName == 1">
-								<s:if test="orderSequence == 0">&#xe600;</s:if>
-								<s:if test="orderSequence == 1">&#xe601;</s:if>
-							</s:if></i>
+							<s:if test="orderSequence == 0">&#xe600;</s:if>
+							<s:if test="orderSequence == 1">&#xe601;</s:if>
+						</s:if></i>
 					</s:a>
 				</span>
 			</div>
-			<s:property value="rsid"/>
 			<div class="bd_left" id="bd_left">
-<<<<<<< Updated upstream
 				<label>默认显示条数</label> 
 				<select>
 					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=10">
@@ -145,17 +143,6 @@
 					</option>
 					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=50">
 						50
-=======
-				<label>默认显示条数</label> <select>
-					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=10">
-						<s:a >10</s:a>
-					</option>
-					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=20">
-						<s:a >20</s:a>
-					</option>
-					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=50">
-						<s:a>50</s:a>
->>>>>>> Stashed changes
 					</option>
 				</select>
 			</div>
@@ -168,9 +155,9 @@
 					</div>
 					<div class="l_details">
 						<span class="d_service"><s:property value="resource_name" /></span>
-						<span class="d_desc"> <s:property value="description" /></span> <span
-							class="d_time"><s:property value="create_time" /></span> <span
-							class="d_company"><s:property value="id" /></span>
+						<span class="d_desc"> <s:property value="description" /></span> 
+						<span class="d_time"><s:property value="create_time" /></span> 
+						<span class="d_company"><s:property value="id" /></span>
 					</div>
 					<div class="l_visit">
 						<a href="font/details.jsp">查看详情</a>
@@ -221,9 +208,7 @@
 				<s:if test="pageNum+3 <= page.totalPageNumber">
 					<span>. . .</span>
 				</s:if>
-				<s:a
-					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}"
-					id="last">尾页</s:a>
+				<s:a href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}"id="last">尾页</s:a>
 			</div>
 		</div>
 	</div>

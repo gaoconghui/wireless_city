@@ -83,7 +83,7 @@
 			<!-- <result name="loginSuccess">/login/provider_resource.jsp</result> -->
 			
 			<result name="providerListAction" type="redirectAction">
-				<!-- <param name="namespace">/</param> -->
+				<param name="namespace">/</param>
 				<param name="actionName">SearchProviderAction_getAllProviders</param>
 				<param name="psid">${psid}</param>
 			</result>

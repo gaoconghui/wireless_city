@@ -1,7 +1,5 @@
 package com.whut.wxcs.resmanager.model;
 
-import java.util.Arrays;
-
 import com.whut.wxcs.resmanager.util.DataUtils;
 
 public class Attribute {
@@ -79,8 +77,7 @@ public class Attribute {
 	public String toString() {
 		return "Attribute [id=" + id + ", name=" + name + ", type=" + type
 				+ ", description=" + description + ", value=" + value
-				+ ", enumValue=" + Arrays.toString(enumValue) + ", templateid="
-				+ templateid + "]";
+				+ ", templateid=" + templateid + "]";
 	}
 
 }

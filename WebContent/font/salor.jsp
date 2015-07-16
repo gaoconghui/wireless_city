@@ -20,6 +20,7 @@
 <script src="js/util.js"></script>
 </head>
 <body>
+	<s:debug></s:debug>
 	<!-- header begin-->
 	<s:include value="logined_header.jsp"></s:include>
 	<div class="nav">
@@ -58,36 +59,38 @@
 			<div class="r_select">
 				<div class="hd_reference" id="reference">
 					<a href="font/salor.jsp?pid=1">所有分类</a>
-					<a href="javascript:void(0)" class="more_icon icon iconfont">&#xe615;</a>
-					<a href="font/search.jsp?id=101">无线政务</a>
 				</div>
 				<div class="hd_sort">
 					<div class="s_details" id="s_details">
-						<span> 
-							<a href="javascript:void(0)">子类：</a>
+						<span> <a href="javascript:void(0)">子类：</a>
 						</span>
 						<!-- 这里是一类目迭代 -->
 						<a href="font/search.jsp?id=101">无线政务</a>
 						<!-- 这里是一类目迭代-->
 					</div>
 				</div>
+				
 				<div class="hd_attrref" id="hd_attrref">
 					<p>
 						<a href="javascript:void(0)">所有属性</a>
 					</p>
 					<s:iterator value="attrMap">
-						<a href="javascript:void(0)" class="more_icon icon iconfont">&#xe615;</a>
-						<p style="border-color: rgb(204, 204, 204);" class="attr_show">
-							<s:a
-								href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{key}&attrLab=%{value}">
-								<s:property value="value" />
-							</s:a>
-							<s:a style="background-position: -209px -407px;"
-								href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{key}&attrLab=%{value}"
-								cssClass="delete_icon icon iconfont">&#xe613;</s:a>
-						</p>
-					</s:iterator>
+
+				<a href="javascript:void(0)" class="more_icon icon"></a>
+				<p style="border-color: rgb(204, 204, 204);" class="attr_show">
+					<s:a
+						href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{key}&attrLab=%{value}">
+						<s:property value="value" />
+					</s:a>
+					<s:a style="background-position: -209px -407px;"
+						href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{key}&attrLab=%{value}"
+						cssClass="delete_icon icon"></s:a>
+				</p>
+			</s:iterator>
+					
+					
 				</div>
+
 				<div class="hd_attribute" id="hd_attribute">
 					<p>
 						<a href="javascript:void(0)">所有属性</a>
@@ -218,6 +221,13 @@
 						</s:a>
 					</div>
 				</div>
+				<!-- <div class="l_paging">
+					<a href="javascript:void(0)" class="sel">1</a>
+					<a href="javascript:void(0)">2</a>
+					<a href="javascript:void(0)">3</a>
+					<a href="javascript:void(0)">4</a>
+					<a href="javascript:void(0)" class="next">下一页&gt;</a>
+				</div> -->
 			</div>
 		</div>
 		<div class="clear"></div>
@@ -226,7 +236,7 @@
 	<div class="add_services" id="add_services">
 		<div class="a_s_title">
 			增加服务资源
-			<div class="t_icon iconfont" id="close_1">&#xe603;</div>
+			<div class="t_icon" id="close_1"></div>
 		</div>
 		<div class="a_s_1" id="a_s_1">
 			<div class="a_s_main">
@@ -234,37 +244,27 @@
 				<div class="a_s_sel">
 					<div class="s_sort" id="s_sort">
 						<div class="s_main">
-							<span>一类</span> 
-							<select id="category1">
+							<span>一类</span> <select id="category1">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main dis_none">
-							<span>二类</span> 
-							<select id="category2">
+							<span>二类</span> <select id="category2">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main dis_none">
-							<span>三类</span> 
-							<select id="category3">
+							<span>三类</span> <select id="category3">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main dis_none">
-							<span>四类</span> 
-							<select id="category4">
+							<span>四类</span> <select id="category4">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
 						<div class="s_main dis_none">
-							<span>五类</span> 
-							<select id="category5">
-								<option value="">-请选择-</option>
-							</select>
-						</div>
-						<div class="s_main dis_none">
-							<select id="category6" class="dis_none">
+							<span>五类</span> <select id="category5">
 								<option value="">-请选择-</option>
 							</select>
 						</div>
@@ -272,7 +272,7 @@
 					</div>
 				</div>
 				<div class="a_s_name">
-					<span>名称：</span><input type="text" id="service_name" />
+					<span>名称：</span><input type="text" id="sevice_name" />
 				</div>
 				<div class="a_s_pic">
 					<div class="p_upload">上传图片</div>
@@ -286,7 +286,7 @@
 				</div>
 				<div class="a_s_desc">
 					<div>描述：</div>
-					<textarea id="service_desc"></textarea>
+					<textarea id="sevice_desc"></textarea>
 				</div>
 			</div>
 			<div class="next_step" id="next_step">下一步</div>
@@ -309,10 +309,10 @@
 					</div>
 					<div class="clear"></div>
 				</div>
+				<div class="a_s_attibute"></div>
 			</div>
 			<div class="pre_step" id="pre_step">上一步</div>
 			<div class="next_step" id="submit">提交</div>
-			<div class="clear"></div>
 		</div>
 	</div>
 	<!-- bottom begin -->
@@ -333,47 +333,48 @@
 			init();
 			initialize();
 		});
-		function getChildCategory(idName, nextIdName) {
+		/* function getChildCategory(idName, nextIdName) {
 			$("#" + idName).off("change").on("change",function() {
 				var h = "<option value=''>-请选择-</option>";
 				var nextId = nextIdName.substr(8, 1);
-				$("#category" + nextId).parents(".s_main").show();
-				for (var i = nextId; i < 7; i++) {
+				$("#category" + nextId).parents(".s_main")
+						.show();
+				for (var i = nextId; i < 6; i++) {
 					$("#category" + i).html(h);
-					if (i < 6) {
-						$("#category" + (i * 1 + 1)).parents(".s_main").hide();
+					if (i < 5) {
+						$("#category" + (i * 1 + 1)).parents(
+								".s_main").hide();
 					}
 				}
 				var pid = $(this).val();
 				if (isEmpty(pid)) {
 					return;
 				}
-				if(nextId!=6){
-					var options = {
-							beforeSend : function() {
-							},
-							params : {
-								parentid : pid
-							},
-							callback : function(data) {
-								if (data == "[]") {
-								} else {
-									var $data = $.parseJSON(data);
-									var length = $data.length;
-									var html = "";
-									for (var i = 0; i < length; i++) {
-										html += "<option value='"+$data[i].id+"'>"
-												+ $data[i].name
-												+ "</option>";
-									}
-									$("#" + nextIdName).append(html);
-								}
+				var options = {
+					beforeSend : function() {
+					},
+					params : {
+						parentid : pid
+					},
+					callback : function(data) {
+						if (data == "[]") {
+
+						} else {
+							var $data = $.parseJSON(data);
+							var length = $data.length;
+							var html = "";
+							for (var i = 0; i < length; i++) {
+								html += "<option value='"+$data[i].id+"'>"
+										+ $data[i].name
+										+ "</option>";
 							}
-						};
-					findCategory(options);
-				}
+							$("#" + nextIdName).append(html);
+						}
+					}
+				};
+				findCategory(options);
 			});
-		}
+		} */
 		function initialize() {
 			//页码居中
 			var width = $("#paging").width();
@@ -388,199 +389,233 @@
 				"mouseenter" : function() {
 					$(this).css("border-color", "#f00");
 					$(this).find(".delete_icon").css(
-							"color", "#f00");
+							"backgroundPosition", "-226px -407px");
 				},
 				"mouseleave" : function() {
 					$(this).css("border-color", "#ccc");
 					$(this).find(".delete_icon").css(
-							"color", "#444");
+							"backgroundPosition", "-209px -407px");
 				},
+				"click" : function() {
+					var tag = $(this).data("tag");
+					$(this).prev().remove();
+					$(this).remove();
+
+					$("#hd_attribute").find("a").each(function() {
+						if ($(this).data("tag") == tag) {
+							$(this).css("color", "#444");
+						}
+					});
+				}
 			}, ".attr_show");
+			$("#hd_attribute").off("click").on("click","a",function() {
+				var $this = $(this);
+				$this.css({
+					"color" : "#005ea7",
+					"fontWeight" : "700"
+				}).siblings().css("color", "#444");
+				var tag = $this.data("tag");
+				$("#hd_attrref").find("p").each(function() {
+					if ($(this).data("tag") == tag) {
+						$(this).prev().remove();
+						$(this).remove();
+
+					}
+				});
+				var html = "	<a href='javascript:void(0)' class='more_icon icon'></a>"
+						+ "	<p class='attr_show' data-tag='"+tag+"'>"
+						+ "	<a href='javascript:void(0)'>"
+						+ $(this).text()
+						+ "</a>"
+						+ "	<a href='javascript:void(0)' class='delete_icon icon'></a>"
+						+ "</p>";
+				$("#hd_attrref").append(html);
+			});
+			//查询一类目
+			/* var options = {
+				params : {
+					parentid : "1"
+				},
+				callback : function(data) {
+					if (data == "[]") {
+
+					} else {
+						var $data = $.parseJSON(data);
+						var length = $data.length;
+						var html = "";
+						for (var i = 0; i < length; i++) {
+							html += "<option value='"+$data[i].id+"'>"
+									+ $data[i].name + "</option>";
+						}
+						$("#category1").append(html);
+					}
+				}
+			};
+			findCategory(options);
+			//查询2类目
+			getChildCategory("category1", "category2");
+			//查询3类目
+			getChildCategory("category2", "category3");
+			//查询4类目
+			getChildCategory("category3", "category4");
+			//查询5类目
+			getChildCategory("category4", "category5");
+ */
 			/*添加服务按钮*/
-			$("#add_service_btn").off("click").on("click", function() {
-				var height = $("#add_services").height()+42;
+			$("#add_service_btn").on("click", function() {
+				var height = $("#add_services").height();
 				$("#add_services").css("marginTop", "-" + height / 2 + "px");
 				$("#add_services,#yy").show();
-				//查询一类目
-				var options = {
-					params : {
-						parentid : "1"
-					},
-					callback : function(data) {
-						if (data == "[]") {
-
-						} else {
-							var $data = $.parseJSON(data);
-							var length = $data.length;
-							var html = "";
-							for (var i = 0; i < length; i++) {
-								html += "<option value='"+$data[i].id+"'>"
-										+ $data[i].name + "</option>";
+			});
+			$("#close_1").on(
+					"click",
+					function() {
+						$("#add_services,#yy").hide();
+						$("#a_s_2").hide();
+						$("#a_s_1").show();
+						$("#at_new").html("");
+						$("#sevice_name").val("");
+						$("#sevice_desc").val("");
+						$("#category1").find("select").find("option:eq(0)")
+								.attr("selected", "selected");
+						$("#category2").parents(".s_main").hide();
+						$("#category3").parents(".s_main").hide();
+						$("#category4").parents(".s_main").hide();
+						$("#category5").parents(".s_main").hide();
+					});
+			$("#next_step").on("click",function() {
+				alert("表单提交哪些参数？");
+				var n = -2;
+				$("#s_sort").find(".s_main").each(function() {
+					if ($(this).css("display") == "block")
+						n++;
+				});
+				if (n < 0) {
+					return false;
+				}
+				var pid = $("#s_sort").find(
+						".s_main:eq(" + n + ")").find("select")
+						.val();
+				//alert(pid);
+				var param = {
+					pid : pid
+				};/* 修改1 参数只有pid?*/
+				$
+						.ajax({
+							data : param,
+							type : "post",
+							url : "",/* 查询服务资源模板属性名称action *//* 修改2 */
+							success : function(data) {
+								alert(data);
+								var html = "";
+								var $data = $.parseJSON(data);
+								var length = $data.length;
+								for (var i = 0; i < length; i++) {
+									html += "<p data-id='"+$data.id+"'>"
+											+ /* 修改3   id  name */
+											"<span>"
+											+ $data.name
+											+ "</span><input type='text' placeholder='填写属性'/>"
+											+ "</p>";
+								}
+								$("#at_fill").html(html);
 							}
-							$("#category1").append(html);
-						}
-					}
-				};
-				findCategory(options);
-				//查询2类目
-				getChildCategory("category1", "category2");
-				//查询3类目
-				getChildCategory("category2", "category3");
-				//查询4类目
-				getChildCategory("category3", "category4");
-				//查询5类目
-				getChildCategory("category4", "category5");
-				//定制block
-				getChildCategory("category5", "category6");
-				$("#close_1").on(
+						});
+				$("#a_s_1").hide();
+				$("#a_s_2").show();
+				var height = $("#add_services").height();
+				$("#add_services").css("marginTop",
+						"-" + height / 2 + "px");
+				//第二个框框
+				$("#pre_step").on(
 						"click",
 						function() {
+							$("#a_s_2").hide();
+							$("#a_s_1").show();
+							var height = $("#add_services")
+									.height();
+							$("#add_services").css("marginTop",
+									"-" + height / 2 + "px");
+							$("#at_new").html("");
+						});
+				$("#submit").on(
+						"click",
+						function() {
+							alert("表单提交哪些参数？");
+							//pid service_name service_desc还需要什么参数？
+							var service_name = $(
+									"#service_name").val();
+							var service_desc = $(
+									"#service_desc").val();
+							var param = {/* 修改4 */
+								pid : pid,
+								service_name : service_name,
+								service_desc : service_desc,
+								attribute : {
+									attribute1 : [ {
+										attribute_id : "",
+										attribute_value : ""
+									} ]
+								}
+							};
+							$.ajax({
+								data : param,
+								url : "",/* 添加服务资源action *//* 修改5 */
+								type : "post"
+							});
 							$("#add_services,#yy").hide();
 							$("#a_s_2").hide();
 							$("#a_s_1").show();
 							$("#at_new").html("");
-							$("#service_name").val("");
-							$("#service_desc").val("");
-							$("#category1").html("<option value=''>-请选择-</option>");
-							$("#category2").parents(".s_main").hide();
-							$("#category3").parents(".s_main").hide();
-							$("#category4").parents(".s_main").hide();
-							$("#category5").parents(".s_main").hide();
-						});
-				$("#next_step").off("click").on("click",function() {
-					var n = -2;
-					$("#s_sort").find(".s_main").each(function() {
-						if ($(this).css("display") == "block")n++;
-					});
-					if (n < 0) {alert("请选择类目！");return false;}
-					var pid = $("#s_sort").find(
-							".s_main:eq(" + n + ")").find("select").val();
-					var param = {tid : pid};
-					$.ajax({
-						data : param,
-						type : "post",
-						url : "AttributeAction_getAttributesByAJAX",/* 查询服务资源模板属性名称action *//* 修改2 */
-						success : function(data) {
-							console.log(data);
-							var html = "";
-							var $data = $.parseJSON(data);
-							var length = $data.length;
-							for (var i = 0; i < length; i++) {
-								var type="";
-								switch($data[i].type){
-									case 1:type="文本";break;
-									case 2:type="小数";break;
-									case 3:type="整形";break;
-									case 4:type="时间";break;
-									case 5:type="枚举";break;
-									default:type="-";break;
-								}
-								if($data[i].type!=5){
-									html += "<p data-attrid='"+$data[i].id+"'>"+
-									"	<span title='"+$data[i].name+"'>"+ $data[i].name+ ":</span><input type='text' placeholder='"+type+"'/>"+ 
-									"</p>";
-								}else{
-									var args=[];
-									args=$data[i].value.split(",");
-									var h="";
-									var length=args.length;
-									for(var j=0;j<length;j++){
-										h+="<option value='"+j+"'>"+args[j]+"</option>";
-									}
-									html += "<p data-attrid='"+$data[i].id+"'>"+
-									"	<span title='"+$data[i].name+"'>"+ $data[i].name+ ":</span>"+
-									"<select>"+
-									"	<option value='0'>-请选择-</option>"+h+
-									"</select>"+ 
-									"</p>";
-								}
-							}
-							$("#at_fill").html(html);
-						}
-					});
-					$("#a_s_1").hide();
-					$("#a_s_2").show();
-					var height = $("#add_services").height()+42;
-					$("#add_services").css("marginTop","-" + height / 2 + "px");
-					$("#pre_step").on(
-							"click",
-							function() {
-								$("#a_s_2").hide();
-								$("#a_s_1").show();
-								var height = $("#add_services").height()+42;
-								$("#add_services").css("marginTop","-" + height / 2 + "px");
-								$("#at_new").html("");
-							});
-					$("#submit").off("click").on("click",function() {
-						var service_name = $("#service_name").val();
-						var service_desc = $("#service_desc").val();
-						var param = {
-							cid : pid,
-							resource_name : service_name,
-							description : service_desc
-						};
-						$("#at_fill").find("p").each(function(index){
-							var value=$(this).find("input").val();
-							var id=$(this).data("attrid");
-							param["resourceAttrs["+index+"].value"]=value;
-							param["resourceAttrs["+index+"].attribute.id"]=id;
-						});
-						$.ajax({
-							beforeSend:function(){
-								
-							},
-							error:function(){
-								alert("非常抱歉,服务器出错！");
-							},
-							data : param,
-							url : "AddResourceAction_addResource",
-							type : "post",
-							success:function(data){
-								if(data==0){
-									
-								}else{
-									var html="<div class='l_content' style='display:none;'>"+
+							$("#sevice_name").val("");
+							$("#sevice_desc").val("");
+							$("#category1").find("select")
+									.find("option:eq(0)").attr(
+											"selected",
+											"selected");
+							$("#category2").parents(".s_main")
+									.hide();
+							$("#category3").parents(".s_main")
+									.hide();
+							$("#category4").parents(".s_main")
+									.hide();
+							$("#category5").parents(".s_main")
+									.hide();
+							/* var html="<div class='l_content' style='display:none;'>"+
 										"<div class='l_img'>"+
 										"	<img alt='' src='images/list_demo.jpg' height='100' width='100' />"+
 										"</div>"+
-										"<div class='l_name'>"+service_name+"</div>"+
-										"<div class='l_desc'>"+service_desc+"</div>"+
-										"<div class='l_time'>"+new Date().format("yyyy-MM-dd HH:mm:ss")+" ("+getTimeFormat(new Date())+")"+"</div>"+
+										"<div class='l_name'>"+
+										"	名称撒旦撒的撒旦撒旦撒旦撒大声地撒旦撒"+
+										"</div>"+
+										"<div class='l_desc'>"+
+										"	描述"+
+										"</div>"+
+										"<div class='l_time'>"+
+										"	发布时间"+
+										"</div>"+
 										"<div class='l_operation'>"+
 										"	<a href='javascript:void(0)' class='update'>修改</a>"+
 										"	<a href='javascript:void(0)' class='delete'>删除</a>"+
 										"	<a href='javascript:void(0)'>查看详情</a>"+
 										"</div>"+
 									"</div>";
-									$("#l_content").prepend(html);
-									$("#l_content").find(".l_content:first").slideDown("slow");
-								}
-							}
-							
+							$("#l_content").prepend(html);
+							$("#l_content").find(".l_content:first").slideDown("slow"); */
 						});
-						$("#add_services,#yy").hide();
-						$("#a_s_2").hide();
-						$("#a_s_1").show();
-						$("#at_new").html("");
-						$("#service_name").val("");
-						$("#service_desc").val("");
-						$("#category1").html("<option value=''>-请选择-</option>");
-						$("#category2").parents(".s_main").hide();
-						$("#category3").parents(".s_main").hide();
-						$("#category4").parents(".s_main").hide();
-						$("#category5").parents(".s_main").hide();
-					});
-					$("#new_attribute").off("click").on("click",function() {
-						var html = "<p>"
-								+ "<input placeholder='属性' type='text'/><input type='text' placeholder='属性值'/>"
-								+ "</p>";
-						$(this).next().append(html);
-					});
+				$("#new_attribute").on("click",function() {
+					var html = "<p>"
+							+ "<input placeholder='属性' type='text'/><input type='text' placeholder='属性值'/>"
+							+ "</p>";
+					$(this).next().append(html);
+					$("input[placeholder]")
+							.placeholder();
 				});
 			});
+
 			/*添加服务按钮*/
 			/*删除服务按钮*/
-			$("#l_content").off("click").on("click", ".delete", function() {
+			$("#l_content").on("click", ".delete", function() {
 				$("#yy").show();
 				dialogShow($(this));
 			});

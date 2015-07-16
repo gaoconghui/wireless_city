@@ -95,7 +95,6 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	public Catalogue initCatalogueById(long tid);
 
 
-
 	
 
 }

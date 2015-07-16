@@ -1,4 +1,4 @@
- package com.whut.wxcs.resmanager.action;
+package com.whut.wxcs.resmanager.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.struts2.interceptor.ParameterAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
