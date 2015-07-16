@@ -42,7 +42,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 
 	private int rid;
 
-	private Provider provider = new Provider();
+	private Provider provider;
 
 	private InputStream inputStream;
 
@@ -121,8 +121,9 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	 */
 	public String showTemplate() {
 		// 查询template并返回属性
+		System.out.println(cid);
 		template = catalogueService.getTemplate(cid);
-		System.out.println(template.getAttributes().size());
+		//System.out.println(template.getAttributes().size());
 		return "template";
 	}
 

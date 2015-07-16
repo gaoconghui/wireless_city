@@ -28,16 +28,19 @@ public class ProviderAction extends BaseAction<Provider> implements
 
 	@javax.annotation.Resource
 	private ProviderService providerService;
-	@javax.annotation.Resource
-	private InputStream inputStream;
+
 	@javax.annotation.Resource
 	private ResourceService resourceService;
+
+	@javax.annotation.Resource
 	private CatalogueService catalogueService;
+
 	private Provider provider = new Provider();
 	private Map<String, Object> session;
 	private Catalogue catalogue;
 	private List<Resource> resources;
 	private List<Catalogue> catalogues;
+	private InputStream inputStream;
 
 	// providerList 页面中，对服务商执行操作后转发psid，重定向时使用
 	private long psid;
@@ -89,6 +92,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 * 服务商登陆,并验证
 	 */
 	public String login() {
+		System.out.println("11111111111111111111");
 		provider = providerService.isLogin(provider);
 		if (provider == null) {
 			try {
@@ -113,8 +117,11 @@ public class ProviderAction extends BaseAction<Provider> implements
 		}
 		if (provider.getCheckState() == 1) {
 			session.put("provider", provider);
-            resources = resourceService.getProviderResource(provider);
-            catalogues = resourceService.getProviderCatalogue(resources);
+			resources = resourceService.getProviderResource(provider);
+			catalogues = resourceService.getProviderCatalogue(resources);
+			for (Catalogue catalogue : catalogues) {
+				System.out.println(catalogue.getName());
+			}
 			try {
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 
@@ -150,7 +157,6 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 * 服务商注册,并审核
 	 */
 	public String reg() {
-
 		provider.setRegisterTime(new Date());
 		provider.setLoginPwd(DataUtils.MD5(provider.getLoginPwd()));
 		provider.setCheckState(2);

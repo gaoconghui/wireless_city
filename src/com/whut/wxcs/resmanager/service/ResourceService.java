@@ -46,8 +46,11 @@ public interface ResourceService {
 	/**
 	 * 根据封装好的属性进行查询
 	 */
-	public ResourcePage searchByCriteria(long pid ,CriteriaResource model);
+	public ResourcePage searchByCriteria(long pid, CriteriaResource model);
 
+	/**
+	 * 通过服务商所选的资源判断服务商的类目
+	 */
 	public List<Catalogue> getProviderCatalogue(List<Resource> resources);
 
 }
