@@ -85,134 +85,97 @@ function navOperation() {
 function loginValidator() {
 	// 登录
 	var timer = null;
-	$("#login_submit")
-			.off("click")
-			.click(
-					function() {
-						var name = $("#username").val();
-						var loginPwd = $("#password").val();
-						if (isEmpty(name)) {
-							$("#message").css({
-								"borderColor" : "#b61d1d",
-								"color" : "#b61d1d"
-							}).text("用户名不能为空！");
-							$("#username").focus();
-							return;
-						}
-						if (isEmpty(loginPwd)) {
-							$("#message").css({
-								"borderColor" : "#b61d1d",
-								"color" : "#b61d1d"
-							}).text("密码不能为空！");
+	$("#login_submit").off("click").click(function() {
+		var name = $("#username").val();
+		var loginPwd = $("#password").val();
+		if (isEmpty(name)) {
+			$("#message").css({"borderColor" : "#b61d1d","color" : "#b61d1d"}).text("用户名不能为空！");
+			$("#username").focus();
+			return;
+		}
+		if (isEmpty(loginPwd)) {
+			$("#message").css({"borderColor" : "#b61d1d","color" : "#b61d1d"}).text("密码不能为空！");
+			$("#password").focus();
+			return;
+		}
+		var userType = $("#userType").find("input:checked").val();
+		if (userType == "0") {
+			var param = {name : name,loginPwd : loginPwd};
+			clearTimeout(timer);
+			timer = setTimeout(function() {
+				$.ajax({
+					error : function() {
+						alert("非常抱歉,服务器异常,请稍候再试！");
+					},
+					beforeSend : function() {
+						$("#login_submit").text("请稍候...");
+					},
+					url : "LoginAction_login",
+					type : "post",
+					data : param,
+					success : function(data) {
+						if (data == "0") {
+							$("#message").css({"borderColor" : "#b61d1d","color" : "#b61d1d"}).text("用户名或密码不正确！");
+							$("#password").val("");
 							$("#password").focus();
-							return;
-						}
-						var userType = $("#userType").find("input:checked")
-								.val();
-						if (userType == "0") {
-							var param = {
-								name : name,
-								loginPwd : loginPwd
-							};
-							clearTimeout(timer);
-							timer = setTimeout(
-									function() {
-										$
-												.ajax({
-													error : function() {
-														alert("非常抱歉,服务器异常,请稍候再试！");
-													},
-													beforeSend : function() {
-														$("#login_submit")
-																.text("请稍候...");
-													},
-													url : "LoginAction_login",
-													type : "post",
-													data : param,
-													success : function(data) {
-														if (data == "0") {
-															$("#message")
-																	.css(
-																			{
-																				"borderColor" : "#b61d1d",
-																				"color" : "#b61d1d"
-																			})
-																	.text(
-																			"用户名或密码不正确！");
-															$("#password").val(
-																	"");
-															$("#password")
-																	.focus();
-															$("#login_submit")
-																	.text("登录");
-														} else {
-															$("#login_page")
-																	.hide();
-															$("#yy").hide();
-															var html = "<div class='more iconfont'>&#xe60a;</div>"
-																	+ "<div class='r_info'>"
-																	+ name
-																	+ "</div>"
-																	+ "<div class='r_wel iconfont'>&#xe608;</div>"
-																	+ "<div class='information_box'>"
-																	+ "	<ul>"
-																	+ "		<li><a href='/font/buyer.jsp?id="
-																	+ data
-																	+ "'><i class='iconfont'>&#xe612;</i>个人中心</a></li>"
-																	+ "		<li><a href='LoginAction_exit'><i class='iconfont'>&#xe611;</i>退出</a></li>"
-																	+ "	</ul>"
-																	+ "</div>";
-															$("#s_right").html(
-																	html);
-														}
-													}
-												});
-									}, 200);
+							$("#login_submit").text("登录");
 						} else {
-							var param = {
-								loginName : name,
-								loginPwd : loginPwd
-							};
-							clearTimeout(timer);
-							timer = setTimeout(
-									function() {
-										$
-												.ajax({
-													error : function() {
-														alert("非常抱歉,服务器异常,请稍候再试！");
-													},
-													beforeSend : function() {
-														$("#login_submit")
-																.text("请稍候...");
-													},
-													url : "ProviderAction_login",
-													type : "post",
-													data : param,
-													success : function(data) {
-														alert(data);
-														if (data == "0") {
-															$("#message")
-																	.css(
-																			{
-																				"borderColor" : "#b61d1d",
-																				"color" : "#b61d1d"
-																			})
-																	.text(
-																			"用户名或密码不正确！");
-															$("#password").val(
-																	"");
-															$("#password")
-																	.focus();
-															$("#login_submit")
-																	.text("登录");
-														} else {
-															window.location.href = "/font/salor.jsp";
-														}
-													}
-												});
-									}, 200);
+							$("#login_page").hide();
+							$("#yy").hide();
+							var html = "<div class='more iconfont'>&#xe60a;</div>"
+									+ "<div class='r_info'>"+ name+ "</div>"
+									+ "<div class='r_wel iconfont'>&#xe608;</div>"
+									+ "<div class='information_box'>"
+									+ "	<ul>"
+									+ "		<li><a href='/font/buyer.jsp?id="+ data+ "'><i class='iconfont'>&#xe612;</i>个人中心</a></li>"
+									+ "		<li><a href='LoginAction_exit'><i class='iconfont'>&#xe611;</i>退出</a></li>"
+									+ "	</ul>"
+									+ "</div>";
+							$("#s_right").html(html);
 						}
-					});
+					}
+				});
+			}, 200);
+		} else {
+			var param = {loginName : name,loginPwd : loginPwd};
+			clearTimeout(timer);
+			timer = setTimeout(function() {
+				$.ajax({
+					error : function() {
+						alert("非常抱歉,服务器异常,请稍候再试！");
+					},
+					beforeSend : function() {
+						$("#login_submit").text("请稍候...");
+					},
+					url : "ProviderAction_login",
+					type : "post",
+					data : param,
+					success : function(data) {
+						if(data=="0"){
+							$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("用户名或密码不正确！");
+							$("#password").val("");
+							$("#password").focus();
+							$("#login_submit").text("登录");
+						}else if(data=="3"){
+							$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("账号未通过,请重新注册！");
+							$("#password").val("");
+							$("#password").focus();
+							$("#login_submit").text("登录");
+						}else if(data=="2"){
+							$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("账号审核中！");
+							$("#password").val("");
+							$("#password").focus();
+							$("#login_submit").text("登录");
+						}else if(data=="1"){
+							window.location.href="font/salor.jsp";
+						}else{
+							alert("未知错误");
+						}
+					}
+				});
+			}, 200);
+		}
+	});
 }
 /* 注册验证 */
 function registerValidate() {
@@ -690,12 +653,9 @@ function loginValidate() {
 			$("#password").focus();
 			return;
 		}
-		var userType = $("#userType").find("input:checked").val();
-		var param = {
-			name : name,
-			loginPwd : loginPwd
-		};
-		if (userType == "0") {
+		var userType=$("#userType").find("input:checked").val();
+		if(userType=="0"){
+			var param={name:name,loginPwd:loginPwd};
 			clearTimeout(timer);
 			timer = setTimeout(function() {
 				$.ajax({
@@ -719,8 +679,10 @@ function loginValidate() {
 						}
 					}
 				});
-			}, 200);
-		} else {
+
+			},200);
+		}else{
+			var param={loginName:name,loginPwd:loginPwd};
 			clearTimeout(timer);
 			timer = setTimeout(function() {
 				$.ajax({
@@ -730,17 +692,30 @@ function loginValidate() {
 					beforeSend : function() {
 						$("#submit").text("请  稍  候 . . .");
 					},
-					url : "ProviderAction_login",
-					type : "post",
-					data : param,
-					success : function(data) {
-						if (data == "0") {
+					url:"ProviderAction_login",
+					type:"post",
+					data:param,
+					success:function(data){
+						console.log(data);
+						if(data=="0"){
 							$("#message").text("用户名或密码不正确！").show();
 							$("#submit").text("登 录");
 							$("#password").val("");
 							$("#password").focus();
-						} else {
-							window.location.href = "font/salor.jsp";
+						}else if(data=="3"){
+							$("#message").text("账号未通过,请重新注册！").show();
+							$("#submit").text("登 录");
+							$("#password").val("");
+							$("#password").focus();
+						}else if(data=="2"){
+							$("#message").text("账号审核中！").show();
+							$("#submit").text("登 录");
+							$("#password").val("");
+							$("#password").focus();
+						}else if(data=="1"){
+							window.location.href="font/salor.jsp";
+						}else{
+							alert("未知错误");
 						}
 					}
 				});
