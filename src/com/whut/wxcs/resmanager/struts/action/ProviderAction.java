@@ -29,11 +29,11 @@ public class ProviderAction extends BaseAction<Provider> implements
 	@javax.annotation.Resource
 	private ProviderService providerService;
 	@javax.annotation.Resource
-	private InputStream inputStream;
-	@javax.annotation.Resource
 	private ResourceService resourceService;
+	@javax.annotation.Resource
 	private CatalogueService catalogueService;
-	private Provider provider = new Provider();
+	private InputStream inputStream;
+	private Provider provider=new Provider();
 	private Map<String, Object> session;
 	private Catalogue catalogue;
 	private List<Resource> resources;
@@ -96,22 +96,23 @@ public class ProviderAction extends BaseAction<Provider> implements
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		}
-		if (provider.getCheckState() == 2) {
+			//zhengzai shenhe 
+		}else if (provider.getCheckState() == 2) {
 			try {
 				inputStream = new ByteArrayInputStream("2".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
 		}
-		if (provider.getCheckState() == 0) {
+		else if (provider.getCheckState() == 0) {
+		//wei tong guo 
 			try {
 				inputStream = new ByteArrayInputStream("3".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
 		}
-		if (provider.getCheckState() == 1) {
+		else if (provider.getCheckState() == 1) {
 			session.put("provider", provider);
             resources = resourceService.getProviderResource(provider);
             catalogues = resourceService.getProviderCatalogue(resources);

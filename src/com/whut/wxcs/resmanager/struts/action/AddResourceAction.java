@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -173,15 +174,24 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String addResource() {
 		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
 				resourceAttrs);
+		for(ResourceAttribute r:resourceAttrs){
+			System.out.println("id:"+r.getId()+",attribute:"+r.getAttribute()+",resource:"+r.getResource()+",value:"+r.getValue());
+			System.out.println("--------------------");
+		}
 		System.out.println(model.getResource_name());
+		System.out.println(model.getDescription());
 		model.setAttributes(resourceAttributes);
 		Catalogue catalogue = new Catalogue();
 		catalogue.setId(cid);
 		model.setCatalogue(catalogue);
 		model.setCreate_time(new Date());
 		long id = resourceService.addResource(model);
-		System.out.println("---------" + id + "-----------------");
-		return "addResource";
+		try {
+			inputStream = new ByteArrayInputStream((id+"").getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return "ajax-success";
 	}
 
 	public String toShowResourcePage() {

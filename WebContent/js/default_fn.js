@@ -154,14 +154,25 @@ function loginValidator(){
 					type:"post",
 					data:param,
 					success:function(data){
-						alert(data);
 						if(data=="0"){
 							$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("用户名或密码不正确！");
 							$("#password").val("");
 							$("#password").focus();
 							$("#login_submit").text("登录");
-						}else{
+						}else if(data=="3"){
+							$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("账号未通过,请重新注册！");
+							$("#password").val("");
+							$("#password").focus();
+							$("#login_submit").text("登录");
+						}else if(data=="2"){
+							$("#message").css({"borderColor":"#b61d1d","color":"#b61d1d"}).text("账号审核中！");
+							$("#password").val("");
+							$("#password").focus();
+							$("#login_submit").text("登录");
+						}else if(data=="1"){
 							window.location.href="font/salor.jsp";
+						}else{
+							alert("未知错误");
 						}
 					}
 				});
@@ -550,8 +561,8 @@ function loginValidate(){
 			return;
 		}
 		var userType=$("#userType").find("input:checked").val();
-		var param={name:name,loginPwd:loginPwd};
 		if(userType=="0"){
+			var param={name:name,loginPwd:loginPwd};
 			clearTimeout(timer);
 			timer=setTimeout(function(){
 				$.ajax({
@@ -577,6 +588,7 @@ function loginValidate(){
 				});
 			},200);
 		}else{
+			var param={loginName:name,loginPwd:loginPwd};
 			clearTimeout(timer);
 			timer=setTimeout(function(){
 				$.ajax({
@@ -590,13 +602,26 @@ function loginValidate(){
 					type:"post",
 					data:param,
 					success:function(data){
+						console.log(data);
 						if(data=="0"){
 							$("#message").text("用户名或密码不正确！").show();
 							$("#submit").text("登 录");
 							$("#password").val("");
 							$("#password").focus();
-						}else{
+						}else if(data=="3"){
+							$("#message").text("账号未通过,请重新注册！").show();
+							$("#submit").text("登 录");
+							$("#password").val("");
+							$("#password").focus();
+						}else if(data=="2"){
+							$("#message").text("账号审核中！").show();
+							$("#submit").text("登 录");
+							$("#password").val("");
+							$("#password").focus();
+						}else if(data=="1"){
 							window.location.href="font/salor.jsp";
+						}else{
+							alert("未知错误");
 						}
 					}
 				});
