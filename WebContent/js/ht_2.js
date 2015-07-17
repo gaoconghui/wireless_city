@@ -71,10 +71,7 @@ var ajaxqueue=1;
 					$.tmUtil.infoShow({"message":"none attribute"}).stop(true,true).fadeOut(1000);
 					$("#yy").hide();
 				}else if(data=="0"){
-					alert("exception");
 					$("#mod_attribute").html("");
-					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
 				}else{
 					console.log("标识"+data);
 					$.tmUtil.infoHide();
@@ -83,7 +80,6 @@ var ajaxqueue=1;
 					var length=$data.length;
 					var color="";
 					for(var i=0;i<length;i++){
-						
 						var type="";
 						switch($data[i].type){
 							case 1:type="文本";break;
@@ -193,7 +189,7 @@ var ajaxqueue=1;
 	}
 /* update_module ajax*/
 	/* save_module_attribute  ajax*/
-	function saveModuleAttr(url,dataParams){
+	function saveModuleAttr(url,dataParams,p){
 		$.ajax({
 			type:"post",
 			data:dataParams,
@@ -204,6 +200,7 @@ var ajaxqueue=1;
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
 				}else if(data=="1"){
 					//alert("保存属性成功！");
+					findModuleAttrDetails("AttributeAction_getAttributesByAJAX",p);
 					$.tmUtil.infoHide();
 				}else{
 					$.tmUtil.infoShow({"message":"未知错误"}).stop(true,true).fadeOut(1000);
@@ -378,7 +375,8 @@ var ajaxqueue=1;
 		    	    //alert(args["attributes[0].name"]+"--"+args["attributes[0].description"]+"--"+args["attributes[0].type"]+"--"+args["attributes[0].value"]);
 					//alert(args["attributes[1].name"]+"--"+args["attributes[1].description"]+"--"+args["attributes[1].type"]+"--"+args["attributes[1].value"]);
 					//delete/save
-					saveModuleAttr("AttributeAction_doAttributesByAJAX",args);
+					var p={tid:templateId};
+					saveModuleAttr("AttributeAction_doAttributesByAJAX",args,p);
 					
 					
 					
@@ -390,8 +388,8 @@ var ajaxqueue=1;
 					$.tmUtil.infoShow({"message":"修改完成！"}).stop(true,true).fadeOut(1000);
 					$yy.hide();
 					//alert("准备更新模板属性");
-					var p={tid:templateId};
-					findModuleAttrDetails("AttributeAction_getAttributesByAJAX",p);
+					
+					
 					
 				});
 				$add_module_attribute.find(".back_step").off("click").click(function(){
@@ -445,7 +443,7 @@ var ajaxqueue=1;
 								}
 							});
 							$module_attribute_type.trigger("change");
-							$this.fadeOut(2000,function(){
+							$this.fadeOut(500,function(){
 								$this.remove();
 							});
 						}

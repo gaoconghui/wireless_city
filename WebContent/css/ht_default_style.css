@@ -661,6 +661,7 @@
 	color: #fff;
 	float: left;
 	margin: 0px 10px 10px 10px;
+	box-shadow:3px 3px 12px #000;
 }
 
 .tzht .t_right .r_table .r_label .l_show .s_content .c_attribute p span
@@ -885,7 +886,6 @@
 .add_module .a_d_main p {
 	margin-left: 20px;
 	margin-top: 10px;
-	height: 30px;
 	line-height: 30px;
 }
 
@@ -893,6 +893,10 @@
 	font-size: 12px;
 	padding-left: 4px;
 	width: 161px;
+}
+
+.add_module .a_d_main p.last_p input {
+	width: 250px;
 }
 
 .add_module .a_d_main textarea {
@@ -935,7 +939,6 @@
 .add_module_attribute {
 	display: none;
 	width: 886px;
-	height: 355px;
 	position: fixed;
 	z-index: 11;
 }
@@ -970,14 +973,13 @@
 }
 
 .add_module_attribute .attribute_show {
-	height: 353px;
 	float: left;
 	border: 1px solid #282828;
 	text-align: center;
 }
 
 .add_module_attribute .attribute_show .s_scroll {
-	height: 313px;
+	height: 344px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	background: #fff;
@@ -1008,6 +1010,10 @@
 	height: 20px;
 	display: block;
 	float: left;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	
 }
 
 .add_module_attribute .attribute_show .s_title span:first-child {

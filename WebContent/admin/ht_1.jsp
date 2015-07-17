@@ -172,8 +172,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<option value="5">枚举</option>
 					</select>
 				</p>
-				<p id="enmu_type"  style="display:none;">
-					<span>枚举内容：</span>
+				<p id="enmu_type"  class="dis_none last_p">
+					<span>枚举内容：(注：枚举以英文状态","隔开 如：1,2,3)</span>
 					<input type="text" id="module_attribute_content"/>
 				</p>
 			</div>
