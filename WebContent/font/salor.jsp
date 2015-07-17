@@ -64,18 +64,32 @@
 					<a href="font/salor.jsp?pid=1">所有分类</a> <a
 						href="javascript:void(0)" class="more_icon icon iconfont">&#xe615;</a>
 					<s:iterator var="c" value="#session.catalogues">
-						<s:a href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{id}">
+						<s:a
+							href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{id}">
 							<s:property value="name" />
 						</s:a>
 					</s:iterator>
 					<!-- <a href="font/search.jsp?id=101">无线政务</a> -->
+				</div>
+				<div>
+                     <!-- 类目导航栏 -->				
 				</div>
 				<div class="hd_sort">
 					<div class="s_details" id="s_details">
 						<span> <a href="javascript:void(0)">子类：</a>
 						</span>
 						<!-- 这里是一类目迭代 -->
-						<a href="font/search.jsp?id=101">无线政务</a>
+						<s:if
+							test="page.catalogue.child!=null&&page.catalogue.child.size()!=0">
+							<s:iterator value="page.catalogue.child">
+								<!-- <a href="font/search.jsp?id=101">无线政务</a> -->
+								<s:a
+									href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{id}&rsid=%{rsid}">
+									<s:property value="name" />
+								</s:a>
+							</s:iterator>
+						</s:if>
+                        <s:else>该类目下暂无子类</s:else>
 						<!-- 这里是一类目迭代-->
 					</div>
 				</div>
@@ -128,105 +142,108 @@
 					</p> --%>
 				</div>
 			</div>
-			<div class="r_list_salor">
-				<div class="servic_title">
-					<div class="t_left">全部服务</div>
-					<div class="t_right">
-						<div class="r_search">
-							<s:form action="SearchProviderResourceAction_nextKeyWordSearch">
-								<s:textfield name="keyWord" id="search_service_form"></s:textfield>
-								<s:hidden name="rsid"></s:hidden>
-								<div class="s_btn" id="search_service">查询</div>
-							</s:form>
-						</div>
-						<div class="r_add">
-							<span class="span_text" id="add_service_btn">增加服务资源</span>
-						</div>
-					</div>
-				</div>
-				<div class="content_title">
-					<div>图片</div>
-					<div>
-						名称
-						<s:a id="name_sort"
-							href="SearchProviderResourceAction_changeOrder?rsid=%{rsid}&&orderName=1"></s:a>
-					</div>
-					<div>描述</div>
-					<div>
-						时间
-						<s:a id="time_sort"
-							href="SearchProviderResourceAction_changeOrder?rsid=%{rsid}&&orderName=0"></s:a>
-					</div>
-					<div>操作</div>
-				</div>
-				<div id="l_content">
-					<s:iterator value="page.list" var="resource">
-						<div class="l_content">
-							<div class="l_img">
-								<img alt="" src="images/list_demo.jpg" height="100" width="100" />
+			<s:if test="page.list!=null&&page.list.size()!=0">
+				<div class="r_list_salor">
+					<div class="servic_title">
+						<div class="t_left">全部服务</div>
+						<div class="t_right">
+							<div class="r_search">
+								<s:form action="SearchProviderResourceAction_nextKeyWordSearch">
+									<s:textfield name="keyWord" id="search_service_form"></s:textfield>
+									<s:hidden name="rsid"></s:hidden>
+									<div class="s_btn" id="search_service">查询</div>
+								</s:form>
 							</div>
-							<div class="l_name">
-								<s:property value="resource_name" />
-							</div>
-							<div class="l_desc">
-								<s:property value="description" />
-							</div>
-							<div class="l_time">
-								<s:property value="create_time" />
-							</div>
-							<div class="l_operation">
-								<a href="javascript:void(0)" class="update">修改</a> <a
-									href="javascript:void(0)" class="delete">删除</a> <a
-									href="javascript:void(0)">查看详情</a>
+							<div class="r_add">
+								<span class="span_text" id="add_service_btn">增加服务资源</span>
 							</div>
 						</div>
-					</s:iterator>
-				</div>
-				<div class="bd_paging" id="paging">
-					<div id="center_page">
-						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=1">首页</s:a>
-						<s:if test="pageNum-3>0">
-							<span>...</span>
-						</s:if>
-						<s:if test="pageNum-2>0">
+					</div>
+					<div class="content_title">
+						<div>图片</div>
+						<div>
+							名称
+							<s:a id="name_sort"
+								href="SearchProviderResourceAction_changeOrder?rsid=%{rsid}&&orderName=1"></s:a>
+						</div>
+						<div>描述</div>
+						<div>
+							时间
+							<s:a id="time_sort"
+								href="SearchProviderResourceAction_changeOrder?rsid=%{rsid}&&orderName=0"></s:a>
+						</div>
+						<div>操作</div>
+					</div>
+					<div id="l_content">
+						<s:iterator value="page.list" var="resource">
+							<div class="l_content">
+								<div class="l_img">
+									<img alt="" src="images/list_demo.jpg" height="100" width="100" />
+								</div>
+								<div class="l_name">
+									<s:property value="resource_name" />
+								</div>
+								<div class="l_desc">
+									<s:property value="description" />
+								</div>
+								<div class="l_time">
+									<s:property value="create_time" />
+								</div>
+								<div class="l_operation">
+									<a href="javascript:void(0)" class="update">修改</a> <a
+										href="javascript:void(0)" class="delete">删除</a> <a
+										href="javascript:void(0)">查看详情</a>
+								</div>
+							</div>
+						</s:iterator>
+					</div>
+
+					<div class="bd_paging" id="paging">
+						<div id="center_page">
 							<s:a
-								href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum-2}">
-								<s:property value="%{pageNum-2}" />
-							</s:a>
-						</s:if>
-						<s:if test="pageNum-1>0">
+								href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=1">首页</s:a>
+							<s:if test="pageNum-3>0">
+								<span>...</span>
+							</s:if>
+							<s:if test="pageNum-2>0">
+								<s:a
+									href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum-2}">
+									<s:property value="%{pageNum-2}" />
+								</s:a>
+							</s:if>
+							<s:if test="pageNum-1>0">
+								<s:a
+									href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum-1}">
+									<s:property value="%{pageNum-1}" />
+								</s:a>
+							</s:if>
 							<s:a
-								href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum-1}">
-								<s:property value="%{pageNum-1}" />
+								href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum}">
+								<s:property value="%{pageNum}" />
 							</s:a>
-						</s:if>
-						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum}">
-							<s:property value="%{pageNum}" />
-						</s:a>
-						<s:if test="pageNum+1<=page.totalPageNumber">
+							<s:if test="pageNum+1<=page.totalPageNumber">
+								<s:a
+									href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum+1}">
+									<s:property value="%{pageNum+1}" />
+								</s:a>
+							</s:if>
+							<s:if test="pageNum+2<=page.totalPageNumber">
+								<s:a
+									href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum+2}">
+									<s:property value="%{pageNum+2}" />
+								</s:a>
+							</s:if>
+							<s:if test="pageNum+3<=page.totalPageNumber">
+								<span>...</span>
+							</s:if>
 							<s:a
-								href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum+1}">
-								<s:property value="%{pageNum+1}" />
-							</s:a>
-						</s:if>
-						<s:if test="pageNum+2<=page.totalPageNumber">
-							<s:a
-								href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum+2}">
-								<s:property value="%{pageNum+2}" />
-							</s:a>
-						</s:if>
-						<s:if test="pageNum+3<=page.totalPageNumber">
-							<span>...</span>
-						</s:if>
-						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}">
+								href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}">
 						     尾页
 						</s:a>
+						</div>
 					</div>
 				</div>
-			</div>
+			</s:if>
 		</div>
 		<div class="clear"></div>
 	</div>
