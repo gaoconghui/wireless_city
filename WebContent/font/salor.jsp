@@ -461,10 +461,10 @@
 						type : "post",
 						url : "AttributeAction_getAttributesByAJAX",/* 查询服务资源模板属性名称action *//* 修改2 */
 						success : function(data) {
-							console.log(data);
 							var html = "";
 							var $data = $.parseJSON(data);
 							var length = $data.length;
+							console.log("长度"+length);
 							for (var i = 0; i < length; i++) {
 								var type="";
 								switch($data[i].type){
@@ -483,9 +483,10 @@
 									var args=[];
 									args=$data[i].value.split(",");
 									var h="";
-									var length=args.length;
-									for(var j=0;j<length;j++){
-										h+="<option value='"+j+"'>"+args[j]+"</option>";
+									var optionlength=args.length;
+									console.log("args"+args);
+									for(var j=0;j<optionlength;j++){
+										h+="<option value='"+args[j]+"'>"+args[j]+"</option>";
 									}
 									html += "<p data-attrid='"+$data[i].id+"'>"+
 									"	<span title='"+$data[i].name+"'>"+ $data[i].name+ ":</span>"+
@@ -519,12 +520,15 @@
 							resource_name : service_name,
 							description : service_desc
 						};
+						
 						$("#at_fill").find("p").each(function(index){
-							var value=$(this).find("input").val();
+							var value=$(this).find("input").val()||$(this).find("select").val();
+							alert(value);
 							var id=$(this).data("attrid");
 							param["resourceAttrs["+index+"].value"]=value;
 							param["resourceAttrs["+index+"].attribute.id"]=id;
 						});
+						
 						$.ajax({
 							beforeSend:function(){
 								
@@ -573,9 +577,25 @@
 					$("#new_attribute").off("click").on("click",function() {
 						var html = "<p>"
 								+ "<input placeholder='属性' type='text'/><input type='text' placeholder='属性值'/>"
+								+"<i class='iconfont dis_none'>&#xe616;</i>"
 								+ "</p>";
 						$(this).next().append(html);
 					});
+					$("#at_new").on("click","i",function(){
+						$(this).closest("p").fadeOut("slow",function(){
+							$(this).remove();	
+						});
+					});
+					$("#at_new").on({
+						"mouseenter":function(){
+							$(this).find("i").show();
+							$(this).css("background","#e45050");
+						},
+						"mouseleave":function(){
+							$(this).find("i").hide();
+							$(this).css("background","#fff");
+						}
+					},"p");
 				});
 			});
 			/*添加服务按钮*/
