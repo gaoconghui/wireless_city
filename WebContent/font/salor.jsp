@@ -71,8 +71,38 @@
 					</s:iterator>
 					<!-- <a href="font/search.jsp?id=101">无线政务</a> -->
 				</div>
+				<s:if test="page.catalogue.parent.id!=1">
+					<s:a href="javascript:void(0)">类目导航</s:a>
+					<s:if test="page.catalogue.parent.parent.id!=1">
+						<s:if test="page.catalogue.parent.parent.parent.id!=1">
+							<s:if test="page.catalogue.parent.parent.parent.parent.id!=1">
+								<s:a
+									href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.parent.parent.parent.id}&rsid=%{rsid}">
+									<s:property
+										value="page.catalogue.parent.parent.parent.parent.name" />
+								</s:a>
+							</s:if>
+							<s:a
+								href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.parent.parent.id}&rsid=%{rsid}">
+								<s:property value="page.catalogue.parent.parent.parent.name" />
+							</s:a>
+						</s:if>
+						<s:a
+							href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.parent.id}&rsid=%{rsid}">
+							<s:property value="page.catalogue.parent.parent.name" />
+						</s:a>
+					</s:if>
+					<s:a
+						href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.id}&rsid=%{rsid}">
+						<s:property value="page.catalogue.parent.name" />
+					</s:a>
+					<s:a
+						href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.id}&rsid=%{rsid}">
+						<s:property value="page.catalogue.name" />
+					</s:a>
+				</s:if>
 				<div>
-                     <!-- 类目导航栏 -->				
+					<!-- 类目导航栏 -->
 				</div>
 				<div class="hd_sort">
 					<div class="s_details" id="s_details">
@@ -89,7 +119,7 @@
 								</s:a>
 							</s:iterator>
 						</s:if>
-                        <s:else>该类目下暂无子类</s:else>
+						<s:else>该类目下暂无子类</s:else>
 						<!-- 这里是一类目迭代-->
 					</div>
 				</div>
