@@ -210,7 +210,12 @@ public class AddResourceAction extends BaseAction<Resource> implements
 
 	public String deleteResource() {
 		resourceService.delete(rid);
-		return "delete_success";
+		try {
+			inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return "ajax-success";
 	}
 
 	/**
