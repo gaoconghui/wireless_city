@@ -207,13 +207,24 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		resources = resourceService.getCatalogueProviderResource(cid, provider);
 		return "";
 	}
-
+    /**
+     *删除资源    0   失败   1  成功 
+     */
 	public String deleteResource() {
-		resourceService.delete(rid);
 		try {
-			inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			resourceService.delete(rid);
+			try {
+				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e1) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			e1.printStackTrace();
 		}
 		return "ajax-success";
 	}
