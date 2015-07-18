@@ -116,6 +116,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									
 								</div>
 								<div class="c_attribute" id="mod_attribute">
+									<%-- <p>
+										<span>属性名称：</span>
+										<span>价格</span>
+										<span>属性描述：</span>
+										<span style="text-indent:24px;">价格撒旦撒厉害的卡上了看到就爱上了咖啡拉萨路返回了山东路返回拉黑塑料袋和覅都if哦度是否看见</span>
+										<span>属性类型：</span>
+										<span>枚举</span>
+										<span>枚举类型：</span>
+										<span>100,500,1000</span>
+									</p> --%>
+									
 								</div>
 							</div>
 						</div>
@@ -168,8 +179,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<option value="5">枚举</option>
 					</select>
 				</p>
-				<p id="enmu_type"  class="dis_none last_p">
-					<span>枚举内容：(注：枚举以英文状态","隔开 如：1,2,3)</span>
+				<p id="enmu_type"  style="display:none;">
+					<span>枚举内容：</span>
 					<input type="text" id="module_attribute_content"/>
 				</p>
 			</div>

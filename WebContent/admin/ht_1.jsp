@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- dialog beigin -->
 	<div id="yy"></div>
 	<div id="yp_dialog" class="yp_dialog">
-		<p class="dialog_title">确定删除吗？<span class="close iconfont">&#xe603;</span></p>
+		<p class="dialog_title">确定删除吗？<span class="close">X</span></p>
 		<div class="dialog_content">
 			<a href="javascript:void(0)" class="sure">确定</a>
 			<a href="javascript:void(0)" class="close">取消</a>
@@ -172,8 +172,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<option value="5">枚举</option>
 					</select>
 				</p>
-				<p id="enmu_type"  class="dis_none last_p">
-					<span>枚举内容：(注：枚举以英文状态","隔开 如：1,2,3)</span>
+				<p id="enmu_type"  style="display:none;">
+					<span>枚举内容：</span>
 					<input type="text" id="module_attribute_content"/>
 				</p>
 			</div>

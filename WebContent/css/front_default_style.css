@@ -9,7 +9,7 @@
 	background: #f7f7f7;
 	position: fixed;
 	z-index: 10;
-	display:none;
+	display: none;
 }
 
 .yp_dialog .dialog_title {
@@ -17,7 +17,7 @@
 	height: 40px;
 	background: #282828;
 	color: #fff;
-	text-indent: 10px;
+	text-indent: 4px;
 	line-height: 40px;
 	font-size: 14px;
 	position: relative;
@@ -29,9 +29,8 @@
 	height: 20px;
 	position: absolute;
 	top: 10px;
-	right: 15px;
+	right: 10px;
 	cursor: pointer;
-	font-size:22px;
 }
 
 .yp_dialog .dialog_content {
@@ -551,7 +550,7 @@
 .add_services  .a_s_main .a_s_attribute p span{
 	display:block;
 	float:left;
-	width:91px;
+	width:62px;
 	line-height:25px;
 	text-align:right;
 	white-space:nowrap;
@@ -562,7 +561,7 @@
 .add_services  .a_s_main .a_s_attribute p input {
 	font-size: 12px;
 	padding-left: 5px;
-	width: 72px;
+	width: 100px;
 	height: 20px;
 	line-height: 20px;
 	vertical-align: middle;
@@ -572,8 +571,8 @@
 }
 .add_services  .a_s_main .a_s_attribute p select {
 	margin-left: 10px;
- 	width: 81px;
-  	border: 1px solid #a9a9a9;
+ 	width: 108px;
+  	border: 1px solid #aaa;
 	display:block;
 	float:left;
 }
@@ -602,23 +601,6 @@
 	margin-top: -30px;
 }
 
-.add_services  .a_s_main .a_s_attribute .at_fill .at_new p{
-	width:195px;
-	position:relative;
-	padding:2px 0;
-}
-
-.add_services  .a_s_main .a_s_attribute .at_fill .at_new p i{
-	position:absolute;
-	top:3px;
-	right:-20px;
-	line-height:20px;
-	width:20px;
-	height:20px;
-	color:#e45050;
-	font-size:18px;
-	cursor:pointer;
-}
 
 .add_services  .a_s_2 .next_step, .pre_step {
 	margin: 0;
@@ -2535,6 +2517,7 @@ html,body {
 	background: #333;
 	font-size: 12px;
 	line-height: 21px;
+	text-lagin: center;
 	padding: 0 4px;
 }
 

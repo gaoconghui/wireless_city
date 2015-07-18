@@ -12,10 +12,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.whut.wxcs.resmanager.model.Catalogue;
-import com.whut.wxcs.resmanager.model.CriteriaResource;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;
-import com.whut.wxcs.resmanager.model.ResourcePage;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ProviderService;
 import com.whut.wxcs.resmanager.service.ResourceService;
@@ -35,24 +33,14 @@ public class ProviderAction extends BaseAction<Provider> implements
 	@javax.annotation.Resource
 	private CatalogueService catalogueService;
 	private InputStream inputStream;
-	private Provider provider = new Provider();
+	private Provider provider=new Provider();
 	private Map<String, Object> session;
 	private Catalogue catalogue;
 	private List<Resource> resources;
 	private List<Catalogue> catalogues;
 
-	private ResourcePage page;
-
 	// providerList 页面中，对服务商执行操作后转发psid，重定向时使用
 	private long psid;
-
-	public void setPage(ResourcePage page) {
-		this.page = page;
-	}
-
-	public ResourcePage getPage() {
-		return page;
-	}
 
 	public long getPsid() {
 		return psid;
@@ -97,22 +85,6 @@ public class ProviderAction extends BaseAction<Provider> implements
 		return provider;
 	}
 
-	public List<Resource> getResources() {
-		return resources;
-	}
-
-	public void setResources(List<Resource> resources) {
-		this.resources = resources;
-	}
-
-	public List<Catalogue> getCatalogues() {
-		return catalogues;
-	}
-
-	public void setCatalogues(List<Catalogue> catalogues) {
-		this.catalogues = catalogues;
-	}
-
 	/**
 	 * 服务商登陆,并验证
 	 */
@@ -125,33 +97,32 @@ public class ProviderAction extends BaseAction<Provider> implements
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			// 正在审核
-		} else if (provider.getCheckState() == 2) {
+			//zhengzai shenhe 
+		}else if (provider.getCheckState() == 2) {
 			try {
 				inputStream = new ByteArrayInputStream("2".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		} else if (provider.getCheckState() == 0) {
+		}
+		else if (provider.getCheckState() == 0) {
+		//wei tong guo 
 			try {
 				inputStream = new ByteArrayInputStream("3".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		} else if (provider.getCheckState() == 1) {
+		}
+		else if (provider.getCheckState() == 1) {
 			session.put("provider", provider);
-			/*
-			 * page = resourceService.searchByCriteria(provider.getId(), new
-			 * CriteriaResource());
-			 */
 			resources = resourceService.getProviderResource(provider);
 			catalogues = resourceService.getProviderCatalogue(resources);
 			for (Catalogue catalogue : catalogues) {
 				System.out.println(catalogue.getName());
 			}
-			session.put("catalogues", catalogues);
 			try {
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
