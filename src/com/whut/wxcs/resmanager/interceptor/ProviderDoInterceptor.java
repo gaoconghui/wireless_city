@@ -13,7 +13,6 @@ public class ProviderDoInterceptor implements Interceptor {
 
 	@Override
 	public void destroy() {
-
 	}
 
 	@Override

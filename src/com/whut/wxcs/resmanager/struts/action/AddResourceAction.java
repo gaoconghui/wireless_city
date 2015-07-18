@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -124,7 +123,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		// 查询template并返回属性
 		System.out.println(cid);
 		template = catalogueService.getTemplate(cid);
-		//System.out.println(template.getAttributes().size());
+		// System.out.println(template.getAttributes().size());
 		return "template";
 	}
 
@@ -175,8 +174,10 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String addResource() {
 		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
 				resourceAttrs);
-		for(ResourceAttribute r:resourceAttrs){
-			System.out.println("id:"+r.getId()+",attribute:"+r.getAttribute()+",resource:"+r.getResource()+",value:"+r.getValue());
+		for (ResourceAttribute r : resourceAttrs) {
+			System.out.println("id:" + r.getId() + ",attribute:"
+					+ r.getAttribute() + ",resource:" + r.getResource()
+					+ ",value:" + r.getValue());
 			System.out.println("--------------------");
 		}
 		System.out.println(model.getResource_name());
@@ -186,9 +187,10 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		catalogue.setId(cid);
 		model.setCatalogue(catalogue);
 		model.setCreate_time(new Date());
+		model.setProvider(provider);
 		long id = resourceService.addResource(model);
 		try {
-			inputStream = new ByteArrayInputStream((id+"").getBytes("UTF-8"));
+			inputStream = new ByteArrayInputStream((id + "").getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -205,10 +207,26 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		resources = resourceService.getCatalogueProviderResource(cid, provider);
 		return "";
 	}
-
+    /**
+     *删除资源    0   失败   1  成功 
+     */
 	public String deleteResource() {
-		resourceService.delete(rid);
-		return "delete_success";
+		try {
+			resourceService.delete(rid);
+			try {
+				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e1) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			e1.printStackTrace();
+		}
+		return "ajax-success";
 	}
 
 	/**
