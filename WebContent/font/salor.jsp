@@ -92,7 +92,6 @@
 					<p>
 						<a href="javascript:void(0)">所有属性</a>
 					</p>
-					<!-- 注意data-tag -->
 					<s:iterator value="page.attrList" status="rowst">
 						<p>
 							<span><s:property value="name" />:</span> <span> <s:iterator
@@ -153,7 +152,7 @@
 				</div>
 				<div id="l_content">
 					<s:iterator value="page.list" var="resource">
-						<div class="l_content">
+						<div class="l_content" data-rid="//TODO这里加一个rid">
 							<div class="l_img">
 								<img alt="" src="images/list_demo.jpg" height="100" width="100" />
 							</div>
@@ -618,13 +617,30 @@
 				"marginTop" : newTop,
 				"top" : "50%",
 				"left" : "50%"
-			}).slideDown("slow");
+			}).show();
 			$dialog.find(".close").click(function() {
-				$dialog.slideUp("slow");
+				$dialog.hide();
 				$("#yy").hide();
 			});
 			$dialog.find(".sure").off("click").on("click", function() {
-				window.location.href = "javascript:void(0)";/* 删除服务资源action *//* 修改6 */
+				var deleteid=$(obj).closest(".l_content").data("rid");
+				$.ajax({
+					data:{rid:deleteid},
+					url:"AddResourceAction_deleteResource",
+					type:"post",
+					success:function(data){
+						if(data=="1"){
+							$(obj).closest(".l_content").slideUp("slow",function(){
+								$(this).remove();
+							});
+							$dialog.hide();
+							$("#yy").hide();
+						}else{
+							alert("后台异常！");
+						}
+						
+					}
+				});	
 			});
 		}
 		/*dialog show*/
