@@ -618,13 +618,17 @@
 				"marginTop" : newTop,
 				"top" : "50%",
 				"left" : "50%"
-			}).slideDown("slow");
+			}).show();
 			$dialog.find(".close").click(function() {
-				$dialog.slideUp("slow");
+				$dialog.hide();
 				$("#yy").hide();
 			});
 			$dialog.find(".sure").off("click").on("click", function() {
-				window.location.href = "javascript:void(0)";/* 删除服务资源action *//* 修改6 */
+				$(obj).closest(".l_content").slideUp("slow",function(){
+					$(this).remove();
+				});
+				$dialog.hide();
+				$("#yy").hide();
 			});
 		}
 		/*dialog show*/

@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- dialog beigin -->
 	<div id="yy"></div>
 	<div id="yp_dialog" class="yp_dialog">
-		<p class="dialog_title">确定删除吗？<span class="close">X</span></p>
+		<p class="dialog_title">确定删除吗？<span class="close iconfont">&#xe603;</span></p>
 		<div class="dialog_content">
 			<a href="javascript:void(0)" class="sure">确定</a>
 			<a href="javascript:void(0)" class="close">取消</a>
