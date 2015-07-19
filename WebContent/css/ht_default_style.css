@@ -224,14 +224,11 @@
 }
 /*start r_location*/
 .tzht .t_right .r_location {
-	position: fixed;
 	width: 100%;
 	height: 51px;
 	background: #e5e5e5;
 	line-height: 51px;
 	border-bottom: 1px solid #ccc;
-	top: 56px;
-	left: 200px;
 }
 
 .tzht .t_right .r_location i {
@@ -289,7 +286,7 @@
 }
 
 .tzht .t_right .r_table:nth-child(2) {
-	margin-top: 51px;
+	margin-top: 10px;
 }
 
 .tzht .t_right .r_table .r_title {
@@ -599,7 +596,6 @@
 }
 
 .tzht .t_right .r_table .r_label .l_show .s_content {
-	display: none;
 	padding-top: 10px;
 	border: 1px solid #1e90ff;
 	border-top: 0px;
@@ -624,7 +620,7 @@
 }
 
 .tzht .t_right .r_table .r_label .l_show .s_content .attr_color p:first-child span:first-child
-	{
+{
 	background: #1e90ff;
 }
 

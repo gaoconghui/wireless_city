@@ -99,14 +99,18 @@ var ajaxqueue=1;
 						"			<span>"+type+"</span>";
 							 
 						if(isNotEmpty($data[i].value)){
-							html+="			<span>枚举内容：</span>"+
-							"			<span>"+$data[i].value+"</span>"+
-							"		</p>";
+							html+="	<span>枚举内容：</span>"+
+							"	<span>"+$data[i].value+"</span>"+
+							"</p>";
 						}else{
-							html+="		</p>";
+							html+="</p>";
 						}
 					}
 					$("#mod_attribute").html(html);
+					fallsFlow("#mod_attribute","p");
+					$(window).resize(function(){
+						fallsFlow("#mod_attribute","p");
+					});
 				}
 			}
 		});
@@ -241,14 +245,8 @@ var ajaxqueue=1;
 	});
 	function initialize(){
 		//查看详情
-		var n=0;
 		$("#show_template_details").find(".r_t_a3").off("click").on("click",function(){
-			n++;
-			if(n%2==1){
-				$(this).closest(".s_title").next().slideDown("slow");
-			}else{
-				$(this).closest(".s_title").next().slideUp("slow");
-			}	
+			alert("待开发！");	
 		});
 		/* 根据类目查询模板 */
 		var param={parentid:"1"};
