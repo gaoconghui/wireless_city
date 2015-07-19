@@ -1,8 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <!doctype html>
 <html>
@@ -886,9 +888,9 @@ body {
 					<div>名称</div>
 					<div>描述</div>
 					<div>发布时间</div>
+					<div>审核状态</div>
 					<div>操作</div>
 				</div>
-
 				<div id="l_content">
 					<s:iterator value="page.list" var="resource">
 						<div class="l_content">
@@ -903,6 +905,17 @@ body {
 							</div>
 							<div class="l_time">
 								<s:property value="create_time" />
+							</div>
+							<div class="l_state">
+								<s:if test="checkState==2">
+							            正在审核中
+							   </s:if>
+								<s:elseif test="checkState==1">
+							            通过审核
+							   </s:elseif>
+								<s:else>
+							              该资源已经下架
+							   </s:else>
 							</div>
 							<div class="l_operation">
 								<a href="javascript:void(0)" class="update">修改</a> <a
@@ -966,7 +979,8 @@ body {
 					<s:if test="pageNum+3<=page.totalPageNumber">
 						<span>...</span>
 					</s:if>
-					<s:a href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}">
+					<s:a
+						href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}">
 					     尾页
 					</s:a>
 				</div>

@@ -8,7 +8,6 @@
 <title>资源对应模板</title>
 </head>
 <body>
-	<s:debug></s:debug>
 	<center>
 		<s:form action="AddResourceAction_addResource" theme="simple">
 			<s:hidden name="cid"></s:hidden>
