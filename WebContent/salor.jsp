@@ -888,6 +888,7 @@ body {
 					<div>名称</div>
 					<div>描述</div>
 					<div>发布时间</div>
+					<!-- 新增栏目,但是页面显示不出来 -->
 					<div>审核状态</div>
 					<div>操作</div>
 				</div>
@@ -906,6 +907,7 @@ body {
 							<div class="l_time">
 								<s:property value="create_time" />
 							</div>
+							<!-- 新增栏目,但是页面显示不出来 -->
 							<div class="l_state">
 								<s:if test="checkState==2">
 							            正在审核中

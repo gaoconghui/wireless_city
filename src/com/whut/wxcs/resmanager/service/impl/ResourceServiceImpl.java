@@ -169,9 +169,12 @@ public class ResourceServiceImpl implements ResourceService {
 		addCriteriaFrontKey(model, criteria);
 		// 增加排序方式
 		addCriteriaOrderByTime(model, criteria);
+		//根据审核状态排序,默认状况下优先查询审核状态下的服务资源
+		addCriteriaState(model,criteria);
 		// 增加属性进行查询
 		addCriteriaAttribute(model, criteria);
-
+		
+		
 		// 初始化page
 		List<Resource> resources = criteria.list();
 
@@ -196,6 +199,10 @@ public class ResourceServiceImpl implements ResourceService {
 		page.setList(criteria.list());
 
 		return page;
+	}
+
+	private void addCriteriaState(CriteriaResource model, Criteria criteria) {
+            criteria.add(Restrictions.eq("checkState", model.getState()));
 	}
 
 	private long getTidByResourceList(List<Resource> resources) {

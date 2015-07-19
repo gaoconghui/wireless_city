@@ -124,7 +124,7 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 		}
 		int pid = 1;// TODO
 		page = resourceService.searchByCriteria(pid, cr);
-		model = cr ;
+		model = cr;
 		System.out.println(page);
 
 		return "resource";
@@ -187,6 +187,23 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 		return "resource";
 	}
 
+	/**
+	 * 通过服务资源的审核状态查询
+	 */
+	public String changeState() {
+		CriteriaResource cr = checkRsidAndGetCR();
+		int pid = 1;// TODO
+		cr.setState(cr.getState() + 1);
+		if(cr.getState()>2){
+			cr.setState(cr.getState()-3);
+		}
+		resourceService.searchByCriteria(pid, cr);
+		return "resource";
+	}
+
+	/**
+	 * 改变排序方式
+	 */
 	public String changeOrder() {
 		CriteriaResource cr = checkRsidAndGetCR();
 		// 名字一样，改变排序方式
