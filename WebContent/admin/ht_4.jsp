@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="r_t_action dis_none" id="r_t_action">
 						<span class="r_t_a2 ra" title="通过" id="submit_btn"></span>
 						<span class="r_t_a3 ra" title="下架" id="offsheet_btn"></span>
-						<span class="r_t_a4 ra" title="删除" id="delete_btn"></span>
+						<span class="r_t_a4 ra" title="通知" id="delete_btn"></span>
 					</div>	
 					<div class="s_input">
 						<s:form action="SearchBackResourceAction_inFindByKeyWord">
@@ -43,12 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</s:form>
 					</div>
 				</div>
-				<div class="r_label">
+				<div class="r_label  r_label_h4">
 					<div class="l_label">
 						<div class="l_form" id="l_form">
 							<div class="l_tr first_tr" >
-								<span class="first_span"> <a href="javascript:void(0)"
-									style="background: none;"></a>
+								<span class="first_span"> 
+									<a href="javascript:void(0)" id="sel_all"></a>
 								</span> 
 								<span class="span">
 									<s:a href="SearchBackResourceAction_changeOrder?brsid=%{brsid}&orderName=2">服务资源
@@ -83,7 +83,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</i>
 									</s:a>
 								</span> 
-								<span class="span">操作</span> <span class="span">
+								<span class="span">操作</span> 
+								<span class="span">
 									<s:a href="SearchBackResourceAction_changeOrder?brsid=%{brsid}&orderName=0">审核
 										<i class="iconfont" >
 											<s:if
@@ -107,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</span>
 							</div>
 							<s:iterator value="page.list">
-								<div class="l_tr">
+								<div class="l_tr" data-id=""><!-- TODO  data-id传一个服务资源的id用于操作 -->
 									<span class="first_span"> 
 										<s:a href="javascript:void(0)" cssClass="choose"></s:a>
 									</span> 
@@ -122,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												cssClass="ra submit" title="通过"></s:a> <s:a
 												href="ResourceAction_offCheck?id=%{id}&brsid=%{brsid}"
 												cssClass="ra offsheet" title="下架"></s:a> <s:a
-												href="javascript:void(0)" cssClass="ra delete" title="删除"></s:a>
+												href="javascript:void(0)" cssClass="ra delete" title="通知"></s:a>
 										</small>
 									</span> 
 									<span> 
@@ -208,6 +209,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	<!-- end dialog  -->
-	<script type="text/javascript" src="js/ht_4.js"></script>
+	<script type="text/javascript" src="js/ht_3.js"></script>
+	<script>
+	/*批量操作*/
+		//批量通过
+		$("#submit_btn").off("click").on("click",function(){
+			location.href="javascript:void(0)"+getSelNum();//TODO
+		});
+		//批量下架
+		$("#offsheet_btn").off("click").on("click",function(){
+			location.href="javascript:void(0)"+getSelNum();//TODO
+		});
+		//批量通知
+		$("#delete_btn").off("click").on("click",function(){
+			location.href="javascript:void(0)"+getSelNum();//TODO
+		});
+	/*批量操作*/
+	</script>
 </body>
 </html>
