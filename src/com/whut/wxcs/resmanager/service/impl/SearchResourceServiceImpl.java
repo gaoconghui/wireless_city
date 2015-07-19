@@ -44,6 +44,9 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 		page.setPageSize(model.getPageSize());
 
 		Criteria criteria = resourceDao.getCriteria();
+		
+		//资源审核通过  即checkState = 1
+		criteria.add(Restrictions.eq("checkState", 1));
 
 		// 增加类目查询
 		addCriteriaCatalogue(model, criteria);

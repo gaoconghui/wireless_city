@@ -60,6 +60,11 @@
 			<result name="providerlist">/admin/ht_3.jsp</result>
 		</action>
 
+		<action name="SearchBackResourceAction_*" class="searchBackResourceAction"
+			method="{1}">
+			<result name="resourcelist">/admin/ht_4.jsp</result>
+		</action>
+
 		<action name="RegAction_*" class="regAction" method="{1}">
 			<result name="regPage">/register.jsp</result>
 			<result name="input">/reg.jsp</result>
@@ -88,6 +93,15 @@
 				<param name="psid">${psid}</param>
 			</result>
 		</action>
+		
+		<action name="ResourceAction_*" class="resourceAction" method="{1}">
+			
+			<result name="resourceListAction" type="redirectAction">
+				<param name="actionName">SearchBackResourceAction_getAllResources</param>
+				<param name="brsid">${brsid}</param>
+			</result>
+		</action>
+		
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<!-- <result name="user_info"></result> -->
 		</action>

@@ -26,13 +26,14 @@ import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;
 import com.whut.wxcs.resmanager.model.ResourceAttribute;
 import com.whut.wxcs.resmanager.model.ResourcePage;
+import com.whut.wxcs.resmanager.model.User;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ResourceService;
 import com.whut.wxcs.resmanager.util.DataUtils;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Service("resourceService")
-public class ResourceServiceImpl implements ResourceService {
+public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements ResourceService {
 
 	@javax.annotation.Resource(name = "resourceAttributeDao")
 	private BaseDao<ResourceAttribute> resourceAttributeDao;
@@ -40,6 +41,11 @@ public class ResourceServiceImpl implements ResourceService {
 	private BaseDao<Resource> resourceDao;
 	@javax.annotation.Resource(name = "catalogueService")
 	private CatalogueService catalogueService;
+	
+	@javax.annotation.Resource(name = "resourceDao")
+	public void setBaseDao(BaseDao<Resource> baseDao) {
+		super.setBaseDao(baseDao);
+	}
 
 	@Override
 	public long addResource(Resource model) {

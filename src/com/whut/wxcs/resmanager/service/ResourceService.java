@@ -4,12 +4,11 @@ import java.util.List;
 
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.CriteriaResource;
-import com.whut.wxcs.resmanager.model.Page;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;
 import com.whut.wxcs.resmanager.model.ResourcePage;
 
-public interface ResourceService {
+public interface ResourceService extends BaseService<Resource>{
 
 	public long addResource(Resource model);
 
