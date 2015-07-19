@@ -43,5 +43,8 @@
 		<property name="quantity" type="int">
 			<column name="QUANTITY" />
 		</property>
+		<property name="checkState" type="int">
+			<column name="CHECKSTATE" />
+		</property>
 	</class>
 </hibernate-mapping>

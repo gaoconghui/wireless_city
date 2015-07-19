@@ -104,25 +104,25 @@ public class ProviderAction extends BaseAction<Provider> implements
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		}
-		else if (provider.getCheckState() == 0) {
+		}else if (provider.getCheckState() == 0) {
 		//wei tong guo 
 			try {
 				inputStream = new ByteArrayInputStream("3".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		}
-		else if (provider.getCheckState() == 1) {
+		}else if (provider.getCheckState() == 1) {
 			session.put("provider", provider);
 			resources = resourceService.getProviderResource(provider);
+			System.out.println("!---------!"+resources.size());
 			catalogues = resourceService.getProviderCatalogue(resources);
+			System.out.println("!-----------!"+catalogues.size());
+			session.put("catalogues", catalogues);
 			for (Catalogue catalogue : catalogues) {
 				System.out.println(catalogue.getName());
 			}
 			try {
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}

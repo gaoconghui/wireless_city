@@ -20,7 +20,18 @@ public class Resource {
 	// 权限
 	private int power;
 	// 拥有相同的资源的数目
+	
 	private int quantity;
+	//审核状态:0-下架 1-审核通过 2-正在审核中
+	private int checkState = 2 ;
+	
+	public int getCheckState() {
+		return checkState;
+	}
+
+	public void setCheckState(int checkState) {
+		this.checkState = checkState;
+	}
 
 	public long getId() {
 		return id;
