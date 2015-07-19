@@ -52,4 +52,14 @@ public interface ResourceService extends BaseService<Resource>{
 	 */
 	public List<Catalogue> getProviderCatalogue(List<Resource> resources);
 
+	/**
+	 * 批量通过审查
+	 */
+	public void passListCheck(String ids);
+
+	/**
+	 * 批量下架
+	 */
+	public void offListCheck(String ids);
+
 }

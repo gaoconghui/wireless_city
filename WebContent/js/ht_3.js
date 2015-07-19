@@ -60,20 +60,21 @@ function initialize(){
 	});
 	/* 单个删除结束 */
 	
+	
+}
+
 	function getSelNum(){
-		var str="?";
+		var str="?ids=";
 		$("#l_form").find(".choose").each(function(){
 			if($(this).attr("sel")==1){
 				var rid=$(this).closest(".l_tr").data("id");
-				str+="rids="+rid+"#";
+				str+= rid+",";
 			}
 		});
 		var str_length=str.length;
 		str=str.substr(0,str_length-1);
 		return str;
 	}
-	
-}
 /*dialog show*/
 function dialogShow(obj){
 	var $dialog=$("#yp_dialog");
@@ -96,7 +97,7 @@ function dialogShow(obj){
 		});
 		$dialog.hide();
 		$("#yy").hide();
-	});
+			});
 }
 /*dialog show*/
 /*main end*/

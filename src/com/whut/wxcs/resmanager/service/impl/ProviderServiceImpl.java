@@ -58,4 +58,18 @@ public class ProviderServiceImpl extends BaseServiceImpl<Provider> implements
 		return findEntityByHql(hql, 2);
 	}
 
+	@Override
+	public void passListCheck(String ids) {
+		String hql = "UPDATE Provider p SET p.checkState = 1 WHERE p.id IN ("
+				+ ids +")";
+		this.batchEntityByHql(hql);
+	}
+
+	@Override
+	public void offListCheck(String ids) {
+		String hql = "UPDATE Provider p SET p.checkState = 0 WHERE p.id IN ("
+				+ ids +")";
+		this.batchEntityByHql(hql);
+	}
+
 }

@@ -368,4 +368,18 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 		return catalogues;
 	}
 
+	@Override
+	public void passListCheck(String ids) {
+		String hql = "UPDATE Resource r SET r.checkState = 1 where r.id in("
+				+ ids +")";
+		this.batchEntityByHql(hql);
+	}
+
+	@Override
+	public void offListCheck(String ids) {
+		String hql = "UPDATE Resource r SET r.checkState = 0 where r.id in("
+				+ ids +")";
+		this.batchEntityByHql(hql);
+	}
+
 }

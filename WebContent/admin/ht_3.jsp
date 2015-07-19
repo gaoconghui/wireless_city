@@ -96,7 +96,7 @@ String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + r
 								</span>
 							</div>
 							<s:iterator value="page.list">
-								<div class="l_tr" data-id=""><!-- TODO  data-id传一个服务资源的id用于操作 -->
+								<div class="l_tr" data-id='<s:property value="id"/>'>
 									<span class="first_span"> 
 										<s:a href="javascript:void(0)" cssClass="choose"></s:a>
 									</span> 
@@ -202,11 +202,11 @@ String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + r
 	/*批量操作*/
 		//批量通过
 		$("#submit_btn").off("click").on("click",function(){
-			location.href="javascript:void(0)"+getSelNum();//TODO
+			location.href="ProviderAction_passListCheck"+getSelNum();
 		});
 		//批量下架
 		$("#offsheet_btn").off("click").on("click",function(){
-			location.href="javascript:void(0)"+getSelNum();//TODO
+			location.href="ProviderAction_offListCheck"+getSelNum();
 		});
 		//批量通知
 		$("#delete_btn").off("click").on("click",function(){

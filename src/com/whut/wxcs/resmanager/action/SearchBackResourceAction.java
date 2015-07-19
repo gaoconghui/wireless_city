@@ -1,5 +1,6 @@
 package com.whut.wxcs.resmanager.action;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -24,6 +25,7 @@ public class SearchBackResourceAction extends BaseAction<CriteriaBackResource>
 	 * 查询标识符
 	 */
 	private String brsid;
+
 
 	public String getBrsid() {
 		return brsid;

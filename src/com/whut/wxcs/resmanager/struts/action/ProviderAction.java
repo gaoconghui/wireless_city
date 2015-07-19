@@ -33,7 +33,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 	@javax.annotation.Resource
 	private CatalogueService catalogueService;
 	private InputStream inputStream;
-	private Provider provider=new Provider();
+	private Provider provider = new Provider();
 	private Map<String, Object> session;
 	private Catalogue catalogue;
 	private List<Resource> resources;
@@ -41,6 +41,11 @@ public class ProviderAction extends BaseAction<Provider> implements
 
 	// providerList 页面中，对服务商执行操作后转发psid，重定向时使用
 	private long psid;
+	private String ids;
+
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
 
 	public long getPsid() {
 		return psid;
@@ -97,23 +102,21 @@ public class ProviderAction extends BaseAction<Provider> implements
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			//zhengzai shenhe 
-		}else if (provider.getCheckState() == 2) {
+			// zhengzai shenhe
+		} else if (provider.getCheckState() == 2) {
 			try {
 				inputStream = new ByteArrayInputStream("2".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		}
-		else if (provider.getCheckState() == 0) {
-		//wei tong guo 
+		} else if (provider.getCheckState() == 0) {
+			// wei tong guo
 			try {
 				inputStream = new ByteArrayInputStream("3".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		}
-		else if (provider.getCheckState() == 1) {
+		} else if (provider.getCheckState() == 1) {
 			session.put("provider", provider);
 			resources = resourceService.getProviderResource(provider);
 			catalogues = resourceService.getProviderCatalogue(resources);
@@ -218,6 +221,24 @@ public class ProviderAction extends BaseAction<Provider> implements
 		provider = providerService.getEntity(provider.getId());
 		provider.setCheckState(0);
 		providerService.saveOrUpdateEntity(provider);
+		return "providerListAction";
+	}
+
+	/**
+	 * 服务商批量通过
+	 */
+	public String passListCheck() {
+		System.out.println(ids);
+		providerService.passListCheck(ids);
+		return "providerListAction";
+	}
+
+	/**
+	 * 服务商批量通过
+	 */
+	public String offListCheck() {
+		System.out.println(ids);
+		providerService.offListCheck(ids);
 		return "providerListAction";
 	}
 

@@ -22,7 +22,6 @@ public class SearchBackResourceServiceImpl implements SearchBackResourceService 
 	@javax.annotation.Resource
 	BaseDao<Resource> resourceDao;
 
-
 	@Override
 	public Page<Resource> searchByCriteria(CriteriaBackResource model) {
 
@@ -60,11 +59,11 @@ public class SearchBackResourceServiceImpl implements SearchBackResourceService 
 				.setMaxResults(model.getPageSize());
 	}
 
-
 	/**
 	 * 在criteria 里增加关键字拦截
 	 */
-	private void addCriteriaKeyword(CriteriaBackResource model, Criteria criteria) {
+	private void addCriteriaKeyword(CriteriaBackResource model,
+			Criteria criteria) {
 		if (ValidateUtil.isVaild(model.getKeyWord())) {
 			Disjunction disjunction;
 			// 使用 or 连接
@@ -73,13 +72,12 @@ public class SearchBackResourceServiceImpl implements SearchBackResourceService 
 					model.getKeyWord(), MatchMode.ANYWHERE));
 			disjunction.add(Restrictions.like("description",
 					model.getKeyWord(), MatchMode.ANYWHERE));
-			//TODO 增加根据服务商名称搜索
-//			disjunction.add(Restrictions.like("provider.name",
-//					model.getKeyWord(), MatchMode.ANYWHERE));
+			criteria.createAlias("provider", "p");
+			disjunction.add(Restrictions.like("p.name", model.getKeyWord(),
+					MatchMode.ANYWHERE));
 			criteria.add(disjunction);
 		}
 	}
-
 
 	/**
 	 * 在criteria 里增加排序
@@ -89,11 +87,9 @@ public class SearchBackResourceServiceImpl implements SearchBackResourceService 
 			criteria.addOrder(Order.asc(CriteriaBackResource.getOrderMap().get(
 					model.getOrderName())));
 		} else if (model.getOrderSequence() == CriteriaBackResource.ORDER_DESC) {
-			criteria.addOrder(Order.desc(CriteriaBackResource.getOrderMap().get(
-					model.getOrderName())));
+			criteria.addOrder(Order.desc(CriteriaBackResource.getOrderMap()
+					.get(model.getOrderName())));
 		}
 	}
-
-
 
 }
