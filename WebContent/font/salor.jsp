@@ -70,8 +70,38 @@
 						</s:a>
 					</s:iterator>
 				</div>
+				<!-- 类目导航 -->
 				<div>
-				
+					<s:if test="page.catalogue.parent.id!=1">
+						<s:a href="javascript:void(0)">类目导航</s:a>
+						<s:if test="page.catalogue.parent.parent.id!=1">
+							<s:if test="page.catalogue.parent.parent.parent.id!=1">
+								<s:if test="page.catalogue.parent.parent.parent.parent.id!=1">
+									<s:a
+										href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.parent.parent.parent.id}&rsid=%{rsid}">
+										<s:property
+											value="page.catalogue.parent.parent.parent.parent.name" />
+									</s:a>
+								</s:if>
+								<s:a
+									href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.parent.parent.id}&rsid=%{rsid}">
+									<s:property value="page.catalogue.parent.parent.parent.name" />
+								</s:a>
+							</s:if>
+							<s:a
+								href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.parent.id}&rsid=%{rsid}">
+								<s:property value="page.catalogue.parent.parent.name" />
+							</s:a>
+						</s:if>
+						<s:a
+							href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.id}&rsid=%{rsid}">
+							<s:property value="page.catalogue.parent.name" />
+						</s:a>
+						<s:a
+							href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.id}&rsid=%{rsid}">
+							<s:property value="page.catalogue.name" />
+						</s:a>
+					</s:if>
 				</div>
 				<div class="hd_sort">
 					<div class="s_details" id="s_details">
