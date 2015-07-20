@@ -194,8 +194,9 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 		CriteriaResource cr = checkRsidAndGetCR();
 		int pid = 1;// TODO
 		cr.setState(cr.getState() + 1);
-		if(cr.getState()>2){
-			cr.setState(cr.getState()-3);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+cr.getState());
+		if (cr.getState() > 2) {
+			cr.setState(cr.getState() - 3);
 		}
 		resourceService.searchByCriteria(pid, cr);
 		return "resource";

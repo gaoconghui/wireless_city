@@ -308,7 +308,7 @@
 	height: 40px;
 	border-left: 1px dotted #ccc;
 	float: left;
-	width: 134px;
+	width: 115px;
 	padding-left: 5px;
 	position: relative;
 }
@@ -337,7 +337,7 @@
 .layout_all .wrapper_right .r_list_salor .l_content div {
 	padding-left: 5px;
 	float: left;
-	width: 135px;
+	width: 115px;
 	height: 100px;
 }
 
@@ -356,7 +356,7 @@
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	margin-bottom: 10px;
-	margin-left: 50px;
+	margin-left: 30px;
 }
 
 .layout_all .wrapper_right .r_list_salor .bd_paging {
