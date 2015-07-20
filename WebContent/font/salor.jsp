@@ -195,8 +195,9 @@
 							href="SearchProviderResourceAction_changeOrder?rsid=%{rsid}&&orderName=1"></s:a>
 					</div>
 					<div>描述</div>
-					<div>审核状态
-					  <s:a href="SearchProviderResourceAction_changeState?rsid=%{rsid}"></s:a>
+					<div>
+						审核状态
+						<s:a href="SearchProviderResourceAction_changeState?rsid=%{rsid}"></s:a>
 					</div>
 					<div>
 						时间
@@ -207,8 +208,8 @@
 				</div>
 				<div id="l_content">
 					<s:iterator value="page.list" var="resource">
-						<div class="l_content">
-							<!-- ①<s:property value="id"/> 
+						<div class="l_content" data-rid="<s:property value="id"/>">
+							<!-- ① 
 							-->
 							<div class="l_img">
 								<img alt="" src="images/list_demo.jpg" height="100" width="100" />
