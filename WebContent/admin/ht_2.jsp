@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="s_content">
 								<div class="c_desc">
 									<span>描述:</span>
-									<span class="normal" id="current_module_desc">这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！这是衣服的模板！</span>
+									<span class="normal" id="current_module_desc"></span>
 								</div>
 								<div class="attr_color">
 									<p>

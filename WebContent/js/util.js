@@ -255,7 +255,7 @@ function jsonToString(obj) {
 		}
 	case 'number':
 		return obj;
-	case false:
+	case 'false':
 		return obj;
 	}
 }
@@ -271,4 +271,35 @@ function getRootPath(){
     //获取带"/"的项目名，如：/uimcardprj
     var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
     return(localhostPaht+projectName);
+}
+/*简易瀑布流：container外包裹  innerbox内含物 （宽度必须限定一样）  */
+function fallsFlow(container,innerbox){
+	var $container=$(container);
+	$container.find(innerbox).css("position","static");
+	var getWidth=$container.width();
+	var p_width=$container.find(innerbox).eq(0).outerWidth(true);
+	var margin=$container.find(innerbox).eq(0).css("marginLeft").match(/\d*/i)[0] * 1;
+	var cols=Math.floor(getWidth/p_width);
+	var length=$container.find(innerbox).length;
+	var p_height=[];
+	for(var i=0;i<length;i++){
+		if(i<cols){
+			p_height[i]=$container.find(innerbox).eq(i).outerHeight(true);
+		}else{
+			var min_height=Math.min.apply(null,p_height);
+			var _index=getIndexByHeight(p_height,min_height);
+			var newtop=$container.find(innerbox).eq(_index).offset().top+min_height;
+			var newleft=$container.find(innerbox).eq(_index).offset().left-margin;
+			$container.find(innerbox).eq(i).css({"position":"absolute","top":newtop,"left":newleft});
+			p_height[_index]+=$container.find(innerbox).eq(i).outerHeight(true);
+		}
+	}
+	$(container).height(Math.max.apply(null,p_height));
+}
+function getIndexByHeight(heightArr,minHeight){
+	for(var i=0;i<heightArr.length;i++){
+		if(heightArr[i]==minHeight){
+			return i;break;
+		}
+	}
 }

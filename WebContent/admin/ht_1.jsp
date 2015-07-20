@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- t_right start -->
 		<div class="t_right">
 			<!-- r_location start -->
-			<div class="r_location" id="location">
+			<div class="r_location" id="location" style="position:fixed;top:56px;left:200px;">
 				<i></i>
 				<span>您当前所在位置：
 					<a href="javascript:void(0)" id="choose">服务类目管理</a>
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>	
 			</div>
 			<!-- end r_location -->
-			<div class="r_table"  data-index="0">
+			<div class="r_table"  data-index="0" style="margin-top:51px;">
 				<div class="r_title"><i></i><span>一类类目</span></div>
 				<div class="r_label" id="fir_category">
 					<ul>
