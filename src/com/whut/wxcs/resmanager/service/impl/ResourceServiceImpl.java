@@ -174,7 +174,6 @@ public class ResourceServiceImpl implements ResourceService {
 		// 增加属性进行查询
 		addCriteriaAttribute(model, criteria);
 		
-		
 		// 初始化page
 		List<Resource> resources = criteria.list();
 
@@ -202,6 +201,7 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	private void addCriteriaState(CriteriaResource model, Criteria criteria) {
+		
             criteria.add(Restrictions.eq("checkState", model.getState()));
 	}
 

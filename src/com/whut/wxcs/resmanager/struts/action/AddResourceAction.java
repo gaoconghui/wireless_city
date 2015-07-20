@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -118,10 +117,8 @@ public class AddResourceAction extends BaseAction<Resource> implements
 
 	/**
 	 * 模板属性 接受参数cid (种类的id)
-	 * 
 	 */
 	public String showTemplate() {
-		// 查询template并返回属性
 		System.out.println(cid);
 		template = catalogueService.getTemplate(cid);
 		//System.out.println(template.getAttributes().size());
@@ -132,16 +129,15 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	 * 得到服务商下的所有服务资源
 	 */
 	public String getAllResource() {
-		System.out.println("getProviderResource方法被调用");
 		resources = resourceService.getProviderResource(provider);
 		return "";
 	}
 
 	/**
-	 * 获得某服务商某类目下的所有服务资源
+	 * 得到某个服务商的具体资源
 	 */
 	public String getConcreteResource() {
-		// 实验~~~后期删除
+		//  实验~~~后期删除
 		session.put("cid", cid);
 		// catalogues = resourceService.getChildCatalogues(cid);
 		provider.setId(1);
@@ -201,6 +197,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		return "resourcePage";
 	}
 
+	
 	public String showResource() {
 		resources = resourceService.getCatalogueProviderResource(cid, provider);
 		return "";
@@ -212,7 +209,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	}
 
 	/**
-	 * 资源按照创建时间排序
+	 *  资源按照创建时间排序
 	 */
 	public String orderByTime() {
 		int pid = 1;

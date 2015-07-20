@@ -24,7 +24,7 @@ public class CriteriaResource {
 	// 所属模板id
 	private long catalogueId;
 
-	private int state;
+	private int state = 1;
 	
 	// attributeid_value 如25_1
 	// List<String> attributes = new ArrayList<String>();
@@ -52,8 +52,6 @@ public class CriteriaResource {
 	public int getState() {
 		return state;
 	}
-
-
 
 	public void setState(int state) {
 		this.state = state;
