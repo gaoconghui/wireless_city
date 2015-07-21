@@ -197,10 +197,10 @@
 					<div>描述</div>
 					<div>
 						<select id="changeState">
-							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=0">所有状态</option>
-							<option  value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=1">已通过</option>
-							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=2">审核中</option>
-							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=3">已下架</option>
+							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=0" <s:if test="state==0">selected</s:if> >所有状态</option>
+							<option  value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=1"<s:if test="state==1">selected</s:if>>已通过</option>
+							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=2" <s:if test="state==2">selected</s:if>>审核中</option>
+							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=3" <s:if test="state==3">selected</s:if>>已下架</option>
 						</select>
 					</div>
 					<div>

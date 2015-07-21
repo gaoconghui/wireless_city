@@ -169,7 +169,7 @@ public class ResourceServiceImpl implements ResourceService {
 		addCriteriaFrontKey(model, criteria);
 		// 增加排序方式
 		addCriteriaOrderByTime(model, criteria);
-		// 根据审核状态排序,默认状况下优先查询审核状态下的服务资源
+		// 根据审核状态排序,
 		addCriteriaState(model, criteria);
 		// 增加属性进行查询
 		addCriteriaAttribute(model, criteria);

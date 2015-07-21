@@ -40,9 +40,6 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	private ResourceService resourceService;
 	@javax.annotation.Resource
 	private CatalogueService catalogueService;
-	//更改状态
-	private String state = ServletActionContext.getRequest().getParameter("state");
-	
 	// 页面选择属性
 	private String attrStr;
 	// 页面属性标签
@@ -198,13 +195,14 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changeState() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		if(state.equals("1")){
+
+		if (model.getState() == 1) {
 			cr.setState(1);
-		}else if(state.equals("2")){
+		} else if (model.getState() == 2) {
 			cr.setState(2);
-		}else if(state.equals("3")){
+		} else if (model.getState() == 3) {
 			cr.setState(3);
-		}else{
+		} else {
 			cr.setState(null);
 		}
 		page = resourceService.searchByCriteria(provider.getId(), cr);
@@ -268,5 +266,5 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	public void setProvider(Provider provider) {
 		this.provider = provider;
 	}
-	
+
 }
