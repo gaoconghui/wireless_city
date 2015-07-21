@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.whut.wxcs.resmanager.action.BaseAction;
 import com.whut.wxcs.resmanager.model.User;
 import com.whut.wxcs.resmanager.service.UserService;
 

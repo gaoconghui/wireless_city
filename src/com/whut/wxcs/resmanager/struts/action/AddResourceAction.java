@@ -14,6 +14,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.whut.wxcs.resmanager.action.BaseAction;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;
@@ -171,19 +172,15 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String addResource() {
 		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
 				resourceAttrs);
-		for (ResourceAttribute r : resourceAttrs) {
-			System.out.println("id:" + r.getId() + ",attribute:"
-					+ r.getAttribute() + ",resource:" + r.getResource()
-					+ ",value:" + r.getValue());
-			System.out.println("--------------------");
-		}
 		System.out.println(model.getDescription());
 		model.setAttributes(resourceAttributes);
 		Catalogue catalogue = new Catalogue();
 		catalogue.setId(cid);
 		model.setCatalogue(catalogue);
 		model.setCreate_time(new Date());
+		model.setProvider(provider);
 		long id = resourceService.addResource(model);
+		
 		try {
 			inputStream = new ByteArrayInputStream((id + "").getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
@@ -217,8 +214,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	 * 资源按照创建时间排序
 	 */
 	public String orderByTime() {
-		int pid = 1;
-		resources = resourceService.orderByTime(pid, cid);
+		resources = resourceService.orderByTime(provider.getId(), cid);
 		System.out.println("ACTION" + resources.size());
 		return "order";
 	}

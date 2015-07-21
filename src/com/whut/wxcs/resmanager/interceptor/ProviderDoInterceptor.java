@@ -3,9 +3,10 @@ package com.whut.wxcs.resmanager.interceptor;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
+import com.whut.wxcs.resmanager.action.BaseAction;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.struts.action.AddResourceAction;
-import com.whut.wxcs.resmanager.struts.action.BaseAction;
+import com.whut.wxcs.resmanager.struts.action.SearchProviderResourceAction;
 import com.whut.wxcs.resmanager.struts2.ProviderAware;
 
 public class ProviderDoInterceptor implements Interceptor {
@@ -18,13 +19,13 @@ public class ProviderDoInterceptor implements Interceptor {
 
 	@Override
 	public void init() {
-
 	}
 
 	@Override
 	public String intercept(ActionInvocation actionInvocation) throws Exception {
 		BaseAction action = (BaseAction) actionInvocation.getAction();
-		if (action instanceof AddResourceAction) {
+		if (action instanceof AddResourceAction
+				|| action instanceof SearchProviderResourceAction) {
 			ActionContext ac = actionInvocation.getInvocationContext();
 			Provider provider = (Provider) ac.getSession().get("provider");
 			if (provider == null) {

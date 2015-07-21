@@ -11,6 +11,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.whut.wxcs.resmanager.action.BaseAction;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;

@@ -7,6 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.whut.wxcs.resmanager.action.BaseAction;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.CriteriaResource;
 import com.whut.wxcs.resmanager.model.Provider;
@@ -122,8 +123,8 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 			}
 			cr.getAttrMap().put(attrStr, attrLab);
 		}
-		int pid = 1;// TODO
-		page = resourceService.searchByCriteria(pid, cr);
+		/* int pid = 1;// TODO */
+		page = resourceService.searchByCriteria(provider.getId(), cr);
 		model = cr;
 		System.out.println(page);
 
@@ -141,8 +142,10 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	public String searchResourceBycatalogue() {
 		clearAndInitRS();
 		CriteriaResource cr = checkRsidAndGetCR();
-		int pid = 1;// TODO 后期改为provider.getId()
-		page = resourceService.searchByCriteria(pid, cr);
+		/*
+		 * int pid = 1;// TODO 后期改为provider.getId()
+		 */
+		page = resourceService.searchByCriteria(provider.getId(), cr);
 		model = cr;
 		/*
 		 * System.out.println(page.getCatalogue().getParent().getChild().size());
@@ -155,8 +158,9 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String keyWordSearch() {
 		clearAndInitRS();
-		int pid = 1;// 后期改为provider.getId()
-		page = resourceService.searchByCriteria(pid, model);
+		/*
+		 * int pid = 1;// 后期改为provider.getId()
+		 */page = resourceService.searchByCriteria(provider.getId(), model);
 		System.out.println("------------" + model.getFrontKey());
 		// System.out.println("------------" + resources.size());
 		return "resource";
@@ -167,11 +171,11 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String nextKeyWordSearch() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		int pid = 1;// 后期改为provider.getId()
+		//int pid = 1;// 后期改为provider.getId()
 		cr.setKeyWord(model.getKeyWord());
 		System.out.println(cr.getKeyWord());
 		System.out.println(cr.getCatalogueId());
-		page = resourceService.searchByCriteria(pid, cr);
+		page = resourceService.searchByCriteria(provider.getId(), cr);
 		return "resource";
 	}
 
@@ -180,9 +184,9 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changePageNo() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		int pid = 1;// 后期改为provider.getId()
+		/*int pid = 1;// 后期改为provider.getId()*/		
 		cr.setPageNum(model.getPageNum());
-		page = resourceService.searchByCriteria(pid, cr);
+		page = resourceService.searchByCriteria(provider.getId(), cr);
 		return "resource";
 	}
 
@@ -191,13 +195,13 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changeState() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		int pid = 1;// TODO
+		//int pid = 1;// TODO
 		cr.setState(cr.getState() + 1);
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + cr.getState());
 		if (cr.getState() > 2) {
 			cr.setState(cr.getState() - 3);
 		}
-		page = resourceService.searchByCriteria(pid, cr);
+		page = resourceService.searchByCriteria(provider.getId(), cr);
 		return "resource";
 	}
 
@@ -213,8 +217,8 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 			cr.setOrderName(model.getOrderName());
 			cr.setOrderSequence(1);
 		}
-		int pid = 1;// 后期改为provider.getId();
-		page = resourceService.searchByCriteria(pid, cr);
+		//int pid = 1;// 后期改为provider.getId();
+		page = resourceService.searchByCriteria(provider.getId(), cr);
 		return "resource";
 	}
 
