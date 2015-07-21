@@ -34,7 +34,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 	@javax.annotation.Resource
 	private CatalogueService catalogueService;
 	private InputStream inputStream;
-	private Provider provider=new Provider();
+	private Provider provider = new Provider();
 	private Map<String, Object> session;
 	private Catalogue catalogue;
 	private List<Resource> resources;
@@ -98,26 +98,26 @@ public class ProviderAction extends BaseAction<Provider> implements
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-			//zhengzai shenhe 
-		}else if (provider.getCheckState() == 2) {
+			// zhengzai shenhe
+		} else if (provider.getCheckState() == 2) {
 			try {
 				inputStream = new ByteArrayInputStream("2".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		}else if (provider.getCheckState() == 0) {
-		//wei tong guo 
+		} else if (provider.getCheckState() == 0) {
+			// wei tong guo
 			try {
 				inputStream = new ByteArrayInputStream("3".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-		}else if (provider.getCheckState() == 1) {
+		} else if (provider.getCheckState() == 1) {
 			session.put("provider", provider);
 			resources = resourceService.getProviderResource(provider);
-			System.out.println("!---------!"+resources.size());
+			//System.out.println("!---------!" + resources.size());
 			catalogues = resourceService.getProviderCatalogue(resources);
-			System.out.println("!-----------!"+catalogues.size());
+			//System.out.println("!-----------!" + catalogues.size());
 			session.put("catalogues", catalogues);
 			for (Catalogue catalogue : catalogues) {
 				System.out.println(catalogue.getName());
@@ -168,6 +168,11 @@ public class ProviderAction extends BaseAction<Provider> implements
 		return "ajax-success";
 	}
 
+	public String exit() {
+		session.remove("provider");
+		return "exit";
+	}
+
 	/**
 	 * 跳转到服务商注册页面
 	 */
@@ -179,7 +184,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 * 跳转到服务商登陆页面
 	 */
 	public String toLoginPage() {
-		return "provider_loginPage";
+		return "login";
 	}
 
 	/**

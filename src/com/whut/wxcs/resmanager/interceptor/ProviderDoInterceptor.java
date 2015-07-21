@@ -29,7 +29,7 @@ public class ProviderDoInterceptor implements Interceptor {
 			ActionContext ac = actionInvocation.getInvocationContext();
 			Provider provider = (Provider) ac.getSession().get("provider");
 			if (provider == null) {
-				return ""; // 登陆页面
+				return "login"; // 登陆页面
 			} else {
 				if (action instanceof ProviderAware) {
 					((ProviderAware) action).setProvider(provider);

@@ -180,13 +180,19 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		model.setCreate_time(new Date());
 		model.setProvider(provider);
 		long id = resourceService.addResource(model);
-		
+		resetCatalogue();
 		try {
 			inputStream = new ByteArrayInputStream((id + "").getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		return "ajax-success";
+	}
+
+	private void resetCatalogue() {
+		resources = resourceService.getProviderResource(provider);
+		catalogues = resourceService.getProviderCatalogue(resources);
+		session.put("catalogues", catalogues);
 	}
 
 	public String toShowResourcePage() {
@@ -202,6 +208,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 
 	public String deleteResource() {
 		resourceService.delete(rid);
+		resetCatalogue();
 		try {
 			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {

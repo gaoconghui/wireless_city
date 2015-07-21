@@ -3,34 +3,32 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
-	
-
-
-
-
-
-
-<!-- 配置 Spring 配置文件的名称和位置 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
-	
-	<!-- 启动 IOC 容器的 ServletContextListener -->
+	<context-param>
+		<param-name>providerJSP</param-name>
+		<param-value>/font/salor.jsp</param-value>
+	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
-	<!-- 配置 Struts2 的 Filter -->
 	<filter>
-        <filter-name>struts2</filter-name>
-        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>struts2</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<display-name>ProviderPageFilter</display-name>
+		<filter-name>ProviderPageFilter</filter-name>
+		<filter-class>com.whut.wxcs.resmanager.filter.ProviderPageFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ProviderPageFilter</filter-name>
+		<url-pattern>/font/*</url-pattern>
+	</filter-mapping>
 </web-app>

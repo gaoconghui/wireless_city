@@ -176,6 +176,9 @@ public class ResourceServiceImpl implements ResourceService {
 
 		// 初始化page
 		List<Resource> resources = criteria.list();
+		for(Resource resource:resources){
+			resource.getCatalogue().getName();
+		}
 
 		page.setList(resources);
 		page.setTotalItemNumber(resources.size());
@@ -201,8 +204,10 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	private void addCriteriaState(CriteriaResource model, Criteria criteria) {
-		System.out.println(".........." + model.getState());
-		criteria.add(Restrictions.eq("checkState", model.getState()));
+		// System.out.println(".........." + model.getState());
+		if (model.getState() != null) {
+			criteria.add(Restrictions.eq("checkState", model.getState()));
+		}
 	}
 
 	private long getTidByResourceList(List<Resource> resources) {

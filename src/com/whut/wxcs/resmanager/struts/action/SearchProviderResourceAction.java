@@ -3,6 +3,7 @@ package com.whut.wxcs.resmanager.struts.action;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,9 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	private ResourceService resourceService;
 	@javax.annotation.Resource
 	private CatalogueService catalogueService;
-
+	//更改状态
+	private String state = ServletActionContext.getRequest().getParameter("state");
+	
 	// 页面选择属性
 	private String attrStr;
 	// 页面属性标签
@@ -171,7 +174,7 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String nextKeyWordSearch() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		//int pid = 1;// 后期改为provider.getId()
+		// int pid = 1;// 后期改为provider.getId()
 		cr.setKeyWord(model.getKeyWord());
 		System.out.println(cr.getKeyWord());
 		System.out.println(cr.getCatalogueId());
@@ -184,7 +187,7 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changePageNo() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		/*int pid = 1;// 后期改为provider.getId()*/		
+		/* int pid = 1;// 后期改为provider.getId() */
 		cr.setPageNum(model.getPageNum());
 		page = resourceService.searchByCriteria(provider.getId(), cr);
 		return "resource";
@@ -195,11 +198,14 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	 */
 	public String changeState() {
 		CriteriaResource cr = checkRsidAndGetCR();
-		//int pid = 1;// TODO
-		cr.setState(cr.getState() + 1);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + cr.getState());
-		if (cr.getState() > 2) {
-			cr.setState(cr.getState() - 3);
+		if(state.equals("1")){
+			cr.setState(1);
+		}else if(state.equals("2")){
+			cr.setState(2);
+		}else if(state.equals("3")){
+			cr.setState(3);
+		}else{
+			cr.setState(null);
 		}
 		page = resourceService.searchByCriteria(provider.getId(), cr);
 		return "resource";
@@ -217,7 +223,7 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 			cr.setOrderName(model.getOrderName());
 			cr.setOrderSequence(1);
 		}
-		//int pid = 1;// 后期改为provider.getId();
+		// int pid = 1;// 后期改为provider.getId();
 		page = resourceService.searchByCriteria(provider.getId(), cr);
 		return "resource";
 	}
@@ -262,5 +268,5 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	public void setProvider(Provider provider) {
 		this.provider = provider;
 	}
-
+	
 }

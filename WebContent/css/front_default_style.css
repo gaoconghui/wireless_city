@@ -55,6 +55,37 @@
 /*yp_dialog end*/
 /* salor.jsp */
 /*查詢開始*/
+.layout_all .wrapper_right .r_select .allcategory{
+	height:40px;
+	
+}
+
+.layout_all .wrapper_right .r_select .allcategory a{
+	display:block;
+	float:left;
+	padding:5px;
+	margin-right:10px;
+	background:#d1d1d1;
+	color:#444;	
+	box-shadow:2px 2px 2px #000;
+}
+
+.layout_all .wrapper_right .r_select .allcategory a:hover{
+	background:#39393f;
+	color:#fff;
+}
+	
+.layout_all .wrapper_right .r_select .allcategory a.fir{
+	color:#000;
+	font-weight:700;
+	background:none;
+}
+
+.layout_all .wrapper_right .r_select .allcategory a.fir:hover{
+	color:#444;
+	background:none;
+}
+
 .layout_all .wrapper_right .r_select .hd_reference {
 	height: 20px;
 	height: 20px;
@@ -66,7 +97,7 @@
 	padding: 2px;
 }
 
-.layout_all .wrapper_right .r_select .hd_reference a:nth-child(odd):hover
+.layout_all .wrapper_right .r_select .hd_reference a:nth-child(even):hover
 	{
 	text-decoration: underline;
 }

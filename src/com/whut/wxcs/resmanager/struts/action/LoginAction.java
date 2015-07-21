@@ -80,12 +80,7 @@ public class LoginAction extends BaseAction<User> implements SessionAware {
 
 	public String exit() {
 		session.remove("user");
-		try {
-			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return "ajax-success";
+		return "login";
 	}
 
 }

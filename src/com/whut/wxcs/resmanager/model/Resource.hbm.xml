@@ -31,7 +31,7 @@
 		<property name="description" type="java.lang.String">
 			<column name="DESCRIPTION" />
 		</property>
-		<property name="create_time" type="java.sql.Date">
+		<property name="create_time" type="timestamp">
 			<column name="CREATE_TIME" />
 		</property>
 		<property name="rating" type="java.lang.Float">

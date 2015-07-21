@@ -24,8 +24,8 @@ public class CriteriaResource {
 	// 所属模板id
 	private long catalogueId;
 
-	private int state = 1;
-	
+	private Integer state;
+
 	// attributeid_value 如25_1
 	// List<String> attributes = new ArrayList<String>();
 	private Map<String, String> attrMap = new HashMap<String, String>();
@@ -48,16 +48,14 @@ public class CriteriaResource {
 	public long getCatalogueId() {
 		return catalogueId;
 	}
-	
-	public int getState() {
+
+	public Integer getState() {
 		return state;
 	}
 
-	public void setState(int state) {
+	public void setState(Integer state) {
 		this.state = state;
 	}
-
-
 
 	public void setCatalogueId(long catalogueId) {
 		this.catalogueId = catalogueId;
