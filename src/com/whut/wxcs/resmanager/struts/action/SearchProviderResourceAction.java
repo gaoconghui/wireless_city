@@ -141,7 +141,7 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	public String searchResourceBycatalogue() {
 		clearAndInitRS();
 		CriteriaResource cr = checkRsidAndGetCR();
-		int pid = 1;// 后期改为provider.getId()
+		int pid = 1;// TODO 后期改为provider.getId()
 		page = resourceService.searchByCriteria(pid, cr);
 		model = cr;
 		/*
@@ -183,7 +183,6 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 		int pid = 1;// 后期改为provider.getId()
 		cr.setPageNum(model.getPageNum());
 		page = resourceService.searchByCriteria(pid, cr);
-
 		return "resource";
 	}
 
@@ -194,11 +193,11 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 		CriteriaResource cr = checkRsidAndGetCR();
 		int pid = 1;// TODO
 		cr.setState(cr.getState() + 1);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+cr.getState());
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + cr.getState());
 		if (cr.getState() > 2) {
 			cr.setState(cr.getState() - 3);
 		}
-		resourceService.searchByCriteria(pid, cr);
+		page = resourceService.searchByCriteria(pid, cr);
 		return "resource";
 	}
 

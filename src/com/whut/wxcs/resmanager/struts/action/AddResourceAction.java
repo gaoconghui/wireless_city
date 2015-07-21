@@ -121,7 +121,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String showTemplate() {
 		System.out.println(cid);
 		template = catalogueService.getTemplate(cid);
-		//System.out.println(template.getAttributes().size());
+		// System.out.println(template.getAttributes().size());
 		return "template";
 	}
 
@@ -137,7 +137,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	 * 得到某个服务商的具体资源
 	 */
 	public String getConcreteResource() {
-		//  实验~~~后期删除
+		// 实验~~~后期删除
 		session.put("cid", cid);
 		// catalogues = resourceService.getChildCatalogues(cid);
 		provider.setId(1);
@@ -171,11 +171,12 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String addResource() {
 		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
 				resourceAttrs);
-		for(ResourceAttribute r:resourceAttrs){
-			System.out.println("id:"+r.getId()+",attribute:"+r.getAttribute()+",resource:"+r.getResource()+",value:"+r.getValue());
+		for (ResourceAttribute r : resourceAttrs) {
+			System.out.println("id:" + r.getId() + ",attribute:"
+					+ r.getAttribute() + ",resource:" + r.getResource()
+					+ ",value:" + r.getValue());
 			System.out.println("--------------------");
 		}
-		System.out.println(model.getResource_name());
 		System.out.println(model.getDescription());
 		model.setAttributes(resourceAttributes);
 		Catalogue catalogue = new Catalogue();
@@ -184,7 +185,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		model.setCreate_time(new Date());
 		long id = resourceService.addResource(model);
 		try {
-			inputStream = new ByteArrayInputStream((id+"").getBytes("UTF-8"));
+			inputStream = new ByteArrayInputStream((id + "").getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -197,7 +198,6 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		return "resourcePage";
 	}
 
-	
 	public String showResource() {
 		resources = resourceService.getCatalogueProviderResource(cid, provider);
 		return "";
@@ -214,7 +214,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	}
 
 	/**
-	 *  资源按照创建时间排序
+	 * 资源按照创建时间排序
 	 */
 	public String orderByTime() {
 		int pid = 1;

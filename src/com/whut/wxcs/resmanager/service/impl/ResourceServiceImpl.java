@@ -169,11 +169,11 @@ public class ResourceServiceImpl implements ResourceService {
 		addCriteriaFrontKey(model, criteria);
 		// 增加排序方式
 		addCriteriaOrderByTime(model, criteria);
-		//根据审核状态排序,默认状况下优先查询审核状态下的服务资源
-		addCriteriaState(model,criteria);
+		// 根据审核状态排序,默认状况下优先查询审核状态下的服务资源
+		addCriteriaState(model, criteria);
 		// 增加属性进行查询
 		addCriteriaAttribute(model, criteria);
-		
+
 		// 初始化page
 		List<Resource> resources = criteria.list();
 
@@ -201,8 +201,8 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	private void addCriteriaState(CriteriaResource model, Criteria criteria) {
-		
-            criteria.add(Restrictions.eq("checkState", model.getState()));
+		System.out.println(".........." + model.getState());
+		criteria.add(Restrictions.eq("checkState", model.getState()));
 	}
 
 	private long getTidByResourceList(List<Resource> resources) {
@@ -352,18 +352,18 @@ public class ResourceServiceImpl implements ResourceService {
 							+ model.getCatalogueId() + "%'"));
 		}
 	}
-	
+
 	@Override
 	public List<Catalogue> getProviderCatalogue(List<Resource> resources) {
 		List<Catalogue> catalogues = new ArrayList<Catalogue>();
-		//将resource中catalogue为3位数的ID  踢出出来
+		// 将resource中catalogue为3位数的ID 踢出出来
 		for (Resource resource : resources) {
 			if (DataUtils.isTrible(resource.getCatalogue().getId())) {
 				Catalogue catalogue = catalogueService
 						.initCatalogueById(resource.getCatalogue().getId());
-			     if(!catalogues.contains(catalogue)){
-			    	 catalogues.add(catalogue);
-			     }
+				if (!catalogues.contains(catalogue)) {
+					catalogues.add(catalogue);
+				}
 			}
 		}
 		return catalogues;
