@@ -23,8 +23,17 @@
 							value="%{id}"></s:hidden>
 						<td><s:property value="name" /></td>
 						<td><s:if test="#type==5">
-								<s:radio list="#t.enumValue"
-									name="resourceAttrs[%{#status.index}].value"></s:radio>
+								<%-- <s:radio list="#t.enumValue"
+									name="resourceAttrs[%{#status.index}].value"></s:radio> --%>
+									<s:iterator value="#t.enumValue" status="st">
+										<input type="radio" 
+											name='resourceAttrs[<s:property value="#status.index"/>].value'
+											value='<s:property value="#st.index" />'
+											/>
+										<s:property/>
+									</s:iterator>
+									
+									
 							</s:if> <s:else>
 								<s:textfield name="resourceAttrs[%{#status.index}].value" />
 							</s:else></td>

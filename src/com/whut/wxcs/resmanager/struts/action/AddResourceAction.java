@@ -127,14 +127,6 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	}
 
 	/**
-	 * 得到服务商下的所有服务资源
-	 */
-	public String getAllResource() {
-		resources = resourceService.getProviderResource(provider);
-		return "";
-	}
-
-	/**
 	 * 得到某个服务商的具体资源
 	 */
 	public String getConcreteResource() {
@@ -172,7 +164,6 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String addResource() {
 		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
 				resourceAttrs);
-		System.out.println(model.getDescription());
 		model.setAttributes(resourceAttributes);
 		Catalogue catalogue = new Catalogue();
 		catalogue.setId(cid);
@@ -201,11 +192,6 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		return "resourcePage";
 	}
 
-	public String showResource() {
-		resources = resourceService.getCatalogueProviderResource(cid, provider);
-		return "";
-	}
-
 	public String deleteResource() {
 		resourceService.delete(rid);
 		resetCatalogue();
@@ -218,25 +204,31 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	}
 
 	/**
-	 * 资源按照创建时间排序
+	 * 得到某个具体的服务资源
 	 */
-	public String orderByTime() {
-		resources = resourceService.orderByTime(provider.getId(), cid);
-		System.out.println("ACTION" + resources.size());
-		return "order";
+	public String getResource(){
+		model = resourceService.getResource(model.getId());
+		return "resource";
 	}
-
+	
+    /**
+     * 到达更新资源的页面 
+     */
 	public String toUpdateResource() {
-		model = resourceService.getResource(rid);
-		for (ResourceAttribute resourceAttribute : model.getAttributes()) {
-			System.out.println(resourceAttribute.getValue());
-		}
+		model = resourceService.getResource(model.getId());
 		return "updatePage";
 	}
 
+	/**
+	 * 更新服务资源 
+	 */
 	public String updateResource() {
+		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
+				resourceAttrs);
+		System.out.println("----------------"+resourceAttributes.size());
+	    model.setAttributes(resourceAttributes);		
 		resourceService.updateResource(model);
-		return "resourceAction";
+		return "sss";
 	}
 
 	@Override

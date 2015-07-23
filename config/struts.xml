@@ -102,9 +102,11 @@
 			<result name="template">/provider/template.jsp</result>
 			<result name="addResource">/provider/success.jsp</result>
 			<result name="resourcePage">/provider/resourcePage.jsp</result>
-			<result name="updatePage">/provider/updateResource.jsp</result>
+			<result name="updatePage">/font/updateResource.jsp</result>
 			<result name="order">/provider/orderByTime.jsp</result>
 			<result name="delete_success">/addResource.jsp</result>
+			<result name="resource">/font/resource.jsp</result>
+			<result name="sss">/success.jsp</result>
 		</action>
 
 		<action name="SearchProviderResourceAction_*" class="searchProviderResourceAction"

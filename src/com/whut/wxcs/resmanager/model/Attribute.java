@@ -1,5 +1,9 @@
 package com.whut.wxcs.resmanager.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import com.whut.wxcs.resmanager.util.DataUtils;
 
 public class Attribute {
@@ -12,7 +16,7 @@ public class Attribute {
 	private String description;
 	private String value;
 	private String enumValue[];
-
+     
 	// 创建这个属性的模板
 	private long templateid;
 

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.smartcardio.ATR;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.DetachedCriteria;
@@ -93,19 +95,26 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	@Override
-	public Resource getResource(Integer rid) {
+	public Resource getResource(long rid) {
 		Resource resource = resourceDao.getEntity(rid);
-		System.out.println(resource.getCatalogue().getName());
-		System.out.println(resource.getAttributes().size());
+		resource.getCatalogue().getName();
+		resource.getAttributes().size();
+		for(ResourceAttribute resourceAttribute :resource.getAttributes()){
+			System.out.println("------------------------------------------");
+			System.out.println(resourceAttribute.getAttribute().getName());
+			if(resourceAttribute.getAttribute().getType()==5){
+				 resourceAttribute.getAttribute().getEnumValue();
+			}
+		}
 		return resource;
 	}
 
 	@Override
 	public void updateResource(Resource model) {
+		resourceDao.saveOrUpdateEntity(model);
 		for (ResourceAttribute resourceAttribute : model.getAttributes()) {
-			resourceAttributeDao.saveEntity(resourceAttribute);
+			resourceAttributeDao.saveOrUpdateEntity(resourceAttribute);
 		}
-		resourceDao.saveEntity(model);
 	}
 
 	@Override

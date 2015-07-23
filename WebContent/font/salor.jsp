@@ -72,13 +72,16 @@
 				</div>
 				<!-- 类目导航 -->
 				<div class="hd_reference">
-					<s:a href="javascript:void(0)" cssClass="iconfont f14" style="line-height:8px;">&#xe617;</s:a>
+					<s:a href="javascript:void(0)" cssClass="iconfont f14"
+						style="line-height:8px;">&#xe617;</s:a>
 					<s:if test="page.catalogue.parent.id!=1">
 						<s:if test="page.catalogue.parent.parent.id!=1">
 							<s:if test="page.catalogue.parent.parent.parent.id!=1">
 								<s:if test="page.catalogue.parent.parent.parent.parent.id!=1">
-									<s:a href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.parent.parent.parent.id}&rsid=%{rsid}">
-										<s:property value="page.catalogue.parent.parent.parent.parent.name" />
+									<s:a
+										href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{page.catalogue.parent.parent.parent.parent.id}&rsid=%{rsid}">
+										<s:property
+											value="page.catalogue.parent.parent.parent.parent.name" />
 									</s:a>
 									<a href="javascript:void(0)" class="more_icon icon iconfont">&#xe615;</a>
 								</s:if>
@@ -197,10 +200,18 @@
 					<div>描述</div>
 					<div>
 						<select id="changeState">
-							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=0" <s:if test="state==0">selected</s:if> >所有状态</option>
-							<option  value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=1"<s:if test="state==1">selected</s:if>>已通过</option>
-							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=2" <s:if test="state==2">selected</s:if>>审核中</option>
-							<option value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=3" <s:if test="state==3">selected</s:if>>已下架</option>
+							<option
+								value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=0"
+								<s:if test="state==0">selected</s:if>>所有状态</option>
+							<option
+								value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=1"
+								<s:if test="state==1">selected</s:if>>已通过</option>
+							<option
+								value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=2"
+								<s:if test="state==2">selected</s:if>>审核中</option>
+							<option
+								value="SearchProviderResourceAction_changeState?rsid=<s:property value="rsid"/>&state=3"
+								<s:if test="state==3">selected</s:if>>已下架</option>
 						</select>
 					</div>
 					<div>
@@ -220,7 +231,7 @@
 								<img alt="" src="images/list_demo.jpg" height="100" width="100" />
 							</div>
 							<div class="l_name">
-								<s:property value="resource_name" />
+							<s:a href="AddResourceAction_getResource?id=%{id}"><s:property value="resource_name" /></s:a>
 							</div>
 							<div class="l_desc">
 								<s:property value="description" />
@@ -241,7 +252,7 @@
 								<%-- <s:property value="create_time" /> --%>
 							</div>
 							<div class="l_operation">
-								<a href="javascript:void(0)" class="update">修改</a> <a
+								<a href='AddResourceAction_toUpdateResource?id=<s:property value="id"/>' class="update">修改</a> <a
 									href="javascript:void(0)" class="delete">删除</a> <a
 									href="javascript:void(0)">查看详情</a>
 							</div>
@@ -452,9 +463,9 @@
 		}
 		function initialize() {
 			//审核状态切换
-			$("#changeState").change(function(){
-				var href=$(this).val();
-				location.href=href;
+			$("#changeState").change(function() {
+				var href = $(this).val();
+				location.href = href;
 			})
 			//页码居中
 			var width = $("#paging").width();
@@ -629,7 +640,7 @@
 																			var h = "";
 																			var optionlength = args.length;
 																			for (var j = 0; j < optionlength; j++) {
-																				h += "<option value='" + args[j] + "'>"
+																				h += "<option value='" + j + "'>"
 																						+ args[j]
 																						+ "</option>";
 																			}
@@ -638,7 +649,7 @@
 																					+ $data[i].name
 																					+ ":</span>"
 																					+ "<select>"
-																					+ "	<option value='0'>-请选择-</option>"
+																					+ "	<option value='-1'>-请选择-</option>"
 																					+ h
 																					+ "</select>"
 																					+ "</p>";
@@ -705,19 +716,14 @@
 																				"#at_fill")
 																				.find(
 																						"p")
-																				.each(
-																						function(
-																								index) {
-																							var value = $(
-																									this)
-																									.find(
-																											"input")
-																									.val()
-																									|| $(
-																											this)
-																											.find(
-																													"select")
-																											.val();
+																				.each(function(index) {
+																					var value=null;
+																					if($(this).find("select").val()=="-1"){
+																						alert("請選擇美劇類型！");
+																					}else{
+																						var value = $(this).find("input").val()|| $(this).find("select").val();
+																					}
+																							
 																							var id = $(
 																									this)
 																									.data(

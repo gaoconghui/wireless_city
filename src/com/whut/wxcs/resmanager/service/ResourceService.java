@@ -10,26 +10,36 @@ import com.whut.wxcs.resmanager.model.ResourcePage;
 
 public interface ResourceService {
 
+	/**
+     *  增加资源 
+     */
 	public long addResource(Resource model);
-
+    /**
+     *  验证资源名称的唯一性 
+     */
 	public boolean isResourceNameUnique(String resource_name);
-
+    /**
+     * 得到某一个服务商下的所有资源 
+     */
 	public List<Resource> getProviderResource(Provider provider);
-
+     
 	public List<Resource> getCatalogueProviderResource(Integer cid,
 			Provider provider);
-
-	public Resource getResource(Integer rid);
-
+    /**
+     * 得到某一个具体的资源
+     */
+	public Resource getResource(long rid);
+    /**
+     * 更新资源 
+     */
 	public void updateResource(Resource model);
-
+    /**
+     * 删除资源 
+     */
 	public void delete(long rid);
 
 	/**
 	 * 资源按照创建时间排序
-	 * 
-	 * @param cid
-	 * @param pid
 	 */
 	public List<Resource> orderByTime(long pid, long cid);
 
