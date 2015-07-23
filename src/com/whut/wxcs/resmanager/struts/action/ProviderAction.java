@@ -207,9 +207,10 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 */
 	public String passCheck() {
 		System.out.println(provider.getId());
-		provider = providerService.getEntity(provider.getId());
-		provider.setCheckState(1);
-		providerService.saveOrUpdateEntity(provider);
+//		provider = providerService.getEntity(provider.getId());
+//		provider.setCheckState(1);
+//		providerService.saveOrUpdateEntity(provider);
+		providerService.passListCheck(provider.getId()+"");
 		return "providerListAction";
 	}
 
@@ -218,9 +219,12 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 */
 	public String offCheck() {
 		System.out.println(provider.getId());
-		provider = providerService.getEntity(provider.getId());
-		provider.setCheckState(0);
-		providerService.saveOrUpdateEntity(provider);
+//		provider = providerService.getEntity(provider.getId());
+//		provider.setCheckState(0);
+//		providerService.saveOrUpdateEntity(provider);
+		
+		providerService.offListCheck(provider.getId()+"");
+		
 		return "providerListAction";
 	}
 

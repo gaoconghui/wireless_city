@@ -44,9 +44,10 @@ public class ResourceAction extends BaseAction<Resource> {
 	 */
 	public String passCheck() {
 		System.out.println(model.getId());
-		model = resourceService.getEntity(model.getId());
-		model.setCheckState(1);
-		resourceService.saveOrUpdateEntity(model);
+		resourceService.passListCheck(model.getId()+"");
+//		model = resourceService.getEntity(model.getId());
+//		model.setCheckState(1);
+//		resourceService.saveOrUpdateEntity(model);
 		
 		return "resourceListAction";
 	}
@@ -56,9 +57,12 @@ public class ResourceAction extends BaseAction<Resource> {
 	 */
 	public String offCheck() {
 		System.out.println(model.getId());
-		model = resourceService.getEntity(model.getId());
-		model.setCheckState(0);
-		resourceService.saveOrUpdateEntity(model);
+		
+		resourceService.offListCheck(model.getId()+"");
+		
+//		model = resourceService.getEntity(model.getId());
+//		model.setCheckState(0);
+//		resourceService.saveOrUpdateEntity(model);
 		return "resourceListAction";
 	}
 	

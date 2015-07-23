@@ -10,6 +10,7 @@ import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.service.ProviderService;
 import com.whut.wxcs.resmanager.util.DataUtils;
+import com.whut.wxcs.resmanager.util.MessageMail;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Service("providerService")

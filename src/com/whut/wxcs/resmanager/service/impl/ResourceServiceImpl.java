@@ -30,6 +30,7 @@ import com.whut.wxcs.resmanager.model.User;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ResourceService;
 import com.whut.wxcs.resmanager.util.DataUtils;
+import com.whut.wxcs.resmanager.util.MessageMail;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Service("resourceService")
@@ -373,6 +374,19 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 		String hql = "UPDATE Resource r SET r.checkState = 1 where r.id in("
 				+ ids +")";
 		this.batchEntityByHql(hql);
+		this.sendMessage(ids,"审核通过");
+	}
+
+	private void sendMessage(String ids,String state) {
+		String[] strs = DataUtils.toArray(ids);
+		Resource resource;
+		Provider provider;
+		for(String str : strs){
+			resource = resourceDao.getEntity(Long.parseLong(str));
+			provider = resource.getProvider();
+			String text = "您的资源" + resource.getResource_name() + state  ;
+			MessageMail.sendMessage(provider.getEmail(), text, state);
+		}
 	}
 
 	@Override
@@ -380,6 +394,7 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 		String hql = "UPDATE Resource r SET r.checkState = 0 where r.id in("
 				+ ids +")";
 		this.batchEntityByHql(hql);
+		this.sendMessage(ids,"下架");
 	}
 
 }
