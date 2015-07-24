@@ -25,8 +25,8 @@
 									<s:property value="value" />
 								</s:if> <s:elseif test="attribute.type==5&&attribute.enumValue!=null">
 									<s:iterator value="attribute.enumValue" status="status">
-										<%-- <s:property value="#status.index" /> --%>
-										<%-- <s:property value="%{#v}" /> --%>
+										<s:property value="#status.index" />
+										<s:property value="%{#v}" />
 										<s:set var="i" value="#status.index"></s:set>
 										<input type="radio" name="value"
 											<s:if test="#i==#v">checked</s:if> disabled="disabled">

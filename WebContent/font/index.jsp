@@ -86,11 +86,6 @@
 						</s:iterator>
 					</li>
 				</s:iterator>
-
-
-
-
-
 			</ul>
 			<ul class="img_ul">
 				<li><img src="images/banner1.jpg" alt="" height="471" /></li>

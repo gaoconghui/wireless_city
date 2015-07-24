@@ -23,6 +23,7 @@
 		String rsid=request.getParameter("id");
 		pageContext.setAttribute("rsid",rsid);
 	%>
+	<div class="dis_none" id="rs_id">${rsid }</div>
 	<s:include value="logined_header.jsp"/>
 	<div class="nav">
 		<div class="nav_center">
@@ -107,65 +108,6 @@
 				    </s:iterator>
 			    </div>
 			    <div class="clear"></div>
-			    
-			    
-				<%-- <table>
-					<tr>
-						<td>资源名称:</td>
-						<td><s:textfield name="resource_name" value="%{resource_name}"></s:textfield></td>
-					</tr>
-                    <tr>
-                       <td>数量:</td>
-                       <td>
-                          <s:textfield name="quantity" value="%{quantity}">
-                          </s:textfield>
-                       </td>
-                    </tr>					
-					<tr>
-					   <td>创建时间:</td>
-					   <td>
-					       <s:textfield name="create_time" value="%{create_time}" ></s:textfield>
-					      <s:date name="create_time" format="yy-MM-dd HH:mm:ss"/>
-					   </td>
-					</tr>
-					<s:iterator value="attributes" status="st">
-						<s:hidden name="resourceAttrs[%{#st.index}].attribute.id"
-							value="%{attribute.id}"></s:hidden>
-					    <s:hidden name="resourceAttrs[%{#st.index}].id" value="%{id}"></s:hidden>
-						<!-- 不显示 -->
-						<s:set var="v" value="%{value}"></s:set>
-						<s:hidden name="resourceAttrs[%{#st.index}].resource.id" value="%{resource.id}"></s:hidden>
-						<tr>
-							<td><s:property value="attribute.name" />:</td>
-							<td><s:if test="attribute.type!=5">
-							        <s:textfield name="resourceAttrs[%{#st.index}].value" value="%{value}"></s:textfield>
-								</s:if>
-								 <s:elseif test="attribute.type==5&&attribute.enumValue!=null">
-									<s:iterator value="attribute.enumValue" status="status">
-										<s:set var="i" value="#status.index"></s:set>
-										<input type="radio" name='resourceAttrs[<s:property value="#st.index"/>].value'
-											<s:if test="#i==#v">checked</s:if>  value='<s:property value="#status.index" />'>
-										<s:property />
-									</s:iterator>
-								</s:elseif></td>
-						</tr>
-					</s:iterator>
-					<tr>
-						<td>审核状态:</td>
-						<td><s:if test="checkState==0">
-                                                       资源已经下架
-                     </s:if> <s:elseif test="checkState==1">
-                                                       审核通过
-                     </s:elseif> <s:elseif test="checkState==2">
-                                                        资源正在审核
-                     </s:elseif></td>
-					</tr>
-					<tr>
-						<td>资源描述:</td>
-						<td><s:textarea name="description"></s:textarea></td>
-					</tr>
-				</table> 
-				<s:submit></s:submit> --%>
 			</s:form>
 		</div>
 		<div class="rs_footer">

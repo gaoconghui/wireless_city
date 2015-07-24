@@ -16,8 +16,8 @@
 			<div class="r_wel iconfont">&#xe608;</div>
 			<div class="information_box">
 				<ul>
-					<li><a href="font/buyer.jsp?id=1"> <i class="iconfont">&#xe612;</i>
-							个人中心
+					<li><a href="font/salor.jsp"> <i class="iconfont">&#xe612;</i>
+							管理中心
 					</a></li>
 					<li><a href="ProviderAction_exit"> <i class="iconfont">&#xe611;</i>
 							退出
@@ -33,7 +33,7 @@
 			<div class="r_wel iconfont">&#xe608;</div>
 			<div class="information_box">
 				<ul>
-					<li><a href="font/buyer.jsp?id=1"> <i class="iconfont">&#xe612;</i>
+					<li><a href="font/buyer.jsp"> <i class="iconfont">&#xe612;</i>
 							个人中心
 					</a></li>
 					<li><a href="LoginAction_exit"> <i class="iconfont">&#xe611;</i>
@@ -56,11 +56,6 @@
 						<i class="iconfont">&#xe60f;</i>搜索
 					</div>
 				</s:form>
-			</div>
-		</div>
-		<div class="f_contact">
-			<div class="c_fir">
-				<span class="f_icon iconfont">&#xe60b;</span> <span class="f_text">问题咨询：027-01293604</span>
 			</div>
 		</div>
 	</div>

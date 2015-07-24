@@ -1,3 +1,24 @@
+/*seek_update_rs.jsp*/
+.rs_wrapper{box-shadow:2px 2px 2px #000;background:#fff;width:900px;margin:50px auto;overflow:hidden;}
+.rs_wrapper .rs_header,.rs_wrapper .rs_footer{overflow:hidden;background:#d1d1d1;border-bottom:1px solid #ccc;height:40px;line-height:40px;text-align:center;}
+.rs_wrapper .container{padding:20px;}
+.rs_wrapper .container input{ height: 20px;font-size: 12px;width:200px;}
+.rs_wrapper .container textarea{ height: 200px;font-size: 12px;line-height:20px;width:202px;resize:none;}
+.rs_wrapper .container select{ height:24px;font-size: 12px;line-height:20px;width:204px;}
+.rs_wrapper .container p{padding:5px 0;overflow:hidden;}
+.rs_wrapper .container p:after{content:"";display:block;clear:both;}
+.rs_wrapper .container .left_wrapper{float:left;width:300px;border-right:1px dotted #aaa;}
+.rs_wrapper .container span{padding:5px 0;margin-right:10px;white-space:nowrap;display:block;float:left;overflow:hidden;text-overflow:ellipsis;}
+.rs_wrapper .container .key{width:60px;text-align:center;background:#ccc;box-shadow:2px 2px 2px #000;}
+.rs_wrapper .container .value{width:200px;}
+.rs_wrapper .container .right_wrapper .value{width:450px;}
+.rs_wrapper .container .left_wrapper .desc .value{white-space:normal;word-break:break-all;word-wrap: break-word;}
+.rs_wrapper .container .right_wrapper{padding-left:20px;float:left;width:539px;}
+.rs_wrapper .rs_footer .edit{margin:5px 415px;}
+.rs_wrapper .rs_footer .edit:after{content:"";display:block;clear:both;}
+.rs_wrapper .rs_footer .edit a{float:left;margin:0 10px;display:block;width:50px;height:30px;line-height:30px;background:#39393f;color:#fff;border-radius:5px;}
+/*seek_update_rs.jsp*/
+/*选中颜色变化*/
 .colorgradient{
 	color:#0181ec;
 }
@@ -369,7 +390,13 @@
 	padding-left: 5px;
 	float: left;
 	width: 115px;
-	height: 100px;
+	height: 107px;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	word-break:break-all;
+	display: -webkit-box;
+	-webkit-line-clamp: 9;
+	-webkit-box-orient: vertical;
 }
 
 .layout_all .wrapper_right .r_list_salor .l_content .l_operation {
@@ -1583,36 +1610,6 @@ body {
 
 .header .h_fir .f_search .s_input .i_btn:hover {
 	background: #c81623;
-}
-
-.header .h_fir .f_contact {
-	float: left;
-	width: 250px;
-	height: 70px;
-	line-height: 70px;
-}
-
-.header .h_fir .f_contact .c_fir {
-	width: 250px;
-	height: 70px;
-	color: #b61d1d;
-	font-size: 18px;
-	font-weight: 400;
-}
-
-.header .h_fir .f_contact .c_fir .f_icon {
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 24px;
-	font-weight: bold;
-	display: block;
-	margin: 25px 10px 0px 5px;
-	float: left;
-}
-
-.header .h_fir .f_contact .c_fir .f_text {
-	float: left;
 }
 
 .h_sec {
