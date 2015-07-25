@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- t_right start -->
 		<div class="t_right">
 			<!-- r_location start -->
-			<div class="r_location" id="location">
+			<div class="r_location" id="location" style="position:fixed;top:56px;left:200px;">
 				<i></i>
 				<span>您当前所在位置：
 					<a href="javascript:void(0)" id="choose">服务类目管理</a>
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>	
 			</div>
 			<!-- end r_location -->
-			<div class="r_table"  data-index="0">
+			<div class="r_table"  data-index="0" style="margin-top:51px;">
 				<div class="r_title"><i></i><span>一类类目</span></div>
 				<div class="r_label" id="fir_category">
 					<ul>
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- dialog beigin -->
 	<div id="yy"></div>
 	<div id="yp_dialog" class="yp_dialog">
-		<p class="dialog_title">确定删除吗？<span class="close">X</span></p>
+		<p class="dialog_title">确定删除吗？<span class="close iconfont">&#xe603;</span></p>
 		<div class="dialog_content">
 			<a href="javascript:void(0)" class="sure">确定</a>
 			<a href="javascript:void(0)" class="close">取消</a>
@@ -172,8 +172,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<option value="5">枚举</option>
 					</select>
 				</p>
-				<p id="enmu_type"  style="display:none;">
-					<span>枚举内容：</span>
+				<p id="enmu_type"  class="dis_none last_p">
+					<span>枚举内容：(注：枚举以英文状态","隔开 如：1,2,3)</span>
 					<input type="text" id="module_attribute_content"/>
 				</p>
 			</div>

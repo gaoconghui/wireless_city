@@ -15,6 +15,7 @@
 <link href="css/reset.css" rel="stylesheet">
 <link href="css/front_default_style.css" rel="stylesheet">
 <script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/util.js"></script>
 <script src="js/placeholder.js"></script>
 </head>
 <body>

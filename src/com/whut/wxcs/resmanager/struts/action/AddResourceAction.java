@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.whut.wxcs.resmanager.action.BaseAction;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;
@@ -118,27 +118,16 @@ public class AddResourceAction extends BaseAction<Resource> implements
 
 	/**
 	 * 模板属性 接受参数cid (种类的id)
-	 * 
 	 */
 	public String showTemplate() {
-		// 查询template并返回属性
 		System.out.println(cid);
 		template = catalogueService.getTemplate(cid);
-		//System.out.println(template.getAttributes().size());
+		// System.out.println(template.getAttributes().size());
 		return "template";
 	}
 
 	/**
-	 * 得到服务商下的所有服务资源
-	 */
-	public String getAllResource() {
-		System.out.println("getProviderResource方法被调用");
-		resources = resourceService.getProviderResource(provider);
-		return "";
-	}
-
-	/**
-	 * 获得某服务商某类目下的所有服务资源
+	 * 得到某个服务商的具体资源
 	 */
 	public String getConcreteResource() {
 		// 实验~~~后期删除
@@ -175,24 +164,26 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String addResource() {
 		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
 				resourceAttrs);
-		for(ResourceAttribute r:resourceAttrs){
-			System.out.println("id:"+r.getId()+",attribute:"+r.getAttribute()+",resource:"+r.getResource()+",value:"+r.getValue());
-			System.out.println("--------------------");
-		}
-		System.out.println(model.getResource_name());
-		System.out.println(model.getDescription());
 		model.setAttributes(resourceAttributes);
 		Catalogue catalogue = new Catalogue();
 		catalogue.setId(cid);
 		model.setCatalogue(catalogue);
 		model.setCreate_time(new Date());
+		model.setProvider(provider);
 		long id = resourceService.addResource(model);
+		resetCatalogue();
 		try {
-			inputStream = new ByteArrayInputStream((id+"").getBytes("UTF-8"));
+			inputStream = new ByteArrayInputStream((id + "").getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		return "ajax-success";
+	}
+
+	private void resetCatalogue() {
+		resources = resourceService.getProviderResource(provider);
+		catalogues = resourceService.getProviderCatalogue(resources);
+		session.put("catalogues", catalogues);
 	}
 
 	public String toShowResourcePage() {
@@ -201,37 +192,43 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		return "resourcePage";
 	}
 
-	public String showResource() {
-		resources = resourceService.getCatalogueProviderResource(cid, provider);
-		return "";
-	}
-
 	public String deleteResource() {
 		resourceService.delete(rid);
-		return "delete_success";
+		resetCatalogue();
+		try {
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return "ajax-success";
 	}
 
 	/**
-	 * 资源按照创建时间排序
+	 * 得到某个具体的服务资源
 	 */
-	public String orderByTime() {
-		int pid = 1;
-		resources = resourceService.orderByTime(pid, cid);
-		System.out.println("ACTION" + resources.size());
-		return "order";
+	public String getResource(){
+		model = resourceService.getResource(model.getId());
+		return "resource";
 	}
-
+	
+    /**
+     * 到达更新资源的页面 
+     */
 	public String toUpdateResource() {
-		model = resourceService.getResource(rid);
-		for (ResourceAttribute resourceAttribute : model.getAttributes()) {
-			System.out.println(resourceAttribute.getValue());
-		}
+		model = resourceService.getResource(model.getId());
 		return "updatePage";
 	}
 
+	/**
+	 * 更新服务资源 
+	 */
 	public String updateResource() {
+		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
+				resourceAttrs);
+		System.out.println("----------------"+resourceAttributes.size());
+	    model.setAttributes(resourceAttributes);		
 		resourceService.updateResource(model);
-		return "resourceAction";
+		return "sss";
 	}
 
 	@Override

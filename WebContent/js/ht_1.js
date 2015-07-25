@@ -82,7 +82,7 @@ var newCategoryId;
 							$(this).stop(true,true).fadeOut(1000,function(){
 								$(this).remove();
 							});
-							$(this).parents(".r_table").next().find("ul li").fadeOut(1000,function(){
+							$(this).parents(".r_table").next().find("ul li").fadeOut(500,function(){
 								$(this).parent().empty();
 							});
 						}

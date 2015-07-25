@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.smartcardio.ATR;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.DetachedCriteria;
@@ -93,19 +95,26 @@ public class ResourceServiceImpl implements ResourceService {
 	}
 
 	@Override
-	public Resource getResource(Integer rid) {
+	public Resource getResource(long rid) {
 		Resource resource = resourceDao.getEntity(rid);
-		System.out.println(resource.getCatalogue().getName());
-		System.out.println(resource.getAttributes().size());
+		resource.getCatalogue().getName();
+		resource.getAttributes().size();
+		for(ResourceAttribute resourceAttribute :resource.getAttributes()){
+			System.out.println("------------------------------------------");
+			System.out.println(resourceAttribute.getAttribute().getName());
+			if(resourceAttribute.getAttribute().getType()==5){
+				 resourceAttribute.getAttribute().getEnumValue();
+			}
+		}
 		return resource;
 	}
 
 	@Override
 	public void updateResource(Resource model) {
+		resourceDao.saveOrUpdateEntity(model);
 		for (ResourceAttribute resourceAttribute : model.getAttributes()) {
-			resourceAttributeDao.saveEntity(resourceAttribute);
+			resourceAttributeDao.saveOrUpdateEntity(resourceAttribute);
 		}
-		resourceDao.saveEntity(model);
 	}
 
 	@Override
@@ -169,11 +178,16 @@ public class ResourceServiceImpl implements ResourceService {
 		addCriteriaFrontKey(model, criteria);
 		// 增加排序方式
 		addCriteriaOrderByTime(model, criteria);
+		// 根据审核状态排序,
+		addCriteriaState(model, criteria);
 		// 增加属性进行查询
 		addCriteriaAttribute(model, criteria);
 
 		// 初始化page
 		List<Resource> resources = criteria.list();
+		for(Resource resource:resources){
+			resource.getCatalogue().getName();
+		}
 
 		page.setList(resources);
 		page.setTotalItemNumber(resources.size());
@@ -196,6 +210,13 @@ public class ResourceServiceImpl implements ResourceService {
 		page.setList(criteria.list());
 
 		return page;
+	}
+
+	private void addCriteriaState(CriteriaResource model, Criteria criteria) {
+		// System.out.println(".........." + model.getState());
+		if (model.getState() != null) {
+			criteria.add(Restrictions.eq("checkState", model.getState()));
+		}
 	}
 
 	private long getTidByResourceList(List<Resource> resources) {
@@ -345,18 +366,18 @@ public class ResourceServiceImpl implements ResourceService {
 							+ model.getCatalogueId() + "%'"));
 		}
 	}
-	
+
 	@Override
 	public List<Catalogue> getProviderCatalogue(List<Resource> resources) {
 		List<Catalogue> catalogues = new ArrayList<Catalogue>();
-		//将resource中catalogue为3位数的ID  踢出出来
+		// 将resource中catalogue为3位数的ID 踢出出来
 		for (Resource resource : resources) {
 			if (DataUtils.isTrible(resource.getCatalogue().getId())) {
 				Catalogue catalogue = catalogueService
 						.initCatalogueById(resource.getCatalogue().getId());
-			     if(!catalogues.contains(catalogue)){
-			    	 catalogues.add(catalogue);
-			     }
+				if (!catalogues.contains(catalogue)) {
+					catalogues.add(catalogue);
+				}
 			}
 		}
 		return catalogues;

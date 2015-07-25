@@ -9,7 +9,7 @@
 			<generator class="native" />
 		</id>
 		<set name="attributes" table="RESOURCE_ATTRIBUTE" inverse="false"
-			lazy="true" access="field">
+			lazy="true" access="field" order-by="id">
 			<key>
 				<column name="RESOURCE_ID" />
 			</key>
@@ -31,7 +31,7 @@
 		<property name="description" type="java.lang.String">
 			<column name="DESCRIPTION" />
 		</property>
-		<property name="create_time" type="java.sql.Date">
+		<property name="create_time" type="timestamp" update="false">
 			<column name="CREATE_TIME" />
 		</property>
 		<property name="rating" type="java.lang.Float">
@@ -42,6 +42,9 @@
 		</property>
 		<property name="quantity" type="int">
 			<column name="QUANTITY" />
+		</property>
+		<property name="checkState" type="int">
+			<column name="CHECKSTATE" />
 		</property>
 	</class>
 </hibernate-mapping>
