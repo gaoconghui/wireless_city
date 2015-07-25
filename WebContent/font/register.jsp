@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="c_table" id="c_table">
 							<div class="t_buyer" id="t_buyer">
 								<form id="userform">
-									<input type="text" id="user_name" autofocus name="name" placeholder="账号"/>
+									<input type="text" id="user_name"  name="name" placeholder="账号"/>
 									<div class="infomation">
 										<span class="icon iconfont"></span>
 										<span class="info" data-content="2~20个字符"></span>

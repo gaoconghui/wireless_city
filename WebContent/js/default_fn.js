@@ -41,7 +41,7 @@ function initialize_salor() {
 	$("#changeState").change(function() {
 		var href = $(this).val();
 		location.href = href;
-	})
+	});
 	//页码居中
 	var width = $("#paging").width();
 	$("#center_page").css("marginLeft", -width / 2);
@@ -50,7 +50,7 @@ function initialize_salor() {
 		$("#search_service_form")[0].submit();
 	});
 	//属性筛选
-	$("#hd_attrref").on({
+	$("#hd_attrref").find(".attr_show").on({
 		"mouseenter": function() {
 			$(this).css("border-color", "#f00");
 			$(this).find(".delete_icon").css("color", "#f00");
@@ -58,8 +58,8 @@ function initialize_salor() {
 		"mouseleave": function() {
 			$(this).css("border-color", "#ccc");
 			$(this).find(".delete_icon").css("color", "#444");
-		},
-	},".attr_show");
+		}
+	});
 	/*添加服务按钮*/
 	$("#add_service_btn").off("click").on("click",
 	function() {
@@ -112,7 +112,7 @@ function initialize_salor() {
 			$("#s_sort").find(".s_main").each(function() {
 				if ($(this).css("display") == "block") n++;
 			});
-			if (n < 0) {alert("请选择类目！");return false;}
+			if (n < 0) {alert("请选择类目！");return;}
 			var pid = $("#s_sort").find(".s_main:eq(" + n + ")").find("select").val();
 			var param = {tid: pid};
 			$.ajax({
@@ -185,7 +185,8 @@ function initialize_salor() {
 				$("#at_fill").find("p").each(function(index) {
 					var value = "";
 					if ($(this).find("select").val() == "-1") {
-						alert("請選擇美劇類型！");
+						alert("请选择枚举类型！");
+						return;
 					} else {
 						value = $(this).find("input").val() || $(this).find("select").val();
 					}
@@ -194,6 +195,7 @@ function initialize_salor() {
 					param["resourceAttrs[" + index + "].value"] = value;
 					param["resourceAttrs[" + index + "].attribute.id"] = id;
 				});
+				alert("进来了？");
 				$.ajax({
 					beforeSend: function() {},
 					error: function() {
@@ -203,7 +205,10 @@ function initialize_salor() {
 					url: "AddResourceAction_addResource",
 					type: "post",
 					success: function(data) {
-						if (data == 0) {} else {
+						alert(data);
+						if (data == 0) {
+							alert("后台异常！");
+						} else {
 							location.href = "SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=" + pid + "";
 						}
 					}
@@ -315,7 +320,7 @@ function edit_rs(){
 		var name_content=$("#update_rs").find(".name").find(".value").text();
 		$("#update_rs").find(".name").html("<span class='key'>资源名称</span><input name='resource_name' value='"+name_content+"'/>");
 		var desc_content=$("#update_rs").find(".desc").find(".value").text();
-		$("#update_rs").find(".desc").html("<span class='key'>资源描述</span><textarea name='description' value='"+desc_content+"'></textarea>");
+		$("#update_rs").find(".desc").html("<span class='key'>资源描述</span><textarea name='description'>"+desc_content+"</textarea>");
 		$("#update_rs").find(".right_wrapper").find("p").each(function(){
 			var type=$(this).find(".value").data("type");
 			var content=$(this).find(".value").attr("title");
@@ -354,19 +359,16 @@ function searchInitialize() {
 		$("#s_self")[0].submit();
 	});
 	//属性筛选
-	$("#hd_attrref").on(
-		{
-			"mouseenter" : function() {
-				$(this).css("border-color", "#f00");
-				$(this).find(".delete_icon").css(
-						"color", "#f00");
-			},
-			"mouseleave" : function() {
-				$(this).css("border-color", "#ccc");
-				$(this).find(".delete_icon").css(
-						"color", "#ccc");
-			}
-		}, ".attr_show");
+	$("#hd_attrref").find(".attr_show").on({
+		"mouseenter": function() {
+			$(this).css("border-color", "#f00");
+			$(this).find(".delete_icon").css("color", "#f00");
+		},
+		"mouseleave": function() {
+			$(this).css("border-color", "#ccc");
+			$(this).find(".delete_icon").css("color", "#444");
+		}
+	});
 	//查询条数
 	$("#bd_left").on("change","select",function(){
 		var value=$(this).val();
@@ -530,25 +532,31 @@ function loginValidator(){
 function registerValidate(){
 	//input focus
 	$("#c_table").find("input").each(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		$this.focus(function(){
-			var txt=$this.next().find(".info").data("content");
-			$this.next().find(".info").text(txt);
-			$this.next().find(".icon").css("color","#75b0e2").html("&#xe610;");
-			$this.next().show();
+			var txt=$next.find(".info").data("content");
+			$next.find(".info").text(txt);
+			$next.find(".icon").css("color","#75b0e2").html("&#xe610;");
+			$next.show();
 		});
 	});
 	//input blur
 	//name
 	$("#userform").find("input[name=name]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(content.length<2||content.length>20){
-			$this.next().find(".info").text("字符数限制在2~20！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("字符数限制在2~20！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
 			var params={name:content};
 			$.ajax({
@@ -556,11 +564,11 @@ function registerValidate(){
 				data:params,
 				success:function(data){
 					if(data=="0"){
-						$this.next().find(".info").text("账号已存在！");
-						$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+						$next.find(".info").text("账号已存在！");
+						$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 					}else if(data=="1"){
-						$this.next().find(".info").text("");
-						$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+						$next.find(".info").text("");
+						$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 					}else{
 						alert("后台异常");
 					}
@@ -574,25 +582,28 @@ function registerValidate(){
 	
 	//loginName
 	$("#c_table").find("input[name=loginName]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(content.length<2||content.length>20){
-			$this.next().find(".info").text("字符数限制在2~20！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("字符数限制在2~20！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
 			$.ajax({
 				url:"ProviderAction_validateProvider",
 				data:{name:content},
 				success:function(data){
 					if(data=="0"){
-						$this.next().find(".info").text("账号已存在！");
-						$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+						$next.find(".info").text("账号已存在！");
+						$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 					}else if(data=="1"){
-						$this.next().find(".info").text("");
-						$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+						$next.find(".info").text("");
+						$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 					}else{
 						alert("后台异常");
 					}
@@ -605,147 +616,176 @@ function registerValidate(){
 	});
 	//loginPwd
 	$("#c_table").find("input[name=loginPwd]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(content.length<2||content.length>16){
-			$this.next().find(".info").text("字符数限制在2~16！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("字符数限制在2~16！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 		}
 	});
 	//confirmPwd
 	$("#c_table").find("input[name=confirmPwd]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		var pwd=$this.parents("form").find("input[name=loginPwd]").val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(content!=pwd){
-			$this.next().find(".info").text("两次输入密码不相符！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("两次输入密码不相符！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 		}
 	});
 	//phoneNumber
 	$("#c_table").find("input[name=phoneNumber],input[name=cellphone]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(!mobilephoneFormatCheck(content)){
-			$this.next().find(".info").text("手机格式不正确！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("手机格式不正确！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 		}
 	});
 	//realName/industry/scale/address
 	$("#c_table").find("input[name=realName],input[name=industryName],input[name=industry],input[name=scale],input[name=address]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 		}
 	});
 	//industry_name(别名name);
 	$("#providerform").find("input[name=name]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");		
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");		
 		}
 	});
 	//email
 	$("#c_table").find("input[name=email]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(!emailFormatCheck(content)){
-			$this.next().find(".info").text("邮箱格式不正确！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("邮箱格式不正确！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 		}
 	});
 	//telephone
 	$("#c_table").find("input[name=telephone],input[name=fax]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(!fixphoneFormatCheck(content)){
-			$this.next().find(".info").text("固话格式不正确！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("固话格式不正确！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 		}
 	});
 	//QQ
 	$("#c_table").find("input[name=qq]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(!qqFormatCheck(content)){
-			$this.next().find(".info").text("qq格式不正确！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("qq格式不正确！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 		}
 	});
 	//post code
 	$("#c_table").find("input[name=postcode]").blur(function(){
-		var $this=$(this);
+		var $this=$(this),$next=$this.next();
+		if($this.parents(".placeholder").data("exist")=="1"){
+			$next=$this.parent().next();
+		}
 		var content=$this.val();
 		if(isEmpty(content)){
-			$this.next().find(".info").text("不允许为空！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("不允许为空！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else if(!codeFormatCheck(content)){
-			$this.next().find(".info").text("邮编格式不正确！");
-			$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+			$next.find(".info").text("邮编格式不正确！");
+			$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
 		}else{
-			$this.next().find(".info").text("");
-			$this.next().find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
+			$next.find(".info").text("");
+			$next.find(".icon").css("color","#87d448").html("&#xe60c;");$this.attr("validate","1");
 		}
 	});
 	$("#submit").click(function(){
-		
 		var userType=$("#c_sel").find("input:checked").val();
 		if(userType=="0"){
 			//用户注册
 			var n=0;
 			$("#userform").find("input").each(function(){
-				var $this=$(this);
+				var $this=$(this),$next=$this.next();
+				if($this.parents(".placeholder").data("exist")=="1"){
+					$next=$this.parent().next();
+				}
 				var isValidate=$this.attr("validate");
 				if(isValidate == undefined || isValidate == 'undefined'){
-					$this.next().find(".info").text("不允许为空！");
-					$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
-					$this.next().show();
+					$next.find(".info").text("不允许为空！");
+					$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+					$next.show();
 				}else if(isValidate=="1"){
 					n++;
 				};
@@ -776,11 +816,15 @@ function registerValidate(){
 			//服务商注册
 			var n=0;
 			$("#providerform").find("input").each(function(){
-				var $this=$(this);
+				var $this=$(this),$next=$this.next();
+				if($this.parents(".placeholder").data("exist")=="1"){
+					$next=$this.parent().next();
+				}
 				var isValidate=$this.attr("validate");
 				if(isValidate == undefined || isValidate == 'undefined'){
-					$this.next().find(".info").text("不允许为空！");
-					$this.next().find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+					$next.find(".info").text("不允许为空！");
+					$next.find(".icon").css("color","#dc6666").html("&#xe602;");$this.attr("validate","0");
+					$next.show();
 				}else if(isValidate=="1"){
 					n++;
 				};

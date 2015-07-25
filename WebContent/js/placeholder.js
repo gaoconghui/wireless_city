@@ -4,23 +4,26 @@ jQuery.fn.placeholder = function(){
 	if(!placeholdersupport){
         	$(this).each(function() {
 				var self = $(this), txt = self.attr('placeholder');
-				self.wrap($('<div></div>').css({position:'relative',float:'left'}));
-				var w=self.outerWidth(), h = self.outerHeight();
+				self.wrap($('<div class="placeholder" data-exist="1"></div>').css({position:'relative',float:'left'}));
+				var h = self.outerHeight();
 				var size=self.css('fontSize');
+				var paddingleft=0;
 				if(self.css('paddingLeft')){
-					var paddingleft = self.css('paddingLeft');
+					paddingleft = self.css('paddingLeft');
 				}else{
-					var paddingleft=0;
+					paddingleft=0;
 				}
+				var margintop=0;
 				if(self.css('marginTop')){
-					var margintop= self.css('marginTop');
+					margintop= self.css('marginTop');
 				}else{
-					var margintop=0;
+					margintop=0;
 				}
+				var marginleft=0;
 				if(self.css('marginLeft')){
-					var marginleft= self.css('marginLeft');
+					marginleft= self.css('marginLeft');
 				}else{
-					var marginleft=0;
+					marginleft=0;
 				}
 				var borderwidth=self.css('borderWidth').match(/\d*/i)[0] * 1;
 				var padding=paddingleft.match(/\d*/i)[0] * 1+borderwidth;
@@ -41,7 +44,7 @@ jQuery.fn.placeholder = function(){
 	return this;
 };
 /*
-	ÒýÈëjQuery¿â£¬È»ºóÒýÈëÕâ¸ö²å¼þ£¬µ÷ÓÃÈçÏÂ£º
+	ï¿½ï¿½ï¿½ï¿½jQueryï¿½â£¬È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½
 	jQuery('input[placeholder]').placeholder();
-	Óá½Ü°æÈ¨ËùÓÐ
+	ï¿½ï¿½Ü°ï¿½È¨ï¿½ï¿½ï¿½ï¿½
 */

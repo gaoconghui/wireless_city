@@ -58,7 +58,7 @@ function findCategory(opts){
 				opts.beforeSend();
 			}else{
 				$.tmUtil.infoShow({"message":"请稍后..."}).stop(true,true).fadeOut(1000);
-				$("#yy").hide();
+				$("#yy").show();
 			}
 		},
 		error:function(){
