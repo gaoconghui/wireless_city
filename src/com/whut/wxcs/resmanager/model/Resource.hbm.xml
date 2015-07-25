@@ -21,7 +21,7 @@
 			<column name="CATALOGUE_ID" />
 		</many-to-one>
 		<many-to-one name="provider"
-			class="com.whut.wxcs.resmanager.model.Provider">
+			class="com.whut.wxcs.resmanager.model.Provider" fetch="join">
 			<column name="PROVIDER_ID" />
 		</many-to-one>
 

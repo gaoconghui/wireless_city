@@ -422,6 +422,10 @@
 	float: left;
 	text-indent: 4px;
 }
+/*h_4.jsp差异*/
+.tzht .t_right .r_table .r_label_h4 .l_tr span {
+	width: 16%;
+}
 
 .tzht .t_right .r_table .r_label .l_tr .span:before {
 	content: "";
@@ -448,6 +452,13 @@
 	margin:0;
 	text-align:left;
 	color:#fff;
+}
+
+.tzht .t_right .r_table .r_label .first_tr span:first-child a{
+	background:url("../images/ht/icon.png") no-repeat -31px -148px;
+	width:20px;height:20px;
+	display:block;
+	margin:11px 0 0 6px;
 }
 
 .tzht .t_right .r_table .r_label .l_tr span a.delete {

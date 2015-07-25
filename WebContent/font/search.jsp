@@ -2,7 +2,9 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/";
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <!doctype html>
 <html>
@@ -56,7 +58,7 @@
 				</s:a>
 			</div>
 		</s:if>
-		<s:if 
+		<s:if
 			test="page.catalogue.child != null && page.catalogue.child.size >0">
 			<div class="hd_sort">
 				<div class="s_details" id="s_details">
@@ -94,10 +96,18 @@
 				<p>
 					<span><s:property value="name" />:</span> <span> <s:iterator
 							value="enumValue" status="st">
-							<s:a
-								href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
-								<s:property value="enumValue[#st.index]" />
-							</s:a>
+							<s:if test="attrMap.containsKey(id+'_'+#st.index)">
+								<s:a cssClass="colorgradient"
+									href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
+									<s:property value="enumValue[#st.index]" />
+								</s:a>
+							</s:if>
+							<s:else>
+								<s:a
+									href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
+									<s:property value="enumValue[#st.index]" />
+								</s:a>
+							</s:else>
 						</s:iterator>
 					</span>
 				</p>
@@ -114,37 +124,46 @@
 	<div class="layout_body">
 		<div class="bd_title">
 			<div class="bd_right" id="order_by">
-				<span> 
-					<s:a href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=0">
-					 按时间<i class="iconfont"> 
-					 		<s:if test="orderName == 0">
-								<s:if test="orderSequence == 0">&#xe600;</s:if>
+				<span> <s:if test="orderName == 0">
+						<s:a cssClass="sort_1"
+							href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=0">
+					 按时间<i class="iconfont"> <s:if test="orderSequence == 0">&#xe600;</s:if>
 								<s:if test="orderSequence == 1">&#xe601;</s:if>
-							</s:if>
-						</i>
+							</i>
+						</s:a>
+					</s:if> <s:else>
+						<s:a cssClass="sort_0"
+							href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=0">
+					 按时间
+						</s:a>
+					</s:else>
+				</span> <span> <s:if test="orderName == 1">
+						<s:a cssClass="sort_1"
+							href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=1">
+					按名称<i class="iconfont"> <s:if test="orderSequence == 0">&#xe600;</s:if>
+								<s:if test="orderSequence == 1">&#xe601;</s:if>
+							</i>
+						</s:a>
+					</s:if>
+					<s:else>
+						<s:a cssClass="sort_0"
+							href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=1">
+					按名称
 					</s:a>
-				</span> 
-				<span> 
-					<s:a href="SearchResourceAction_changeOrder?rsid=%{rsid}&orderName=1">
-					按名称<i class="iconfont"> <s:if test="orderName == 1">
-							<s:if test="orderSequence == 0">&#xe600;</s:if>
-							<s:if test="orderSequence == 1">&#xe601;</s:if>
-						</s:if></i>
-					</s:a>
+					</s:else>
 				</span>
 			</div>
 			<div class="bd_left" id="bd_left">
-				<label>默认显示条数</label> 
-				<select>
-					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=10">
-						10
-					</option>
-					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=20">
-						20
-					</option>
-					<option value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=50">
-						50
-					</option>
+				<label>默认显示条数</label> <select>
+					<option
+						value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=10">
+						10</option>
+					<option
+						value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=20">
+						20</option>
+					<option
+						value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=50">
+						50</option>
 				</select>
 			</div>
 		</div>
@@ -156,9 +175,9 @@
 					</div>
 					<div class="l_details">
 						<span class="d_service"><s:property value="resource_name" /></span>
-						<span class="d_desc"> <s:property value="description" /></span> 
-						<span class="d_time"><s:property value="create_time" /></span> 
-						<span class="d_company"><s:property value="id" /></span>
+						<span class="d_desc"> <s:property value="description" /></span> <span
+							class="d_time"><s:property value="create_time" /></span> <span
+							class="d_company"><s:property value="id" /></span>
 					</div>
 					<div class="l_visit">
 						<a href="font/details.jsp">查看详情</a>
@@ -209,7 +228,9 @@
 				<s:if test="pageNum+3 <= page.totalPageNumber">
 					<span>. . .</span>
 				</s:if>
-				<s:a href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}"id="last">尾页</s:a>
+				<s:a
+					href="SearchResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}"
+					id="last">尾页</s:a>
 			</div>
 		</div>
 	</div>

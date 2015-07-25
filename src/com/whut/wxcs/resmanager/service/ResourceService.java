@@ -8,7 +8,7 @@ import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;
 import com.whut.wxcs.resmanager.model.ResourcePage;
 
-public interface ResourceService {
+public interface ResourceService extends BaseService<Resource>{
 
 	/**
      *  增加资源 
@@ -61,5 +61,15 @@ public interface ResourceService {
 	 * 通过服务商所选的资源判断服务商的类目
 	 */
 	public List<Catalogue> getProviderCatalogue(List<Resource> resources);
+
+	/**
+	 * 批量通过审查
+	 */
+	public void passListCheck(String ids);
+
+	/**
+	 * 批量下架
+	 */
+	public void offListCheck(String ids);
 
 }

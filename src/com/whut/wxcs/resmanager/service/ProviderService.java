@@ -18,4 +18,14 @@ public interface ProviderService extends BaseService<Provider> {
 
 	public List<Provider> getUncheckedProviders();
 
+	/**
+	 * 批量通过审核 
+	 */
+	public void passListCheck(String ids);
+
+	/**
+	 * 批量下架
+	 */
+	public void offListCheck(String ids);
+
 }

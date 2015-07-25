@@ -10,6 +10,7 @@ import com.whut.wxcs.resmanager.dao.BaseDao;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.service.ProviderService;
 import com.whut.wxcs.resmanager.util.DataUtils;
+import com.whut.wxcs.resmanager.util.MessageMail;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Service("providerService")
@@ -56,6 +57,20 @@ public class ProviderServiceImpl extends BaseServiceImpl<Provider> implements
 	public List<Provider> getUncheckedProviders() {
 		String hql = "from Provider p WHERE p.checkState =? ";
 		return findEntityByHql(hql, 2);
+	}
+
+	@Override
+	public void passListCheck(String ids) {
+		String hql = "UPDATE Provider p SET p.checkState = 1 WHERE p.id IN ("
+				+ ids +")";
+		this.batchEntityByHql(hql);
+	}
+
+	@Override
+	public void offListCheck(String ids) {
+		String hql = "UPDATE Provider p SET p.checkState = 0 WHERE p.id IN ("
+				+ ids +")";
+		this.batchEntityByHql(hql);
 	}
 
 }

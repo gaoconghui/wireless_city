@@ -7,7 +7,7 @@
 			<li><a href="CatalogueAction_toCatalogueManagerPage"><i class="l_icon1"></i><span>服务类目管理</span></a></li>
 			<li><a href="TemplateAction_toTemplateManagerPage"><i class="l_icon2"></i><span>资源模板管理</span></a></li>
 			<li><a href="SearchProviderAction_getAllProviders"><i class="l_icon3"></i><span>服务商管理</span></a></li>
-			<li><a href="admin/ht_4.jsp"><i class="l_icon4"></i><span>服务资源管理</span></a></li>
+			<li><a href="SearchBackResourceAction_getAllResources"><i class="l_icon4"></i><span>服务资源管理</span></a></li>
 		</ul>
 	</div>
 </div>

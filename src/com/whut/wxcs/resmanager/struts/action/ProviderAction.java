@@ -42,6 +42,11 @@ public class ProviderAction extends BaseAction<Provider> implements
 
 	// providerList 页面中，对服务商执行操作后转发psid，重定向时使用
 	private long psid;
+	private String ids;
+
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
 
 	public long getPsid() {
 		return psid;
@@ -210,9 +215,10 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 */
 	public String passCheck() {
 		System.out.println(provider.getId());
-		provider = providerService.getEntity(provider.getId());
-		provider.setCheckState(1);
-		providerService.saveOrUpdateEntity(provider);
+//		provider = providerService.getEntity(provider.getId());
+//		provider.setCheckState(1);
+//		providerService.saveOrUpdateEntity(provider);
+		providerService.passListCheck(provider.getId()+"");
 		return "providerListAction";
 	}
 
@@ -221,9 +227,30 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 */
 	public String offCheck() {
 		System.out.println(provider.getId());
-		provider = providerService.getEntity(provider.getId());
-		provider.setCheckState(0);
-		providerService.saveOrUpdateEntity(provider);
+//		provider = providerService.getEntity(provider.getId());
+//		provider.setCheckState(0);
+//		providerService.saveOrUpdateEntity(provider);
+		
+		providerService.offListCheck(provider.getId()+"");
+		
+		return "providerListAction";
+	}
+
+	/**
+	 * 服务商批量通过
+	 */
+	public String passListCheck() {
+		System.out.println(ids);
+		providerService.passListCheck(ids);
+		return "providerListAction";
+	}
+
+	/**
+	 * 服务商批量通过
+	 */
+	public String offListCheck() {
+		System.out.println(ids);
+		providerService.offListCheck(ids);
 		return "providerListAction";
 	}
 

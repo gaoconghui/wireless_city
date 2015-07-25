@@ -1,20 +1,22 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <!doctype html>
 <html>
-	<head>
-		<base href="<%=basePath%>">
-		<meta charset="utf-8">
-		<title>无线城市-后台-服务资源管理</title>
-		<link href="css/reset.css" rel="stylesheet">
-		<link href="css/ht_default_style.css" rel="stylesheet">
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/util.js"></script>
-	</head>
+<head>
+<base href="<%=basePath%>">
+<meta charset="utf-8">
+<title>无线城市-后台-服务资源管理</title>
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/ht_default_style.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+</head>
 <body>
 	<div class="tzht">
 		<!-- header begin -->
@@ -24,123 +26,188 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="t_right">
 			<!-- r_location start -->
 			<div class="r_location" id="location">
-				<i></i><span>您当前所在位置：<a href="javascript:void(0)" id="choose">服务资源管理</a></span>	
+				<i></i><span>您当前所在位置：<a href="javascript:void(0)" id="choose">服务资源管理</a></span>
 			</div>
 			<!-- end r_location -->
 			<div class="r_table">
 				<div class="r_title">
 					<i></i><span class="span">服务资源管理</span>
-					<div class="r_t_action">
-						<span class="r_t_a2 ra" title="通过" id="submit_btn"></span>
-						<span class="r_t_a3 ra" title="下架" id="offsheet_btn"></span>
-						<span class="r_t_a4 ra" title="删除" id="delete_btn"></span>
-					</div>	
+					<div class="r_t_action dis_none" id="r_t_action">
+						<span class="r_t_a2 ra" title="通过" id="submit_btn"></span> <span
+							class="r_t_a3 ra" title="下架" id="offsheet_btn"></span> <span
+							class="r_t_a4 ra" title="通知" id="delete_btn"></span>
+					</div>
 					<div class="s_input">
-						<input class="input" type="text" placeholder="找服务资源" />
-						<div class="i_btn">搜索</div>
+						<s:form action="SearchBackResourceAction_inFindByKeyWord">
+							<s:textfield name="keyWord" placeholder="搜索资源" cssClass="input"></s:textfield>
+							<div class="s_btn i_btn" id="search_self">搜索</div>
+							<s:hidden name="brsid"></s:hidden>
+						</s:form>
 					</div>
 				</div>
-				<div class="r_label">
+				<div class="r_label  r_label_h4">
 					<div class="l_label">
 						<div class="l_form" id="l_form">
-							<div class="l_tr">
-								<span class="first_span">
-									<a href="javascript:void(0)" style="background:none;"></a>
+							<div class="l_tr first_tr">
+								<span class="first_span"> <a href="javascript:void(0)"
+									id="sel_all"></a>
+								</span> <span class="span"> <s:a
+										href="SearchBackResourceAction_changeOrder?brsid=%{brsid}&orderName=2">服务资源
+										<i class="iconfont"> <s:if test="orderName == 2">
+												<s:if test="orderSequence == 0">&#xe600;</s:if>
+												<s:if test="orderSequence == 1">&#xe601;</s:if>
+											</s:if>
+										</i>
+									</s:a>
+								</span> <span class="span"> <s:a
+										href="SearchBackResourceAction_changeOrder?brsid=%{brsid}&orderName=3">所属类目
+										<i class="iconfont"> <s:if test="orderName == 3">
+												<s:if test="orderSequence == 0">&#xe600;</s:if>
+												<s:if test="orderSequence == 1">&#xe601;</s:if>
+											</s:if>
+										</i>
+									</s:a>
+								</span> <span class="span"> <s:a
+										href="SearchBackResourceAction_changeOrder?brsid=%{brsid}&orderName=4">服务商
+										<i class="iconfont"> <s:if test="orderName == 4">
+												<s:if test="orderSequence == 0">&#xe600;</s:if>
+												<s:if test="orderSequence == 1">&#xe601;</s:if>
+											</s:if>
+										</i>
+									</s:a>
+								</span> <span class="span">操作</span> <span class="span"> <s:a
+										href="SearchBackResourceAction_changeOrder?brsid=%{brsid}&orderName=0">审核
+										<i class="iconfont"> <s:if test="orderName == 0">
+												<s:if test="orderSequence == 0">&#xe600;</s:if>
+												<s:if test="orderSequence == 1">&#xe601;</s:if>
+											</s:if>
+										</i>
+									</s:a>
+								</span> <span class="span"> <s:a
+										href="SearchBackResourceAction_changeOrder?brsid=%{brsid}&orderName=1">请求时间
+										<i class="iconfont"> <s:if test="orderName == 1">
+												<s:if test="orderSequence == 0">&#xe600;</s:if>
+												<s:if test="orderSequence == 1">&#xe601;</s:if>
+											</s:if>
+										</i>
+									</s:a>
 								</span>
-								<span class="span">服务资源</span>
-								<span class="span">所属模板/类目</span>
-								<span class="span">操作</span>
-								<span class="span">审核</span>
-								<span class="span">请求时间</span>
 							</div>
-							<div class="l_tr">
-								<span class="first_span">
-									<a href="javascript:void(0)" class="choose"></a>
-								</span>
-								<span>巴宝莉香水</span>
-								<span>香水模板</span>
-								<span>
-									<a href="javascript:void(0)" class="ra detail" title="详情"></a>	
-									<a href="javascript:void(0)" class="ra info" title="通知修改"></a>
-									<a href="javascript:void(0)" class="ra submit" title="通过"></a>
-									<a href="javascript:void(0)" class="ra offsheet" title="下架"></a>
-									<a href="javascript:void(0)" class="ra delete" title="删除"></a>
-								</span>
-								<span>
-									已通过
-								</span>
-								<span>
-									2天前						
-								</span>
-							</div>
-							<div class="l_tr">
-								<span class="first_span">
-									<a href="javascript:void(0)" class="choose"></a>
-								</span>
-								<span>巴宝莉香水</span>
-								<span>香水模板</span>
-								<span>
-									<small class="operation">
-										<a href="javascript:void(0)" class="ra detail" title="详情"></a>	
-										<a href="javascript:void(0)" class="ra info" title="通知修改"></a>
-										<a href="javascript:void(0)" class="ra submit" title="通过"></a>
-										<a href="javascript:void(0)" class="ra offsheet" title="下架"></a>
-										<a href="javascript:void(0)" class="ra delete" title="删除"></a>
+							<s:iterator value="page.list">
+								<div class="l_tr" data-id='<s:property value="id"/>'>
+									<span class="first_span"> <s:a href="javascript:void(0)"
+											cssClass="choose"></s:a>
+									</span> <span><s:property value="resource_name" /></span> <span><s:property
+											value="catalogue.name" /></span> <span><s:property
+											value="provider.name" /></span> <span> <small
+										class="operation"> <s:a href="javascript:void(0)"
+												cssClass="ra detail" title="详情"></s:a> <s:a
+												href="javascript:void(0)" cssClass="ra info" title="通知修改"></s:a>
+											<s:a href="ResourceAction_passCheck?id=%{id}&brsid=%{brsid}"
+												cssClass="ra submit" title="通过"></s:a> <s:a
+												href="ResourceAction_offCheck?id=%{id}&brsid=%{brsid}"
+												cssClass="ra offsheet" title="下架"></s:a> <s:a
+												href="javascript:void(0)" cssClass="ra delete" title="通知"></s:a>
 									</small>
-								</span>
-								<span>
-									通知修改中
-								</span>
-								<span>
-									2天前						
-								</span>
-							</div>
-							<div class="l_tr">
-								<span class="first_span">
-									<a href="javascript:void(0)" class="choose"></a>
-								</span>
-								<span>巴宝莉香水</span>
-								<span>香水模板</span>
-								<span>
-									<a href="javascript:void(0)" class="ra detail" title="详情"></a>	
-									<a href="javascript:void(0)" class="ra info" title="通知修改"></a>
-									<a href="javascript:void(0)" class="ra submit" title="通过"></a>
-									<a href="javascript:void(0)" class="ra offsheet" title="下架"></a>
-									<a href="javascript:void(0)" class="ra delete" title="删除"></a>
-								</span>
-								<span>
-									已下架
-								</span>
-								<span>
-									2天前						
-								</span>
-							</div>
+									</span> <span> <s:if test="checkState == 0">
+											未通过
+										</s:if> <s:elseif test="checkState == 1">
+											审核通过
+										</s:elseif> <s:elseif test="checkState == 2">
+											正在审核中
+										</s:elseif>
+									</span> <span> <s:property value="create_time" />
+									</span>
+								</div>
+							</s:iterator>
 						</div>
 					</div>
 				</div>
+				<!-- 	<div class="paging">
+					<a href="javascript:void(0)" class="sel">1</a> <a
+						href="javascript:void(0)">2</a> <a href="javascript:void(0)">3</a>
+					<a href="javascript:void(0)">4</a> <a href="javascript:void(0)"
+						class="next">下一页&gt;</a>
+				</div> -->
+
 				<div class="paging" id="paging">
 					<div id="paging_center">
-						<a href="javascript:void(0)" class="sel">1</a>
-						<a href="javascript:void(0)">2</a>
-						<a href="javascript:void(0)">3</a>
-						<a href="javascript:void(0)">4</a>
-						<a href="javascript:void(0)" class="next">下一页&gt;</a>
+						<s:a
+							href="SearchBackResourceAction_changePageNo?brsid=%{brsid}&pageNum=1"
+							class="next">首页</s:a>
+						<s:if test="pageNum -3 >0">
+							<span>. . .</span>
+						</s:if>
+						<s:if test="pageNum-2 >0">
+							<s:a
+								href="SearchBackResourceAction_changePageNo?brsid=%{brsid}&pageNum=%{pageNum -2}">
+								<s:property value="pageNum -2" />
+							</s:a>
+						</s:if>
+						<s:if test="pageNum-1 >0">
+							<s:a
+								href="SearchBackResourceAction_changePageNo?brsid=%{brsid}&pageNum=%{pageNum -1}">
+								<s:property value="pageNum -1" />
+							</s:a>
+						</s:if>
+						<s:a
+							href="SearchBackResourceAction_changePageNo?brsid=%{brsid}&pageNum=%{pageNum}"
+							cssClass="sel">
+							<s:property value="pageNum" />
+						</s:a>
+						<s:if test="pageNum+1 <= page.totalPageNumber">
+							<s:a
+								href="SearchBackResourceAction_changePageNo?brsid=%{brsid}&pageNum=%{pageNum + 1 }">
+								<s:property value="pageNum +1" />
+							</s:a>
+						</s:if>
+						<s:if test="pageNum+2 <= page.totalPageNumber">
+							<s:a
+								href="SearchBackResourceAction_changePageNo?brsid=%{brsid}&pageNum=%{pageNum +2}">
+								<s:property value="pageNum +2" />
+							</s:a>
+						</s:if>
+						<s:if test="pageNum+3 <= page.totalPageNumber">
+							<span>. . .</span>
+						</s:if>
+
+						<s:a
+							href="SearchBackResourceAction_changePageNo?brsid=%{brsid}&pageNum=%{page.totalPageNumber}"
+							cssClass="next">尾页</s:a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- end t_right -->
 	</div>
-	
+
 	<!-- dailog begin  -->
 	<div id="yp_dialog" class="yp_dialog">
-		<p class="dialog_title">确定删除吗？<span class="close">X</span></p>
+		<p class="dialog_title">
+			确定删除吗？<span class="close">X</span>
+		</p>
 		<div class="dialog_content">
-			<a href="javascript:void(0)" class="sure">确定</a>
-			<a href="javascript:void(0)" class="close">取消</a>
+			<a href="javascript:void(0)" class="sure">确定</a> <a
+				href="javascript:void(0)" class="close">取消</a>
 		</div>
 	</div>
 	<!-- end dialog  -->
-	<script type="text/javascript" src="js/ht_4.js"></script>
+	<script type="text/javascript" src="js/ht_3.js"></script>
+	<script>
+		/*批量操作*/
+		//批量通过
+		$("#submit_btn").off("click").on("click", function() {
+			location.href = "ResourceAction_passListCheck" + getSelNum();
+		});
+		//批量下架
+		$("#offsheet_btn").off("click").on("click", function() {
+			location.href = "ResourceAction_offListCheck" + getSelNum();
+		});
+		//批量通知
+		$("#delete_btn").off("click").on("click", function() {
+			location.href = "javascript:void(0)" + getSelNum();//TODO
+		});
+		/*批量操作*/
+	</script>
 </body>
 </html>
