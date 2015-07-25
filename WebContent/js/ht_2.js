@@ -20,7 +20,6 @@ var ajaxqueue=1;
 					//$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
 				}else{
 					var html="";
-					console.log(data);
 					var $data=$.parseJSON(data);
 					var length=$data.length;
 					for(var i=0;i<length;i++){
@@ -41,7 +40,7 @@ var ajaxqueue=1;
 			if($r_t_a2.css("display")=="none")$r_t_a2.show();
 			var p_id=$("#"+currentIdName).val();
 			
-			var html="<option value=''>Choose One</option>";
+			var html="<option value=''>-请选择-</option>";
 			for(var i=nextId;i<6;i++){
 				$("#category_"+i).html(html);
 			}
@@ -73,7 +72,6 @@ var ajaxqueue=1;
 				}else if(data=="0"){
 					$("#mod_attribute").html("");
 				}else{
-					console.log("标识"+data);
 					$.tmUtil.infoHide();
 					var $data=$.parseJSON(data);
 					var html="";
@@ -135,7 +133,6 @@ var ajaxqueue=1;
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
 					$("#yy").hide();
 				}else{
-					console.log(data);
 					$.tmUtil.infoHide();
 					var $data=$.parseJSON(data);
 					$("#current_module_name").text($data.name);
@@ -160,7 +157,6 @@ var ajaxqueue=1;
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
 					$("#yy").hide();
 				}else{
-					console.log(data);
 					$.tmUtil.infoHide();
 					var $data=$.parseJSON(data);
 					$("#module_show").find("span:eq(0)").text($data.name);
@@ -272,7 +268,6 @@ var ajaxqueue=1;
 			var $module_name=$("#module_name");
 			var oldName=$("#current_module_name").text();
 			var oldDesc=$("#current_module_desc").text();
-			console.log(oldName+"==="+oldDesc);
 			$module_name.val(oldName);
 			$module_desc.val(oldDesc);
 			$add_module.find(".sure").off("click").click(function(){

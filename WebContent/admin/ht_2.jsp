@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <label>一级类目</label>
                             <span class="field">
 	                            <select name="select" class="uniformselect" id="category_1">
-	                            	<option value="">Choose One</option>
+	                            	<option value="">-请选择-</option>
 	                            </select>
                             </span>
                         </p>
@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <label>二级类目</label>
                             <span class="field">
 	                            <select name="select" class="uniformselect" id="category_2">
-	                            	<option value="">Choose One</option>
+	                            	<option value="">-请选择-</option>
 	                            </select>
                             </span>
                         </p>
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <label>三级类目</label>
                             <span class="field">
 	                            <select name="select" class="uniformselect" id="category_3">
-	                            	<option value="">Choose One</option>
+	                            	<option value="">-请选择-</option>
 	                            </select>
                             </span>
                         </p>
@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <label>四级类目</label>
                             <span class="field">
 	                            <select name="select" class="uniformselect" id="category_4">
-	                            	<option value="">Choose One</option>
+	                            	<option value="">-请选择-</option>
 	                            </select>
                             </span>
                         </p>
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <label>五级类目</label>
                             <span class="field">
 	                            <select name="select" class="uniformselect" id="category_5">
-	                            	<option value="">Choose One</option>
+	                            	<option value="">-请选择-</option>
 	                            </select>
                             </span>
                         </p>
