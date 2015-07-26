@@ -135,7 +135,6 @@ var newCategoryId;
 						$details_show.hide();
 						var name=$data.name;
 						var description=$data.description;
-						console.log(name + description);
 						update_cate(name,description);
 					});
 				}
