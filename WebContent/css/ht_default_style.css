@@ -496,8 +496,14 @@
 .tzht .t_right .r_table .paging {
 	height: 40px;
 	display:inline-block;
-	text-align:center;
-	margin-left:50%;
+	padding-left:50%;
+	*display:inline;
+	zoom:1;
+}
+
+.tzht .t_right .r_table .paging div {
+	*display:inline;
+	zoom:1;
 }
 
 .tzht .t_right .r_table .paging a {

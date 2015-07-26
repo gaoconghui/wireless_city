@@ -296,6 +296,7 @@
 							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{page.totalPageNumber}">
 						     尾页
 						</s:a>
+						<div class="clear"></div>
 					</div>
 				</div>
 			</div>
