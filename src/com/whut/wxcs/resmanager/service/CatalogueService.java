@@ -10,6 +10,10 @@ import com.whut.wxcs.resmanager.model.Template;
 public interface CatalogueService extends BaseService<Catalogue>{
 
 	/**
+	 * 初始化root目录
+	 */
+	public void initCatalogue();
+	/**
 	 * 获取所有的根目录
 	 */
 	public List<Catalogue> getRootCatalogue();

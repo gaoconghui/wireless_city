@@ -21,6 +21,12 @@
 <script type="text/javascript" src="js/placeholder.js"></script>
 </head>
 <body>
+
+	<s:if test="root == null">
+		<jsp:forward page="CatalogueAction_toIndexPage.action"></jsp:forward>
+	</s:if>
+
+
 	<!-- header begin-->
 	<s:include value="header.jsp"></s:include>
 	<div class="h_sec">
@@ -64,12 +70,13 @@
 				<!-- 第一层类目迭代 -->
 				<s:iterator value="root.child">
 					<li>
-						<!-- 第二层类目迭代 --> 
-						<s:iterator value="child">
+						<!-- 第二层类目迭代 --> <s:iterator value="child">
 							<div class='c_list'>
 								<div class='l_second_item'>
 									<span class='span1'> <s:a
-										href="SearchResourceAction_searchResourceByCatalogue?catalogueId=10101"><s:property value="name"/></s:a>
+											href="SearchResourceAction_searchResourceByCatalogue?catalogueId=10101">
+											<s:property value="name" />
+										</s:a>
 									</span> <span class="span2">&gt;</span>
 								</div>
 								<div class="l_third_item">

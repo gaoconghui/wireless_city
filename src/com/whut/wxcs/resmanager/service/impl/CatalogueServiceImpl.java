@@ -1,6 +1,7 @@
 package com.whut.wxcs.resmanager.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -58,7 +59,20 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		if (ValidateUtil.isVaild(child)) {
 			model.setId(child.get(0).getId() + 1);
 		} else {
-			model.setId(model.getParent().getId() * 100 + 1);
+			//设置id  id规则： 一类目两位数，二类目两位数，三四五类目三位数
+			long parentId = model.getParent().getId();
+			//父类目是根，即创建一个一级类目，一类目从11开始
+			if(parentId == 1){
+				model.setId(11);
+			}
+			//如果父类目是一级类目
+			else if(parentId < 100){
+				model.setId(parentId * 100 + 1);
+			}
+			//其他的
+			else{
+				model.setId(parentId * 1000 + 1);
+			}
 		}
 
 		// 保存类目
@@ -86,6 +100,7 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		String description = "";
 		template.setTemplateName(templateName);
 		template.setDescription(description);
+		template.setCreateTime(new Date());
 		template.setCatalogue(model);
 		templateDao.saveEntity(template);
 	}
@@ -251,6 +266,19 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		}
 		
 		return catalogue;
+	}
+
+	@Override
+	public void initCatalogue() {
+		Catalogue catalogue = this.getEntity(1);
+		if(catalogue == null){
+			catalogue = new Catalogue();
+			catalogue.setId(1);
+			catalogue.setDescription("root类目");
+			catalogue.setName("root");
+			this.saveEntity(catalogue);
+			this.newTemplate(catalogue);
+		}
 	}
 
 }
