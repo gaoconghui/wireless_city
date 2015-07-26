@@ -490,13 +490,14 @@
 	padding-left: 5px;
 	float: left;
 	width: 115px;
-	height: 107px;
+	height: 113px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-break: break-all;
 	display: -webkit-box;
-	-webkit-line-clamp: 9;
+	-webkit-line-clamp: 8;
 	-webkit-box-orient: vertical;
+	line-height:14px;
 }
 
 .layout_all .wrapper_right .r_list_salor .l_content .l_operation {
