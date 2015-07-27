@@ -133,12 +133,7 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 		resourceDao.batchEntityByHql(hql, rid);
 	}
 
-	/*
-	 * @Override public List<Resource> orderByTime() { Criteria criteria =
-	 * resourceDao.getCriteria(); criteria.addOrder(Order.desc("create_time"));
-	 * List<Resource> resources = criteria.list();
-	 * System.out.println(resources.size()); return resources; }
-	 */
+	
 
 	@Override
 	public List<Resource> orderByTime(long pid, long cid) {

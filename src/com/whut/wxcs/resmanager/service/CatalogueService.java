@@ -97,7 +97,22 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 * 初始化一个catalogue
 	 */
 	public Catalogue initCatalogueById(long tid);
+	
+	/**
+	 * 根据模板获取所有的数值型的属性
+	 */
+	public List<Attribute> getNumAttributesByTid(long tid);
+	
+	/**
+	 * 根据ID获取Attribute 的最小属性值
+	 */
+	public Double getMinNum(long id);
 
+	/**
+	 * 根据ID获取Attribute 的最大属性值
+	 */
+	public Double getMaxNum(long id);
+	
 
 	
 

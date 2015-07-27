@@ -8,6 +8,8 @@
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<!-- 开发模式 -->
 	<constant name="struts.devMode" value="true"></constant>
+	<!-- 允许ognl 调用静态方法 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
 	<package name="admin" extends="struts-default">
 		<interceptors>
 			<interceptor name="providerIntercptor"
@@ -31,19 +33,18 @@
 
 		<action name="CatalogueAction_*" class="catalogueAction"
 			method="{1}">
-			<!-- <result name="toDesignCataloguePage">/admin/designcatalogue.jsp</result> -->
 			<result name="toIndexPage">/font/index.jsp</result>
 			<result name="toCatalogueManagerPage">/admin/ht_1.jsp</result>
-			<result name="catalogueManagerAction" type="redirectAction">
+			<!-- <result name="catalogueManagerAction" type="redirectAction">
 				<param name="actionName">CatalogueAction_toCatalogueManagerPage</param>
-			</result>
+			</result> -->
 			<result name="add_resource">/login/provider_resource.jsp</result>
 		</action>
 		<action name="TemplateAction_*" class="templateAction" method="{1}">
-			<result name="toNewTemplatePage">/admin/addtemplate.jsp</result>
+<!-- 			<result name="toNewTemplatePage">/admin/addtemplate.jsp</result>
 			<result name="toTemplateDetailPage">/admin/templatedetail.jsp</result>
 			<result name="newTemplate">/admin/templatedetail.jsp</result>
-			<result name="updateTemplate">/admin/templatedetail.jsp</result>
+			<result name="updateTemplate">/admin/templatedetail.jsp</result> -->
 
 			<result name="toTemplateManagerPage">/admin/ht_2.jsp</result>
 		</action>

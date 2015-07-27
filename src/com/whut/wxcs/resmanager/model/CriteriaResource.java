@@ -26,9 +26,13 @@ public class CriteriaResource {
 
 	private Integer state;
 
+	// 存放枚举型属性
 	// attributeid_value 如25_1
 	// List<String> attributes = new ArrayList<String>();
 	private Map<String, String> attrMap = new HashMap<String, String>();
+
+	// 存放数值型属性
+	private Map<Long, String> numMap = new HashMap<Long, String>();
 
 	// 内关键字
 	private String keyWord;
@@ -121,10 +125,19 @@ public class CriteriaResource {
 		return orderMap;
 	}
 
+	public Map<Long, String> getNumMap() {
+		return numMap;
+	}
+
+	public void setNumMap(Map<Long, String> numMap) {
+		this.numMap = numMap;
+	}
+
 	@Override
 	public String toString() {
-		return "CriteriaResource [catalogueId=" + catalogueId + ", attrMap="
-				+ attrMap + ", keyWord=" + keyWord + ", frontKey=" + frontKey
+		return "CriteriaResource [catalogueId=" + catalogueId + ", state="
+				+ state + ", attrMap=" + attrMap + ", numMap=" + numMap
+				+ ", keyWord=" + keyWord + ", frontKey=" + frontKey
 				+ ", pageSize=" + pageSize + ", pageNum=" + pageNum
 				+ ", orderSequence=" + orderSequence + ", orderName="
 				+ orderName + "]";

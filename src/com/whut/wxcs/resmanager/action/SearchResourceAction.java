@@ -44,14 +44,27 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	// 显示所有的类目以供选择 以后要删除
 	private List<Catalogue> catalogues;
 
-	// 页面选择属性
+	// 数值属性Id
+	private long attrId;
+	// 页面选择属性 或者是数值属性的名称
 	private String attrStr;
 	// 页面属性标签
 	private String attrLab;
 
+	// 数值属性范围
+	private String min;
+	private String max;
+
+	public void setMin(String min) {
+		this.min = min;
+	}
+
+	public void setMax(String max) {
+		this.max = max;
+	}
+
 	// 页面内基本信息
 	private ResourcePage page;
-
 
 	public ResourcePage getPage() {
 		return page;
@@ -61,6 +74,10 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 		this.page = page;
 	}
 
+	public void setAttrId(long attrId) {
+		this.attrId = attrId;
+	}
+
 	public void setAttrLab(String attrLab) {
 		this.attrLab = attrLab;
 	}
@@ -68,7 +85,6 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	public void setAttrStr(String attrStr) {
 		this.attrStr = attrStr;
 	}
-
 
 	// 用于接收session
 	private Map<String, Object> sessionMap;
@@ -89,7 +105,7 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	 * 根据传入的参数查询出资源 , 根据类目查询资源，不管是什么情况下，都是新建一个搜索，重置rsid
 	 */
 	public String searchResourceByCatalogue() {
-		
+
 		clearAndInitRS();
 
 		this.page = searchResourceService.searchByCriteria(model);
@@ -203,6 +219,23 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 	}
 
 	/**
+	 * 增加数值属性筛选
+	 */
+	public String handleNumAttribute() {
+		CriteriaResource cr = checkRsidAndGetCR();
+
+		String numAttrParam = attrStr + "_" + min + "_" + max;
+		cr.getNumMap().put(attrId, numAttrParam);
+
+		this.page = searchResourceService.searchByCriteria(cr);
+		this.model = cr;
+
+		System.out.println(cr);
+
+		return "resourcelist";
+	}
+
+	/**
 	 * 全局搜索
 	 */
 	public String frontFindByKeyWord() {
@@ -222,12 +255,14 @@ public class SearchResourceAction extends BaseAction<CriteriaResource>
 		cr.setPageNum(1);
 	}
 
-
 	/**
 	 * 从session 中获取搜索信息，不存在则返回model
 	 */
 	private CriteriaResource checkRsidAndGetCR() {
-		CriteriaResource oldcr = (CriteriaResource) sessionMap.get(getRsid());
+		CriteriaResource oldcr = null ;
+		if (sessionMap.containsKey(getRsid())) {
+			oldcr = (CriteriaResource) sessionMap.get(getRsid());
+		}
 		if (oldcr != null) {
 			return oldcr;
 		} else {

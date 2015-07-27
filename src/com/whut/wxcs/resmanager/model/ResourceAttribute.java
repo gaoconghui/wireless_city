@@ -6,6 +6,18 @@ public class ResourceAttribute {
 	private Resource resource;
 	private Attribute attribute;
 	private String value;
+	
+	//存储小数型和整数型的数值
+	private Double numValue;
+
+	
+	public Double getNumValue() {
+		return numValue;
+	}
+
+	public void setNumValue(Double numValue) {
+		this.numValue = numValue;
+	}
 
 	public long getId() {
 		return id;
@@ -31,11 +43,14 @@ public class ResourceAttribute {
 		this.attribute = attribute;
 	}
 
-	public String getValue() {
+	public Object getValue() {
 		return value;
 	}
 
 	public void setValue(String value) {
+		try {
+			this.setNumValue(Double.parseDouble(value));
+		} catch (Exception e) {}
 		this.value = value;
 	}
 

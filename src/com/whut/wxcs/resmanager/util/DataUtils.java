@@ -46,5 +46,16 @@ public class DataUtils {
 		}
 		return false;
 	}
+	
+	//获取最大值  格式为ID_MIN_MAX 如11_2_3  要获取3
+	public static Double getLastUnderLineStr(String attr) {
+		return Double.valueOf(attr.substring(attr.lastIndexOf("_")+1));
+	}
+
+	//获取最小值 格式为ID_MIN_MAX 如11_2_3  要获取2
+	public static Double getLastTwoUnderLineStr(String attr) {
+		return  Double.valueOf(attr.substring(attr.lastIndexOf("_",attr.lastIndexOf("_")-1)+1,attr.lastIndexOf("_")));
+	}
+
 
 }
