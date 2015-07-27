@@ -67,24 +67,17 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		return rootCatalogues;
 	}
 
-	/*
-	 * 跳转到增加类目页面 权限验证之后再加 还要改！！！！！到时候是加入ajax，返回根目录选择
-	 */
-	public String toDesginCataloguePage() {
-		rootCatalogues = catalogueService.getAllCatalogue();
-		return "toDesignCataloguePage";
-	}
 
-	/*
-	 * 执行类目添加
-	 */
-	public String addCatalogue() {
-		Catalogue parent = new Catalogue();
-		parent.setId(parentid);
-		model.setParent(parent);
-		catalogueService.saveCatalogue(model);
-		return "catalogueManagerAction";
-	}
+//	/*
+//	 * 执行类目添加
+//	 */
+//	public String addCatalogue() {
+//		Catalogue parent = new Catalogue();
+//		parent.setId(parentid);
+//		model.setParent(parent);
+//		catalogueService.saveCatalogue(model);
+//		return "catalogueManagerAction";
+//	}
 
 	/*
 	 * 主页，显示所有的类目
@@ -94,23 +87,23 @@ public class CatalogueAction extends BaseAction<Catalogue> {
 		return "toIndexPage";
 	}
 
-	/*
-	 * 删除类目以及其所有的子类目
-	 */
-	public String deleteCatalogue() {
-		catalogueService.deleteCatalogueWithChild(model.getId());
-		return "catalogueManagerAction";
-	}
+//	/*
+//	 * 删除类目以及其所有的子类目
+//	 */
+//	public String deleteCatalogue() {
+//		catalogueService.deleteCatalogueWithChild(model.getId());
+//		return "catalogueManagerAction";
+//	}
 
-	/*
-	 * 更新类目
-	 */
-	public String updateCatalogue() {
-		model = catalogueService.getCatalogueById(model.getId());
-		setParentid(model.getParent().getId());
-		rootCatalogues = catalogueService.getAllCatalogue();
-		return "toDesignCataloguePage";
-	}
+//	/*
+//	 * 更新类目
+//	 */
+//	public String updateCatalogue() {
+//		model = catalogueService.getCatalogueById(model.getId());
+//		setParentid(model.getParent().getId());
+//		rootCatalogues = catalogueService.getAllCatalogue();
+//		return "toDesignCataloguePage";
+//	}
 	
 	/**
 	 * 

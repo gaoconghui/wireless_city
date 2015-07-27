@@ -51,22 +51,22 @@ public class TemplateAction extends BaseAction<Template> {
 		return cid;
 	}
 
-	/*
-	 * 跳转到新建模板页面
-	 */
-	public String toNewTemplatePage() {
-		return "toNewTemplatePage";
-	}
+//	/*
+//	 * 跳转到新建模板页面
+//	 */
+//	public String toNewTemplatePage() {
+//		return "toNewTemplatePage";
+//	}
 
 
-	/*
-	 * 跳转到模板详情页面
-	 */
-	public String toTemplateDetailPage() {
-		model = catalogueService.getTemplateWithAll(model.getId());
-		return "toTemplateDetailPage";
-	}
-	
+//	/*
+//	 * 跳转到模板详情页面
+//	 */
+//	public String toTemplateDetailPage() {
+//		model = catalogueService.getTemplateWithAll(model.getId());
+//		return "toTemplateDetailPage";
+//	}
+//	
 	public String toTemplateManagerPage(){
 		return "toTemplateManagerPage";
 	}

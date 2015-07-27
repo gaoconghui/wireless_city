@@ -25,3 +25,11 @@ build/classes/db.properties
 config/db.properties
 
 *.class
+
+*.class
+
+build/classes/applicationContext.xml
+
+build/classes/com/whut/wxcs/resmanager/action/CatalogueAction.class
+
+build/classes/com/whut/wxcs/resmanager/bean/test/testCatalogueService.class
