@@ -26,6 +26,7 @@ import com.whut.wxcs.resmanager.model.ResourceAttribute;
 import com.whut.wxcs.resmanager.model.ResourcePage;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.SearchResourceService;
+import com.whut.wxcs.resmanager.util.DataUtils;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Service("searchResourceService")
@@ -44,8 +45,8 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 		page.setPageSize(model.getPageSize());
 
 		Criteria criteria = resourceDao.getCriteria();
-		
-		//资源审核通过  即checkState = 1
+
+		// 资源审核通过 即checkState = 1
 		criteria.add(Restrictions.eq("checkState", 1));
 
 		// 增加类目查询
@@ -57,8 +58,11 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 		// 增加全局关键字查询
 		addCriteriaFrontKeyword(model, criteria);
 
-		// 根据属性进行查询
+		// 根据枚举属性进行查询
 		addCriteriaAttribute(model, criteria);
+
+		// 根据数值属性进行查询
+		addCriteriaNumAttribute(model, criteria);
 
 		// 增加排序
 		addCriteriaOrder(model, criteria);
@@ -76,6 +80,11 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 			tid = getTidByResourceList(reosourceList);
 		}
 		page.setAttrList(catalogueService.getEnumAttributesByTid(tid));
+		page.setNumAttrList(catalogueService.getNumAttributesByTid(tid));
+		
+		//get参数赋值，没有num范围的参数设定范围为min-max
+		this.setNumRange(page,model);
+		
 		page.setCatalogue(catalogueService.initCatalogueById(tid));
 
 		// 增加分页
@@ -83,6 +92,19 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 
 		page.setList(criteria.list());
 		return page;
+	}
+
+	private void setNumRange(ResourcePage page, CriteriaResource model) {
+		if(ValidateUtil.isVaild(page.getNumAttrList())){
+			Map<Long, String> numMap = model.getNumMap();
+			for(Attribute attribute : page.getNumAttrList()){
+				if(!numMap.containsKey(attribute.getId())){
+					Double min = catalogueService.getMinNum(attribute.getId());
+					Double max = catalogueService.getMaxNum(attribute.getId());
+					numMap.put(attribute.getId(), attribute.getName() + "_" + min + "_" + max);
+				}
+			}
+		}
 	}
 
 	/**
@@ -116,6 +138,42 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 				conjunction.add(Restrictions.eq("value", getValue(attr)));
 				conjunction.add(Restrictions.eq("attribute.id",
 						getAttributeId(attr)));
+
+				detachedCriteria = DetachedCriteria
+						.forClass(ResourceAttribute.class).add(conjunction)
+						.setProjection(Property.forName("resource.id"));
+				criteria.add(Property.forName("id").in(detachedCriteria));
+			}
+
+		}
+	}
+
+	/**
+	 * 根据枚举属性进行查询
+	 * 
+	 * @param model
+	 * @param criteria
+	 */
+	private void addCriteriaNumAttribute(CriteriaResource model,
+			Criteria criteria) {
+		if (model.getNumMap().size() != 0) {
+
+			Conjunction conjunction;
+			Attribute attribute;
+			DetachedCriteria detachedCriteria;
+
+			Map<Long, String> numMap = model.getNumMap();
+
+			// 遍历 给每个限定的attribute 增加拦截
+			for (long attrId : numMap.keySet()) {
+
+				String attr = numMap.get(attrId);
+
+				conjunction = Restrictions.conjunction();
+				conjunction.add(Restrictions.between("numValue", new Double(
+						DataUtils.getLastTwoUnderLineStr(attr)), new Double(
+						DataUtils.getLastUnderLineStr(attr))));
+				conjunction.add(Restrictions.eq("attribute.id", attrId));
 
 				detachedCriteria = DetachedCriteria
 						.forClass(ResourceAttribute.class).add(conjunction)

@@ -90,9 +90,23 @@
 				</p>
 			</s:iterator>
 		</div>
+		
+		<s:iterator value="page.numAttrList" >
+			<s:property value="name"/>
+			<form action="SearchResourceAction_handleNumAttribute">
+				<s:hidden name="attrId" value="%{id}"></s:hidden>
+				<s:hidden name="attrStr" value="%{name}"></s:hidden>
+				<s:hidden name="rsid" ></s:hidden>
+				<!-- @com.survey.util.StringUtil@getDescString(resultMsg) -->
+				<s:set name="num" value="numMap.get(id)"></s:set>
+				<s:textfield name="min" value="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastTwoUnderLineStr(#num)}"></s:textfield>---
+				<s:textfield name="max" value="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastUnderLineStr(#num)}"></s:textfield>
+				<s:submit></s:submit>
+			</form>
+		</s:iterator>
+		
 		<div class="hd_attribute" id="hd_attribute">
 			<s:iterator value="page.attrList" status="rowst">
-				<!-- TODO 颜色class="colorgradient" -->
 				<p>
 					<span><s:property value="name" />:</span> <span> <s:iterator
 							value="enumValue" status="st">

@@ -281,4 +281,24 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		}
 	}
 
+	@Override
+	public List<Attribute> getNumAttributesByTid(long tid) {
+		String sql = "select * from ATTRIBUTE where ATTRIBUTE_ID in (select ATTRIBUTE_ID from TEMPLATE_ATTRIBUTE where TEMPLATE_ID = ? ) "
+				+ " and ATTRIBUTE_TYPE in (2,3)";
+
+		return attributeDao.findEntityBySql(sql, tid);
+	}
+
+	@Override
+	public Double getMinNum(long id) {
+		String hql = "SELECT MIN(numValue) FROM ResourceAttribute ra WHERE ra.attribute.id = ?";
+		return (Double) attributeDao.ubiqueResult(hql, id);
+	}
+
+	@Override
+	public Double getMaxNum(long id) {
+		String hql = "SELECT MAX(numValue) FROM ResourceAttribute ra WHERE ra.attribute.id = ?";
+		return (Double) attributeDao.ubiqueResult(hql, id);
+	}
+
 }

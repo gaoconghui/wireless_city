@@ -6,6 +6,9 @@ import java.util.List;
 public class ResourcePage extends Page<Resource> {
 
 	private List<Attribute> attrList = new ArrayList<Attribute>();
+	
+	//存放数值型的属性
+	private List<Attribute> numAttrList = new ArrayList<Attribute>();
 
 	private Catalogue catalogue;
 
@@ -27,6 +30,14 @@ public class ResourcePage extends Page<Resource> {
 
 	public ResourcePage(int pageNo) {
 		super(pageNo);
+	}
+
+	public List<Attribute> getNumAttrList() {
+		return numAttrList;
+	}
+
+	public void setNumAttrList(List<Attribute> numAttrList) {
+		this.numAttrList = numAttrList;
 	}
 
 }
