@@ -172,7 +172,7 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 				String attr = numMap.get(attrId);
 				
 				conjunction = Restrictions.conjunction();
-				conjunction.add(Restrictions.between("CAST(value AS INT) ",new Double(getMinValue(attr)) , new Double(getMaxValue(attr))));
+				conjunction.add(Restrictions.between("numValue",new Double(DataUtils.getLastTwoUnderLineStr(attr)) , new Double(DataUtils.getLastUnderLineStr(attr))));
 				conjunction.add(Restrictions.eq("attribute.id",
 						attrId));
 
@@ -185,15 +185,6 @@ public class SearchResourceServiceImpl implements SearchResourceService {
 		}
 	}
 
-	//获取最大值  格式为ID_MIN_MAX 如11_2_3  要获取3
-	private Double getMaxValue(String attr) {
-		return Double.valueOf(attr.substring(attr.lastIndexOf("_")+1));
-	}
-
-	//获取最小值 格式为ID_MIN_MAX 如11_2_3  要获取2
-	private Double getMinValue(String attr) {
-		return  Double.valueOf(attr.substring(attr.lastIndexOf("_",attr.lastIndexOf("_")-1)+1,attr.lastIndexOf("_")));
-	}
 
 
 
