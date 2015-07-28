@@ -19,12 +19,9 @@
 <script type="text/javascript" src="js/placeholder.js"></script>
 </head>
 <body>
-
 	<s:if test="root == null">
 		<jsp:forward page="CatalogueAction_toIndexPage.action"></jsp:forward>
 	</s:if>
-
-
 	<!-- header begin-->
 	<s:include value="header.jsp"></s:include>
 	<div class="h_sec">
@@ -48,8 +45,6 @@
 			<div class="c_info">
 				<ul id="left_nav" class="left_nav">
 					<li><span class="i_desc">全部服务资源分类</span></li>
-					<!-- TODO 一类目迭代开始 需要data-index从0开始 -->
-
 					<s:iterator value="root.child" status="st1">
 						<li data-index='<s:property value="#st1.index"/>'><span
 							class="i_icon iconfont">&#xe618;</span> <span class="i_desc">
@@ -62,8 +57,6 @@
 					<!-- 一类目迭代结束 -->
 				</ul>
 			</div>
-
-
 			<ul class="left_content" id="left_content">
 				<!-- 第一层类目迭代 -->
 				<s:iterator value="root.child">
@@ -75,12 +68,11 @@
 											href="SearchResourceAction_searchResourceByCatalogue?catalogueId=10101">
 											<s:property value="name" />
 										</s:a>
-									</span> <span class="span2">&gt;</span>
+									</span> <span class="span2 iconfont">&#xe614;</span>
 								</div>
 								<div class="l_third_item">
 									<!-- 第三层类目迭代 -->
 									<s:iterator value="child">
-
 										<s:a
 											href="SearchResourceAction_searchResourceByCatalogue?catalogueId=1010101">
 											<s:property value="name" />

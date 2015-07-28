@@ -27,7 +27,7 @@
 	<div class="layout_hd">
 		<s:if test="page.catalogue.parent.id != 1">
 			<div class="hd_reference" id="reference">
-				<s:a href="javascript:void(0)">全部类目</s:a>
+				<s:a href="font/index.jsp">首页</s:a>
 				<s:if test="page.catalogue.parent.parent.id != 1">
 					<s:if test="page.catalogue.parent.parent.parent.id != 1">
 						<s:a cssClass="more_icon icon iconfont"
@@ -137,6 +137,13 @@
 	</div>
 	<div class="layout_body">
 		<div class="bd_title">
+			<div class="bd_prices" id="prices">
+			    <div class="inner">
+			        <input placeholder="¥" type="text" title="最小值"/> -
+			       	<input placeholder="¥" type="text" title="最大值"/>
+			        <input type="submit" class="sub_btn dis_none" value="确定"/>
+			    </div>
+			</div>
 			<div class="bd_right" id="order_by">
 				<span> <s:if test="orderName == 0">
 						<s:a cssClass="sort_1"

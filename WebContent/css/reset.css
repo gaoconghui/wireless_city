@@ -61,7 +61,7 @@ hr {
 html { overflow-y: scroll; }
 
 .clear{clear:both;}
-textarea,select,input{font-size:14px;outline:none;}
+textarea,select,input{font-size:14px;outline-width:0;}
 .dis_none{display:none;}
 /*字体图标*/
 @font-face {

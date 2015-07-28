@@ -375,6 +375,14 @@ function searchInitialize() {
 		window.location.href=value;
 		});
 	}
+	//价格范围查询
+	$("#prices").find(".inner").hover(function(){
+		$(this).css("background","#fff");
+		$(this).find("input[type=submit]").show();
+	},function(){
+		$(this).css("background","inherit");
+		$(this).find("input[type=submit]").hide();
+	});
 /*查询页初始化*/
 /*首页nav*/
 function navOperation(){
