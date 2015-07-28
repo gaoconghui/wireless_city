@@ -421,6 +421,10 @@
 	display: block;
 	float: left;
 	text-indent: 4px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	cursor:default;
 }
 /*h_4.jsp差异*/
 .tzht .t_right .r_table .r_label_h4 .l_tr span {

@@ -1031,7 +1031,10 @@
 	height: 25px;
 	line-height: 25px;
 	padding-left: 20px;
-	float: left;;
+	float: left;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 }
 
 .layout_body .bd_list .l_content .l_visit {

@@ -16,6 +16,7 @@
 <link href="css/ht_default_style.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/tmAjax.js"></script>
 </head>
 <body>
 	<div class="tzht">
@@ -97,27 +98,25 @@
 								<div class="l_tr" data-id='<s:property value="id"/>'>
 									<span class="first_span"> <s:a href="javascript:void(0)"
 											cssClass="choose"></s:a>
-									</span> <span><s:property value="resource_name" /></span> <span><s:property
-											value="catalogue.name" /></span> <span><s:property
-											value="provider.name" /></span> <span> <small
-										class="operation"> <s:a href="javascript:void(0)"
-												cssClass="ra detail" title="详情"></s:a> <s:a
-												href="javascript:void(0)" cssClass="ra info" title="通知修改"></s:a>
-											<s:a href="ResourceAction_passCheck?id=%{id}&brsid=%{brsid}"
-												cssClass="ra submit" title="通过"></s:a> <s:a
-												href="ResourceAction_offCheck?id=%{id}&brsid=%{brsid}"
-												cssClass="ra offsheet" title="下架"></s:a> <s:a
-												href="javascript:void(0)" cssClass="ra delete" title="通知"></s:a>
-									</small>
-									</span> <span> <s:if test="checkState == 0">
-											未通过
-										</s:if> <s:elseif test="checkState == 1">
-											审核通过
-										</s:elseif> <s:elseif test="checkState == 2">
-											正在审核中
-										</s:elseif>
-									</span> <span> <s:property value="create_time" />
-									</span>
+									</span> 
+									<span title="<s:property value="resource_name" />"><s:property value="resource_name" /></span> 
+									<span><s:property value="catalogue.name" /></span> 
+									<span title="<s:property value="provider.name" />"><s:property value="provider.name" /></span> 
+									<span>
+										<small id="operation" class="operation"> 
+											<s:a href="javascript:void(0)" cssClass="ra detail" title="详情"></s:a> 
+											<s:a href="javascript:void(0)" cssClass="ra info" title="通知修改"></s:a>
+											<s:a href="ResourceAction_passCheck?id=%{id}&brsid=%{brsid}" cssClass="ra submit" title="通过"></s:a> 
+											<s:a href="ResourceAction_offCheck?id=%{id}&brsid=%{brsid}" cssClass="ra offsheet" title="下架"></s:a> 
+											<s:a href="javascript:void(0)" cssClass="ra delete" title="通知"></s:a>
+										</small>
+									</span> 
+									<span> 
+										<s:if test="checkState == 0">未通过</s:if> 
+										<s:elseif test="checkState == 1">审核通过</s:elseif> 
+										<s:elseif test="checkState == 2">正在审核中</s:elseif>
+									</span> 
+									<span><s:property value="create_time" /></span>
 								</div>
 							</s:iterator>
 						</div>
@@ -182,14 +181,10 @@
 	</div>
 
 	<!-- dailog begin  -->
-	<div id="yp_dialog" class="yp_dialog">
-		<p class="dialog_title">
-			确定删除吗？<span class="close">X</span>
-		</p>
-		<div class="dialog_content">
-			<a href="javascript:void(0)" class="sure">确定</a> <a
-				href="javascript:void(0)" class="close">取消</a>
-		</div>
+	<div id="yy"></div>
+	<div class="info">
+		<span class="i_icon"></span>
+		<span class="i_content"></span>
 	</div>
 	<!-- end dialog  -->
 	<script type="text/javascript" src="js/ht_3.js"></script>
@@ -197,14 +192,17 @@
 		/*批量操作*/
 		//批量通过
 		$("#submit_btn").off("click").on("click", function() {
+			$.tmUtil.infoShow({message:"请稍候..."});
 			location.href = "ResourceAction_passListCheck" + getSelNum();
 		});
 		//批量下架
 		$("#offsheet_btn").off("click").on("click", function() {
+			$.tmUtil.infoShow({message:"请稍候..."});
 			location.href = "ResourceAction_offListCheck" + getSelNum();
 		});
 		//批量通知
 		$("#delete_btn").off("click").on("click", function() {
+			$.tmUtil.infoShow({message:"请稍候..."});
 			location.href = "javascript:void(0)" + getSelNum();//TODO
 		});
 		/*批量操作*/

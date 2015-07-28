@@ -14,6 +14,7 @@ String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + r
 		<link href="css/ht_default_style.css" rel="stylesheet">
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/util.js"></script>
+		<script type="text/javascript" src="js/tmAjax.js"></script>
 	</head>
 <body>
 	<div class="tzht">
@@ -100,10 +101,10 @@ String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + r
 									<span class="first_span"> 
 										<s:a href="javascript:void(0)" cssClass="choose"></s:a>
 									</span> 
-									<span><s:property value="name" /></span> 
+									<span title="<s:property value="name" />"><s:property value="name" /></span> 
 									<span><s:property value="grade" /></span>
 									<span> 
-										<small class="operation">
+										<small id="operation" class="operation">
 											<s:a href="javascript:void(0)" cssClass="ra detail" title="详情"></s:a>
 											<s:a href="javascript:void(0)" cssClass="ra info" title="通知修改"></s:a>
 											<s:a href="ProviderAction_passCheck?id=%{id}&psid=%{psid}"
@@ -189,12 +190,9 @@ String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + r
 
 	<!-- dailog begin  -->
 	<div id="yy"></div>
-	<div id="yp_dialog" class="yp_dialog">
-		<p class="dialog_title">确定删除吗？<span class="close">X</span></p>
-		<div class="dialog_content">
-			<a href="javascript:void(0)" class="sure">确定</a> <a
-				href="javascript:void(0)" class="close">取消</a>
-		</div>
+	<div class="info">
+		<span class="i_icon"></span>
+		<span class="i_content"></span>
 	</div>
 	<!-- end dialog  -->
 	<script type="text/javascript" src="js/ht_3.js"></script>
@@ -202,14 +200,17 @@ String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + r
 	/*批量操作*/
 		//批量通过
 		$("#submit_btn").off("click").on("click",function(){
+			$.tmUtil.infoShow({message:"请稍候..."});
 			location.href="ProviderAction_passListCheck"+getSelNum();
 		});
 		//批量下架
 		$("#offsheet_btn").off("click").on("click",function(){
+			$.tmUtil.infoShow({message:"请稍候..."});
 			location.href="ProviderAction_offListCheck"+getSelNum();
 		});
 		//批量通知
 		$("#delete_btn").off("click").on("click",function(){
+			$.tmUtil.infoShow({message:"请稍候..."});
 			location.href="javascript:void(0)"+getSelNum();//TODO
 		});
 	/*批量操作*/
