@@ -497,7 +497,7 @@
 	display: -webkit-box;
 	-webkit-line-clamp: 8;
 	-webkit-box-orient: vertical;
-	line-height:14px;
+	line-height: 14px;
 }
 
 .layout_all .wrapper_right .r_list_salor .l_content .l_operation {
@@ -526,7 +526,8 @@
 	*display: inline;
 	zoom: 1;
 }
-.layout_all .wrapper_right .r_list_salor .bd_paging div{	
+
+.layout_all .wrapper_right .r_list_salor .bd_paging div {
 	*display: inline;
 	zoom: 1;
 }
@@ -812,13 +813,20 @@
 	margin-left: 20px;
 }
 
+.layout_hd .hd_reference .location {
+	line-height: 12px;
+	float: left;
+	font-size: 14px;
+	margin-right: 9px
+}
+
 .layout_hd .hd_reference a {
 	display: block;
 	float: left;
 	padding: 2px;
 }
 
-.layout_hd .hd_reference a:nth-child(odd):hover {
+.layout_hd .hd_reference a:nth-child(even):hover {
 	text-decoration: underline;
 }
 
@@ -893,12 +901,19 @@
 }
 
 .layout_hd .hd_attribute {
-	width: 860px;
+	width: 820px;
 	margin-left: 40px;
 }
 
 .layout_hd .hd_attribute p {
-	padding-top: 20px;
+	padding-top: 10px;
+	border-bottom: 1px dotted #ccc;
+}
+
+.layout_hd .hd_attribute p:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
 .layout_hd .hd_attribute span:first-child {
@@ -907,8 +922,39 @@
 	padding-right: 10px;
 }
 
+.layout_hd .hd_attribute p span {
+	display: block;
+	float: left;
+}
+
+.layout_hd .hd_attribute p span.attr_value {
+	width: 650px; 
+	display : block;
+	float: left;
+	display: block;
+}
+
+.layout_hd .hd_attribute p span.more_attr {
+	margin-top:-5px;
+	float: right;
+	width: 40px;
+	height: 23px;
+	text-align: center;
+	line-height: 23px;
+	margin-right: 20px;
+	cursor: pointer;
+	display: none;
+}
+
+.layout_hd .hd_attribute p span.more_attr i {
+	color:#444;
+	font-size: 14px;
+	border: 1px solid #ccc;
+}
+
 .layout_hd .hd_attribute p span a {
-	padding-right: 10px;
+	padding: 0 10px 10px 15px;
+	display: inline-block;
 }
 
 .layout_hd .hd_attribute p span a:hover {
@@ -963,43 +1009,45 @@
 	background: #d1d1d1;
 }
 
-.layout_body .bd_title .bd_prices{
-	width:220px;
-	float:left;
-	margin-left:10px;
+.layout_body .bd_title .bd_prices {
+	width: 220px;
+	float: left;
+	margin-left: 10px;
 }
 
-.layout_body .bd_title .bd_prices .inner{
+.layout_body .bd_title .bd_prices .inner {
 	padding: 7px 10px;
-	box-shadow:0px 2px 2px #ccc;
+	box-shadow: 0px 2px 2px #ccc;
 }
 
-.layout_body .bd_title .bd_prices .inner input{
-	width:50px;
-	padding-left:4px;
-	height:21px;
-	font-size:12px;
-	line-height:21px;
+.layout_body .bd_title .bd_prices .inner .input {
+	width: 50px;
+	padding-left: 4px;
+	height: 21px;
+	font-size: 12px;
+	line-height: 21px;
 }
 
-.layout_body .bd_title .bd_prices .inner input[type="text"]{
-	outline-width:1px;
-}  
+.layout_body .bd_title .bd_prices .inner .input[type="text"] {
+	outline-width: 1px;
+}
 
-.layout_body .bd_title .bd_prices .inner .sub_btn{
-	cursor:pointer;
-	border-radius:3px;
-	margin-left:10px;
-	background:#b61d1d;
-	border:0;
-	text-align:center;
-	line-height:25px;
-	height:25px;
-	color:#fff;
+.layout_body .bd_title .bd_prices .inner .sub_btn {
+	width: 50px;
+	cursor: pointer;
+	border-radius: 3px;
+	margin-left: 10px;
+	background: #b61d1d;
+	border: 0;
+	text-align: center;
+	line-height: 25px;
+	height: 25px;
+	color: #fff;
+	font-size: 12px;
 }
 
 .layout_body .bd_title .bd_left {
-	width:120px;
+	width: 120px;
 	padding: 0px 10px;
 	margin-top: 10px;
 	float: right;
@@ -1068,9 +1116,9 @@
 	line-height: 25px;
 	padding-left: 20px;
 	float: left;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .layout_body .bd_list .l_content .l_visit {
@@ -1095,12 +1143,12 @@
 	height: 40px;
 	display: inline-block;
 	margin-top: 10px;
-	margin-left: 50%;	
+	margin-left: 50%;
 	*display: inline;
 	zoom: 1;
 }
 
-.layout_body .bd_paging div{
+.layout_body .bd_paging div {
 	*display: inline;
 	zoom: 1;
 }
@@ -1919,7 +1967,7 @@ body {
 	width: 20px;
 	height: 20px;
 	float: right;
-	font-weight:normal;
+	font-weight: normal;
 }
 
 .banner .b_content .left_content li .c_list .l_third_item {

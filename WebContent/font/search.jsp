@@ -25,39 +25,43 @@
 	<s:include value="header.jsp"></s:include>
 	<!-- header end-->
 	<div class="layout_hd">
-		<s:if test="page.catalogue.parent.id != 1">
-			<div class="hd_reference" id="reference">
-				<s:a href="font/index.jsp">首页</s:a>
+		<div class="hd_reference" id="reference">
+			<div class="iconfont location">&#xe617;</div> 
+			<s:a href="font/index.jsp">首页</s:a>
+			<s:if test="page.catalogue.parent.id != 1">
 				<s:if test="page.catalogue.parent.parent.id != 1">
 					<s:if test="page.catalogue.parent.parent.parent.id != 1">
-						<s:a cssClass="more_icon icon iconfont"
-							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.parent.id}">&#xe615;</s:a>
+						<s:if test="page.catalogue.parent.parent.parent.parent.id != 1">
+							<s:a cssClass="more_icon icon iconfont" href="javascript:void(0)">&#xe615;</s:a>
+							<s:a
+								href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.parent.parent.id}">
+								<s:property value="page.catalogue.parent.parent.parent.parent.name" />
+							</s:a>
+						</s:if>
+						<s:a cssClass="more_icon icon iconfont" href="javascript:void(0)">&#xe615;</s:a>
 						<s:a
 							href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.parent.id}">
 							<s:property value="page.catalogue.parent.parent.parent.name" />
 						</s:a>
 					</s:if>
-					<s:a cssClass="more_icon icon iconfont"
-						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}">&#xe615;</s:a>
+					<s:a cssClass="more_icon icon iconfont" href="javascript:void(0)">&#xe615;</s:a>
 					<s:a
 						href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.parent.id}">
 						<s:property value="page.catalogue.parent.parent.name" />
 					</s:a>
 				</s:if>
-				<s:a cssClass="more_icon icon iconfont"
-					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.id}">&#xe615;</s:a>
+				<s:a cssClass="more_icon icon iconfont" href="javascript:void(0)">&#xe615;</s:a> 
 				<s:a
 					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.parent.id}">
 					<s:property value="page.catalogue.parent.name" />
 				</s:a>
-				<s:a cssClass="more_icon icon iconfont"
-					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.id}">&#xe615;</s:a>
-				<s:a
-					href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.id}">
-					<s:property value="page.catalogue.name" />
-				</s:a>
-			</div>
-		</s:if>
+			</s:if>
+			<s:a cssClass="more_icon icon iconfont" href="javascript:void(0)">&#xe615;</s:a>
+			<s:a
+				href="SearchResourceAction_searchResourceByCatalogue?rsid=%{rsid}&catalogueId=%{page.catalogue.id}">
+				<s:property value="page.catalogue.name" />
+			</s:a>
+		</div>
 		<s:if
 			test="page.catalogue.child != null && page.catalogue.child.size >0">
 			<div class="hd_sort">
@@ -75,7 +79,7 @@
 		</s:if>
 		<div class="hd_attrref" id="hd_attrref">
 			<p>
-				<a href="javascript:void(0)">所有属性</a>
+				<a href="javascript:void(0)">全部</a>
 			</p>
 			<s:iterator value="attrMap">
 				<a href="javascript:void(0)" class="more_icon icon iconfont">&#xe615;</a>
@@ -91,7 +95,7 @@
 			</s:iterator>
 		</div>
 		
-		<s:iterator value="page.numAttrList" >
+		<%-- <s:iterator value="page.numAttrList" >
 			<s:property value="name"/>
 			<form action="SearchResourceAction_handleNumAttribute">
 				<s:hidden name="attrId" value="%{id}"></s:hidden>
@@ -103,13 +107,15 @@
 				<s:textfield name="max" value="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastUnderLineStr(#num)}"></s:textfield>
 				<s:submit></s:submit>
 			</form>
-		</s:iterator>
+		</s:iterator> --%>
+		<!-- 做到下边   关键词：prices -->
 		
 		<div class="hd_attribute" id="hd_attribute">
 			<s:iterator value="page.attrList" status="rowst">
 				<p>
-					<span><s:property value="name" />:</span> <span> <s:iterator
-							value="enumValue" status="st">
+					<span class="attr"><s:property value="name" />:</span> 
+					<span class="attr_value"> 
+						<s:iterator value="enumValue" status="st">
 							<s:if test="attrMap.containsKey(id+'_'+#st.index)">
 								<s:a cssClass="colorgradient"
 									href="SearchResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
@@ -124,8 +130,43 @@
 							</s:else>
 						</s:iterator>
 					</span>
+					<span class="more_attr" data-state="more">更多<i class="iconfont">&#xe60b;</i></span>
 				</p>
 			</s:iterator>
+			<script>
+				$(function(){
+					$("#hd_attribute").find("p").each(function(){
+						var length=$(this).find(".attr_value a").length;
+						var attr_num=10;
+						if (length>attr_num){
+							$(this).find(".more_attr").show();
+							for(var i=attr_num;i<length;i++){
+								$(this).find(".attr_value a").eq(i).hide();
+							}
+						}
+						$(this).find(".more_attr").off("click").click(function(){
+							if($(this).data("state")=="more"){
+								$(this).data("state","less");
+								$(this).html("收起<i class='iconfont'>&#xe619;</i>");
+								for(var i=attr_num;i<length;i++){
+									$(this).parent().find(".attr_value a").eq(i).show();
+								}
+							}else{
+								$(this).data("state","more");
+								$(this).html("更多<i class='iconfont'>&#xe60b;</i>");
+								for(var i=attr_num;i<length;i++){
+									$(this).parent().find(".attr_value a").eq(i).hide();
+								}
+							}
+						});
+						$(this).find(".more_attr").hover(function(){
+							$(this).css("color","#b61d1d");
+						},function(){
+							$(this).css("color","#444");
+						});
+					});
+				});
+			</script>
 		</div>
 		<div class="hd_search">
 			<s:form action="SearchResourceAction_inFindByKeyWord" id="s_self">
@@ -137,13 +178,23 @@
 	</div>
 	<div class="layout_body">
 		<div class="bd_title">
-			<div class="bd_prices" id="prices">
-			    <div class="inner">
-			        <input placeholder="¥" type="text" title="最小值"/> -
-			       	<input placeholder="¥" type="text" title="最大值"/>
-			        <input type="submit" class="sub_btn dis_none" value="确定"/>
-			    </div>
-			</div>
+			<s:iterator value="page.numAttrList" >
+			<!-- 价格筛选  不知道为什么placeholder出不来 -->
+				<div class="bd_prices" id="prices">
+				    <div class="inner">
+					    <form action="SearchResourceAction_handleNumAttribute" method="post">
+					    	<s:hidden name="attrId" value="%{id}"></s:hidden>
+							<s:hidden name="attrStr" value="%{name}"></s:hidden>
+							<s:hidden name="rsid" ></s:hidden>
+							<!-- @com.survey.util.StringUtil@getDescString(resultMsg) -->
+							<s:set name="num" value="numMap.get(id)"></s:set>
+					        <s:textfield cssClass="input" name="min" placeholder="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastTwoUnderLineStr(#num)}" type="text" title="最小值"/> -
+					       	<s:textfield cssClass="input" name="max" placeholder="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastUnderLineStr(#num)}" type="text" title="最大值"/>
+					        <s:submit type="submit" cssClass="sub_btn dis_none" value="确定"/>
+				        </form>
+				    </div>
+				</div>
+			</s:iterator>
 			<div class="bd_right" id="order_by">
 				<span> <s:if test="orderName == 0">
 						<s:a cssClass="sort_1"
