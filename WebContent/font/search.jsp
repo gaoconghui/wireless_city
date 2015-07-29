@@ -94,45 +94,32 @@
 				</p>
 			</s:iterator>
 		</div>
-		
-		<%-- <s:iterator value="page.numAttrList" >
-			<s:property value="name"/>
-			<form action="SearchResourceAction_handleNumAttribute">
-				<s:hidden name="attrId" value="%{id}"></s:hidden>
-				<s:hidden name="attrStr" value="%{name}"></s:hidden>
-				<s:hidden name="rsid" ></s:hidden>
-				<!-- @com.survey.util.StringUtil@getDescString(resultMsg) -->
-				<s:set name="num" value="numMap.get(id)"></s:set>
-				<s:textfield name="min" value="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastTwoUnderLineStr(#num)}"></s:textfield>---
-				<s:textfield name="max" value="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastUnderLineStr(#num)}"></s:textfield>
-				<s:submit></s:submit>
-			</form>
-		</s:iterator> --%>
-		<!-- 做到下边   关键词：prices -->
-		
 		<div class="hd_attribute" id="hd_attribute">
-			<s:iterator value="page.numAttrList" >
-			<!-- 价格筛选  不知道为什么placeholder出不来 -->
-				<div class="bd_prices">
-					<span class="attr"><s:property value="name"/>:</span> 
-				    <div class="inner">
-					    <form action="SearchResourceAction_handleNumAttribute" method="post">
-					    	<s:hidden name="attrId" value="%{id}"></s:hidden>
-							<s:hidden name="attrStr" value="%{name}"></s:hidden>
-							<s:hidden name="rsid" ></s:hidden>
-							<!-- @com.survey.util.StringUtil@getDescString(resultMsg) -->
-							<s:set name="num" value="numMap.get(id)"></s:set>
-					        <s:textfield cssClass="input" name="min" placeholder="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastTwoUnderLineStr(#num)}" type="text" title="最小值"/> -
-					       	<s:textfield cssClass="input" name="max" placeholder="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastUnderLineStr(#num)}" type="text" title="最大值"/>
-					        <s:submit type="submit" cssClass="sub_btn dis_none" value="确定"/>
-				        </form>
-				    </div>
-				    <div class="info" data-info="小数或整数" data-error="请输入小数或整数">
-				    	<i class="iconfont"></i>
-				    	<span></span>
-				    </div>
-				</div>
-			</s:iterator>
+			<div class="num_type">
+				<s:iterator value="page.numAttrList" >
+				<!-- 价格筛选  不知道为什么placeholder出不来 -->
+					<div class="bd_prices">
+						<span class="attr"><s:property value="name"/>:</span> 
+					    <div class="inner">
+						    <form action="SearchResourceAction_handleNumAttribute" method="post">
+						    	<s:hidden name="attrId" value="%{id}"></s:hidden>
+								<s:hidden name="attrStr" value="%{name}"></s:hidden>
+								<s:hidden name="rsid" ></s:hidden>
+								<!-- @com.survey.util.StringUtil@getDescString(resultMsg) -->
+								<s:set name="num" value="numMap.get(id)"></s:set>
+						        <s:textfield cssClass="input" name="min" placeholder="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastTwoUnderLineStr(#num)}" type="text" title="最小值"/> -
+						       	<s:textfield cssClass="input" name="max" placeholder="%{@com.whut.wxcs.resmanager.util.DataUtils@getLastUnderLineStr(#num)}" type="text" title="最大值"/>
+						        <s:submit type="submit" cssClass="sub_btn dis_none" value="确定"/>
+					        </form>
+					    </div>
+					    <div class="info" data-info="小数或整数" data-error="请输入小数或整数">
+					    	<i class="iconfont"></i>
+					    	<span></span>
+					    </div>
+					</div>
+				</s:iterator>
+				<div class="clear"></div>
+			</div>
 			<s:iterator value="page.attrList" status="rowst">
 				<p>
 					<span class="attr"><s:property value="name" />:</span> 

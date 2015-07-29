@@ -347,7 +347,7 @@
 }
 
 .layout_all .wrapper_right .r_select .hd_attribute p span a {
-	padding-right: 10px;
+	padding : 0 10px 0 15px;
 	display:inline-block;
 	padding-bottom:10px;
 }
@@ -952,6 +952,10 @@
 	clear: both;
 }
 
+.layout_hd .hd_attribute .num_type{
+	border-bottom:1px dotted #ccc;
+}
+
 .layout_hd .hd_attribute span:first-child {
 	font-weight: 700;
 	color: #000;
@@ -998,10 +1002,12 @@
 }
 
 .layout_hd .hd_attribute .bd_prices {
-	padding:10px;
-	border-bottom:1px dotted #ccc;
+	padding:10px 0;
 	position:relative;
+	float:left;
+	width:410px;
 }
+
 
 .layout_hd .hd_attribute .bd_prices:after{
 	content:"";
@@ -1020,6 +1026,7 @@
 	padding: 7px 10px;
 	float:left;
 	box-shadow: 0px 2px 2px #ccc;
+	border:1px solid #fafafa;
 }
 
 .layout_hd .hd_attribute .bd_prices .inner .input {
