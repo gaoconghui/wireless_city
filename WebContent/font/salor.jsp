@@ -160,36 +160,7 @@
 				</div>
 				<script>
 					$(function(){
-						$("#hd_attribute").find("p").each(function(){
-							var length=$(this).find(".attr_value a").length;
-							var attr_num=10;
-							if (length>attr_num){
-								$(this).find(".more_attr").show();
-								for(var i=attr_num;i<length;i++){
-									$(this).find(".attr_value a").eq(i).hide();
-								}
-							}
-							$(this).find(".more_attr").off("click").click(function(){
-								if($(this).data("state")=="more"){
-									$(this).data("state","less");
-									$(this).html("收起<i class='iconfont'>&#xe619;</i>");
-									for(var i=attr_num;i<length;i++){
-										$(this).parent().find(".attr_value a").eq(i).show();
-									}
-								}else{
-									$(this).data("state","more");
-									$(this).html("更多<i class='iconfont'>&#xe60b;</i>");
-									for(var i=attr_num;i<length;i++){
-										$(this).parent().find(".attr_value a").eq(i).hide();
-									}
-								}
-							});
-							$(this).find(".more_attr").hover(function(){
-								$(this).css("color","#b61d1d");
-							},function(){
-								$(this).css("color","#444");
-							});
-						});
+						more_less();
 					});
 				</script>
 			</div>

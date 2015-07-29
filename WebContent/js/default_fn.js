@@ -2,7 +2,54 @@
 var basePath=getRootPath()+"/";
 /*查询页初始化*/
 
-/**/
+/*更多收起*/
+function more_less(){
+	$("#hd_attribute").find("p").each(function(){
+		var width=$(this).find(".attr_value").width();
+		console.log(width);
+		var length=$(this).find(".attr_value a").length;
+		var total_width=0;
+		var _index=[];
+		$(this).find(".attr_value a").each(function(index){
+			var each_width=$(this).outerWidth(true);
+			console.log($(this).text()+each_width);
+			total_width+=each_width;
+			if(total_width>=width){
+				console.log("总厂"+total_width);
+				$(this).hide();
+				_index.push(index);
+			}
+		});
+		console.log("总厂"+total_width);
+		console.log(_index);
+		if(total_width>=width){
+			$(this).find(".more_attr").show();
+		}
+		
+		$(this).find(".more_attr").off("click").click(function(){
+			if($(this).data("state")=="more"){
+				$(this).data("state","less");
+				$(this).html("收起<i class='iconfont'>&#xe619;</i>");
+				for(var i=_index[0];i<length;i++){
+					$(this).parent().find(".attr_value a").eq(i).show();
+				}
+			}else{
+				$(this).data("state","more");
+				$(this).html("更多<i class='iconfont'>&#xe60b;</i>");
+				for(var i=_index[0];i<length;i++){
+					$(this).parent().find(".attr_value a").eq(i).hide();
+				}
+			}
+		});
+		$(this).find(".more_attr").hover(function(){
+			$(this).css("color","#b61d1d");
+		},function(){
+			$(this).css("color","#444");
+		});
+	});
+}
+/*更多收起*/
+/*服务商管理页*/
 function getChildCategory(idName, nextIdName) {
 	$("#" + idName).off("change").on("change",function() {
 		var h = "<option value=''>-请选择-</option>";
