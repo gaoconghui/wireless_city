@@ -8,7 +8,6 @@
 %>
 <!doctype html>
 <html>
-<<<<<<< Updated upstream
 	<head>
 		<base href="<%=basePath%>">
 		<meta charset="utf-8">
@@ -19,17 +18,6 @@
 		<script type="text/javascript" src="js/util.js"></script>
 		<script type="text/javascript" src="js/tmAjax.js"></script>
 	</head>
-=======
-<head>
-<base href="<%=basePath%>">
-<meta charset="utf-8">
-<title>无线城市-后台-服务商管理</title>
-<link href="css/reset.css" rel="stylesheet">
-<link href="css/ht_default_style.css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/util.js"></script>
-</head>
->>>>>>> Stashed changes
 <body>
 	<div class="tzht">
 		<!-- header begin -->
@@ -100,17 +88,6 @@
 							</div>
 							<s:iterator value="page.list">
 								<div class="l_tr" data-id='<s:property value="id"/>'>
-<<<<<<< Updated upstream
-									<span class="first_span"> 
-										<s:a href="javascript:void(0)" cssClass="choose"></s:a>
-									</span> 
-									<span title="<s:property value="name" />"><s:property value="name" /></span> 
-									<span><s:property value="grade" /></span>
-									<span> 
-										<small id="operation" class="operation">
-											<s:a href="javascript:void(0)" cssClass="ra detail" title="详情"></s:a>
-											<s:a href="javascript:void(0)" cssClass="ra info" title="通知修改"></s:a>
-=======
 									<span class="first_span"> <s:a href="javascript:void(0)"
 											cssClass="choose"></s:a>
 									</span> <span title='<s:property value="name" />'><s:property
@@ -119,7 +96,6 @@
 										class="operation"> <s:a href="javascript:void(0)"
 												cssClass="ra detail" title="详情"></s:a> <s:a
 												href="javascript:void(0)" cssClass="ra info" title="通知修改"></s:a>
->>>>>>> Stashed changes
 											<s:a href="ProviderAction_passCheck?id=%{id}&psid=%{psid}"
 												cssClass="ra submit" title="通过"></s:a> <s:a
 												href="ProviderAction_offCheck?id=%{id}&psid=%{psid}"
@@ -200,27 +176,15 @@
 
 	<!-- dailog begin  -->
 	<div id="yy"></div>
-<<<<<<< Updated upstream
 	<div class="info">
 		<span class="i_icon"></span>
 		<span class="i_content"></span>
-=======
-	<div id="yp_dialog" class="yp_dialog">
-		<p class="dialog_title">
-			确定删除吗？<span class="close">X</span>
-		</p>
-		<div class="dialog_content">
-			<a href="javascript:void(0)" class="sure">确定</a> <a
-				href="javascript:void(0)" class="close">取消</a>
-		</div>
->>>>>>> Stashed changes
 	</div>
 	<!-- end dialog  -->
 	<script type="text/javascript" src="js/ht_3.js"></script>
 	<script>
 		/*批量操作*/
 		//批量通过
-<<<<<<< Updated upstream
 		$("#submit_btn").off("click").on("click",function(){
 			$.tmUtil.infoShow({message:"请稍候..."});
 			location.href="ProviderAction_passListCheck"+getSelNum();
@@ -234,18 +198,6 @@
 		$("#delete_btn").off("click").on("click",function(){
 			$.tmUtil.infoShow({message:"请稍候..."});
 			location.href="javascript:void(0)"+getSelNum();//TODO
-=======
-		$("#submit_btn").off("click").on("click", function() {
-			location.href = "ProviderAction_passListCheck" + getSelNum();
-		});
-		//批量下架
-		$("#offsheet_btn").off("click").on("click", function() {
-			location.href = "ProviderAction_offListCheck" + getSelNum();
-		});
-		//批量通知
-		$("#delete_btn").off("click").on("click", function() {
-			location.href = "javascript:void(0)" + getSelNum();//TODO
->>>>>>> Stashed changes
 		});
 		/*批量操作*/
 	</script>
