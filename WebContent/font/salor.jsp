@@ -127,7 +127,7 @@
 				</div>
 				<div class="hd_attrref" id="hd_attrref">
 					<p>
-						<a href="javascript:void(0)">所有属性</a>
+						<a href="javascript:void(0)">全部</a>
 					</p>
 					<s:iterator value="attrMap">
 						<a href="javascript:void(0)" class="more_icon icon iconfont">&#xe615;</a>
@@ -145,7 +145,8 @@
 				<div class="hd_attribute" id="hd_attribute">
 					<s:iterator value="page.attrList" status="rowst">
 						<p>
-							<span><s:property value="name" />:</span> <span> <s:iterator
+							<span><s:property value="name" />:</span> 
+							<span class="attr_value"> <s:iterator
 									value="enumValue" status="st">
 									<s:a
 										href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
@@ -153,22 +154,44 @@
 									</s:a>
 								</s:iterator>
 							</span>
+							<span class="more_attr" data-state="more">更多<i class="iconfont">&#xe60b;</i></span>
 						</p>
 					</s:iterator>
-					<%-- <p>
-						<span>属性1:</span> <span> <a href="javascript:void(0)"
-							data-tag="0">属性值1</a> <a href="javascript:void(0)" data-tag="0">属性值2</a>
-							<a href="javascript:void(0)" data-tag="0">属性值3</a> <a
-							href="javascript:void(0)" data-tag="0">属性值4</a>
-						</span>
-					</p>
-					<p>
-						<span>属性2:</span> <span> <a href="javascript:void(0)"
-							data-tag="1">属性值11</a> <a href="javascript:void(0)" data-tag="1">属性值22</a>
-							<a href="javascript:void(0)" data-tag="1">属性值33</a>
-						</span>
-					</p> --%>
 				</div>
+				<script>
+					$(function(){
+						$("#hd_attribute").find("p").each(function(){
+							var length=$(this).find(".attr_value a").length;
+							var attr_num=10;
+							if (length>attr_num){
+								$(this).find(".more_attr").show();
+								for(var i=attr_num;i<length;i++){
+									$(this).find(".attr_value a").eq(i).hide();
+								}
+							}
+							$(this).find(".more_attr").off("click").click(function(){
+								if($(this).data("state")=="more"){
+									$(this).data("state","less");
+									$(this).html("收起<i class='iconfont'>&#xe619;</i>");
+									for(var i=attr_num;i<length;i++){
+										$(this).parent().find(".attr_value a").eq(i).show();
+									}
+								}else{
+									$(this).data("state","more");
+									$(this).html("更多<i class='iconfont'>&#xe60b;</i>");
+									for(var i=attr_num;i<length;i++){
+										$(this).parent().find(".attr_value a").eq(i).hide();
+									}
+								}
+							});
+							$(this).find(".more_attr").hover(function(){
+								$(this).css("color","#b61d1d");
+							},function(){
+								$(this).css("color","#444");
+							});
+						});
+					});
+				</script>
 			</div>
 			<div class="r_list_salor">
 				<div class="servic_title">

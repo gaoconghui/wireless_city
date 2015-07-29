@@ -303,7 +303,41 @@
 }
 
 .layout_all .wrapper_right .r_select .hd_attribute p {
-	padding-top: 20px;
+	padding-top: 10px;
+	border-bottom:1px dotted #ccc;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute p:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute span{
+	display:block;
+	float:left;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute span.attr_value{
+	width:550px;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute p span.more_attr {
+	margin-top:-5px;
+	float: right;
+	width: 40px;
+	height: 23px;
+	text-align: center;
+	line-height: 23px;
+	margin-right: 20px;
+	cursor: pointer;
+	display: none;
+}
+
+.layout_all .wrapper_right .r_select .hd_attribute p span.more_attr i {
+	color:#444;
+	font-size: 14px;
+	border: 1px solid #ccc;
 }
 
 .layout_all .wrapper_right .r_select .hd_attribute span:first-child {
@@ -314,6 +348,8 @@
 
 .layout_all .wrapper_right .r_select .hd_attribute p span a {
 	padding-right: 10px;
+	display:inline-block;
+	padding-bottom:10px;
 }
 
 .layout_all .wrapper_right .r_select .hd_attribute p span a:hover {
@@ -1074,11 +1110,15 @@
 }
 
 .layout_body .bd_title .bd_left {
-	width: 120px;
+	width: 130px;
 	padding: 0px 10px;
 	margin-top: 10px;
 	float: right;
 	line-height: 20px;
+}
+
+.layout_body .bd_title .bd_left select{
+	width:50px;
 }
 
 .layout_body .bd_title .bd_right {

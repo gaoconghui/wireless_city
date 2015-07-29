@@ -182,20 +182,22 @@ function initialize_salor() {
 					resource_name: service_name,
 					description: service_desc
 				};
+				var enumnotsel=0;
 				$("#at_fill").find("p").each(function(index) {
 					var value = "";
 					if ($(this).find("select").val() == "-1") {
-						alert("请选择枚举类型！");
-						return;
+						enumnotsel++;
 					} else {
 						value = $(this).find("input").val() || $(this).find("select").val();
 					}
-
 					var id = $(this).data("attrid");
 					param["resourceAttrs[" + index + "].value"] = value;
 					param["resourceAttrs[" + index + "].attribute.id"] = id;
 				});
-				alert("进来了？");
+				if(enumnotsel!=0){
+					alert("枚举类型必须选择！");
+					return;
+				}
 				$.ajax({
 					beforeSend: function() {},
 					error: function() {
@@ -205,7 +207,6 @@ function initialize_salor() {
 					url: "AddResourceAction_addResource",
 					type: "post",
 					success: function(data) {
-						alert(data);
 						if (data == 0) {
 							alert("后台异常！");
 						} else {
@@ -377,6 +378,8 @@ function searchInitialize() {
 	}
 	//价格范围查询
 	$("#hd_attribute").find(".inner").each(function(){
+		var $prices=$(this).parents(".bd_prices");
+		var $info=$prices.find(".info");
 		$(this).hover(function(){
 			$(this).css("background","#fff");
 			$(this).find("input[type=submit]").show();
@@ -386,14 +389,15 @@ function searchInitialize() {
 		});
 		$(this).find(".sub_btn").each(function(){
 			$(this).off("click").click(function(){
-				var min=$(this).parents(".bd_prices").find("input[name=min]").val();
-				var max=$(this).parents(".bd_prices").find("input[name=max]").val();
+				var min=$prices.find("input[name=min]").val();
+				var max=$prices.find("input[name=max]").val();
 				if(!numCheck(min)||!numCheck(max)){
-					$(this).parents(".bd_prices").find(".info").find("i").css("color","rgb(220, 102, 102)").html("&#xe602;");
-					$(this).parents(".bd_prices").find(".info").find("span").text("请输入整数或小数");
+					var errortxt=$info.data("error");
+					$info.find("i").css("color","rgb(220, 102, 102)").html("&#xe602;");
+					$info.find("span").text(errortxt);
 					return false;
 				}
-				if(min>=max){
+				if(min*1>=max*1){
 					$(this).parents(".bd_prices").find(".info").find("i").css("color","rgb(220, 102, 102)").html("&#xe602;");
 					$(this).parents(".bd_prices").find(".info").find("span").text("右边数值必须大于左边");
 					return false;
@@ -401,9 +405,9 @@ function searchInitialize() {
 			});
 		});
 		$(this).find("input[type=text]").focus(function(){
-			var info=$(this).parents(".bd_prices").find(".info").data("info");
-			$(this).parents(".bd_prices").find(".info").find("i").css("color","rgb(117,176,226)").html("&#xe610;");
-			$(this).parents(".bd_prices").find(".info").find("span").text(info);
+			var info=$info.data("info");
+			$info.find("i").css("color","rgb(117,176,226)").html("&#xe610;");
+			$info.find("span").text(info);
 		});
 	});
 	//价格数字验证

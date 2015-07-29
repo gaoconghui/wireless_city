@@ -127,7 +127,7 @@
 					        <s:submit type="submit" cssClass="sub_btn dis_none" value="确定"/>
 				        </form>
 				    </div>
-				    <div class="info" data-info="小数或整数">
+				    <div class="info" data-info="小数或整数" data-error="请输入小数或整数">
 				    	<i class="iconfont"></i>
 				    	<span></span>
 				    </div>
