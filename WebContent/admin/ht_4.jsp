@@ -98,6 +98,7 @@
 								<div class="l_tr" data-id='<s:property value="id"/>'>
 									<span class="first_span"> <s:a href="javascript:void(0)"
 											cssClass="choose"></s:a>
+<<<<<<< Updated upstream
 									</span> 
 									<span title="<s:property value="resource_name" />"><s:property value="resource_name" /></span> 
 									<span><s:property value="catalogue.name" /></span> 
@@ -117,6 +118,31 @@
 										<s:elseif test="checkState == 2">正在审核中</s:elseif>
 									</span> 
 									<span><s:property value="create_time" /></span>
+=======
+									</span>
+									 <span title='<s:property value="resource_name" />'><s:property value="@com.whut.wxcs.resmanager.util.DataUtils@formatStringByLength(resource_name,10)" /></span> 
+									 <span title='<s:property value="catalogue.name" />'><s:property value="@com.whut.wxcs.resmanager.util.DataUtils@formatStringByLength(catalogue.name,10)" /></span> 
+									 <span title='<s:property value="provider.name" />'><s:property value="@com.whut.wxcs.resmanager.util.DataUtils@formatStringByLength(provider.name,10)" /></span> 
+									 <span> <small
+										class="operation"> <s:a href="javascript:void(0)"
+												cssClass="ra detail" title="详情"></s:a> <s:a
+												href="javascript:void(0)" cssClass="ra info" title="通知修改"></s:a>
+											<s:a href="ResourceAction_passCheck?id=%{id}&brsid=%{brsid}"
+												cssClass="ra submit" title="通过"></s:a> <s:a
+												href="ResourceAction_offCheck?id=%{id}&brsid=%{brsid}"
+												cssClass="ra offsheet" title="下架"></s:a> <s:a
+												href="javascript:void(0)" cssClass="ra delete" title="通知"></s:a>
+									</small>
+									</span> <span> <s:if test="checkState == 0">
+											未通过
+										</s:if> <s:elseif test="checkState == 1">
+											审核通过
+										</s:elseif> <s:elseif test="checkState == 2">
+											正在审核中
+										</s:elseif>
+									</span> <span> <s:property value="create_time" />
+									</span>
+>>>>>>> Stashed changes
 								</div>
 							</s:iterator>
 						</div>

@@ -56,6 +56,14 @@ public class DataUtils {
 	public static Double getLastTwoUnderLineStr(String attr) {
 		return  Double.valueOf(attr.substring(attr.lastIndexOf("_",attr.lastIndexOf("_")-1)+1,attr.lastIndexOf("_")));
 	}
+	
+	public static String formatStringByLength(String str,int length){
+		if(str.length() >= length){
+			str = str.substring(0, length-2);
+			str +="...";
+		}
+		return str;
+	}
 
 
 }
