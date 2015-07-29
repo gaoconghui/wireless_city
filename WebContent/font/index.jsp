@@ -65,7 +65,7 @@
 							<div class='c_list'>
 								<div class='l_second_item'>
 									<span class='span1'> <s:a
-											href="SearchResourceAction_searchResourceByCatalogue?catalogueId=10101">
+											href="SearchResourceAction_searchResourceByCatalogue?catalogueId=%{id}">
 											<s:property value="name" />
 										</s:a>
 									</span> <span class="span2 iconfont">&#xe614;</span>
@@ -74,7 +74,7 @@
 									<!-- 第三层类目迭代 -->
 									<s:iterator value="child">
 										<s:a
-											href="SearchResourceAction_searchResourceByCatalogue?catalogueId=1010101">
+											href="SearchResourceAction_searchResourceByCatalogue?catalogueId=%{id}">
 											<s:property value="name" />
 										</s:a>
 									</s:iterator>
