@@ -302,15 +302,9 @@
 	margin-left: 20px;
 }
 
-.layout_all .wrapper_right .r_select .hd_attribute p {
+.layout_all .wrapper_right .r_select .hd_attribute .p {
 	padding-top: 10px;
 	border-bottom:1px dotted #ccc;
-}
-
-.layout_all .wrapper_right .r_select .hd_attribute p:after{
-	content:"";
-	display:block;
-	clear:both;
 }
 
 .layout_all .wrapper_right .r_select .hd_attribute span{
@@ -327,7 +321,7 @@
 	font-size:12px;
 }
 
-.layout_all .wrapper_right .r_select .hd_attribute p span.more_attr {
+.layout_all .wrapper_right .r_select .hd_attribute .p span.more_attr {
 	margin-top:-5px;
 	float: right;
 	width: 40px;
@@ -339,7 +333,7 @@
 	display: none;
 }
 
-.layout_all .wrapper_right .r_select .hd_attribute p span.more_attr i {
+.layout_all .wrapper_right .r_select .hd_attribute .p span.more_attr i {
 	color:#444;
 	font-size: 14px;
 	border: 1px solid #ccc;
@@ -351,7 +345,7 @@
 	padding-right: 10px;
 }
 
-.layout_all .wrapper_right .r_select .hd_attribute p span a {
+.layout_all .wrapper_right .r_select .hd_attribute .p span a {
 	padding : 0 10px 0 15px;
 	display:inline-block;
 	padding-bottom:10px;
@@ -359,7 +353,7 @@
 	zoom: 1;
 }
 
-.layout_all .wrapper_right .r_select .hd_attribute p span a:hover {
+.layout_all .wrapper_right .r_select .hd_attribute .p span a:hover {
 	text-decoration: underline;
 }
 
@@ -948,15 +942,10 @@
 	margin-left: 40px;
 }
 
-.layout_hd .hd_attribute p {
+.layout_hd .hd_attribute .p {
+	display:block;
 	padding-top: 10px;
 	border-bottom: 1px dotted #ccc;
-}
-
-.layout_hd .hd_attribute p:after {
-	content: "";
-	display: block;
-	clear: both;
 }
 
 .layout_hd .hd_attribute .num_type{
@@ -969,12 +958,12 @@
 	padding-right: 10px;
 }
 
-.layout_hd .hd_attribute p span {
+.layout_hd .hd_attribute .p span {
 	display: block;
 	float: left;
 }
 
-.layout_hd .hd_attribute p span.attr_value {
+.layout_hd .hd_attribute .p span.attr_value {
 	width: 650px; 
 	display : block;
 	float: left;
@@ -982,11 +971,11 @@
 	font-size:0;
 }
 
-.layout_hd .hd_attribute p span.attr_value a{
+.layout_hd .hd_attribute .p span.attr_value a{
 	font-size:12px;
 }
 
-.layout_hd .hd_attribute p span.more_attr {
+.layout_hd .hd_attribute .p span.more_attr {
 	margin-top:-5px;
 	float: right;
 	width: 40px;
@@ -998,20 +987,20 @@
 	display: none;
 }
 
-.layout_hd .hd_attribute p span.more_attr i {
+.layout_hd .hd_attribute .p span.more_attr i {
 	color:#444;
 	font-size: 14px;
 	border: 1px solid #ccc;
 }
 
-.layout_hd .hd_attribute p span a {
+.layout_hd .hd_attribute .p span a {
 	padding: 0 10px 10px 15px;
 	display: inline-block;
 	*display: inline;
 	zoom: 1;
 }
 
-.layout_hd .hd_attribute p span a:hover {
+.layout_hd .hd_attribute .p span a:hover {
 	text-decoration: underline;
 }
 
@@ -1043,12 +1032,27 @@
 	border:1px solid #fafafa;
 }
 
+.layout_hd .hd_attribute .bd_prices .inner:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+
 .layout_hd .hd_attribute .bd_prices .inner .input {
 	width: 50px;
 	padding-left: 4px;
 	height: 21px;
 	font-size: 12px;
 	line-height: 21px;
+	display:block;
+	float:left;
+}
+
+.layout_hd .hd_attribute .bd_prices .inner .line{
+	display:block;
+	line-height: 25px;
+	float:left;
+	padding:0 5px;
 }
 
 .layout_hd .hd_attribute .bd_prices .info{
@@ -1068,6 +1072,7 @@
 }
 
 .layout_hd .hd_attribute .bd_prices .inner .sub_btn {
+	float:left;
 	width: 50px;
 	cursor: pointer;
 	border-radius: 3px;
@@ -1084,7 +1089,7 @@
 
 .layout_hd .hd_search {
 	margin-top: 20px;
-	padding-left: 20px;
+	padding-left: 40px;
 }
 
 .layout_hd .hd_search input {
@@ -1840,8 +1845,13 @@ body {
 
 .header .h_fir {
 	width: 1200px;
-	height: 80px;
 	margin: 0px auto;
+}
+
+.header .h_fir:after{
+	content:"";
+	display:block;
+	clear:both;
 }
 
 .header .h_fir .f_logo {
@@ -1853,15 +1863,14 @@ body {
 }
 
 .header .h_fir .f_search {
-	width: 600px;
 	height: 60px;
 	float: left;
+	margin-top: 24px;
 }
 
 .header .h_fir .f_search .s_input {
 	width: 500px;
 	height: 42px;
-	margin-top: 12px;
 }
 
 .header .h_fir .f_search .s_input input {

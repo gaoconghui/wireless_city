@@ -4,24 +4,19 @@ var basePath=getRootPath()+"/";
 
 /*更多收起*/
 function more_less(){
-	$("#hd_attribute").find("p").each(function(){
+	$("#hd_attribute").find(".p").each(function(){
 		var width=$(this).find(".attr_value").width();
-		console.log(width);
 		var length=$(this).find(".attr_value a").length;
 		var total_width=0;
 		var _index=[];
 		$(this).find(".attr_value a").each(function(index){
 			var each_width=$(this).outerWidth(true);
-			console.log($(this).text()+each_width);
 			total_width+=each_width;
 			if(total_width>=width){
-				console.log("总厂"+total_width);
 				$(this).hide();
 				_index.push(index);
 			}
 		});
-		console.log("总厂"+total_width);
-		console.log(_index);
 		if(total_width>=width){
 			$(this).find(".more_attr").show();
 		}
@@ -993,7 +988,12 @@ function init(){
 		$(this).closest("form")[0].submit();
 	});
 	/*初始化placeholder*/
-	$("input[placeholder]").placeholder();
+	$("input[placeholder]").each(function(){
+		if(isEmpty($(this).val())){
+			$("input[placeholder]").placeholder();
+		}
+	});
+	
 	$("#totop").click(function(){
 		$("html,body").animate({
 			scrollTop:0

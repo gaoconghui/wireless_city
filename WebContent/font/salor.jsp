@@ -144,10 +144,10 @@
 				</div>
 				<div class="hd_attribute" id="hd_attribute">
 					<s:iterator value="page.attrList" status="rowst">
-						<p>
+						<div class="p">
 							<span><s:property value="name" />:</span> 
-							<span class="attr_value"> <s:iterator
-									value="enumValue" status="st">
+							<span class="attr_value"> 
+								<s:iterator value="enumValue" status="st">
 									<s:a
 										href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
 										<s:property value="enumValue[#st.index]" />
@@ -155,7 +155,8 @@
 								</s:iterator>
 							</span>
 							<span class="more_attr" data-state="more">更多<i class="iconfont">&#xe60b;</i></span>
-						</p>
+							<div class="clear"></div>
+						</div>
 					</s:iterator>
 				</div>
 				<script>
