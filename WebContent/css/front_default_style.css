@@ -961,6 +961,70 @@
 	text-decoration: underline;
 }
 
+.layout_hd .hd_attribute .bd_prices {
+	padding:10px;
+	border-bottom:1px dotted #ccc;
+	position:relative;
+}
+
+.layout_hd .hd_attribute .bd_prices:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+
+.layout_hd .hd_attribute .bd_prices .attr{
+	float:left;
+	display:block;
+	height:40px;
+	line-height:40px;
+}
+
+.layout_hd .hd_attribute .bd_prices .inner {
+	padding: 7px 10px;
+	float:left;
+	box-shadow: 0px 2px 2px #ccc;
+}
+
+.layout_hd .hd_attribute .bd_prices .inner .input {
+	width: 50px;
+	padding-left: 4px;
+	height: 21px;
+	font-size: 12px;
+	line-height: 21px;
+}
+
+.layout_hd .hd_attribute .bd_prices .info{
+	height:40px;
+	line-height:40px;
+	position:absolute;
+	left:270px;
+	top:10px;
+}
+
+.layout_hd .hd_attribute .bd_prices .info i{
+	font-size:14px;
+}
+
+.layout_hd .hd_attribute .bd_prices .inner .input[type="text"] {
+	outline-width: 1px;
+}
+
+.layout_hd .hd_attribute .bd_prices .inner .sub_btn {
+	width: 50px;
+	cursor: pointer;
+	border-radius: 3px;
+	margin-left: 10px;
+	background: #b61d1d;
+	border: 0;
+	text-align: center;
+	line-height: 25px;
+	height: 25px;
+	color: #fff;
+	font-size: 12px;
+}
+
+
 .layout_hd .hd_search {
 	margin-top: 20px;
 	padding-left: 20px;
@@ -1007,43 +1071,6 @@
 	width: 900px;
 	height: 40px;
 	background: #d1d1d1;
-}
-
-.layout_body .bd_title .bd_prices {
-	width: 220px;
-	float: left;
-	margin-left: 10px;
-}
-
-.layout_body .bd_title .bd_prices .inner {
-	padding: 7px 10px;
-	box-shadow: 0px 2px 2px #ccc;
-}
-
-.layout_body .bd_title .bd_prices .inner .input {
-	width: 50px;
-	padding-left: 4px;
-	height: 21px;
-	font-size: 12px;
-	line-height: 21px;
-}
-
-.layout_body .bd_title .bd_prices .inner .input[type="text"] {
-	outline-width: 1px;
-}
-
-.layout_body .bd_title .bd_prices .inner .sub_btn {
-	width: 50px;
-	cursor: pointer;
-	border-radius: 3px;
-	margin-left: 10px;
-	background: #b61d1d;
-	border: 0;
-	text-align: center;
-	line-height: 25px;
-	height: 25px;
-	color: #fff;
-	font-size: 12px;
 }
 
 .layout_body .bd_title .bd_left {

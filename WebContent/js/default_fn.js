@@ -376,13 +376,37 @@ function searchInitialize() {
 		});
 	}
 	//价格范围查询
-	$("#prices").find(".inner").hover(function(){
-		$(this).css("background","#fff");
-		$(this).find("input[type=submit]").show();
-	},function(){
-		$(this).css("background","inherit");
-		$(this).find("input[type=submit]").hide();
+	$("#hd_attribute").find(".inner").each(function(){
+		$(this).hover(function(){
+			$(this).css("background","#fff");
+			$(this).find("input[type=submit]").show();
+		},function(){
+			$(this).css("background","inherit");
+			$(this).find("input[type=submit]").hide();
+		});
+		$(this).find(".sub_btn").each(function(){
+			$(this).off("click").click(function(){
+				var min=$(this).parents(".bd_prices").find("input[name=min]").val();
+				var max=$(this).parents(".bd_prices").find("input[name=max]").val();
+				if(!numCheck(min)||!numCheck(max)){
+					$(this).parents(".bd_prices").find(".info").find("i").css("color","rgb(220, 102, 102)").html("&#xe602;");
+					$(this).parents(".bd_prices").find(".info").find("span").text("请输入整数或小数");
+					return false;
+				}
+				if(min>=max){
+					$(this).parents(".bd_prices").find(".info").find("i").css("color","rgb(220, 102, 102)").html("&#xe602;");
+					$(this).parents(".bd_prices").find(".info").find("span").text("右边数值必须大于左边");
+					return false;
+				}
+			});
+		});
+		$(this).find("input[type=text]").focus(function(){
+			var info=$(this).parents(".bd_prices").find(".info").data("info");
+			$(this).parents(".bd_prices").find(".info").find("i").css("color","rgb(117,176,226)").html("&#xe610;");
+			$(this).parents(".bd_prices").find(".info").find("span").text(info);
+		});
 	});
+	//价格数字验证
 /*查询页初始化*/
 /*首页nav*/
 function navOperation(){
@@ -399,27 +423,26 @@ function navOperation(){
 	});
 	/*nav_ul click*/
 	/*left_nav hover*/
-	$("#left_nav").on(
-			{
-				"mouseenter" : function() {
-					var _index = $(this).data("index");
-					$(this).addClass("lihover");
-					$(this).find("a").css({
-						"color" : "#b61d1d"
-					});
-					$("#left_content").find("li").eq(_index).css("top",
-							40 * _index + "px").show();
+	$("#left_nav").on({
+		"mouseenter" : function() {
+			var _index = $(this).data("index");
+			$(this).addClass("lihover");
+			$(this).find("a").css({
+				"color" : "#b61d1d"
+			});
+			$("#left_content").find("li").eq(_index).css("top",
+					40 * _index + "px").show();
 
-				},
-				"mouseleave" : function(index) {
-					var _index = $(this).data("index");
-					$(this).removeClass("lihover");
-					$(this).find("a").css({
-						"color" : "#fff"
-					});
-					$("#left_content").find("li").eq(_index).hide();
-				}
-			}, "li");
+		},
+		"mouseleave" : function(index) {
+			var _index = $(this).data("index");
+			$(this).removeClass("lihover");
+			$(this).find("a").css({
+				"color" : "#fff"
+			});
+			$("#left_content").find("li").eq(_index).hide();
+		}
+	}, "li");
 
 	$("#left_content").on({
 		"mouseenter" : function(index) {

@@ -139,6 +139,14 @@ function urlFormatCheck(url){
 	}
 	return true;
 }
+/*验证数字*/
+function numCheck(num){
+	var format=/^[0-9]+.?[0-9]*$/;
+	if(!num.match(format)){
+		return false;
+	}
+	return true;
+}
 /*获取几天前*/
 function getTimeFormat(startTime) {
 	var startTimeMills = startTime.getTime();
