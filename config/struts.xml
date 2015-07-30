@@ -4,10 +4,8 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<!-- 主题 -->
+	 <!-- 主题 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
-	<!-- 开发模式 -->
-	<constant name="struts.devMode" value="true"></constant>
 	<!-- 允许ognl 调用静态方法 -->
 	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
 	<package name="admin" extends="struts-default">
@@ -41,10 +39,6 @@
 			<result name="add_resource">/login/provider_resource.jsp</result>
 		</action>
 		<action name="TemplateAction_*" class="templateAction" method="{1}">
-<!-- 			<result name="toNewTemplatePage">/admin/addtemplate.jsp</result>
-			<result name="toTemplateDetailPage">/admin/templatedetail.jsp</result>
-			<result name="newTemplate">/admin/templatedetail.jsp</result>
-			<result name="updateTemplate">/admin/templatedetail.jsp</result> -->
 
 			<result name="toTemplateManagerPage">/admin/ht_2.jsp</result>
 		</action>
@@ -120,16 +114,11 @@
 			<result name="updatePage">/front/seek_update_rs.jsp</result>
 			<result name="order">/provider/orderByTime.jsp</result>
 			<result name="delete_success">/addResource.jsp</result>
-<<<<<<< Updated upstream
-			<result name="resource">/font/resource.jsp</result>
+			<result name="resource">/front/resource.jsp</result>
 			<result name="sss" type="redirectAction">
 			   <param name="actionName">SearchProviderResourceAction_searchResourceBycatalogue</param>
 			   <param name="cid">${cid}</param>
 			</result>
-=======
-			<result name="resource">/front/resource.jsp</result>
-			<result name="sss">/success.jsp</result>
->>>>>>> Stashed changes
 		</action>
 
 		<action name="SearchProviderResourceAction_*" class="searchProviderResourceAction"
