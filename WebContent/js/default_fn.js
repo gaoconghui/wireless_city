@@ -631,7 +631,7 @@ function registerValidate(){
 	$("#c_table").find("input").each(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		$this.focus(function(){
 			var txt=$next.find(".info").data("content");
@@ -645,7 +645,7 @@ function registerValidate(){
 	$("#userform").find("input[name=name]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -681,7 +681,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=loginName]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -715,7 +715,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=loginPwd]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -733,7 +733,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=confirmPwd]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		var pwd=$this.parents("form").find("input[name=loginPwd]").val();
@@ -752,7 +752,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=phoneNumber],input[name=cellphone]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -770,7 +770,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=realName],input[name=industryName],input[name=industry],input[name=scale],input[name=address]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -785,7 +785,7 @@ function registerValidate(){
 	$("#providerform").find("input[name=name]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -800,7 +800,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=email]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -818,7 +818,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=telephone],input[name=fax]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -836,7 +836,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=qq]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -854,7 +854,7 @@ function registerValidate(){
 	$("#c_table").find("input[name=postcode]").blur(function(){
 		var $this=$(this),$next=$this.next();
 		if($this.parents(".placeholder").data("exist")=="1"){
-			$next=$this.parent().next();
+			$next=$this.parents(".placeholder").next();
 		}
 		var content=$this.val();
 		if(isEmpty(content)){
@@ -876,7 +876,7 @@ function registerValidate(){
 			$("#userform").find("input").each(function(){
 				var $this=$(this),$next=$this.next();
 				if($this.parents(".placeholder").data("exist")=="1"){
-					$next=$this.parent().next();
+					$next=$this.parents(".placeholder").next();
 				}
 				var isValidate=$this.attr("validate");
 				if(isValidate == undefined || isValidate == 'undefined'){
@@ -915,7 +915,7 @@ function registerValidate(){
 			$("#providerform").find("input").each(function(){
 				var $this=$(this),$next=$this.next();
 				if($this.parents(".placeholder").data("exist")=="1"){
-					$next=$this.parent().next();
+					$next=$this.parents(".placeholder").next();
 				}
 				var isValidate=$this.attr("validate");
 				if(isValidate == undefined || isValidate == 'undefined'){
