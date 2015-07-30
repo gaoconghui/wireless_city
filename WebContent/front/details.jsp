@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<p>
 						<span>企业名称：</span>
 						<span>
-							<a href="font/salor_store.jsp?salor_id=1">天喻</a>
+							<a href="front/salor_store.jsp?salor_id=1">天喻</a>
 						</span>
 					</p>
 				</div>

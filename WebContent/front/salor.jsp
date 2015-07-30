@@ -27,8 +27,8 @@
 			<div class="c_logo"></div>
 			<div class="c_content">
 				<ul>
-					<li><a href="font/salor.jsp" class="sel">管理中心</a></li>
-					<li><a href="font/salor_store.jsp">企业主页</a></li>
+					<li><a href="front/salor.jsp" class="sel">管理中心</a></li>
+					<li><a href="front/salor_store.jsp">企业主页</a></li>
 				</ul>
 			</div>
 			<div class="c_search">
@@ -58,7 +58,7 @@
 		<div class="wrapper_right">
 			<div class="r_select">
 				<div class="allcategory">
-					<a href="font/salor.jsp?pid=1" class="fir">已有大类:</a>
+					<a href="front/salor.jsp?pid=1" class="fir">已有大类:</a>
 					<s:iterator value="#session.catalogues" var="c">
 						<s:a
 							href="SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=%{id}">
@@ -109,7 +109,7 @@
 						<span> <a href="javascript:void(0)">子类：</a>
 						</span>
 						<!-- 这里是一类目迭代 -->
-						<!-- <a href="font/search.jsp?id=101">无线政务</a> -->
+						<!-- <a href="front/search.jsp?id=101">无线政务</a> -->
 						<s:if
 							test="page.catalogue.child!=null&&page.catalogue.child.size()!=0">
 							<s:iterator value="page.catalogue.child">

@@ -2,13 +2,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <div class="title_fixed">
 	<div class="s_right" id="s_right">
-		<s:if test="#session.provider==null&&#session.user==null">
-			<div class="r_login">登录</div>
-			<div class="r_register">
-				<a href="font/register.jsp">注册</a>
-			</div>
-		</s:if>
-		<s:elseif test="#session.provider!=null&&#session.user==null">
+		<s:if test="#session.provider!=null&&#session.user==null">
 			<div class="more iconfont">&#xe60a;</div>
 			<div class="r_info">
 				<s:property value="#session.provider.name" />
@@ -16,7 +10,7 @@
 			<div class="r_wel iconfont">&#xe608;</div>
 			<div class="information_box">
 				<ul>
-					<li><a href="font/salor.jsp"> <i class="iconfont">&#xe612;</i>
+					<li><a href="front/salor.jsp"> <i class="iconfont">&#xe612;</i>
 							管理中心
 					</a></li>
 					<li><a href="ProviderAction_exit"> <i class="iconfont">&#xe611;</i>
@@ -24,7 +18,7 @@
 					</a></li>
 				</ul>
 			</div>
-		</s:elseif>
+		</s:if>
 		<s:elseif test="#session.provider==null&&#session.user!=null">
 			<div class="more iconfont">&#xe60a;</div>
 			<div class="r_info">
@@ -33,7 +27,7 @@
 			<div class="r_wel iconfont">&#xe608;</div>
 			<div class="information_box">
 				<ul>
-					<li><a href="font/buyer.jsp"> <i class="iconfont">&#xe612;</i>
+					<li><a href="front/buyer.jsp"> <i class="iconfont">&#xe612;</i>
 							个人中心
 					</a></li>
 					<li><a href="LoginAction_exit"> <i class="iconfont">&#xe611;</i>
@@ -42,21 +36,5 @@
 				</ul>
 			</div>
 		</s:elseif>
-	</div>
-</div>
-<div class="header">
-	<div class="h_fir">
-		<div class="f_logo"></div>
-		<div class="f_search">
-			<div class="s_input">
-				<s:form action="SearchResourceAction_frontFindByKeyWord" id="s_all">
-					<s:textfield name="frontKey" placeholder="找服务资源"></s:textfield>
-					<s:hidden name="rsid"></s:hidden>
-					<div class="i_btn" id="search_all">
-						<i class="iconfont">&#xe60f;</i>搜索
-					</div>
-				</s:form>
-			</div>
-		</div>
 	</div>
 </div>

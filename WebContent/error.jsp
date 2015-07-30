@@ -14,7 +14,7 @@
     		clearInterval(timer);
     		timer=setInterval(function(){
         		count--;
-        		if(count<1){window.location.href="font/index.jsp";}
+        		if(count<1){window.location.href="front/index.jsp";}
         		if(count==0){count++;}
         		$("#count").text(count);
     		},1000);

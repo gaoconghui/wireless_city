@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	<div class="l_right">
-		<p>还没账号？<a href="font/register.jsp">立即注册</a></p>
+		<p>还没账号？<a href="front/register.jsp">立即注册</a></p>
 		<p>使用合作网站账号登录</p>
 		<span class="weibo iconfont">&#xe60e;</span>
 		<span class="QQ iconfont">&#xe60d;</span>

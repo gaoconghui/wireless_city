@@ -128,9 +128,6 @@
 						<s:a
 							href="SearchProviderAction_changePageNo?psid=%{psid}&pageNum=1"
 							class="next">首页</s:a>
-						<s:if test="pageNum -3 >0">
-							<span>. . .</span>
-						</s:if>
 						<s:if test="pageNum-2 >0">
 							<s:a
 								href="SearchProviderAction_changePageNo?psid=%{psid}&pageNum=%{pageNum -2}">
@@ -159,9 +156,6 @@
 								href="SearchProviderAction_changePageNo?psid=%{psid}&pageNum=%{pageNum +2}">
 								<s:property value="pageNum +2" />
 							</s:a>
-						</s:if>
-						<s:if test="pageNum+3 <= page.totalPageNumber">
-							<span>. . .</span>
 						</s:if>
 
 						<s:a

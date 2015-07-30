@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="2.5">
 	<!-- 欢迎页 -->
 	<welcome-file-list>
-	    <welcome-file>font/index.jsp</welcome-file>
+	    <welcome-file>front/index.jsp</welcome-file>
     </welcome-file-list>
     <!-- 404 -->
 	<error-page>
@@ -23,7 +23,7 @@
 	</context-param>
 	<context-param>
 		<param-name>providerJSP</param-name>
-		<param-value>/font/salor.jsp</param-value>
+		<param-value>/front/salor.jsp</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -48,7 +48,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>ProviderPageFilter</filter-name>
-		<url-pattern>/font/*</url-pattern>
+		<url-pattern>/front/*</url-pattern>
 	</filter-mapping>
 
 

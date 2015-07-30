@@ -39,7 +39,7 @@ public class ProviderPageFilter implements Filter {
 				return;
 			} else {
 				httpServletResponse.sendRedirect(httpServletRequest
-						.getContextPath() + "/font/login.jsp");
+						.getContextPath() + "/front/login.jsp");
 				return;
 			}
 		} else {

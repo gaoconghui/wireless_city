@@ -29,8 +29,8 @@
 			<div class="c_logo"></div>
 			<div class="c_content">
 				<ul>
-					<li><a href="font/salor.jsp" class="sel">管理中心</a></li>
-					<li><a href="font/salor_store.jsp">企业主页</a></li>
+					<li><a href="front/salor.jsp" class="sel">管理中心</a></li>
+					<li><a href="front/salor_store.jsp">企业主页</a></li>
 				</ul>
 			</div>
 			<div class="c_search">

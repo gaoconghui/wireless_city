@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="c_content">
 				<ul>
-					<li><a href="font/buyer.jsp?id=1"  class="sel">个人中心</a></li>
+					<li><a href="front/buyer.jsp?id=1"  class="sel">个人中心</a></li>
 					<li><a href="javascript:void(0)">个人主页</a></li>
 				</ul>
 			</div>

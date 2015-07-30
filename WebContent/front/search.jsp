@@ -27,7 +27,7 @@
 	<div class="layout_hd">
 		<div class="hd_reference" id="reference">
 			<div class="iconfont location">&#xe617;</div> 
-			<s:a href="font/index.jsp">首页</s:a>
+			<s:a href="front/index.jsp">首页</s:a>
 			<s:if test="page.catalogue.parent.id != 1">
 				<s:if test="page.catalogue.parent.parent.id != 1">
 					<s:if test="page.catalogue.parent.parent.parent.id != 1">
@@ -221,7 +221,7 @@
 						<span class="d_desc"> <s:property value="description" /></span>
 					</div>
 					<div class="l_visit">
-						<a href="font/details.jsp">查看详情</a>
+						<a href="front/details.jsp">查看详情</a>
 					</div>
 				</div>
 			</s:iterator>

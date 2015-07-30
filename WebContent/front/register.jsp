@@ -168,7 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="l_right">
-				<p>已有账号？<a href="font/login.jsp">立即登录</a></p>
+				<p>已有账号？<a href="front/login.jsp">立即登录</a></p>
 				<p>使用合作网站账号登录</p>
 				<span class="weibo iconfont">&#xe60e;</span>
 				<span class="QQ iconfont">&#xe60d;</span>

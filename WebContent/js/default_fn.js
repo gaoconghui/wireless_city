@@ -555,7 +555,7 @@ function loginValidator(){
 									"<div class='r_wel iconfont'>&#xe608;</div>"+
 									"<div class='information_box'>"+
 									"	<ul>"+
-									"		<li><a href='"+basePath+"font/buyer.jsp?id="+data+"'><i class='iconfont'>&#xe612;</i>个人中心</a></li>"+
+									"		<li><a href='"+basePath+"front/buyer.jsp?id="+data+"'><i class='iconfont'>&#xe612;</i>个人中心</a></li>"+
 									"		<li><a href='LoginAction_exit'><i class='iconfont'>&#xe611;</i>退出</a></li>"+
 									"	</ul>"+
 									"</div>";
@@ -595,7 +595,7 @@ function loginValidator(){
 							$("#password").focus();
 							$("#login_submit").text("登录");
 						}else if(data=="1"){
-							window.location.href=""+basePath+"font/salor.jsp";
+							window.location.href=""+basePath+"front/salor.jsp";
 						}else{
 							alert("未知错误");
 						}
@@ -879,7 +879,7 @@ function registerValidate(){
 						if(data=="0"){
 							alert("注册失败!");
 						}else if(data=="1"){
-							window.location.href=""+basePath+"font/index.jsp";
+							window.location.href=""+basePath+"front/index.jsp";
 						}else{
 							alert("后台异常");
 						}
@@ -919,7 +919,7 @@ function registerValidate(){
 						if(data=="0"){
 							alert("注册失败！");
 						}else if(data=="1"){
-							window.location.href=""+basePath+"font/salor.jsp";
+							window.location.href=""+basePath+"front/salor.jsp";
 						}else{
 							alert("后台异常");
 						}
@@ -1054,7 +1054,7 @@ function loginValidate(){
 							$("#password").val("");
 							$("#password").focus();
 						}else{
-							window.location.href=""+basePath+"font/index.jsp";
+							window.location.href=""+basePath+"front/index.jsp";
 						}
 					}
 				});
@@ -1090,7 +1090,7 @@ function loginValidate(){
 							$("#password").val("");
 							$("#password").focus();
 						}else if(data=="1"){
-							window.location.href=""+basePath+"font/salor.jsp";
+							window.location.href=""+basePath+"front/salor.jsp";
 						}else{
 							alert("未知错误");
 						}

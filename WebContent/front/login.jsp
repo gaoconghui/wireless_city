@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<label>
 							<span class="select iconfont" data-sel="0" id="sel"></span>
 							<span class="login_free">下次自动登录</span>
-							<span class="forget">没有账号？<a href="font/register.jsp">立即注册</a></span>
+							<span class="forget">没有账号？<a href="front/register.jsp">立即注册</a></span>
 						</label>
 						<div class="loginbox" id="submit">登 录</div>
 					</div>

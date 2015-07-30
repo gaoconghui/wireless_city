@@ -239,5 +239,38 @@ public class testCatalogueService {
 			 System.out.println((int)(Math.random()*3));
 		 }
 	 }
+	 
+	 @Test
+	 public void testNewCatalogue(){
+		Catalogue parent =  catalogueService.getEntity(1207);
+		System.out.println(parent.getName());
+		String[] childStr = {
+				"演出门票",
+				"体育赛事",
+				"景点/游乐园门票",
+				"电影票",
+				"消费卡/优惠券",
+				"火车票",
+				"飞机票",
+				"汽车票",
+				"船票",
+				"彩票"
+				};
+		this.save(parent, childStr);
+		System.out.println(childStr.length);
+		
+	 }
+	 
+	 public void save(Catalogue parent,String[] childStr){
+		 Catalogue catalogue;
+		 for(int i = 0 ; i < childStr.length ; i ++){
+			 catalogue = new Catalogue();
+			 catalogue.setParent(parent);
+			 catalogue.setName(childStr[i]);
+			 catalogueService.saveCatalogue(catalogue);
+		 }
+	 }
+	 
+	 
 	
 }
