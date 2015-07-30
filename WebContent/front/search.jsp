@@ -210,7 +210,7 @@
 			<s:iterator value="page.list" var="resource">
 				<div class="l_content">
 					<div class="l_img">
-						<img alt="" src="images/list_demo.jpg" height="100" width="100" />
+						<img alt="" src="images/rs_pic/<s:property value="catalogue.id"/>.jpg" height="100" width="100" />
 					</div>
 					<div class="l_details">
 						<span class="d_service"><s:property value="resource_name" /></span>
