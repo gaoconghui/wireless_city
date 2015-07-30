@@ -192,12 +192,15 @@
 			<div class="bd_left" id="bd_left">
 				<label>默认显示条数</label> <select>
 					<option
+					<s:if test="pageSize == 10">selected</s:if>
 						value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=10">
 						10</option>
 					<option
+					<s:if test="pageSize == 20">selected</s:if>
 						value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=20">
 						20</option>
 					<option
+					<s:if test="pageSize == 50">selected</s:if>
 						value="SearchResourceAction_changePageSize?rsid=<s:property value="rsid"/>&pageSize=50">
 						50</option>
 				</select>
@@ -211,9 +214,11 @@
 					</div>
 					<div class="l_details">
 						<span class="d_service"><s:property value="resource_name" /></span>
-						<span class="d_desc"> <s:property value="description" /></span> <span
-							class="d_time"><s:property value="create_time" /></span> <span
-							class="d_company"><s:property value="id" /></span>
+						 <span class="d_time">
+						 <s:date name="create_time" format="yyyy-mm-dd"/>
+						 </span> 
+						 <span class="d_company"><s:property value="provider.name" /></span>
+						<span class="d_desc"> <s:property value="description" /></span>
 					</div>
 					<div class="l_visit">
 						<a href="font/details.jsp">查看详情</a>
