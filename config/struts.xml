@@ -121,7 +121,10 @@
 			<result name="order">/provider/orderByTime.jsp</result>
 			<result name="delete_success">/addResource.jsp</result>
 			<result name="resource">/font/resource.jsp</result>
-			<result name="sss">/success.jsp</result>
+			<result name="sss" type="redirectAction">
+			   <param name="actionName">SearchProviderResourceAction_searchResourceBycatalogue</param>
+			   <param name="cid">${cid}</param>
+			</result>
 		</action>
 
 		<action name="SearchProviderResourceAction_*" class="searchProviderResourceAction"

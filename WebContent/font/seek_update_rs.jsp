@@ -52,6 +52,7 @@
 		<div class="container">
 			<s:form action="AddResourceAction_updateResource" id="update_rs">
 			    <s:hidden name="id"></s:hidden>
+			    <s:hidden name="cid" value="%{catalogue.id}"></s:hidden>
 			    <s:hidden name="catalogue.id"></s:hidden>
 			    <s:hidden name="provider.id"></s:hidden>
 			    <s:hidden name="checkState"></s:hidden>
