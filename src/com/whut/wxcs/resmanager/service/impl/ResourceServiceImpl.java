@@ -52,10 +52,11 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 
 	@Override
 	public long addResource(Resource model) {
+		long i = resourceDao.saveEntity(model);
 		for (ResourceAttribute resourceAttribute : model.getAttributes()) {
 			resourceAttributeDao.saveEntity(resourceAttribute);
 		}
-		return resourceDao.saveEntity(model);
+		return i;
 	}
 
 	@Override

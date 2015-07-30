@@ -59,18 +59,18 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		if (ValidateUtil.isVaild(child)) {
 			model.setId(child.get(0).getId() + 1);
 		} else {
-			//设置id  id规则： 一类目两位数，二类目两位数，三四五类目三位数
+			// 设置id id规则： 一类目两位数，二类目两位数，三四五类目三位数
 			long parentId = model.getParent().getId();
-			//父类目是根，即创建一个一级类目，一类目从11开始
-			if(parentId == 1){
+			// 父类目是根，即创建一个一级类目，一类目从11开始
+			if (parentId == 1) {
 				model.setId(11);
 			}
-			//如果父类目是一级类目
-			else if(parentId < 100){
+			// 如果父类目是一级类目
+			else if (parentId < 100) {
 				model.setId(parentId * 100 + 1);
 			}
-			//其他的
-			else{
+			// 其他的
+			else {
 				model.setId(parentId * 1000 + 1);
 			}
 		}
@@ -88,13 +88,16 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 	private void newTemplate(Catalogue model) {
 		Template template = new Template();
 
-		Template parentTemplate = templateDao.getEntity(model.getParent()
-				.getId());
-		Set<Attribute> attributes = parentTemplate.getAttributes();
-		System.out.println(attributes.size());
-		if (ValidateUtil.isVaild(attributes)) {
-			Set<Attribute> newAttributes = new HashSet<Attribute>(attributes);
-			template.setAttributes(newAttributes);
+		if (model.getParent() != null) {
+			Template parentTemplate = templateDao.getEntity(model.getParent()
+					.getId());
+			Set<Attribute> attributes = parentTemplate.getAttributes();
+			System.out.println(attributes.size());
+			if (ValidateUtil.isVaild(attributes)) {
+				Set<Attribute> newAttributes = new HashSet<Attribute>(
+						attributes);
+				template.setAttributes(newAttributes);
+			}
 		}
 		String templateName = model.getName() + "模板";
 		String description = "";
@@ -145,9 +148,9 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 
 	@Override
 	public Catalogue getCatalogueById(long id) {
-		//TODO 为什么这里要初始化parent和child？   这种情况下不能初始化ID为1 的
+		// TODO 为什么这里要初始化parent和child？ 这种情况下不能初始化ID为1 的
 		Catalogue catalogue = catalogueDao.getEntity(id);
-		if(id == 1){
+		if (id == 1) {
 			return catalogue;
 		}
 		catalogue.getParent();
@@ -260,18 +263,18 @@ public class CatalogueServiceImpl extends BaseServiceImpl<Catalogue> implements
 		if (ValidateUtil.isVaild(child))
 			child.size();
 
-		while(parentid >1){
+		while (parentid > 1) {
 			parent = parent.getParent();
 			parentid = parent.getId();
 		}
-		
+
 		return catalogue;
 	}
 
 	@Override
 	public void initCatalogue() {
 		Catalogue catalogue = this.getEntity(1);
-		if(catalogue == null){
+		if (catalogue == null) {
 			catalogue = new Catalogue();
 			catalogue.setId(1);
 			catalogue.setDescription("root类目");

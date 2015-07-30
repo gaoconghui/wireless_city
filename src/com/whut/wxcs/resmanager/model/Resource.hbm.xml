@@ -28,7 +28,7 @@
 		<property name="resource_name" type="java.lang.String">
 			<column name="RESOURCE_NAME" />
 		</property>
-		<property name="description" type="java.lang.String">
+		<property name="description" type="text">
 			<column name="DESCRIPTION" />
 		</property>
 		<property name="create_time" type="timestamp" update="false">

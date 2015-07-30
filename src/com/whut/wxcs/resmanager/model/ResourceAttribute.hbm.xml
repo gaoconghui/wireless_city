@@ -19,7 +19,7 @@
 			<column name="ATTRIBUTE_ID" />
 		</many-to-one>
 		
-		<property name="value" type="java.lang.String" >
+		<property name="value" type="text" >
 			<column name="VALUE" />
 		</property>
 		<property name="numValue" type="double" >
