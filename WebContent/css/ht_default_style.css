@@ -94,6 +94,7 @@
 }
 
 .tzht .t_header .fixbox {
+	min-width:920px;
 	background: #2f3437;
 	position: fixed;
 	z-index: 1;

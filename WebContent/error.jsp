@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
   <body>
-    访问出错！<span id="count">10</span>秒后回到主页！
+    访问出错！<span id="count">5</span>秒后回到主页！
     <script type="text/javascript">
     	$(function(){
     		var count=$("#count").text();

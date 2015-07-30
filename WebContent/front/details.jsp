@@ -23,12 +23,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- header end-->
 	<div class="details_layout_hd">
 		<div class="hd_reference">
-			<a href="javascript:void(0)">所有分类</a>
-			<a href="javascript:void(0)">&gt;无线政务</a>
-			<a href="javascript:void(0)">&gt;二类目</a>
-			<a href="javascript:void(0)">&gt;三类目</a>
-			<a href="javascript:void(0)">&gt;四类目</a>
-			<a href="javascript:void(0)">&gt;具体服务资源</a>
+			<a href="javascript:void(0)" class="iconfont f14" style="line-height:12px;margin-right:9px;">&#xe617;</a>
+			<a href="front/index.jsp">首页</a>
+			
+			<a href="javascript:void(0)" class="iconfont">&#xe615;</a>
+			<a href="javascript:void(0)">无线政务</a>
+			<a href="javascript:void(0)" class="iconfont">&#xe615;</a>
+			<a href="javascript:void(0)">二类目</a>
+			<a href="javascript:void(0)" class="iconfont">&#xe615;</a>
+			<a href="javascript:void(0)">三类目</a>
+			<a href="javascript:void(0)" class="iconfont">&#xe615;</a>
+			<a href="javascript:void(0)">四类目</a>
+			<a href="javascript:void(0)" class="iconfont">&#xe615;</a>
+			<a href="javascript:void(0)">具体服务资源</a>
 		</div>
 		<div class="hd_body">
 			<div class="hd_title">
@@ -41,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<p>
 						<span>企业名称：</span>
 						<span>
-							<a href="front/salor_store.jsp?salor_id=1">天喻</a>
+							<a href="front/salor_store.jsp?salor_id=1">XXX公司</a>
 						</span>
 					</p>
 				</div>
@@ -93,10 +100,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="hd_details">
 				<div class="d_title">
-					<a name="attribute" href="javascript:void(0)"></a>
 					<ul>
 						<li><a href="javascript:void(0)" class="sel" >商品参数</a></li>
-						<li><a href="#pic">商品图片</a></li>
+						<li><a href="javascript:void(0)">商品图片</a></li>
 					</ul>
 				</div>
 				<div class="d_attribute">
@@ -176,14 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="clear"></div>
 					</div>
 				</div>
-				<div class="d_title">
-					<a name="pic"></a>
-					<ul>
-						<li><a href="#attribute">商品参数</a></li>
-						<li><a href="javascript:void(0)"  class="sel">商品图片</a></li>
-					</ul>
-				</div>
-				<div class="d_pics">
+				<div class="d_pics" style="border-top:1px solid #ccc;">
 					<img alt="" src="images/list_demo.jpg" width="100"/>
 					<img alt="" src="images/list_demo.jpg" width="200"/>
 					<img alt="" src="images/list_demo.jpg" width="300"/>

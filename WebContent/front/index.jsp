@@ -28,12 +28,12 @@
 		<div class="s_wrapper">
 			<div class="s_left">
 				<ul id="nav_ul">
-					<li style="width: 60px; margin-left: 212px;" class="lidemo">首页</li>
-					<li>求职就业</li>
-					<li>购物</li>
-					<li>教育培训</li>
-					<li>旅游频道</li>
-					<li>便民服务</li>
+					<li style="width: 60px; margin-left: 212px;" class="lidemo" data-sel="1">首页</li>
+					<li>兼职招聘</li>
+					<li>房屋租赁</li>
+					<li>美食团购</li>
+					<li>电影</li>
+					<li>本地生活</li>
 				</ul>
 			</div>
 		</div>

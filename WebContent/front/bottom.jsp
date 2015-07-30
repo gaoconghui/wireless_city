@@ -34,12 +34,12 @@
 	<div class="friend_link">
 		<div class="before"></div>
 		<h3>友情链接</h3>
-		<a href="javascript:void(0)">武汉天喻信息产业股份有限公司</a>
-		<a href="javascript:void(0)">武汉天喻信息产业股份有限公司</a>
-		<a href="javascript:void(0)">武汉天喻信息产业股份有限公司</a>
-		<a href="javascript:void(0)">武汉天喻信息产业股份有限公司</a>
-		<a href="javascript:void(0)">武汉天喻信息产业股份有限公司</a>
-		<a href="javascript:void(0)">武汉天喻信息产业股份有限公司</a>
+		<a href="javascript:void(0)">武汉XX信息产业股份有限公司</a>
+		<a href="javascript:void(0)">武汉XX信息产业股份有限公司</a>
+		<a href="javascript:void(0)">武汉XX信息产业股份有限公司</a>
+		<a href="javascript:void(0)">武汉XX信息产业股份有限公司</a>
+		<a href="javascript:void(0)">武汉XX信息产业股份有限公司</a>
+		<a href="javascript:void(0)">武汉XX信息产业股份有限公司</a>
 	</div>
 	<div class="copyright">
 		<div class="before"></div>
