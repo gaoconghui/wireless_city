@@ -4,20 +4,11 @@ var ajaxqueue=1;
 	function findCategory(idName,url,dataParams){
 		$.tmAjax.request({
 			url:url,
-			beforeSend:function(){
-				//$.tmUtil.infoShow({"message":"加载中..."});
-			},
-			error:function(){
-				//$.tmUtil.infoShow({"message":"服务器出错"}).stop(true,true).fadeOut(1000);
-				//$("#yy").hide();
-			},
 			callback:function(data){
 				if(data=="[]"){
-					//$.tmUtil.infoHide();
 				}else if(data=="0"){
-					alert("异常！");
-					//$.tmUtil.infoHide();
-					//$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
+					$.tmUtil.infoShow({"message":"后台异常！"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else{
 					var html="";
 					var $data=$.parseJSON(data);
@@ -26,12 +17,10 @@ var ajaxqueue=1;
 						html+="<option value='"+$data[i].id+"'>"+$data[i].name+"</option>";
 					}
 					$("#"+idName).append(html);
-					//$.tmUtil.infoHide();
 				}
 			}
 		},dataParams);
 	}
-
 	function findChildCategory(currentIdName,nextId){
 		$("#"+currentIdName).off("change").on("change",function(){
 			var $r_t_a3=$("#show_template_details").find(".r_t_a3");
@@ -39,20 +28,16 @@ var ajaxqueue=1;
 			var $r_t_a2=$("#show_template_details").find(".r_t_a2");
 			if($r_t_a2.css("display")=="none")$r_t_a2.show();
 			var p_id=$("#"+currentIdName).val();
-			
 			var html="<option value=''>-请选择-</option>";
 			for(var i=nextId;i<6;i++){
 				$("#category_"+i).html(html);
 			}
 			if(isEmpty(p_id)){return;}
 			//查询模板
-			//TemplateAction_getTemplateDetailByAJAX
-			
 			var param={parentid:p_id};
 			var params={id:p_id};
 			findModule("TemplateAction_getTemplateDetailByAJAX",params);
 			findCategory("category_"+nextId,"CatalogueAction_getChildCatalogueByAJAX",param);
-			//alert(p_id);
 			var p={tid:p_id};
 			findModuleAttrDetails("AttributeAction_getAttributesByAJAX",p);
 		});
@@ -66,13 +51,11 @@ var ajaxqueue=1;
 			data:dataParams,
 			success:function(data){
 				if(data=="[]"){
-					alert("null");
-					$.tmUtil.infoShow({"message":"none attribute"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
-				}else if(data=="0"){
 					$("#mod_attribute").html("");
+				}else if(data=="0"){
+					$.tmUtil.infoShow({"message":"后台异常！"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else{
-					$.tmUtil.infoHide();
 					var $data=$.parseJSON(data);
 					var html="";
 					var length=$data.length;
@@ -95,7 +78,6 @@ var ajaxqueue=1;
 						"			<span>"+getDefalutSpan($data[i].description)+"</span>"+
 						"			<span>属性类型：</span>"+
 						"			<span>"+type+"</span>";
-							 
 						if(isNotEmpty($data[i].value)){
 							html+="	<span>枚举内容：</span>"+
 							"	<span>"+$data[i].value+"</span>"+
@@ -128,44 +110,19 @@ var ajaxqueue=1;
 			success:function(data){
 				if(data=="[]"){
 					$.tmUtil.infoShow({"message":"没有模板"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
+					$("#yy").fadeOut(1000);
 				}else if(data=="0"){
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
+					$("#yy").fadeOut(1000);
 				}else{
-					$.tmUtil.infoHide();
 					var $data=$.parseJSON(data);
 					$("#current_module_name").text($data.name);
 					$("#current_module_name").data("templateId",$data.id);
 					$("#current_module_desc").text($data.description);
+					$("#create_time").text($data.time);
 				}
 			}
 		});
-		/*$.tmAjax.request({
-			url:url,
-			beforeSend:function(){
-				//$.tmUtil.infoShow();
-			},
-			error:function(){
-				//$.tmUtil.infoShow({"message":"服务器访问出错"}).stop(true,true).fadeOut(1000);
-			},
-			callback:function(data){
-				if(data=="[]"){
-					$.tmUtil.infoShow({"message":"没有模板"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
-				}else if(data=="0"){
-					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
-				}else{
-					$.tmUtil.infoHide();
-					var $data=$.parseJSON(data);
-					$("#module_show").find("span:eq(0)").text($data.name);
-					$("#module_name").text($data.name);
-					$("#module_desc").text($data.description);
-				}
-				
-			}
-		},dataParams);*/
 	}
 /* findModule ajax */
 /* update_module  ajax*/
@@ -176,34 +133,39 @@ var ajaxqueue=1;
 			url:url,
 			success:function(data){
 				if(data=="0"){
-					$.tmUtil.infoHide();
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else if(data=="1"){
-					$.tmUtil.infoHide();
-					$.tmUtil.infoShow({"message":"创建成功"}).stop(true,true).fadeOut(1000);
+					$.tmUtil.infoShow({"message":"保存成功"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else{
 					$.tmUtil.infoShow({"message":"未知错误"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}
 			}
 		});
 	}
 /* update_module ajax*/
-	/* save_module_attribute  ajax*/
+/* save_module_attribute  ajax*/
 	function saveModuleAttr(url,dataParams,p){
 		$.ajax({
 			type:"post",
 			data:dataParams,
+			beforeSend:function(){
+				$.tmUtil.infoShow({"message":"保存中..."});
+			},
 			url:url,
 			success:function(data){
 				if(data=="0"){
-					$.tmUtil.infoHide();
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else if(data=="1"){
-					//alert("保存属性成功！");
 					findModuleAttrDetails("AttributeAction_getAttributesByAJAX",p);
-					$.tmUtil.infoHide();
+					$.tmUtil.infoShow({"message":"保存成功"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else{
 					$.tmUtil.infoShow({"message":"未知错误"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}
 			}
 		});
@@ -303,8 +265,6 @@ var ajaxqueue=1;
 				center_dialog("#add_module_attribute");
 				resize("#add_module_attribute");
 				$add_module_attribute.show();
-				
-				
 				$module_attribute_type.change(function(){
 					if($module_attribute_type.val()=="5"){
 						$("#enmu_type").show();
@@ -318,30 +278,24 @@ var ajaxqueue=1;
 					$module_attribute_name.val("");
 					$module_attribute_type.find("option:eq(0)").attr("selected","selected");
 					$module_attribute_content.val("");
-					$.tmUtil.infoShow({"message":"取消修改"}).stop(true,true).fadeOut(1000);
-					$yy.hide();
+					$.tmUtil.infoShow({"message":"没有修改！"}).stop(true,true).fadeOut(1000);
+					$yy.fadeOut(1000);
 				});
 				$add_module_attribute.find(".sure").off("click").click(function(){
+					var isupdate=false;
 					var module_desc=$module_desc.val();
 					var module_name=$module_name.val();
-					if(module_desc!=oldDesc&&module_name!=oldName){
+					if(module_desc!=oldDesc||module_name!=oldName){
 						//修改模板名称，描述
+						isupdate=true;
 						var params={templateName:module_name,description:module_desc,id:templateId};
 						updateModule("TemplateAction_updateTemplateByAJAX",params);
 						$("#current_module_name").text(module_name);
 						$("#current_module_desc").text(module_desc);
 					}
-					//templateid delIdArgs[] args
-					
-				
-					
-					
-					
 					//保存模板属性操作
 					var args= {};
 					args["tid"] = templateId;
-					//alert(id+ typeof (id));
-					//为什么是0
 					var n=-1;
 					$s_scroll.find(".s_title").each(function(){
 						if(isEmpty($(this).data("id"))){
@@ -355,35 +309,27 @@ var ajaxqueue=1;
 					        args["attributes["+n+"].description"] = txt_desc;
 					        args["attributes["+n+"].type"] = txt_type;
 					        args["attributes["+n+"].value"] = txt_content;	
-					       // alert("add attribute==="+txt_name+"==="+txt_desc+"==="+txt_type+"==="+txt_content);
 						}	
 					});
 					var length=delIdArgs.length;
-					//alert(length);
 					for(var i=n+1;i<n+1+length;i++){
 						args["attributes["+i+"].id"] = "-"+delIdArgs[i-n-1]+"";
-						//alert(args["attributes["+i+"].id"]);
 					}
-		    	        
-		    	    //alert(args["attributes[0].name"]+"--"+args["attributes[0].description"]+"--"+args["attributes[0].type"]+"--"+args["attributes[0].value"]);
-					//alert(args["attributes[1].name"]+"--"+args["attributes[1].description"]+"--"+args["attributes[1].type"]+"--"+args["attributes[1].value"]);
-					//delete/save
-					var p={tid:templateId};
-					saveModuleAttr("AttributeAction_doAttributesByAJAX",args,p);
-					
-					
-					
 					$module_attribute_desc.val("");
 					$module_attribute_name.val("");
 					$module_attribute_type.find("option:eq(0)").attr("selected","selected");
 					$module_attribute_content.val("");
 					$add_module_attribute.hide();
-					$.tmUtil.infoShow({"message":"修改完成！"}).stop(true,true).fadeOut(1000);
 					$yy.hide();
-					//alert("准备更新模板属性");
-					
-					
-					
+					if(n!=-1||length!=0){
+						isupdate=true;
+						var p={tid:templateId};
+						saveModuleAttr("AttributeAction_doAttributesByAJAX",args,p);
+					}
+					if(!isupdate){
+						$.tmUtil.infoShow({"message":"没有修改！"}).stop(true,true).fadeOut(1000);
+						$("#yy").fadeOut(1000);
+					}
 				});
 				$add_module_attribute.find(".back_step").off("click").click(function(){
 					$add_module_attribute.hide();
@@ -394,9 +340,7 @@ var ajaxqueue=1;
 					var module_attribute_name=$module_attribute_name.val();
 					var module_attribute_type=$module_attribute_type.val();
 					var module_attribute_content=$module_attribute_content.val();
-				
 					var module_attribute_type_text=$module_attribute_type.find("option:selected").text();
-					
 					var html="<div class='s_title'>"+
 						"<span>"+module_attribute_name+"</span>"+
 						"<span>"+module_attribute_desc+"</span>"+
@@ -416,13 +360,9 @@ var ajaxqueue=1;
 					$s_scroll.find(".s_title").each(function(){
 						var $this=$(this);
 						if($this.data("sel")=="1"){
-							//alert($this.data("id"));
 							if(isNotEmpty($this.data("id"))){
 								delIdArgs.push($this.data("id"));
-								//alert("delete id args==="+delIdArgs);
 							}
-							
-							
 							var args=[];
 							for(var i=0;i<4;i++){
 								args[i]=$(this).find("span").eq(i).text();
@@ -461,8 +401,8 @@ var ajaxqueue=1;
 			});
 			$add_module.find(".close").off("click").click(function(){
 				$add_module.hide();
-				$yy.hide();
-				//使用默认模板
+				$.tmUtil.infoShow({"message":"没有修改！"}).stop(true,true).fadeOut(1000);
+				$yy.fadeOut(1000);
 			});
 		});
 	}

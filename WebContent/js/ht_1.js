@@ -7,16 +7,12 @@ var newCategoryId;
 			beforeSend:function(){
 				$.tmUtil.infoShow({"message":"加载中..."});
 			},
-			error:function(){
-				$.tmUtil.infoShow({"message":"服务器出错"}).stop(true,true).fadeOut(1000);
-				$("#yy").hide();
-			},
 			callback:function(data){
 				if(data=="[]"){
 					$.tmUtil.infoHide();
 				}else if(data=="0"){
-					$.tmUtil.infoHide();
-					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
+					$.tmUtil.infoShow({"message":"后台异常！"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else{
 					var html="";
 					var $data=$.parseJSON(data);
@@ -30,7 +26,6 @@ var newCategoryId;
 			}
 		},dataParams);
 	}
-
 	function findChildCategory(currentIdName,locationNameIndex,nextIdNameArg){
 		$("#"+currentIdName).off("click").on("click","li",function(){
 			/*编辑框*/
@@ -77,7 +72,6 @@ var newCategoryId;
 			error:function(){},
 			callback:function(data){
 				if(data=="1"){
-					$.tmUtil.infoHide();
 					$(".r_table").find("ul li").each(function(){
 						if($(this).data("id")==dataParams.id){
 							$(this).stop(true,true).fadeOut(1000,function(){
@@ -93,12 +87,13 @@ var newCategoryId;
 							$("#location_"+(location_index*1-1)).data("last","1").siblings().data("last","0");
 						}
 					});
+					$.tmUtil.infoHide();
 				}else if(data=="0"){
 					$.tmUtil.infoShow({"message":"请选择要删除的类目！"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
+					$("#yy").fadeOut(1000);
 				}else{
 					$.tmUtil.infoShow({"message":"未知异常"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
+					$("#yy").fadeOut(1000);
 				}
 			}
 		},dataParams);
@@ -109,20 +104,21 @@ var newCategoryId;
 		$.tmAjax.request({
 			url:url,
 			beforeSend:function(){
-				$.tmUtil.infoShow();
+				$.tmUtil.infoShow({"message":"查询类目详情中,请稍候..."});
 			},
 			error:function(){
 				$.tmUtil.infoShow({"message":"服务器访问出错"}).stop(true,true).fadeOut(1000);
+				$("#yy").fadeOut(1000);
 			},
 			callback:function(data){
 				if(data=="[]"){
 					$.tmUtil.infoShow({"message":"没有子类目"}).stop(true,true).fadeOut(1000);
-					$.tmUtil.infoHide();
+					$("#yy").fadeOut(1000);
 				}else if(data=="0"){
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
-					$.tmUtil.infoHide();
+					$("#yy").fadeOut(1000);
 				}else{
-					$.tmUtil.infoHide();
+					$(".info").hide();
 					var $data=$.parseJSON(data);
 					$("#cate_id").text($data.id);
 					$("#cate_name").text($data.name);
@@ -148,8 +144,6 @@ var newCategoryId;
 		},dataParams);
 	}
 /* checkCategory ajax */
-	
-	//问题是  调用update的时候要赋值
 /*updateCategory ajax*/
 	function update_cate(name,description){
 		var $yy=$("#yy");
@@ -180,32 +174,31 @@ var newCategoryId;
 				updateCategory("CatalogueAction_UpdateCataloguelByAJAX",param);
 			}
 			$update_category.hide();
-			$yy.hide();
+			$yy.fadeOut(1000);
 		});
 	}
 	function updateCategory(url,dataParams){
 		$.tmAjax.request({
 			url:url,
 			beforeSend:function(){
-				$.tmUtil.infoShow();
-			},
-			error:function(){
-				$.tmUtil.infoShow({"message":"服务器出错"}).stop(true,true).fadeOut(1000);
+				$.tmUtil.infoShow({"message":"更新中..."});
 			},
 			callback:function(data){
 				if(data=="0"){
 					$.tmUtil.infoShow({"message":"请选择要更新的类目！"}).stop(true,true).fadeOut(1000);
-					$.tmUtil.infoHide();
+					$("#yy").fadeOut(1000);
 				}else if(data==1){
-					$.tmUtil.infoHide();
 					//更新类目名
 					$(".r_table").find("ul li").each(function(){
 						if($(this).data("id")==dataParams.id){
 							$(this).find("span").text(dataParams.name);
 						}
 					});
+					$.tmUtil.infoShow({"message":"更新成功！"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else{
 					$.tmUtil.infoShow({"message":"未知异常"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}
 			}
 		},dataParams);
@@ -215,18 +208,11 @@ var newCategoryId;
 	function addCategory(url,dataParams,$currentLine){
 		$.tmAjax.request({
 			url:url,
-			beforeSend:function(){
-				$.tmUtil.infoShow({"message":"保存成功！"});
-			},
-			error:function(){
-				$.tmUtil.infoShow({"message":"服务器出错"}).stop(true,true).fadeOut(1000);
-			},
 			callback:function(data){
 				if(data=="0"){
-					$.tmUtil.infoHide();
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else{
-					//alert(data);
 					newCategoryId=data;
 					var html="<li style='display:none;' data-id="+newCategoryId+" data-patentId="+dataParams.parentid+"><a href='javascript:void(0)'><span>"+dataParams.name+"</span></a></li>";
 					html+="<div class='add_li'>"+
@@ -234,10 +220,6 @@ var newCategoryId;
 					"</div>";
 					$currentLine.find("ul div").remove(".add_li");
 					$currentLine.find("ul").append(html);
-					
-					$.tmUtil.infoShow();
-					$.tmUtil.infoHide();
-					$("#yy").show();
 				}
 			}
 		},dataParams);
@@ -251,37 +233,17 @@ var newCategoryId;
 			url:url,
 			success:function(data){
 				if(data=="0"){
-					$.tmUtil.infoHide();
 					$.tmUtil.infoShow({"message":"请选择要更新的类目!"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else if(data=="1"){
-					$.tmUtil.infoHide();
-					$.tmUtil.infoShow({"message":"创建成功"}).stop(true,true).fadeOut(1000);
-					$("#yy").hide();
+					$.tmUtil.infoShow({"message":"创建模板成功!"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else{
 					$.tmUtil.infoShow({"message":"未知错误"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}
 			}
 		});
-		/*$.tmAjax.request({
-			url:url,
-			beforeSend:function(){
-				$.tmUtil.infoShow({"message":"创建模板中..."});
-			},
-			error:function(){
-				$.tmUtil.infoShow({"message":"服务器出错"}).stop(true,true).fadeOut(1000);
-			},
-			callback:function(data){
-				if(data=="0"){
-					$.tmUtil.infoHide();
-					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
-				}else if(data=="1"){
-					$.tmUtil.infoHide();
-					$.tmUtil.infoShow({"message":"创建成功"}).stop(true,true).fadeOut(1000);
-				}else{
-					$.tmUtil.infoShow({"message":"未知错误"}).stop(true,true).fadeOut(1000);
-				}
-			}
-		},dataParams);*/
 	}
 /* update_module ajax*/
 /* save_module_attribute  ajax*/
@@ -292,37 +254,16 @@ var newCategoryId;
 			url:url,
 			success:function(data){
 				if(data=="0"){
-					$.tmUtil.infoHide();
 					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}else if(data=="1"){
-					//alert("保存属性成功！");
-					$.tmUtil.infoHide();
-					$("#yy").hide();
+					$("#yy").fadeOut(1000);
 				}else{
 					$.tmUtil.infoShow({"message":"未知错误"}).stop(true,true).fadeOut(1000);
+					$("#yy").fadeOut(1000);
 				}
 			}
 		});
-		/*$.tmAjax.request({
-			url:url,
-			beforeSend:function(){
-				$.tmUtil.infoShow({"message":"创建模板中..."});
-			},
-			error:function(){
-				$.tmUtil.infoShow({"message":"服务器出错"}).stop(true,true).fadeOut(1000);
-			},
-			callback:function(data){
-				if(data=="0"){
-					$.tmUtil.infoHide();
-					$.tmUtil.infoShow({"message":"数据异常"}).stop(true,true).fadeOut(1000);
-				}else if(data=="1"){
-					alert("保存属性成功！");
-					$.tmUtil.infoHide();
-				}else{
-					$.tmUtil.infoShow({"message":"未知错误"}).stop(true,true).fadeOut(1000);
-				}
-			}
-		},dataParams);*/
 	}
 /* save_module_attribute ajax*/
 
@@ -399,10 +340,12 @@ var newCategoryId;
 			var index=$(this).parents(".r_table").data("index");
 			var str=$("#location_"+index).text();
 			var str2=$("#location_"+index).data("selId");
-			//alert(str2);
 			if(isEmpty(str2)){str2="1";}
 			var length=str.length;
 			var parent_name=str.substr(1,length-1);
+			if(isEmpty(parent_name)){
+				parent_name="无";
+			}
 			$add_category.find(".parent_name").text(parent_name);
 			$yy.show();
 			center_dialog("#add_category");
@@ -458,37 +401,21 @@ var newCategoryId;
 							$module_attribute_type.find("option:eq(0)").attr("selected","selected");
 							$module_attribute_content.val("");
 							$s_scroll.empty();
-							$.tmUtil.infoShow({"message":"默认模板"}).stop(true,true).fadeOut(1000);
-							$yy.hide();
+							$.tmUtil.infoShow({"message":"已使用默认模板"}).stop(true,true).fadeOut(1000);
+							$yy.fadeOut(1000);
 							var length=$currentLine.find("ul li").length-1;
-							//alert("被添加行li的长度为："+length);
 							$currentLine.find("ul li").eq(length).fadeIn(2000);
 						});
 						$add_module_attribute.find(".sure").off("click").click(function(){
-							
 							var module_desc=$module_desc.val();
 							var module_name=$module_name.val();
 							var id=newCategoryId;
-							//alert("模板名字："+module_name);
-							//alert("模板描述："+module_desc);
-							//alert("模板id："+id);
-							
 							//保存模板操作TemplateAction_updateTemplateByAJAX
 							var params={templateName:module_name,description:module_desc,id:id};
 							updateModule("TemplateAction_updateTemplateByAJAX",params);
 							//保存模板属性操作
-							/* <div class="s_scroll" id="s_scroll">
-								<div class="s_title">
-									<span>价格</span>
-									<span>即多少钱</span>
-									<span>枚举类型</span>
-									<span>100,500,1000</span>
-								</div> 
-							</div> */
 							var args= {};
 							args["tid"] = id;
-							//alert(id+ typeof (id));
-							//为什么是0
 							$s_scroll.find(".s_title").each(function(index){
 								var txt_name=$(this).find("span").eq(0).text();
 								var txt_desc=$(this).find("span").eq(1).text();
@@ -500,10 +427,6 @@ var newCategoryId;
 						        args["attributes["+index+"].type"] = txt_type;
 						        args["attributes["+index+"].value"] = txt_content;	
 							});
-	
-				    	        
-				    	   // alert(args["attributes[0].name"]+"--"+args["attributes[0].description"]+"--"+args["attributes[0].type"]+"--"+args["attributes[0].value"]);
-							//alert(args["attributes[1].name"]+"--"+args["attributes[1].description"]+"--"+args["attributes[1].type"]+"--"+args["attributes[1].value"]);
 							saveModuleAttr("AttributeAction_doAttributesByAJAX",args);
 							$module_desc.val("");
 							$module_name.val("");
@@ -512,11 +435,9 @@ var newCategoryId;
 							$module_attribute_type.find("option:eq(0)").attr("selected","selected");
 							$module_attribute_content.val("");
 							$add_module_attribute.hide();
-							$.tmUtil.infoShow({"message":"自定义模板"}).stop(true,true).fadeOut(1000);
 							$s_scroll.empty();
 							$yy.hide();
 							var length=$currentLine.find("ul li").length-1;
-							//alert("被添加行li的长度为："+length);
 							$currentLine.find("ul li").eq(length).fadeIn(2000);
 						});
 						$add_module_attribute.find(".back_step").off("click").click(function(){
@@ -529,7 +450,6 @@ var newCategoryId;
 							var module_attribute_type=$module_attribute_type.val();
 							var module_attribute_content=$module_attribute_content.val();
 							var module_attribute_type_text=$module_attribute_type.find("option:selected").text();
-							
 							var html="<div class='s_title'>"+
 								"<span>"+module_attribute_name+"</span>"+
 								"<span>"+module_attribute_desc+"</span>"+
@@ -544,7 +464,6 @@ var newCategoryId;
 							$module_attribute_type.trigger("change");
 							var length=$s_scroll.find(".s_title").length-1;
 							$s_scroll.find(".s_title").eq(length).trigger("click");
-							
 						});
 						$add_module_attribute.find(".back_btn").off("click").click(function(){
 							$s_scroll.find(".s_title").each(function(){
@@ -587,23 +506,20 @@ var newCategoryId;
 					});
 					$add_module.find(".close").off("click").click(function(){
 						$add_module.hide();
-						$.tmUtil.infoShow({"message":"默认模板"}).stop(true,true).fadeOut(1000);
-						$yy.hide();
+						$.tmUtil.infoShow({"message":"已使用默认模板"}).stop(true,true).fadeOut(1000);
+						$yy.fadeOut(1000);
 						$module_desc.val("");
 						$module_name.val("");
 						var length=$currentLine.find("ul li").length-1;
-						//alert("被添加行li的长度为："+length);
 						$currentLine.find("ul li").eq(length).fadeIn(2000);
-						//使用默认模板
 					});
 				});
 				$fill_module.find(".close").off("click").click(function(){
 					$fill_module.hide();
-					/*$.tmUtil.infoShow({"message":"默认模板"}).stop(true,true).fadeOut(1000);*/
-					$yy.hide();
+					$.tmUtil.infoShow({"message":"已使用默认模板"}).stop(true,true).fadeOut(1000);
+					$yy.fadeOut(1000);
 					//编辑操作
 					var length=$currentLine.find("ul li").length-1;
-					//alert("被添加行li的长度为："+length);
 					$currentLine.find("ul li").eq(length).fadeIn(2000);
 				});			
 			});

@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="s_title"  id="l_show">
 							<span>资源名称</span>
 							<span class="span">操作</span>
-							<span class="span">更新时间</span>
+							<span class="span">创建时间</span>
 							<span class="span">详情</span>
 						</div>
 						<!-- script -->
@@ -99,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="span">
 									<a style="display:none;" class="r_t_a2" href="javascript:void(0)"></a>
 								</span>
-								<span class="span">-</span>
+								<span class="span" id="create_time">-</span>
 								<span class="span"><a style="display:none;" class="r_t_a3" href="javascript:void(0)"></a></span>
 							</div>
 							<div class="s_content">

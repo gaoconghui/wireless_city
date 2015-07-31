@@ -592,6 +592,9 @@
 	width: 24%;
 	float: left;
 	text-indent: 4px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 }
 
 .tzht .t_right .r_table .r_label .l_show .s_title .span:before {
@@ -673,6 +676,8 @@
 	font-weight: 500;
 	color: #666;
 	text-indent: 30px;
+	line-height:20px;
+	word-break:break-all;
 }
 
 .tzht .t_right .r_table .r_label .l_show .s_content .c_attribute {
@@ -1078,6 +1083,7 @@
 	left: 400px;
 	border-radius: 10px;
 	display: none;
+	z-index:12;
 }
 
 .info span {

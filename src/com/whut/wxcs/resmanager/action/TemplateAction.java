@@ -2,6 +2,7 @@ package com.whut.wxcs.resmanager.action;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +98,7 @@ public class TemplateAction extends BaseAction<Template> {
 			map.put("id", model.getId()+"");
 			map.put("description", model.getDescription());
 			map.put("name", model.getTemplateName());
-			
+			map.put("time",new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(model.getCreateTime()));
 			Gson gson = new Gson();
 			String str = gson.toJson(map);
 			

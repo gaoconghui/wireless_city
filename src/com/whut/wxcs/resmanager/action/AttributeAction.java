@@ -160,10 +160,9 @@ public class AttributeAction extends BaseAction<Attribute> implements
 			if (ValidateUtil.isVaild(attributes)) {
 				Gson gson = new Gson();
 				String str = gson.toJson(attributes);
-				System.out.println(str);
 				inputStream = new ByteArrayInputStream(str.getBytes("UTF-8"));
 				}else{
-					inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+					inputStream = new ByteArrayInputStream("[]".getBytes("UTF-8"));
 				}
 		} catch (Exception e) {
 			e.printStackTrace();

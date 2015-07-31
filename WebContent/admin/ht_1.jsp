@@ -95,8 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="a_d_header">增加类目</div>
 		<div class="a_d_main">
 			<p>
-				<span>父id：</span>
-				<span class="parent_name"></span></p>
+				<span>上级：</span>
+				<span class="parent_name">无</span></p>
 			<p>
 				<span>名称：</span>
 				<input type="text" id="category_name"/>
