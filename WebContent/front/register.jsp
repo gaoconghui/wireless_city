@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="description" content="">
 		<link href="css/reset.css" rel="stylesheet">
 		<link href="css/front_default_style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/placeholder.js"></script>
 		<script type="text/javascript" src="js/util.js"></script>
@@ -35,7 +36,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<label><input type="radio" name="s_icon" checked="checked" value="0"/>消费者</label>
 							<label><input type="radio" name="s_icon" value="1"/>服务商</label>
 						</div>
-						
 						<div class="c_table" id="c_table">
 							<div class="t_buyer" id="t_buyer">
 								<form id="userform">

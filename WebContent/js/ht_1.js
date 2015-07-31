@@ -1,4 +1,5 @@
 /* findCategory ajax */	
+$(".r_table:eq(0)").find("ul").append("<div class='add_li'><a href='javascript:void(0)'><i></i></a></div>");
 var newCategoryId;
 	function findCategory(idName,url,dataParams){
 		$.tmAjax.request({
@@ -59,7 +60,7 @@ var newCategoryId;
 			}
 			$(this).css({"background":"#000"}).siblings("li").css({"background":"#999"});
 			$(this).attr("data-sel","1").siblings("li").attr("data-sel","0");
-			$("#location_"+locationNameIndex).html("&gt;"+$(this).text()).data({"selId":id,"last":"1"}).siblings().data("last","0");
+			$("#location_"+locationNameIndex).html("<a class='iconfont'>&#xe615;</a>"+$(this).text()).data({"selId":id,"last":"1"}).siblings().data("last","0");
 			var p_id=$(this).data("id");
 			var param={parentid:p_id};
 			findCategory(nextIdNameArg[0],"CatalogueAction_getChildCatalogueByAJAX",param);
@@ -80,11 +81,16 @@ var newCategoryId;
 					$(".r_table").find("ul li").each(function(){
 						if($(this).data("id")==dataParams.id){
 							$(this).stop(true,true).fadeOut(1000,function(){
+								$(this).parent().append("<div class='add_li'>"+
+									"<a href='javascript:void(0)'><i></i></a>"+
+								"</div>");
 								$(this).remove();
 							});
-							$(this).parents(".r_table").next().find("ul li").fadeOut(500,function(){
-								$(this).parent().empty();
-							});
+							var $next=$(this).closest(".r_table").next(".r_table");
+							$next.find("ul").empty();
+							var location_index=$next.data("index");
+							$("#location_"+location_index).empty();
+							$("#location_"+(location_index*1-1)).data("last","1").siblings().data("last","0");
 						}
 					});
 				}else if(data=="0"){

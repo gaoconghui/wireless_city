@@ -14,6 +14,7 @@
 		<title>无线城市-后台-服务商管理</title>
 		<link href="css/reset.css" rel="stylesheet">
 		<link href="css/ht_default_style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/util.js"></script>
 		<script type="text/javascript" src="js/tmAjax.js"></script>

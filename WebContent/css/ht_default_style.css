@@ -1,7 +1,6 @@
 .tzht {
 	width: 100%, background:#282828;
 	font-weight: 700;
-	min-width: 1046px;
 }
 /*t_left start*/
 .tzht .t_left {
@@ -183,7 +182,7 @@
 
 .tzht .t_header .h_info .h_exit {
 	cursor: pointer;
-	width: 65px;
+	width: 67px;
 	height: 30px;
 	background: #28b779;
 	margin: 13px 5px 0 10px;
@@ -230,6 +229,7 @@
 	background: #e5e5e5;
 	line-height: 51px;
 	border-bottom: 1px solid #ccc;
+	min-width:873px;
 }
 
 .tzht .t_right .r_location i {
@@ -284,6 +284,7 @@
 	border: 1px solid #ccc;
 	margin-top: 20px;
 	padding-bottom: 10px;
+	min-width:873px;
 }
 
 .tzht .t_right .r_table:nth-child(2) {
@@ -535,8 +536,14 @@
 
 
 .tzht .t_right .r_table .r_label .l_select {
-	width: 30%;
+	width: 25%;
+	min-width:222px;
 	float: left;
+}
+
+.tzht .t_right .r_table .r_label .l_select .center{
+	width:222px;
+	margin:0 auto;
 }
 
 .tzht .t_right .r_table .r_label .l_select p {
@@ -547,21 +554,21 @@
 }
 
 .tzht .t_right .r_table .r_label .l_select p label {
-	width: 38%;
 	font-size: 14px;
 	text-align: right;
 	padding-right: 10px;
 }
 
 .tzht .t_right .r_table .r_label .l_select p .field select {
-	width: 60%;
+	width: 125px;
 	height: 40px;
 }
 
 .tzht .t_right .r_table .r_label .l_show {
-	width: 66%;
+	width: 71%;
 	float: left;
-	margin: 10px 0 0 20px;
+	margin: 10px 0 0 2%;
+	min-width:630px;
 }
 
 .tzht .t_right .r_table .r_label .l_show .details .s_title {
@@ -579,9 +586,10 @@
 	font-size: 14px;
 }
 .tzht .t_right .r_table .r_label .l_show>.s_title{color:#fff;}
+
 .tzht .t_right .r_table .r_label .l_show .s_title span {
 	display: block;
-	width: 25%;
+	width: 24%;
 	float: left;
 	text-indent: 4px;
 }
@@ -632,6 +640,11 @@
 .tzht .t_right .r_table .r_label .l_show .s_content .attr_color p span {
 	display: block;
 	float: left;
+}
+
+.tzht .t_right .r_table .r_label .l_show .s_content .attr_color p {
+	height:12px;
+	float:left;
 }
 
 .tzht .t_right .r_table .r_label .l_show .s_content .attr_color p span:first-child
@@ -837,6 +850,16 @@
 	line-height: 30px;
 }
 
+.add_category .a_d_main p span {
+	display:block;
+	float:left;
+}
+
+.add_category .a_d_main p span:first-child{
+	width:40px;
+	text-align:right;
+}
+
 .add_category .a_d_main p input,.input {
 	font-size: 12px;
 	padding-left: 4px;
@@ -845,7 +868,7 @@
 
 .add_category .a_d_main textarea {
 	padding-left: 4px;
-	margin-left: 47px;
+	margin-left: 60px;
 	resize: none;
 	overflow-y: hidden;
 	width: 200px;
@@ -854,7 +877,7 @@
 
 .add_category .a_d_main .textarea {
 	padding-left: 4px;
-	margin-left: 47px;
+	margin-left: 60px;
 	resize: none;
 	overflow-y: hidden;
 	width: 200px;
@@ -998,6 +1021,7 @@
 }
 
 .add_module_attribute .attribute_show .s_scroll {
+	width:499px;
 	height: 344px;
 	overflow-y: auto;
 	overflow-x: hidden;

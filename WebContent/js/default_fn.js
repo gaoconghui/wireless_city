@@ -418,6 +418,8 @@ function searchInitialize() {
 		window.location.href=value;
 		});
 	}
+	
+	$("#hd_attribute").find("input[placeholder]").placeholder();
 	//价格范围查询
 	$("#hd_attribute").find(".inner").each(function(){
 		var $prices=$(this).parents(".bd_prices");
@@ -531,6 +533,7 @@ function navOperation(){
 /*首页nav*/
 /*loginvalidate*/
 function loginValidator(){
+	$("#login_page").find("input[placeholder]").placeholder();
 	//登录
 	var timer=null;
 	$("#login_submit").click(function(){
@@ -627,6 +630,10 @@ function loginValidator(){
 }
 /*注册验证*/
 function registerValidate(){
+	/*初始化placeholder*/
+	$("#c_table").find("input[placeholder]").each(function(){
+		$(this).placeholder();
+	});
 	//input focus
 	$("#c_table").find("input").each(function(){
 		var $this=$(this),$next=$this.next();
@@ -1006,12 +1013,6 @@ function init(){
 	//搜索
 	$("#search_all").click(function() {
 		$(this).closest("form")[0].submit();
-	});
-	/*初始化placeholder*/
-	$("input[placeholder]").each(function(){
-		if(isEmpty($(this).val())){
-			$("input[placeholder]").placeholder();
-		}
 	});
 	
 	$("#totop").click(function(){
