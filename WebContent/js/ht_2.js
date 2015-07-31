@@ -1,6 +1,5 @@
 /* findCategory ajax */	
 var newCategoryId;
-var ajaxqueue=1;
 	function findCategory(idName,url,dataParams){
 		$.tmAjax.request({
 			url:url,

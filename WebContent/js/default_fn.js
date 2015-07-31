@@ -666,6 +666,7 @@ function registerValidate(){
 			$.ajax({
 				url:"RegAction_validateName",
 				data:params,
+				type:"post",
 				success:function(data){
 					if(data=="0"){
 						$next.find(".info").text("账号已存在！");
@@ -701,6 +702,7 @@ function registerValidate(){
 			$.ajax({
 				url:"ProviderAction_validateProvider",
 				data:{name:content},
+				type:"post",
 				success:function(data){
 					if(data=="0"){
 						$next.find(".info").text("账号已存在！");
@@ -900,6 +902,7 @@ function registerValidate(){
 					beforeSend:function(){
 						$("#submit").text("请稍候...");
 					},
+					type:"post",
 					url:"RegAction_doReg",
 					data:params,
 					success:function(data){
@@ -940,6 +943,7 @@ function registerValidate(){
 					beforeSend:function(){
 						$("#submit").text("请稍候...");
 					},
+					type:"post",
 					url:"ProviderAction_reg",
 					data:params,
 					success:function(data){
