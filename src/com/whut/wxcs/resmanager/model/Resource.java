@@ -25,6 +25,16 @@ public class Resource {
 
 	// 审核状态:0-下架 1-审核通过 2-正在审核中
 	private int checkState = 2;
+	
+	private String picturePath;
+	
+	public String getPicturePath() {
+		return picturePath;
+	}
+
+	public void setPicturePath(String picturePath) {
+		this.picturePath = picturePath;
+	}
 
 	public long getId() {
 		return id;

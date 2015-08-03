@@ -48,10 +48,6 @@ public interface ResourceService extends BaseService<Resource>{
 	 */
 	public List<Resource> getResourcesByKeyWord(long pid, String keyWord);
 
-	/* public List<Catalogue> getChildCatalogues(long cid); */
-
-	/* public Page<Resource> getPageResource(); */
-
 	/**
 	 * 根据封装好的属性进行查询
 	 */

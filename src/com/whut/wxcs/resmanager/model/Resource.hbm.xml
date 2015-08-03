@@ -46,5 +46,8 @@
 		<property name="checkState" type="int">
 			<column name="CHECKSTATE" />
 		</property>
+		<property name="picturePath" type="java.lang.String">
+		   <column name="PICTURE_PATH"></column>
+		</property>
 	</class>
 </hibernate-mapping>

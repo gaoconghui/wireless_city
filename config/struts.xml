@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	 <!-- 主题 -->
+	<!-- 主题 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<!-- 允许ognl 调用静态方法 -->
 	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
@@ -33,9 +33,8 @@
 			method="{1}">
 			<result name="toIndexPage">/front/index.jsp</result>
 			<result name="toCatalogueManagerPage">/admin/ht_1.jsp</result>
-			<!-- <result name="catalogueManagerAction" type="redirectAction">
-				<param name="actionName">CatalogueAction_toCatalogueManagerPage</param>
-			</result> -->
+			<!-- <result name="catalogueManagerAction" type="redirectAction"> <param 
+				name="actionName">CatalogueAction_toCatalogueManagerPage</param> </result> -->
 			<result name="add_resource">/login/provider_resource.jsp</result>
 		</action>
 		<action name="TemplateAction_*" class="templateAction" method="{1}">
@@ -91,16 +90,17 @@
 				<param name="actionName">SearchProviderAction_getAllProviders</param>
 				<param name="psid">${psid}</param>
 			</result>
+			<result name="provider_login">/front/index.jsp</result>
 		</action>
-		
+
 		<action name="ResourceAction_*" class="resourceAction" method="{1}">
-			
+
 			<result name="resourceListAction" type="redirectAction">
 				<param name="actionName">SearchBackResourceAction_getAllResources</param>
 				<param name="brsid">${brsid}</param>
 			</result>
 		</action>
-		
+
 		<action name="UserAction_*" class="userAction" method="{1}">
 			<!-- <result name="user_info"></result> -->
 		</action>
@@ -116,8 +116,8 @@
 			<result name="delete_success">/addResource.jsp</result>
 			<result name="resource">/front/resource.jsp</result>
 			<result name="sss" type="redirectAction">
-			   <param name="actionName">SearchProviderResourceAction_searchResourceBycatalogue</param>
-			   <param name="cid">${cid}</param>
+				<param name="actionName">SearchProviderResourceAction_searchResourceBycatalogue</param>
+				<param name="cid">${cid}</param>
 			</result>
 		</action>
 

@@ -2,6 +2,8 @@ package com.whut.wxcs.resmanager.util;
 
 import java.security.MessageDigest;
 
+import com.whut.wxcs.resmanager.model.Catalogue;
+
 public class DataUtils {
 	/**
 	 * MD5加密算法
@@ -37,33 +39,35 @@ public class DataUtils {
 	}
 
 	/**
-	 * 判断catalogue_id的位数是否为3
+	 * 判断catalogue的父目录是否为一级目录
 	 */
-	public static boolean isTrible(Long l) {
-		String lStr = l.toString();
-		if (lStr.length() == 3) {
+	public static boolean isRoot(Catalogue catalogue) {
+		Long parentId = catalogue.getParent().getId();
+		String pStr = parentId.toString();
+		if (pStr.length() == 1) {
 			return true;
 		}
 		return false;
 	}
-	
-	//获取最大值  格式为ID_MIN_MAX 如11_2_3  要获取3
+
+	// 获取最大值 格式为ID_MIN_MAX 如11_2_3 要获取3
 	public static Double getLastUnderLineStr(String attr) {
-		return Double.valueOf(attr.substring(attr.lastIndexOf("_")+1));
+		return Double.valueOf(attr.substring(attr.lastIndexOf("_") + 1));
 	}
 
-	//获取最小值 格式为ID_MIN_MAX 如11_2_3  要获取2
+	// 获取最小值 格式为ID_MIN_MAX 如11_2_3 要获取2
 	public static Double getLastTwoUnderLineStr(String attr) {
-		return  Double.valueOf(attr.substring(attr.lastIndexOf("_",attr.lastIndexOf("_")-1)+1,attr.lastIndexOf("_")));
+		return Double.valueOf(attr.substring(
+				attr.lastIndexOf("_", attr.lastIndexOf("_") - 1) + 1,
+				attr.lastIndexOf("_")));
 	}
-	
-	public static String formatStringByLength(String str,int length){
-		if(str.length() >= length){
-			str = str.substring(0, length-2);
-			str +="...";
+
+	public static String formatStringByLength(String str, int length) {
+		if (str.length() >= length) {
+			str = str.substring(0, length - 2);
+			str += "...";
 		}
 		return str;
 	}
-
 
 }

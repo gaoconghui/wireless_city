@@ -15,6 +15,7 @@ import com.whut.wxcs.resmanager.action.BaseAction;
 import com.whut.wxcs.resmanager.model.Catalogue;
 import com.whut.wxcs.resmanager.model.Provider;
 import com.whut.wxcs.resmanager.model.Resource;
+import com.whut.wxcs.resmanager.model.ResourcePage;
 import com.whut.wxcs.resmanager.service.CatalogueService;
 import com.whut.wxcs.resmanager.service.ProviderService;
 import com.whut.wxcs.resmanager.service.ResourceService;
@@ -39,10 +40,20 @@ public class ProviderAction extends BaseAction<Provider> implements
 	private Catalogue catalogue;
 	private List<Resource> resources;
 	private List<Catalogue> catalogues;
+	// 登陆后置于ValueStack的栈顶
+	private ResourcePage page;
 
 	// providerList 页面中，对服务商执行操作后转发psid，重定向时使用
 	private long psid;
 	private String ids;
+
+	public ResourcePage getPage() {
+		return page;
+	}
+
+	public void setPage(ResourcePage page) {
+		this.page = page;
+	}
 
 	public void setIds(String ids) {
 		this.ids = ids;
@@ -95,7 +106,6 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 * 服务商登陆,并验证
 	 */
 	public String login() {
-		System.out.println("11111111111111111111");
 		provider = providerService.isLogin(provider);
 		if (provider == null) {
 			try {
@@ -120,21 +130,27 @@ public class ProviderAction extends BaseAction<Provider> implements
 		} else if (provider.getCheckState() == 1) {
 			session.put("provider", provider);
 			resources = resourceService.getProviderResource(provider);
-			//System.out.println("!---------!" + resources.size());
 			catalogues = resourceService.getProviderCatalogue(resources);
-			//System.out.println("!-----------!" + catalogues.size());
 			session.put("catalogues", catalogues);
 			for (Catalogue catalogue : catalogues) {
-				System.out.println(catalogue.getName());
+				if (catalogue != null) {
+					catalogue.getName();
+				}
 			}
+			/*
+			 * page = resourceService.searchByCriteria(provider.getId(), new
+			 * CriteriaResource()); ActionContext actionContext =
+			 * ActionContext.getContext(); ValueStack valueStack =
+			 * actionContext.getValueStack(); valueStack.push(page);
+			 */
 			try {
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
+
 		}
 		return "ajax-success";
-
 	}
 
 	/**
@@ -215,10 +231,10 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 */
 	public String passCheck() {
 		System.out.println(provider.getId());
-//		provider = providerService.getEntity(provider.getId());
-//		provider.setCheckState(1);
-//		providerService.saveOrUpdateEntity(provider);
-		providerService.passListCheck(provider.getId()+"");
+		// provider = providerService.getEntity(provider.getId());
+		// provider.setCheckState(1);
+		// providerService.saveOrUpdateEntity(provider);
+		providerService.passListCheck(provider.getId() + "");
 		return "providerListAction";
 	}
 
@@ -227,12 +243,12 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 */
 	public String offCheck() {
 		System.out.println(provider.getId());
-//		provider = providerService.getEntity(provider.getId());
-//		provider.setCheckState(0);
-//		providerService.saveOrUpdateEntity(provider);
-		
-		providerService.offListCheck(provider.getId()+"");
-		
+		// provider = providerService.getEntity(provider.getId());
+		// provider.setCheckState(0);
+		// providerService.saveOrUpdateEntity(provider);
+
+		providerService.offListCheck(provider.getId() + "");
+
 		return "providerListAction";
 	}
 
