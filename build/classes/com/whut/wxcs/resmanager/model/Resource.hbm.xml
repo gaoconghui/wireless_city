@@ -9,29 +9,29 @@
 			<generator class="native" />
 		</id>
 		<set name="attributes" table="RESOURCE_ATTRIBUTE" inverse="false"
-			lazy="true" access="field">
+			lazy="true" access="field" order-by="id">
 			<key>
 				<column name="RESOURCE_ID" />
 			</key>
 			<one-to-many class="com.whut.wxcs.resmanager.model.ResourceAttribute" />
 		</set>
-		
+
 		<many-to-one name="catalogue"
 			class="com.whut.wxcs.resmanager.model.Catalogue" fetch="join">
 			<column name="CATALOGUE_ID" />
 		</many-to-one>
-		<many-to-one name="provider" class="com.whut.wxcs.resmanager.model.Provider"
-			fetch="join">
+		<many-to-one name="provider"
+			class="com.whut.wxcs.resmanager.model.Provider" fetch="join">
 			<column name="PROVIDER_ID" />
 		</many-to-one>
 
 		<property name="resource_name" type="java.lang.String">
 			<column name="RESOURCE_NAME" />
 		</property>
-		<property name="description" type="java.lang.String">
+		<property name="description" type="text">
 			<column name="DESCRIPTION" />
 		</property>
-		<property name="create_time" type="java.sql.Date">
+		<property name="create_time" type="timestamp" update="false">
 			<column name="CREATE_TIME" />
 		</property>
 		<property name="rating" type="java.lang.Float">
@@ -42,6 +42,12 @@
 		</property>
 		<property name="quantity" type="int">
 			<column name="QUANTITY" />
+		</property>
+		<property name="checkState" type="int">
+			<column name="CHECKSTATE" />
+		</property>
+		<property name="picturePath" type="java.lang.String">
+		   <column name="PICTURE_PATH"></column>
 		</property>
 	</class>
 </hibernate-mapping>
