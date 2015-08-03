@@ -36,7 +36,8 @@ import com.whut.wxcs.resmanager.util.MessageMail;
 import com.whut.wxcs.resmanager.util.ValidateUtil;
 
 @Service("resourceService")
-public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements ResourceService {
+public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements
+		ResourceService {
 
 	@javax.annotation.Resource(name = "resourceAttributeDao")
 	private BaseDao<ResourceAttribute> resourceAttributeDao;
@@ -44,7 +45,7 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 	private BaseDao<Resource> resourceDao;
 	@javax.annotation.Resource(name = "catalogueService")
 	private CatalogueService catalogueService;
-	
+
 	@javax.annotation.Resource(name = "resourceDao")
 	public void setBaseDao(BaseDao<Resource> baseDao) {
 		super.setBaseDao(baseDao);
@@ -76,7 +77,7 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 		List<Resource> resources = resourceDao.findEntityByHql(hql,
 				provider.getId());
 		for (Resource resource : resources) {
-			resource.getCatalogue();
+			catalogueService.initCatalogueById(resource.getCatalogue().getId());
 		}
 		return resources;
 	}
@@ -84,20 +85,12 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 	@Override
 	public List<Resource> getCatalogueProviderResource(Integer cid,
 			Provider provider) {
-		/*
-		 * String hql =
-		 * "from Resource r where r.provider.id = ? and r.catalogue.id LIKE ?";
-		 */
 		String sql = "SELECT * FROM resource WHERE PROVIDER_ID =? AND CATALOGUE_ID LIKE ? ";
-		/*
-		 * List<Resource> resources = resourceDao.findEntityByHql(hql, cid +
-		 * "%", provider.getId());
-		 */
 		List<Resource> resources = resourceDao.findEntityBySql(sql,
 				provider.getId(), cid + "%");
 		for (Resource resource : resources) {
 			// 强行在服务层对catalogue进行初始化
-			System.out.println(resource.getCatalogue().getName());
+			resource.getCatalogue().getName();
 		}
 		return resources;
 	}
@@ -107,11 +100,11 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 		Resource resource = resourceDao.getEntity(rid);
 		resource.getCatalogue().getName();
 		resource.getAttributes().size();
-		for(ResourceAttribute resourceAttribute :resource.getAttributes()){
+		for (ResourceAttribute resourceAttribute : resource.getAttributes()) {
 			System.out.println("------------------------------------------");
 			System.out.println(resourceAttribute.getAttribute().getName());
-			if(resourceAttribute.getAttribute().getType()==5){
-				 resourceAttribute.getAttribute().getEnumValue();
+			if (resourceAttribute.getAttribute().getType() == 5) {
+				resourceAttribute.getAttribute().getEnumValue();
 			}
 		}
 		return resource;
@@ -133,8 +126,6 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 		hql = "delete from Resource r where r.id = ?";
 		resourceDao.batchEntityByHql(hql, rid);
 	}
-
-	
 
 	@Override
 	public List<Resource> orderByTime(long pid, long cid) {
@@ -188,7 +179,7 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 
 		// 初始化page
 		List<Resource> resources = criteria.list();
-		for(Resource resource:resources){
+		for (Resource resource : resources) {
 			resource.getCatalogue().getName();
 		}
 
@@ -216,7 +207,6 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 	}
 
 	private void addCriteriaState(CriteriaResource model, Criteria criteria) {
-		// System.out.println(".........." + model.getState());
 		if (model.getState() != null) {
 			criteria.add(Restrictions.eq("checkState", model.getState()));
 		}
@@ -373,35 +363,57 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 	@Override
 	public List<Catalogue> getProviderCatalogue(List<Resource> resources) {
 		List<Catalogue> catalogues = new ArrayList<Catalogue>();
-		// 将resource中catalogue为3位数的ID 踢出出来
 		for (Resource resource : resources) {
-			if (DataUtils.isTrible(resource.getCatalogue().getId())) {
-				Catalogue catalogue = catalogueService
-						.initCatalogueById(resource.getCatalogue().getId());
-				if (!catalogues.contains(catalogue)) {
-					catalogues.add(catalogue);
-				}
+			Catalogue catalogue = catalogueService.initCatalogueById(resource
+					.getCatalogue().getId());
+			if (DataUtils.isRoot(catalogue)) {
+				addCatalogue(catalogues, catalogue);
+			} else {
+				Catalogue catalogue2 = getFirstCatalogue(catalogue);
+				addCatalogue(catalogues, catalogue2);
 			}
 		}
 		return catalogues;
 	}
 
+	// 将不重复的一级类目加入到catalogues中
+	private void addCatalogue(List<Catalogue> catalogues, Catalogue catalogue) {
+		if (!catalogues.contains(catalogue)) {
+			catalogues.add(catalogue);
+		}
+	}
+
+	// 得到一级目录
+	private Catalogue getFirstCatalogue(Catalogue catalogue) {
+		/*
+		 * System.out.println(catalogue.getName()); Catalogue c =
+		 * catalogueService.initCatalogueById(catalogue.getParent() .getId());
+		 * System.out.println(c.getName()); System.out.println(c.getId() == 1);
+		 * while (c.getId() != 1) { getFirstCatalogue(c); }
+		 */
+		String catalogueStr = catalogue.getId() + "";
+		String firstId = catalogueStr.substring(0, 2);
+		Catalogue c = catalogueService.initCatalogueById(Long
+				.parseLong(firstId));
+		return c;
+	}
+
 	@Override
 	public void passListCheck(String ids) {
 		String hql = "UPDATE Resource r SET r.checkState = 1 where r.id in("
-				+ ids +")";
+				+ ids + ")";
 		this.batchEntityByHql(hql);
-		this.sendMessage(ids,"审核通过");
+		this.sendMessage(ids, "审核通过");
 	}
 
-	private void sendMessage(String ids,String state) {
+	private void sendMessage(String ids, String state) {
 		String[] strs = DataUtils.toArray(ids);
 		Resource resource;
 		Provider provider;
-		for(String str : strs){
+		for (String str : strs) {
 			resource = resourceDao.getEntity(Long.parseLong(str));
 			provider = resource.getProvider();
-			String text = "您的资源" + resource.getResource_name() + state  ;
+			String text = "您的资源" + resource.getResource_name() + state;
 			MessageMail.sendMessage(provider.getEmail(), text, state);
 		}
 	}
@@ -409,9 +421,9 @@ public class ResourceServiceImpl  extends BaseServiceImpl<Resource> implements R
 	@Override
 	public void offListCheck(String ids) {
 		String hql = "UPDATE Resource r SET r.checkState = 0 where r.id in("
-				+ ids +")";
+				+ ids + ")";
 		this.batchEntityByHql(hql);
-		this.sendMessage(ids,"下架");
+		this.sendMessage(ids, "下架");
 	}
 
 }
