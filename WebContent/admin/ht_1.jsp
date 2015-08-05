@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>无线城市-后台-服务类目管理</title>
 		<link href="css/reset.css"  rel="stylesheet" />
 		<link href="css/ht_default_style.css"  rel="stylesheet" />
+		<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/util.js"></script>
 	</head>
@@ -26,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="r_location" id="location" style="position:fixed;top:56px;left:200px;">
 				<i></i>
 				<span>您当前所在位置：
-					<a href="javascript:void(0)" id="choose">服务类目管理</a>
+					<a href="javascript:void(0)" id="choose" id="location_1">服务类目管理</a>
 					<a href="javascript:void(0)" id="location_1"></a>
 					<a href="javascript:void(0)" id="location_2"></a>
 					<a href="javascript:void(0)" id="location_3"></a>
@@ -42,11 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="r_table"  data-index="0" style="margin-top:51px;">
 				<div class="r_title"><i></i><span>一类类目</span></div>
 				<div class="r_label" id="fir_category">
-					<ul>
-						<div class="add_li">
-							<a href="javascript:void(0)"><i></i></a>
-						</div>
-					</ul>
+					<ul></ul>
 				</div>
 			</div>
 			<div class="r_table"  data-index="1">
@@ -97,13 +94,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="add_category" id="add_category">
 		<div class="a_d_header">增加类目</div>
 		<div class="a_d_main">
-			<p>父节点为：<span class="parent_name"></span></p>
 			<p>
-				<span>名称:</span>
+				<span>上级：</span>
+				<span class="parent_name">无</span></p>
+			<p>
+				<span>名称：</span>
 				<input type="text" id="category_name"/>
 			</p>
 			<p>
-				<span>描述:</span>
+				<span>描述：</span>
 			</p>
 			<textarea id="category_desc"></textarea>
 		</div>
@@ -118,11 +117,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="a_d_header">修改类目 </div>
 		<div class="a_d_main">
 			<p>
-				<span>名称:</span>
+				<span>名称：</span>
 				<input id="update_cate_name"/>
 			</p>
 			<p>
-				<span>描述:</span>
+				<span>描述：</span>
 			</p>
 			<textarea id="update_cate_desc"></textarea>
 		</div>
@@ -137,11 +136,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="a_d_header">增加资源模板</div>
 		<div class="a_d_main">
 			<p>
-				<span>模板名称:</span>
+				<span>模板名称：</span>
 				<input  id="module_name"/>
 			</p>
 			<p>
-				<span>模板描述:</span>
+				<span>模板描述：</span>
 			</p>
 			<textarea id="module_desc"></textarea>
 		</div>
@@ -211,13 +210,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="add_category" id="details_show">
 		<div class="a_d_header">类目详情</div>
 		<div class="a_d_main">
-			<p>id:<span class="parent_name" id="cate_id"></span></p>
 			<p>
-				<span>名称:</span>
+				<span>id：</span>
+				<span class="parent_name input" id="cate_id"></span>
+			</p>
+			<p>
+				<span>名称：</span>
 				<span class="input" id="cate_name"></span>
 			</p>
 			<p>
-				<span>描述:</span>
+				<span>描述：</span>
 			</p>
 			<div class="textarea" id="cate_desc"></div>
 			<div class="a_d_footer">

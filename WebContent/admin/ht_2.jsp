@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="description" content="">
 		<link href="css/reset.css" rel="stylesheet">
 		<link href="css/ht_default_style.css" rel="stylesheet" />
+		<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/util.js"></script>
 	</head>
@@ -40,39 +41,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<div class="r_label">
 					<div class="l_select">
-						<p>
-                            <label>一级类目</label>
-                            <span class="field">
-	                            <select name="select" class="uniformselect" id="category_1">
-	                            	<option value="">-请选择-</option>
-	                            </select>
-                            </span>
-                        </p>
-                        <p>
-                            <label>二级类目</label>
-                            <span class="field">
-	                            <select name="select" class="uniformselect" id="category_2">
-	                            	<option value="">-请选择-</option>
-	                            </select>
-                            </span>
-                        </p>
-                        <p>
-                            <label>三级类目</label>
-                            <span class="field">
-	                            <select name="select" class="uniformselect" id="category_3">
-	                            	<option value="">-请选择-</option>
-	                            </select>
-                            </span>
-                        </p>
-                        <p>
-                            <label>四级类目</label>
-                            <span class="field">
-	                            <select name="select" class="uniformselect" id="category_4">
-	                            	<option value="">-请选择-</option>
-	                            </select>
-                            </span>
-                        </p>
-                        <p>
+						<div class="center">
+							<p>
+	                            <label>一级类目</label>
+	                            <span class="field">
+		                            <select name="select" class="uniformselect" id="category_1">
+		                            	<option value="">-请选择-</option>
+		                            </select>
+	                            </span>
+	                        </p>
+	                        <p>
+	                            <label>二级类目</label>
+	                            <span class="field">
+		                            <select name="select" class="uniformselect" id="category_2">
+		                            	<option value="">-请选择-</option>
+		                            </select>
+	                            </span>
+	                        </p>
+	                        <p>
+	                            <label>三级类目</label>
+	                            <span class="field">
+		                            <select name="select" class="uniformselect" id="category_3">
+		                            	<option value="">-请选择-</option>
+		                            </select>
+	                            </span>
+	                        </p>
+	                        <p>
+	                            <label>四级类目</label>
+	                            <span class="field">
+		                            <select name="select" class="uniformselect" id="category_4">
+		                            	<option value="">-请选择-</option>
+		                            </select>
+	                            </span>
+	                        </p>
+	                        <p>
                             <label>五级类目</label>
                             <span class="field">
 	                            <select name="select" class="uniformselect" id="category_5">
@@ -80,12 +82,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                            </select>
                             </span>
                         </p>
+						</div>
 					</div>
 					<div class="l_show">
 						<div class="s_title"  id="l_show">
 							<span>资源名称</span>
 							<span class="span">操作</span>
-							<span class="span">更新时间</span>
+							<span class="span">创建时间</span>
 							<span class="span">详情</span>
 						</div>
 						<!-- script -->
@@ -96,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="span">
 									<a style="display:none;" class="r_t_a2" href="javascript:void(0)"></a>
 								</span>
-								<span class="span">-</span>
+								<span class="span" id="create_time">-</span>
 								<span class="span"><a style="display:none;" class="r_t_a3" href="javascript:void(0)"></a></span>
 							</div>
 							<div class="s_content">
@@ -113,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<span></span>
 										<span>上级属性(需在上级模板中修改)</span>
 									</p>
-									
+									<div class="clear"></div>
 								</div>
 								<div class="c_attribute" id="mod_attribute">
 								</div>

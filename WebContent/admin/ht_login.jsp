@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<link type="text/css" href="css/reset.css" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
 		<style type="text/css">
 			.loginpage{background:#282828;}
 			.loginpanel { position: absolute; top: 50%; left: 50%; height: 300px; }

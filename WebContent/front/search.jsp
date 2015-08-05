@@ -9,16 +9,17 @@
 <!doctype html>
 <html>
 <head>
-<base href="<%=basePath%>">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<title>无线城市-搜索页</title>
-<meta name="keywords" content="关键词,关键词">
-<meta name="description" content="">
-<link href="css/reset.css" rel="stylesheet">
-<link href="css/front_default_style.css" rel="stylesheet">
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/util.js"></script>
-<script src="js/placeholder.js"></script>
+	<base href="<%=basePath%>">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>无线城市-搜索页</title>
+	<meta name="keywords" content="关键词,关键词">
+	<meta name="description" content="">
+	<link href="css/reset.css" rel="stylesheet">
+	<link href="css/front_default_style.css" rel="stylesheet">
+	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/util.js"></script>
+	<script src="js/placeholder.js"></script>
 </head>
 <body>
 	<!-- header begin-->

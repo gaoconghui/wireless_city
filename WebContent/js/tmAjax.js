@@ -11,8 +11,8 @@
 				return $(".info");
 			},
 			infoHide:function(){
-				$("#yy").hide();
-				$(".info").fadeOut(2000);	
+				$(".info").fadeOut(500);
+				$("#yy").fadeOut(500);
 			}
 	};
 	/*tmAjax*/
@@ -22,7 +22,8 @@
 			var opts = $.extend({},{async:true,limit:true,beforeSend:function(){
 				
 			},error:function(){
-				
+				$.tmUtil.infoShow({"message":"服务器出错,请尝试刷新！"}).stop(true,true).fadeOut(1000);
+				$("#yy").hide();
 			},callback:function(data){
 				
 			}},options);

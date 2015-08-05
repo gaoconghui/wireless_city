@@ -7,16 +7,17 @@
 <!doctype html>
 <html>
 <head>
-<base href="<%=basePath%>">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<title>无线城市-主页（含登录页面）</title>
-<meta name="keywords" content="关键词,关键词">
-<meta name="description" content="">
-<link href="css/reset.css" rel="stylesheet">
-<link href="css/front_default_style.css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/util.js"></script>
-<script type="text/javascript" src="js/placeholder.js"></script>
+	<base href="<%=basePath%>">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>无线城市-主页（含登录页面）</title>
+	<meta name="keywords" content="关键词,关键词">
+	<meta name="description" content="">
+	<link href="css/reset.css" rel="stylesheet">
+	<link href="css/front_default_style.css" rel="stylesheet">
+	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/placeholder.js"></script>
 </head>
 <body>
 	<s:if test="root == null">

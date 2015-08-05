@@ -1006,7 +1006,6 @@
 
 .layout_hd .hd_attribute .bd_prices {
 	padding:10px 0;
-	position:relative;
 	float:left;
 	width:410px;
 }
@@ -1058,9 +1057,8 @@
 .layout_hd .hd_attribute .bd_prices .info{
 	height:40px;
 	line-height:40px;
-	position:absolute;
-	left:270px;
-	top:10px;
+	margin-left:10px;
+	float:left;
 }
 
 .layout_hd .hd_attribute .bd_prices .info i{
