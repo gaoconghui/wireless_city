@@ -311,3 +311,21 @@ function getIndexByHeight(heightArr,minHeight){
 		}
 	}
 }
+
+/* 文件大小转换为MB GB KB格式 */
+function countFileSize(size) {
+	var fsize = parseFloat(size, 2);
+	var fileSizeString;
+	if (fsize < 1024) {
+		fileSizeString = fsize.toFixed(2) + "byte";
+	} else if (fsize < 1048576) {
+		fileSizeString = (fsize / 1024).toFixed(2) + "KB";
+	} else if (fsize < 1073741824) {
+		fileSizeString = (fsize / 1024 / 1024).toFixed(2) + "MB";
+	} else if (fsize < 1024 * 1024 * 1024) {
+		fileSizeString = (fsize / 1024 / 1024 / 1024).toFixed(2) + "GB";
+	} else {
+		fileSizeString = "0byte";
+	}
+	return fileSizeString;
+};

@@ -57,7 +57,7 @@ jQuery.fn.extend({
                 } else {
                 	size=this.files[0].size;
                 	if(size>opts.Size){
-                		alert("图片过大！");
+                		alert("图片过大！不得大于"+countFileSize(opts.Size)+"!");
                 		return false;
                 	}
                 	src=_self.getObjectURL(this.files[0]);
