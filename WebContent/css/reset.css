@@ -112,7 +112,7 @@ textarea,select,input {
 	-webkit-text-stroke-width: 0.2px;
 	-moz-osx-font-smoothing: grayscale;
 }
-#yy {
+#yy,#shadow {
 	z-index: 10;
 	width: 100%;
 	height: 100%;

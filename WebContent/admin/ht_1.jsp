@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="r_location" id="location" style="position:fixed;top:56px;left:200px;">
 				<i></i>
 				<span>您当前所在位置：
-					<a href="javascript:void(0)" id="choose" id="location_1">服务类目管理</a>
+					<a href="javascript:void(0)" id="choose">服务类目管理</a>
 					<a href="javascript:void(0)" id="location_1"></a>
 					<a href="javascript:void(0)" id="location_2"></a>
 					<a href="javascript:void(0)" id="location_3"></a>

@@ -695,25 +695,25 @@
 	margin-left: 20px;
 }
 
-.add_services  .a_s_main .a_s_pic .p_upload {
-	width: 50px;
-	height: 30px;
-	background: #0181ec;
-	color: #fff;
-	line-height: 30px;
-	text-align: center;
-	cursor: pointer;
-	border-radius: 3px;
-	-webkit-border-radius: 3px;
+.add_services  .a_s_main .a_s_pic {
+	position:relative;
+}
+
+.add_services  .a_s_main .a_s_pic i{
+	color:rgb(117,176,226);
+}
+
+.add_services  .a_s_main .a_s_pic .queue{
+	height:100px;margin-top:20px;width:1px;
 }
 
 .add_services  .a_s_main .a_s_pic .p_preview {
 	height: 100px;
-	margin-top: 10px;
-}
-
-.add_services  .a_s_main .a_s_pic .p_preview img {
-	margin-left: 20px;
+	width:100px;
+	top:40px;left:20px;
+	position:absolute;
+	z-index:20;
+	cursor:pointer;
 }
 
 .add_services  .a_s_main .a_s_desc textarea {

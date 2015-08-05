@@ -171,8 +171,8 @@
 					<div class="t_left">全部服务</div>
 					<div class="t_right">
 						<div class="r_search">
-							<s:form action="SearchProviderResourceAction_nextKeyWordSearch">
-								<s:textfield name="keyWord" id="search_service_form"></s:textfield>
+							<s:form action="SearchProviderResourceAction_nextKeyWordSearch" id="search_service_form">
+								<s:textfield name="keyWord" ></s:textfield>
 								<s:hidden name="rsid"></s:hidden>
 								<div class="s_btn" id="search_service">查询</div>
 							</s:form>
@@ -253,7 +253,7 @@
 				<div class="bd_paging" id="paging">
 					<div id="center_page">
 						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=1">首页</s:a>
+							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=1" >首页</s:a>
 						<s:if test="pageNum-3>0">
 							<span>...</span>
 						</s:if>
@@ -347,14 +347,35 @@
 					<span>名称：</span><input type="text" id="service_name" />
 				</div>
 				<div class="a_s_pic">
-					<div class="p_upload">上传图片</div>
-					<div class="p_preview">
-						<img alt="" width="100" height="100" src="images/list_demo.jpg" />
-						<img alt="" width="100" height="100" src="images/list_demo.jpg" />
-						<img alt="" width="100" height="100" src="images/list_demo.jpg" />
-						<img alt="" width="100" height="100" src="images/list_demo.jpg" />
-						<img alt="" width="100" height="100" src="images/list_demo.jpg" />
+					<form action="" method="post" enctype="multipart/form-data">
+						<input id="up" class="p_upload" type="file" name="logoPhoto" value="上传图片"/>
+						<span id="uploadinfo" class="dis_none"><i class="iconfont">&#xe610;</i>上传文件类型为： "gif", "jpeg", "png","jpg"中的一种,建议大小100KB左右</span>
+					</form>
+					<div class="queue"></div>
+					<div class="p_preview" id="imgbox">
+						<img id="preview" alt="" width="100%" height="100%" src="images/default.jpg" />
 					</div>
+					<div id="shadow" style="z-index:19;"></div>
+					<script src="js/uploadImg.js"></script>
+					<script>
+						$("#up").hover(function(){
+							$("#uploadinfo").show();
+						},function(){
+							$("#uploadinfo").hide();
+						});
+					  	$("#up").uploadPreview({Img: "preview",Size:300*1024, Width: 100,Height: 100});
+					  	var n=1;
+					  	$("#imgbox").off("click").click(function(){
+					  		n++;
+					  		if(n%2==0){
+					  			$(this).stop(true,true).animate({"width":"200px","height":"200px","left":"300px","top":"-60px"},400);
+					  			$("#shadow").show();
+					  		}else{
+					  			$(this).stop(true,true).animate({"width":"100px","height":"100px","left":"20px","top":"40px"},400);
+					  			$("#shadow").hide();
+					  		}
+					  	});
+					</script>
 				</div>
 				<div class="a_s_desc">
 					<div>描述：</div>
@@ -368,12 +389,6 @@
 				<div class="a_s_choose">属性填写：</div>
 				<div class="a_s_attribute">
 					<div class="at_fill" id="at_fill">
-						<%-- <p>
-							<span>属性1:</span><input type="text" placeholder="填写属性"/>
-						</p>
-						<p>
-							<span>属性2:</span><input type="text" placeholder="填写属性"/>
-						</p> --%>
 					</div>
 					<div class="at_fill">
 						<div class="at_add_newattribute" id="new_attribute">添加属性</div>
