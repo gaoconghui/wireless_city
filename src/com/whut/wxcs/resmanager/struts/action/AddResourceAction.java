@@ -135,9 +135,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	 * 得到某个服务商的具体资源
 	 */
 	public String getConcreteResource() {
-		// 实验~~~后期删除
 		session.put("cid", cid);
-		// catalogues = resourceService.getChildCatalogues(cid);
 		provider.setId(1);
 		resources = resourceService.getCatalogueProviderResource(cid, provider);
 		return "resourcePage";
@@ -269,8 +267,8 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String updateResource() {
 		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
 				resourceAttrs);
-		System.out.println("----------------" + resourceAttributes.size());
 		model.setAttributes(resourceAttributes);
+		model.setCheckState(2);
 		resourceService.updateResource(model);
 		return "sss";
 	}

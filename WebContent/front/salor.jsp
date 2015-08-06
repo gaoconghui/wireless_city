@@ -2,23 +2,25 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/";
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <!doctype html>
 <html>
 <head>
 <base href="<%=basePath%>">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-	<title>无线城市-提供商管理页</title>
-	<meta name="keywords" content="关键词,关键词">
-	<meta name="description" content="">
-	<link href="css/reset.css" rel="stylesheet">
-	<link href="css/front_default_style.css" rel="stylesheet">
-	<link rel="shortcut icon" href="favicon.ico"  type="image/x-icon" />
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/placeholder.js"></script>
-	<script src="js/tmAjax.js"></script>
-	<script src="js/util.js"></script>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>无线城市-提供商管理页</title>
+<meta name="keywords" content="关键词,关键词">
+<meta name="description" content="">
+<link href="css/reset.css" rel="stylesheet">
+<link href="css/front_default_style.css" rel="stylesheet">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/placeholder.js"></script>
+<script src="js/tmAjax.js"></script>
+<script src="js/util.js"></script>
 </head>
 <body>
 	<!-- header begin-->
@@ -146,22 +148,21 @@
 				<div class="hd_attribute" id="hd_attribute">
 					<s:iterator value="page.attrList" status="rowst">
 						<div class="p">
-							<span><s:property value="name" />:</span> 
-							<span class="attr_value"> 
-								<s:iterator value="enumValue" status="st">
-									<s:a
-										href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
+							<span><s:property value="name" />:</span> <span
+								class="attr_value"> <s:iterator value="enumValue"
+									status="st">
+									<s:a cssClass="colorgradient" href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
 										<s:property value="enumValue[#st.index]" />
 									</s:a>
 								</s:iterator>
-							</span>
-							<span class="more_attr" data-state="more">更多<i class="iconfont">&#xe60b;</i></span>
+							</span> <span class="more_attr" data-state="more">更多<i
+								class="iconfont">&#xe60b;</i></span>
 							<div class="clear"></div>
 						</div>
 					</s:iterator>
 				</div>
 				<script>
-					$(function(){
+					$(function() {
 						more_less();
 					});
 				</script>
@@ -244,8 +245,8 @@
 								<%-- <s:property value="create_time" /> --%>
 							</div>
 							<div class="l_operation">
-								<a href="javascript:void(0)" class="delete">删除</a> 
-								<a href='AddResourceAction_toUpdateResource?id=<s:property value="id"/>'>查看详情</a>
+								<a href="javascript:void(0)" class="delete">删除</a> <a
+									href='AddResourceAction_toUpdateResource?id=<s:property value="id"/>'>查看详情</a>
 							</div>
 						</div>
 					</s:iterator>
@@ -270,7 +271,8 @@
 							</s:a>
 						</s:if>
 						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum}">
+							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=%{pageNum}"
+							cssClass="sel">
 							<s:property value="%{pageNum}" />
 						</s:a>
 						<s:if test="pageNum+1<=page.totalPageNumber">

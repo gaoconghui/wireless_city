@@ -385,12 +385,6 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements
 
 	// 得到一级目录
 	private Catalogue getFirstCatalogue(Catalogue catalogue) {
-		/*
-		 * System.out.println(catalogue.getName()); Catalogue c =
-		 * catalogueService.initCatalogueById(catalogue.getParent() .getId());
-		 * System.out.println(c.getName()); System.out.println(c.getId() == 1);
-		 * while (c.getId() != 1) { getFirstCatalogue(c); }
-		 */
 		String catalogueStr = catalogue.getId() + "";
 		String firstId = catalogueStr.substring(0, 2);
 		Catalogue c = catalogueService.initCatalogueById(Long

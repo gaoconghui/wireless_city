@@ -3,20 +3,16 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
-	<!-- 欢迎页 -->
 	<welcome-file-list>
-	    <welcome-file>front/index.jsp</welcome-file>
-    </welcome-file-list>
-    <!-- 404 -->
+		<welcome-file>front/index.jsp</welcome-file>
+	</welcome-file-list>
 	<error-page>
 		<error-code>404</error-code>
 		<location>/error.jsp</location>
 	</error-page>
-	<!-- 会话结束时间 -->
 	<session-config>
 		<session-timeout>40</session-timeout>
 	</session-config>
-	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
@@ -36,11 +32,8 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
-		<!-- jsp:forward也经过拦截 -->
 		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
-
-	<!-- provider 操作页面的权限拦截 -->
 	<filter>
 		<display-name>ProviderPageFilter</display-name>
 		<filter-name>ProviderPageFilter</filter-name>
@@ -50,6 +43,13 @@
 		<filter-name>ProviderPageFilter</filter-name>
 		<url-pattern>/front/*</url-pattern>
 	</filter-mapping>
-
-
+	<filter>
+		<display-name>UnicodeFilter</display-name>
+		<filter-name>UnicodeFilter</filter-name>
+		<filter-class>com.whut.wxcs.resmanager.filter.UnicodeFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UnicodeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
