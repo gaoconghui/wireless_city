@@ -47,13 +47,6 @@ public class LoginAction extends BaseAction<User> implements SessionAware {
 		return user;
 	}
 
-	/*
-	 * @Override public void validate() { if (!userService.isLogin(user)) {
-	 * addActionError("用户名密码错误，请重新输入"); return; }
-	 * 
-	 * }
-	 */
-
 	public String login() {
 		System.out.println(user.getName());
 		System.out.println(user.getLoginPwd());

@@ -33,7 +33,7 @@ import com.whut.wxcs.resmanager.util.ValidateUtil;
 @Scope("prototype")
 public class AddResourceAction extends BaseAction<Resource> implements
 		ProviderAware, SessionAware, ServletContextAware {
-   
+
 	private static final long serialVersionUID = 1L;
 	@javax.annotation.Resource
 	private CatalogueService catalogueService;
@@ -56,7 +56,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 
 	// 注入
 	private ServletContext servletContext;
-	
+
 	private File logoPhoto;
 	private String logoPhotoFileName;
 	private String logoPhotoContentType;
@@ -84,7 +84,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public void setLogoPhotoContentType(String logoPhotoContentType) {
 		this.logoPhotoContentType = logoPhotoContentType;
 	}
-	
+
 	public InputStream getInputStream() {
 		return inputStream;
 	}
@@ -201,7 +201,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		model.setCatalogue(catalogue);
 		model.setCreate_time(new Date());
 		model.setProvider(provider);
-		
+
 		long id = resourceService.addResource(model);
 		resetCatalogue();
 		try {
@@ -211,9 +211,10 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		}
 		return "ajax-success";
 	}
-    /**
-     * 修改某服务商的图片资源
-     */
+
+	/**
+	 * 修改某服务商的图片资源
+	 */
 	public String uploadPicture() {
 		if (ValidateUtil.isVaild(logoPhotoFileName)) {
 			String dir = servletContext.getRealPath("/upload");
@@ -242,7 +243,6 @@ public class AddResourceAction extends BaseAction<Resource> implements
 
 	public String toShowResourcePage() {
 		catalogues = catalogueService.getAllCatalogue();
-		System.out.println(catalogues.size());
 		return "resourcePage";
 	}
 
