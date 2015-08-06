@@ -1,6 +1,5 @@
 package com.whut.wxcs.resmanager.action;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;

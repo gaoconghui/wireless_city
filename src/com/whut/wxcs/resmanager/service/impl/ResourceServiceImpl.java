@@ -420,4 +420,10 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements
 		this.sendMessage(ids, "下架");
 	}
 
+	@Override
+	public void updateResourcePicturePath(String name, long id) {
+		String hql = "UPDATE  Resource r set r.picturePath = ? WHERE r.id = ?";
+		this.batchEntityByHql(hql, name, id);
+	}
+
 }
