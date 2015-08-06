@@ -33,7 +33,7 @@ import com.whut.wxcs.resmanager.util.ValidateUtil;
 @Scope("prototype")
 public class AddResourceAction extends BaseAction<Resource> implements
 		ProviderAware, SessionAware, ServletContextAware {
-
+   
 	private static final long serialVersionUID = 1L;
 	@javax.annotation.Resource
 	private CatalogueService catalogueService;
@@ -54,6 +54,37 @@ public class AddResourceAction extends BaseAction<Resource> implements
 
 	private List<ResourceAttribute> resourceAttrs = new ArrayList<ResourceAttribute>();
 
+	// 注入
+	private ServletContext servletContext;
+	
+	private File logoPhoto;
+	private String logoPhotoFileName;
+	private String logoPhotoContentType;
+
+	public File getLogoPhoto() {
+		return logoPhoto;
+	}
+
+	public void setLogoPhoto(File logoPhoto) {
+		this.logoPhoto = logoPhoto;
+	}
+
+	public String getLogoPhotoFileName() {
+		return logoPhotoFileName;
+	}
+
+	public void setLogoPhotoFileName(String logoPhotoFileName) {
+		this.logoPhotoFileName = logoPhotoFileName;
+	}
+
+	public String getLogoPhotoContentType() {
+		return logoPhotoContentType;
+	}
+
+	public void setLogoPhotoContentType(String logoPhotoContentType) {
+		this.logoPhotoContentType = logoPhotoContentType;
+	}
+	
 	public InputStream getInputStream() {
 		return inputStream;
 	}
@@ -160,11 +191,6 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		return "ajax-success";
 	}
 
-	// 注入
-	private ServletContext servletContext;
-
-	
-
 	// 整合的时候要从session取出Provider 到时候还要修改
 	public String addResource() {
 		Set<ResourceAttribute> resourceAttributes = new HashSet<ResourceAttribute>(
@@ -180,6 +206,28 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		resetCatalogue();
 		try {
 			inputStream = new ByteArrayInputStream((id + "").getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return "ajax-success";
+	}
+    /**
+     * 修改某服务商的图片资源
+     */
+	public String uploadPicture() {
+		if (ValidateUtil.isVaild(logoPhotoFileName)) {
+			String dir = servletContext.getRealPath("/upload");
+			String ext = logoPhotoFileName.substring(logoPhotoFileName
+					.lastIndexOf("."));
+			long l = System.nanoTime();
+			File newFile = new File(dir, l + ext);
+			// 文件另存为
+			logoPhoto.renameTo(newFile);
+			resourceService.updateResourcePicturePath(newFile.getName(),
+					model.getId());
+		}
+		try {
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
