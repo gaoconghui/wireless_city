@@ -89,6 +89,10 @@
 	word-wrap: break-word;
 }
 
+.rs_wrapper .container .left_wrapper .pic_show i{
+	color: rgb(117,176,226);
+}
+
 .rs_wrapper .container .right_wrapper {
 	padding-left: 20px;
 	float: left;
@@ -2889,16 +2893,14 @@ html,body {
 }
 
 #totop a {
-	padding-top: 8px;
-	color: #fff;
-	font-size: 32px;
-	width: 43px;
-	height: 38px;
+	padding-top: 7px;
+	font-size: 23px;
+	height: 29px;
 	display: block;
 	background-color: #000;
 	opacity: 0.8;
 	filter: alpha(opacity = 80);
-	width: 43px;
+	width: 36px;
 	color: #fff;
 }
 

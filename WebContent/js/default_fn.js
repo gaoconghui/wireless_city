@@ -254,8 +254,8 @@ function initialize_salor() {
 							alert("后台异常！");
 						} else {
 							$("#res_id").val(data);
+							$("#par_id").val(data);
 							$("#uploadfile")[0].submit();
-							location.href = "SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=" + pid + "";
 						}
 					}
 				});
@@ -353,15 +353,26 @@ function edit_rs(){
 		//编辑转保存，取消
 		var html="<a href='javascript:void(0)' id='save'>保存</a><a href='javascript:void(0)' id='cancle'>取消</a>";
 		$("#operation_panel").empty().css({"marginLeft":"380px","width":"140px"}).html(html);
+		var id=$("#rs_id").text();
 		$("#save").click(function(){
+			$("#par_id").val($("#p_id").val());
+			$("#res_id").val(id);
+			$("uploadfile")[0].submit();
 			$("#update_rs")[0].submit();
 		});
 		$("#cancle").click(function(){
-			var id=$("#rs_id").text();
 			location.href="AddResourceAction_toUpdateResource?id="+id;
 		});
 		//审核和时间消失
 		$("#updatetime,#state").remove();
+		//图片上传
+		var picspan="<form id='uploadfile' action='AddResourceAction_uploadPicture' method='post' enctype='multipart/form-data'>"+
+					"	<input id='up' class='p_upload' type='file' name='logoPhoto' value='上传图片'/>"+
+					"	<span id='uploadinfo' class='dis_none'><i class='iconfont'>&#xe610;</i>gif/jpeg/png/jpg,建议100KB左右</span>"+
+					"	<input type='hidden' id='res_id' value='1' name='id'/>"+
+					"</form>";
+		$("#pic").before(picspan);
+		$("#up").uploadPreview({Img: "pic",Size:300*1024, Width: 100,Height: 100});
 		//span.value变为input
 		var name_content=$("#update_rs").find(".name").find(".value").text();
 		$("#update_rs").find(".name").html("<span class='key'>资源名称</span><input name='resource_name' value='"+name_content+"'/>");

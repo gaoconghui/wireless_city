@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/placeholder.js"></script>
 	<script type="text/javascript" src="js/util.js"></script>
+	<script src="js/uploadImg.js"></script>
 </head>
 <body>
 	<% 
@@ -25,6 +26,7 @@
 		pageContext.setAttribute("rsid",rsid);
 	%>
 	<div class="dis_none" id="rs_id">${rsid }</div>
+	<div class="dis_none" id="p_id"><s:property value="%{catalogue.id}"/></div>
 	<s:include value="logined_header.jsp"/>
 	<div class="nav">
 		<div class="nav_center">
@@ -80,6 +82,11 @@
 			    			<s:elseif test="checkState==1">审核通过</s:elseif> 
 			    			<s:elseif test="checkState==2">正在审核</s:elseif>
 			    		</span>
+			    	</p>
+			    	<p class="pic_show" id="pic_show">
+			    		<span class="key">图片</span>
+			    		<!-- TODO  src改成传出来的路径 -->
+			    		<span style="width:200px;"><img id="pic" src="images/default.jpg" width="200" height="200"/></span>
 			    	</p>
 			    </div>
 			    <div class="right_wrapper">
