@@ -26,6 +26,7 @@
 		pageContext.setAttribute("rsid",rsid);
 	%>
 	<div class="dis_none" id="rs_id">${rsid }</div>
+	<div class="dis_none" id="p_id"><s:property value="%{catalogue.id}"/></div>
 	<s:include value="logined_header.jsp"/>
 	<div class="nav">
 		<div class="nav_center">

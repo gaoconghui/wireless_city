@@ -61,7 +61,6 @@ jQuery.fn.extend({
                 		return false;
                 	}
                 	src=_self.getObjectURL(this.files[0]);
-                	alert(src);
                     $("#" + opts.Img).attr('src',src);
                 }
                 opts.Callback();

@@ -254,8 +254,8 @@ function initialize_salor() {
 							alert("后台异常！");
 						} else {
 							$("#res_id").val(data);
+							$("#par_id").val(data);
 							$("#uploadfile")[0].submit();
-							location.href = "SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=" + pid + "";
 						}
 					}
 				});
@@ -355,7 +355,8 @@ function edit_rs(){
 		$("#operation_panel").empty().css({"marginLeft":"380px","width":"140px"}).html(html);
 		var id=$("#rs_id").text();
 		$("#save").click(function(){
-			$("res_id").val(id);
+			$("#par_id").val($("#p_id").val());
+			$("#res_id").val(id);
 			$("uploadfile")[0].submit();
 			$("#update_rs")[0].submit();
 		});
