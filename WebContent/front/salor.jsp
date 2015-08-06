@@ -233,7 +233,6 @@
 								<img alt=""
 									src='<s:property value="getPath(picturePath)"/>'
 									height="100" width="100">
-<!-- <s:property value="catalogue.id"/>.jpg -->
                                      
 							</div>
 							<div class="l_name">

@@ -222,7 +222,9 @@ public class AddResourceAction extends BaseAction<Resource> implements
 					.lastIndexOf("."));
 			long l = System.nanoTime();
 			File newFile = new File(dir, l + ext);
-			long id=model.getId();System.out.println(id);
+			long id = model.getId();
+			System.out.println("-------------------------------");
+			System.out.println(id);
 			// 文件另存为
 			logoPhoto.renameTo(newFile);
 			resourceService.updateResourcePicturePath(newFile.getName(),
@@ -236,6 +238,9 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		return "ajax-success";
 	}
 
+	/**
+	 * 重置Session里的catalogues
+	 */
 	private void resetCatalogue() {
 		resources = resourceService.getProviderResource(provider);
 		catalogues = resourceService.getProviderCatalogue(resources);
