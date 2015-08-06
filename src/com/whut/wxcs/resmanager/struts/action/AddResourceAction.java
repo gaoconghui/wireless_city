@@ -127,7 +127,6 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	public String showTemplate() {
 		System.out.println(cid);
 		template = catalogueService.getTemplate(cid);
-		// System.out.println(template.getAttributes().size());
 		return "template";
 	}
 
@@ -164,33 +163,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	// 注入
 	private ServletContext servletContext;
 
-	private File logoPhoto;
-	private String logoPhotoFileName;
-	private String logoPhotoContentType;
-
-	public File getLogoPhoto() {
-		return logoPhoto;
-	}
-
-	public void setLogoPhoto(File logoPhoto) {
-		this.logoPhoto = logoPhoto;
-	}
-
-	public String getLogoPhotoFileName() {
-		return logoPhotoFileName;
-	}
-
-	public void setLogoPhotoFileName(String logoPhotoFileName) {
-		this.logoPhotoFileName = logoPhotoFileName;
-	}
-
-	public String getLogoPhotoContentType() {
-		return logoPhotoContentType;
-	}
-
-	public void setLogoPhotoContentType(String logoPhotoContentType) {
-		this.logoPhotoContentType = logoPhotoContentType;
-	}
+	
 
 	// 整合的时候要从session取出Provider 到时候还要修改
 	public String addResource() {
@@ -202,16 +175,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		model.setCatalogue(catalogue);
 		model.setCreate_time(new Date());
 		model.setProvider(provider);
-		if (ValidateUtil.isVaild(logoPhotoFileName)) {
-			String dir = servletContext.getRealPath("/upload");
-			String ext = logoPhotoFileName.substring(logoPhotoFileName
-					.lastIndexOf("."));
-			long l = System.nanoTime();
-			File newFile = new File(dir, l + ext);
-			// 文件另存为
-			logoPhoto.renameTo(newFile);
-			model.setPicturePath(newFile.getName());
-		}
+		
 		long id = resourceService.addResource(model);
 		resetCatalogue();
 		try {

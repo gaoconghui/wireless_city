@@ -21,7 +21,6 @@ public class UnicodeFilter implements Filter {
 		httpServletRequest.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
 	}
-
 	public void init(FilterConfig fConfig) throws ServletException {
 
 	}

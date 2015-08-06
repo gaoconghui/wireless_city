@@ -151,9 +151,18 @@
 							<span><s:property value="name" />:</span> <span
 								class="attr_value"> <s:iterator value="enumValue"
 									status="st">
-									<s:a cssClass="colorgradient" href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
-										<s:property value="enumValue[#st.index]" />
-									</s:a>
+									<s:if test="attrMap.containsKey(id+'_'+#st.index)">
+								<s:a cssClass="colorgradient"
+									href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
+									<s:property value="enumValue[#st.index]" />
+								</s:a>
+							</s:if>
+							<s:else>
+								<s:a
+									href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
+									<s:property value="enumValue[#st.index]" />
+								</s:a>
+							</s:else>
 								</s:iterator>
 							</span> <span class="more_attr" data-state="more">更多<i
 								class="iconfont">&#xe60b;</i></span>

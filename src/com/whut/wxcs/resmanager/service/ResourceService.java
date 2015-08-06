@@ -67,5 +67,10 @@ public interface ResourceService extends BaseService<Resource>{
 	 * 批量下架
 	 */
 	public void offListCheck(String ids);
+    
+	/**
+	 * 修改某资源的图片路径 
+	 */
+	public void updateResourcePicturePath(String name, long id);
 
 }
