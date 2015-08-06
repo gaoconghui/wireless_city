@@ -152,17 +152,17 @@
 								class="attr_value"> <s:iterator value="enumValue"
 									status="st">
 									<s:if test="attrMap.containsKey(id+'_'+#st.index)">
-								<s:a cssClass="colorgradient"
-									href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
-									<s:property value="enumValue[#st.index]" />
-								</s:a>
-							</s:if>
-							<s:else>
-								<s:a
-									href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
-									<s:property value="enumValue[#st.index]" />
-								</s:a>
-							</s:else>
+										<s:a cssClass="colorgradient"
+											href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
+											<s:property value="enumValue[#st.index]" />
+										</s:a>
+									</s:if>
+									<s:else>
+										<s:a
+											href="SearchProviderResourceAction_handleAttribute?rsid=%{rsid}&attrStr=%{id}_%{#st.index}&attrLab=%{name}:%{enumValue[#st.index]}">
+											<s:property value="enumValue[#st.index]" />
+										</s:a>
+									</s:else>
 								</s:iterator>
 							</span> <span class="more_attr" data-state="more">更多<i
 								class="iconfont">&#xe60b;</i></span>
@@ -181,8 +181,9 @@
 					<div class="t_left">全部服务</div>
 					<div class="t_right">
 						<div class="r_search">
-							<s:form action="SearchProviderResourceAction_nextKeyWordSearch" id="search_service_form">
-								<s:textfield name="keyWord" ></s:textfield>
+							<s:form action="SearchProviderResourceAction_nextKeyWordSearch"
+								id="search_service_form">
+								<s:textfield name="keyWord"></s:textfield>
 								<s:hidden name="rsid"></s:hidden>
 								<div class="s_btn" id="search_service">查询</div>
 							</s:form>
@@ -227,10 +228,13 @@
 					<s:iterator value="page.list" var="resource">
 						<div class="l_content" data-rid="<s:property value="id"/>"
 							data-parentid="<s:property value="catalogue.id"/>">
-							<!-- ① 
-							-->
 							<div class="l_img">
-								<img alt="" src="images/list_demo.jpg" height="100" width="100" />
+								<!-- <img alt="" src="images/list_demo.jpg" /> -->
+								<img alt=""
+									src='<s:property value="getPath(picturePath)"/>'
+									height="100" width="100">
+<!-- <s:property value="catalogue.id"/>.jpg -->
+                                     
 							</div>
 							<div class="l_name">
 								<s:property value="resource_name" />
@@ -263,7 +267,7 @@
 				<div class="bd_paging" id="paging">
 					<div id="center_page">
 						<s:a
-							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=1" >首页</s:a>
+							href="SearchProviderResourceAction_changePageNo?rsid=%{rsid}&pageNum=1">首页</s:a>
 						<s:if test="pageNum-3>0">
 							<span>...</span>
 						</s:if>
@@ -366,28 +370,44 @@
 					</form>
 					<div class="queue"></div>
 					<div class="p_preview" id="imgbox">
-						<img id="preview" alt="" width="100%" height="100%" src="images/default.jpg" />
+						<img id="preview" alt="" width="100%" height="100%"
+							src="images/default.jpg" />
 					</div>
-					<div id="shadow" style="z-index:19;"></div>
+					<div id="shadow" style="z-index: 19;"></div>
 					<script src="js/uploadImg.js"></script>
 					<script>
-						$("#up").hover(function(){
+						$("#up").hover(function() {
 							$("#uploadinfo").show();
-						},function(){
+						}, function() {
 							$("#uploadinfo").hide();
 						});
-					  	$("#up").uploadPreview({Img: "preview",Size:300*1024, Width: 100,Height: 100});
-					  	var n=1;
-					  	$("#imgbox").off("click").click(function(){
-					  		n++;
-					  		if(n%2==0){
-					  			$(this).stop(true,true).animate({"width":"200px","height":"200px","left":"300px","top":"-60px"},400);
-					  			$("#shadow").show();
-					  		}else{
-					  			$(this).stop(true,true).animate({"width":"100px","height":"100px","left":"20px","top":"40px"},400);
-					  			$("#shadow").hide();
-					  		}
-					  	});
+						$("#up").uploadPreview({
+							Img : "preview",
+							Size : 300 * 1024,
+							Width : 100,
+							Height : 100
+						});
+						var n = 1;
+						$("#imgbox").off("click").click(function() {
+							n++;
+							if (n % 2 == 0) {
+								$(this).stop(true, true).animate({
+									"width" : "200px",
+									"height" : "200px",
+									"left" : "300px",
+									"top" : "-60px"
+								}, 400);
+								$("#shadow").show();
+							} else {
+								$(this).stop(true, true).animate({
+									"width" : "100px",
+									"height" : "100px",
+									"left" : "20px",
+									"top" : "40px"
+								}, 400);
+								$("#shadow").hide();
+							}
+						});
 					</script>
 				</div>
 				<div class="a_s_desc">
@@ -401,8 +421,7 @@
 			<div class="a_s_main">
 				<div class="a_s_choose">属性填写：</div>
 				<div class="a_s_attribute">
-					<div class="at_fill" id="at_fill">
-					</div>
+					<div class="at_fill" id="at_fill"></div>
 					<div class="at_fill">
 						<div class="at_add_newattribute" id="new_attribute">添加属性</div>
 						<div class="at_new" id="at_new"></div>

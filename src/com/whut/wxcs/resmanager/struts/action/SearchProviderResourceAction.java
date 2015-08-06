@@ -1,10 +1,14 @@
 package com.whut.wxcs.resmanager.struts.action;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.util.ServletContextAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -22,7 +26,7 @@ import com.whut.wxcs.resmanager.util.ValidateUtil;
 @Controller
 @Scope("prototype")
 public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
-		implements SessionAware, ProviderAware {
+		implements SessionAware, ProviderAware, ServletContextAware {
 
 	private static final long serialVersionUID = 1L;
 
@@ -62,6 +66,8 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	}
 
 	private String rsid;
+
+	private ServletContext servletContext;
 
 	public void setPage(ResourcePage page) {
 		this.page = page;
@@ -191,6 +197,21 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	}
 
 	/**
+	 * 得到图片
+	 */
+	public String getPath(String path) {
+		if (ValidateUtil.isVaild(path)) {
+			String absPath = servletContext.getRealPath(path);
+			File file = new File(absPath);
+			if (file.exists()) {
+				return servletContext.getContextPath() + path;
+			}
+		}
+		return servletContext.getContextPath() + "/images/rs_pic/"
+				+ page.getList().get(0).getCatalogue().getId() + ".jpg";
+	}
+
+	/**
 	 * 通过服务资源的审核状态查询
 	 */
 	public String changeState() {
@@ -265,6 +286,11 @@ public class SearchProviderResourceAction extends BaseAction<CriteriaResource>
 	@Override
 	public void setProvider(Provider provider) {
 		this.provider = provider;
+	}
+
+	@Override
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
 	}
 
 }
