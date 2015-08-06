@@ -253,7 +253,6 @@ function initialize_salor() {
 						if (data == 0) {
 							alert("后台异常！");
 						} else {
-							alert(data);
 							$("#res_id").val(data);
 							$("#uploadfile")[0].submit();
 							location.href = "SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=" + pid + "";

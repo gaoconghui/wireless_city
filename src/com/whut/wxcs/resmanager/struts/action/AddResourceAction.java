@@ -222,6 +222,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 					.lastIndexOf("."));
 			long l = System.nanoTime();
 			File newFile = new File(dir, l + ext);
+			long id=model.getId();System.out.println(id);
 			// 文件另存为
 			logoPhoto.renameTo(newFile);
 			resourceService.updateResourcePicturePath(newFile.getName(),

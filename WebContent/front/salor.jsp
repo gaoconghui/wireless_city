@@ -362,11 +362,10 @@
 					<span>名称：</span><input type="text" id="service_name" />
 				</div>
 				<div class="a_s_pic">
-					<form action="" method="post" enctype="multipart/form-data">
-						<input id="up" class="p_upload" type="file" name="logoPhoto"
-							value="上传图片" /> <span id="uploadinfo" class="dis_none"><i
-							class="iconfont">&#xe610;</i>上传文件类型为： "gif", "jpeg",
-							"png","jpg"中的一种,建议大小100KB左右</span> <input type="hidden" id="res_id" />
+					<form id="uploadfile" action="AddResourceAction_uploadPicture" method="post" enctype="multipart/form-data">
+						<input id="up" class="p_upload" type="file" name="logoPhoto" value="上传图片"/>
+						<span id="uploadinfo" class="dis_none"><i class="iconfont">&#xe610;</i>上传文件类型为： "gif", "jpeg", "png","jpg"中的一种,建议大小100KB左右</span>
+						<input type="hidden" id="res_id" value="1" name="id"/>
 					</form>
 					<div class="queue"></div>
 					<div class="p_preview" id="imgbox">
