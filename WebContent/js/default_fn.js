@@ -253,6 +253,9 @@ function initialize_salor() {
 						if (data == 0) {
 							alert("后台异常！");
 						} else {
+							alert(data);
+							$("#res_id").val(data);
+							$("#uploadfile")[0].submit();
 							location.href = "SearchProviderResourceAction_searchResourceBycatalogue?catalogueId=" + pid + "";
 						}
 					}
@@ -474,23 +477,6 @@ function navOperation(){
 	});
 	/*nav_ul click*/
 	/*left_nav hover*/
-	/*$("#left_nav").on({
-		"mouseenter" : function() {
-			var _index = $(this).data("index");
-			$(this).addClass("lihover");
-			$(this).find("a").css({
-				"color" : "#b61d1d"
-			});
-			$("#left_content").find("li").eq(_index).css("top",40 * _index + "px").show();
-
-		},
-		"mouseleave" : function(index) {
-			var _index = $(this).data("index");
-			$(this).removeClass("lihover");
-			$(this).find("a").css({"color" : "#fff"});
-			$("#left_content").find("li").eq(_index).hide();
-		}
-	}, "li");*/
 	$("#left_nav").find("li").each(function(index){
 		if(index!=0){
 			$(this).on({
