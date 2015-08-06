@@ -146,6 +146,7 @@ function initialize_salor() {
 			$("#category3").parents(".s_main").hide();
 			$("#category4").parents(".s_main").hide();
 			$("#category5").parents(".s_main").hide();
+			$("#preview").attr("src","images/default.jpg");
 		});
 		/*下一步 begin*/
 		$("#next_step").off("click").on("click",
