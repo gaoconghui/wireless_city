@@ -157,7 +157,7 @@ public class ProviderAction extends BaseAction<Provider> implements
 	 * 验证服务商登陆账号
 	 */
 	public String validateProvider() {
-		if (providerService.isLoginNameExit(provider.getLoginName())) {
+		if (providerService.isLoginNameExit(provider.getLoginName())||providerService.isNameExit(provider.getName())) {
 			try {
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
 			} catch (UnsupportedEncodingException e) {

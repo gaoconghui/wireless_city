@@ -112,8 +112,5 @@ public interface CatalogueService extends BaseService<Catalogue>{
 	 * 根据ID获取Attribute 的最大属性值
 	 */
 	public Double getMaxNum(long id);
-	
-
-	
 
 }

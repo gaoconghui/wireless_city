@@ -24,8 +24,15 @@ public class ProviderServiceImpl extends BaseServiceImpl<Provider> implements
 
 	@Override
 	public boolean isLoginNameExit(String loginName) {
-		String hql = "from Provider p WHERE p.loginName=?";
+		String hql = "from Provider p WHERE p.loginName= ?";
 		List<Provider> providers = findEntityByHql(hql, loginName);
+		return ValidateUtil.isVaild(providers);
+	}
+
+	@Override
+	public boolean isNameExit(String name) {
+		String hql = "from Provider p WHERE p.name = ?";
+		List<Provider> providers = findEntityByHql(hql, name);
 		return ValidateUtil.isVaild(providers);
 	}
 
@@ -62,14 +69,14 @@ public class ProviderServiceImpl extends BaseServiceImpl<Provider> implements
 	@Override
 	public void passListCheck(String ids) {
 		String hql = "UPDATE Provider p SET p.checkState = 1 WHERE p.id IN ("
-				+ ids +")";
+				+ ids + ")";
 		this.batchEntityByHql(hql);
 	}
 
 	@Override
 	public void offListCheck(String ids) {
 		String hql = "UPDATE Provider p SET p.checkState = 0 WHERE p.id IN ("
-				+ ids +")";
+				+ ids + ")";
 		this.batchEntityByHql(hql);
 	}
 

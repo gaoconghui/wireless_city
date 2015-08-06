@@ -28,4 +28,6 @@ public interface ProviderService extends BaseService<Provider> {
 	 */
 	public void offListCheck(String ids);
 
+	public boolean isNameExit(String name);
+
 }

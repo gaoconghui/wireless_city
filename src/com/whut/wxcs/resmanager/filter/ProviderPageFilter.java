@@ -18,8 +18,8 @@ public class ProviderPageFilter implements Filter {
 
 	private String providerCheckUrl;
 
-	public void init(FilterConfig fConfig) throws ServletException {
-		providerCheckUrl = fConfig.getServletContext().getInitParameter(
+	public void init(FilterConfig config) throws ServletException {
+		providerCheckUrl = config.getServletContext().getInitParameter(
 				"providerJSP");
 	}
 

@@ -12,7 +12,6 @@
 		</id>
 		<one-to-one name="catalogue"></one-to-one>
 		
-		
 		<property name="templateName" type="java.lang.String">
 			<column name="TEMPLATENAME" />
 		</property>
