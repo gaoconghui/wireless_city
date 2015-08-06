@@ -254,7 +254,7 @@ function initialize_salor() {
 							alert("后台异常！");
 						} else {
 							$("#res_id").val(data);
-							$("#par_id").val(data);
+							$("#par_id").val(pid);
 							$("#uploadfile")[0].submit();
 						}
 					}
@@ -355,9 +355,6 @@ function edit_rs(){
 		$("#operation_panel").empty().css({"marginLeft":"380px","width":"140px"}).html(html);
 		var id=$("#rs_id").text();
 		$("#save").click(function(){
-			$("#par_id").val($("#p_id").val());
-			$("#res_id").val(id);
-			$("uploadfile")[0].submit();
 			$("#update_rs")[0].submit();
 		});
 		$("#cancle").click(function(){
@@ -366,11 +363,8 @@ function edit_rs(){
 		//审核和时间消失
 		$("#updatetime,#state").remove();
 		//图片上传
-		var picspan="<form id='uploadfile' action='AddResourceAction_uploadPicture' method='post' enctype='multipart/form-data'>"+
-					"	<input id='up' class='p_upload' type='file' name='logoPhoto' value='上传图片'/>"+
-					"	<span id='uploadinfo' class='dis_none'><i class='iconfont'>&#xe610;</i>gif/jpeg/png/jpg,建议100KB左右</span>"+
-					"	<input type='hidden' id='res_id' value='1' name='id'/>"+
-					"</form>";
+		var picspan="	<input id='up' class='p_upload' type='file' name='logoPhoto' value='上传图片'/>"+
+					"	<span id='uploadinfo' class='dis_none'><i class='iconfont'>&#xe610;</i>gif/jpeg/png/jpg,建议100KB左右</span>";
 		$("#pic").before(picspan);
 		$("#up").uploadPreview({Img: "pic",Size:300*1024, Width: 100,Height: 100});
 		//span.value变为input

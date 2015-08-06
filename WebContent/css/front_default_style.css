@@ -93,6 +93,10 @@
 	color: rgb(117,176,226);
 }
 
+.rs_wrapper .container .left_wrapper .pic_show img{
+	display:block;
+}
+
 .rs_wrapper .container .right_wrapper {
 	padding-left: 20px;
 	float: left;
