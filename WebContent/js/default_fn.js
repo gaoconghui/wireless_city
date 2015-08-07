@@ -254,7 +254,7 @@ function initialize_salor() {
 							alert("后台异常！");
 						} else {
 							$("#res_id").val(data);
-							$("#par_id").val(data);
+							$("#par_id").val(pid);
 							$("#uploadfile")[0].submit();
 						}
 					}

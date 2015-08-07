@@ -115,9 +115,9 @@
 			<result name="order">/provider/orderByTime.jsp</result>
 			<result name="delete_success">/addResource.jsp</result>
 			<result name="resource">/front/resource.jsp</result>
-			<result name="sss" type="redirectAction">
+			<result name="success" type="redirectAction">
 				<param name="actionName">SearchProviderResourceAction_searchResourceBycatalogue</param>
-				<param name="cid">${cid}</param>
+				<param name="catalogueId">${cid}</param>
 			</result>
 		</action>
 
@@ -127,6 +127,5 @@
 			<result name="resource">/front/salor.jsp</result>
 			<result name="resourcelist">/provider/resourcePage.jsp</result>
 		</action>
-
 	</package>
 </struts>

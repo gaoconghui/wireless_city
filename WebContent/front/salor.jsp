@@ -112,7 +112,6 @@
 						<span> <a href="javascript:void(0)">子类：</a>
 						</span>
 						<!-- 这里是一类目迭代 -->
-						<!-- <a href="front/search.jsp?id=101">无线政务</a> -->
 						<s:if
 							test="page.catalogue.child!=null&&page.catalogue.child.size()!=0">
 							<s:iterator value="page.catalogue.child">
@@ -254,7 +253,6 @@
 							</div>
 							<div class="l_time">
 								<s:date name="create_time" format="yyy-MM-dd HH:mm:ss" />
-								<%-- <s:property value="create_time" /> --%>
 							</div>
 							<div class="l_operation">
 								<a href="javascript:void(0)" class="delete">删除</a> <a
@@ -365,7 +363,7 @@
 						<input id="up" class="p_upload" type="file" name="logoPhoto" value="上传图片"/>
 						<span id="uploadinfo" class="dis_none"><i class="iconfont">&#xe610;</i>上传文件类型为： "gif", "jpeg", "png","jpg"中的一种,建议大小100KB左右</span>
 						<input type="hidden" id="res_id" value="" name="id"/>
-						<input type="hidden" id="par_id" value="" name="pid"/>
+						<input type="hidden" id="par_id" value="" name="cid"/>
 					</form>
 					<div class="queue"></div>
 					<div class="p_preview" id="imgbox">

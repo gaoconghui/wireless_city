@@ -217,25 +217,22 @@ public class AddResourceAction extends BaseAction<Resource> implements
 	 */
 	public String uploadPicture() {
 		if (ValidateUtil.isVaild(logoPhotoFileName)) {
+			System.out.println(logoPhotoFileName);
 			String dir = servletContext.getRealPath("/upload");
+			System.out.println(dir);
 			String ext = logoPhotoFileName.substring(logoPhotoFileName
 					.lastIndexOf("."));
 			long l = System.nanoTime();
 			File newFile = new File(dir, l + ext);
+			System.out.println(newFile.getName());
 			long id = model.getId();
-			System.out.println("-------------------------------");
 			System.out.println(id);
 			// 文件另存为
 			logoPhoto.renameTo(newFile);
-			resourceService.updateResourcePicturePath(newFile.getName(),
-					model.getId());
+			String savePath = "/upload/"+newFile.getName();
+			resourceService.updateResourcePicturePath(savePath, id);
 		}
-		try {
-			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return "ajax-success";
+		return "success";
 	}
 
 	/**
@@ -288,7 +285,7 @@ public class AddResourceAction extends BaseAction<Resource> implements
 		model.setAttributes(resourceAttributes);
 		model.setCheckState(2);
 		resourceService.updateResource(model);
-		return "sss";
+		return "success";
 	}
 
 	@Override
